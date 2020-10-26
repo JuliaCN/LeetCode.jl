@@ -2,5 +2,6 @@ using LeetCode
 using Test
 
 @testset "LeetCode.jl" begin
-    # Write your tests here.
+    include("common.jl")
+    include("problems/problems.jl")
 end
