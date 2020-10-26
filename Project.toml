@@ -1,0 +1,13 @@
+name = "LeetCode"
+uuid = "177aac61-66e1-4cb4-9340-6393b6c3fb4c"
+authors = ["Jun Tian <tianjun.cpp@gmail.com> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
