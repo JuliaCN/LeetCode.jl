@@ -1,1 +1,5 @@
+# IDE
+.vscode/
+
+# Julia
 /Manifest.toml
