@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.com/JuliaCN/LeetCode.jl.svg?branch=master)](https://travis-ci.com/JuliaCN/LeetCode.jl)
 
+[中文说明](README-zh-cn.md)
+
 A community driven project to provide solutions for LeetCode problems in the Julia programming language.
 
 ## How to contribute?
