@@ -1,2 +1,5 @@
-include("1.two-sum.jl")
-include("240.search-a-2d-matrix-ii.jl")
+for f in readdir(@__DIR__)
+    if f != splitdir(@__FILE__)[2]
+        include(f)
+    end
+end
