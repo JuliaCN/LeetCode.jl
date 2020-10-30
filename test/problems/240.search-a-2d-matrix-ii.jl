@@ -7,6 +7,6 @@ arr = [
     18  21  23  26  30;
 ]
 
-@test searchMatrix(arr, 5) == true
-@test searchMatrix(arr, 20) == false
+@test search_matrix(arr, 5) == true
+@test search_matrix(arr, 20) == false
 end
