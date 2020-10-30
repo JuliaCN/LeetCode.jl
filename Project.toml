@@ -3,6 +3,9 @@ uuid = "177aac61-66e1-4cb4-9340-6393b6c3fb4c"
 authors = ["Jun Tian <tianjun.cpp@gmail.com> and contributors"]
 version = "0.1.0"
 
+[deps]
+Markdown = "d6f4376e-aef5-505a-96c1-9c027394607a"
+
 [compat]
 julia = "1"
 
