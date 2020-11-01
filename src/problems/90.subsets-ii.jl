@@ -45,7 +45,7 @@ function subsets_with_dup(nums::Vector{Int})::Vector{Vector{Int}}
     for (i, x) in enumerate(nums)
         if i == 1
             n = 1
-        elseif nums[i] != nums[i-1]
+        elseif nums[i] != nums[i - 1]
             n = length(res)
             # n is used to record how many sets to skip in case nums[i+1] == nums[i]
         end
@@ -55,10 +55,10 @@ function subsets_with_dup(nums::Vector{Int})::Vector{Vector{Int}}
                 push!(res, [res[j]..., nums[i]])
             end
         else
-            for j in (length(res)-n+1):length(res)
+            for j in (length(res) - n + 1):length(res)
                 push!(res, [res[j]..., nums[i]])
             end
         end
     end
-    res
+    return res
 end

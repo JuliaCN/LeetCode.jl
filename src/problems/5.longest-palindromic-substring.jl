@@ -43,12 +43,12 @@ function longest_palindrome(s::String)::AbstractString
         if length(s_odd) > length(res)
             res = s_odd
         end
-        s_even = _longest_palindrome(s, i, i+1)
+        s_even = _longest_palindrome(s, i, i + 1)
         if length(s_even) > length(res)
             res = s_even
         end
     end
-    res
+    return res
 end
 
 function _longest_palindrome(s, l, r)
@@ -56,5 +56,5 @@ function _longest_palindrome(s, l, r)
         l -= 1
         r += 1
     end
-    SubString(s, l+1, r-1)
+    return SubString(s, l + 1, r - 1)
 end

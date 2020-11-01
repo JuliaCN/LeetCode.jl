@@ -28,10 +28,10 @@ return [<strong>0</strong>, <strong>1</strong>].
 </pre>
 
 """
-function two_sum(nums::Vector{Int}, target::Int)::Union{Nothing, Tuple{Int, Int}}
-    seen = Dict{Int, Int}()
+function two_sum(nums::Vector{Int}, target::Int)::Union{Nothing,Tuple{Int,Int}}
+    seen = Dict{Int,Int}()
     for (i, n) in enumerate(nums)
-        m = target-n
+        m = target - n
         if haskey(seen, m)
             return seen[m], i
         else

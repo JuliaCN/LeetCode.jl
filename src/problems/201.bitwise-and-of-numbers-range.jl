@@ -39,5 +39,5 @@ function range_bitwise_and(m::Int, n::Int)::Int
         n >>= 1
         i += 1
     end
-    n << i
+    return n << i
 end

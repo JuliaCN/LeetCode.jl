@@ -39,7 +39,7 @@ Constraints:
 function num_equiv_domino_pairs(dominoes::Vector{Tuple{Int,Int}})::Int
     counts = Dict{Tuple{Int,Int},Int}()
     n = 0
-    for (k,v) in dominoes
+    for (k, v) in dominoes
         p = minmax(k, v)
         if haskey(counts, p)
             n += counts[p]
@@ -48,5 +48,5 @@ function num_equiv_domino_pairs(dominoes::Vector{Tuple{Int,Int}})::Int
             counts[p] = 1
         end
     end
-    n
+    return n
 end

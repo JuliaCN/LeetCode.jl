@@ -90,11 +90,11 @@ function is_match(s::AbstractString, p::AbstractString)::Bool
     if isempty(p)
         isempty(s)
     elseif length(p) >= 2 && p[2] == '*'
-        # case 1: * means 1 or more of previous char, then the first char of `s` and `p` must match.
         if !isempty(s) && (s[1] == p[1] || p[1] == '.')
+            # case 1: * means 1 or more of previous char, then the first char of `s` and `p` must match.
             is_match(SubString(s, 2), p)
-        # case 2: * means zero of previous char, ignore it and match the rest
         else
+            # case 2: * means zero of previous char, ignore it and match the rest
             is_match(s, SubString(p, 3))
         end
     else

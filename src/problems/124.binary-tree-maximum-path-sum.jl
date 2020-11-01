@@ -58,9 +58,9 @@ function max_path_sum(root::TreeNode)
         left = max_sum_to_leaf(x.left)
         right = max_sum_to_leaf(x.right)
         max_val = max(max_val, left + x.val + right)
-        max(0, x.val + max(left, right))
+        return max(0, x.val + max(left, right))
     end
 
     max_sum_to_leaf(root)
-    max_val
+    return max_val
 end

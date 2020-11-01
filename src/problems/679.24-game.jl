@@ -59,12 +59,12 @@ function judgePoint24(nums::Vector)::Bool
             for j in 1:n
                 if j != i
                     rest = [nums[k] for k in 1:n if k != i && k != j]
-                    if judgePoint24([rest..., nums[i]+nums[j]]) ||
-                        judgePoint24([rest..., nums[i]-nums[j]]) ||
-                        judgePoint24([rest..., nums[j]-nums[i]]) ||
-                        judgePoint24([rest..., nums[i]*nums[j]]) ||
-                        (!iszero(nums[j]) && judgePoint24([rest..., nums[i]//nums[j]])) ||
-                        (!iszero(nums[i]) && judgePoint24([rest..., nums[j]//nums[i]]))
+                    if judgePoint24([rest..., nums[i] + nums[j]]) ||
+                       judgePoint24([rest..., nums[i] - nums[j]]) ||
+                       judgePoint24([rest..., nums[j] - nums[i]]) ||
+                       judgePoint24([rest..., nums[i] * nums[j]]) ||
+                       (!iszero(nums[j]) && judgePoint24([rest..., nums[i]//nums[j]])) ||
+                       (!iszero(nums[i]) && judgePoint24([rest..., nums[j]//nums[i]]))
                         return true
                     end
                 end
