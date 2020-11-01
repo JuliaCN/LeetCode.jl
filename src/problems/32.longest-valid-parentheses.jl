@@ -42,19 +42,19 @@ function longest_valid_parentheses(s::String)::Int
     for i in 2:length(s)
         if s[i] == ')'
             # case 1: ()()
-            if s[i-1] == '('
-                dp[i] = i == 2 ? 2 : dp[i-2] + 2
-            # case 2: (())
+            if s[i - 1] == '('
+                dp[i] = i == 2 ? 2 : dp[i - 2] + 2
+                # case 2: (())
             else
-                i₍ = i - dp[i-1] - 1
+                i₍ = i - dp[i - 1] - 1
                 if i₍ >= 1 && s[i₍] == '('
-                    if dp[i-1] > 0
-                        dp[i] = dp[i-1] + 2 + (i₍ == 1 ? 0 : dp[i₍-1])
+                    if dp[i - 1] > 0
+                        dp[i] = dp[i - 1] + 2 + (i₍ == 1 ? 0 : dp[i₍ - 1])
                     end
                 end
             end
             n = max(n, dp[i])
         end
     end
-    n
+    return n
 end

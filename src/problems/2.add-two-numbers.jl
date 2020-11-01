@@ -42,9 +42,9 @@ function add_two_numbers(l1::ListNode, l2::ListNode)::ListNode
             l2 = next(l2)
         end
 
-        carry, v = divrem(v1+v2+carry, 10)
+        carry, v = divrem(v1 + v2 + carry, 10)
         next!(cur, ListNode(v))
         cur = next(cur)
     end
-    next(fake_head)
+    return next(fake_head)
 end

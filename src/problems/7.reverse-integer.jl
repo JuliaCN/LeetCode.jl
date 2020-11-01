@@ -49,5 +49,5 @@ integer overflows.
 function reverse_integer(x::Int32)::Int
     s = sign(x)
     r = parse(Int, reverse(string(s * x)))
-    r <= typemax(Int32) ? s * r : 0
+    return r <= typemax(Int32) ? s * r : 0
 end

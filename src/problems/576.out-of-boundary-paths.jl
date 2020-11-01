@@ -55,7 +55,7 @@ N is in range [0,50].
 """
 function find_paths(m, n, N, i, j)
     dp = zeros(Int, m, n)
-    
+
     for _ in 1:N
         t = copy(dp)
         inds = CartesianIndices(t)
@@ -68,5 +68,5 @@ function find_paths(m, n, N, i, j)
             dp[x] = v
         end
     end
-    dp[i,j] % (10^9+7)
+    return dp[i, j] % (10^9 + 7)
 end

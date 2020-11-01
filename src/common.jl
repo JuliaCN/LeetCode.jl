@@ -3,19 +3,19 @@
 #####
 
 Base.@kwdef mutable struct ListNode{V}
-    val::V=0
-    next::Union{Nothing,ListNode{V}}=nothing
+    val::V = 0
+    next::Union{Nothing,ListNode{V}} = nothing
 end
 
 ListNode(x) = ListNode(x, nothing)
 
-function ListNode{V}(x::Vector{V}) where V
+function ListNode{V}(x::Vector{V}) where {V}
     head = cur = ListNode(x[1])
     for i in 2:length(x)
         cur.next = ListNode(x[i])
         cur = cur.next
     end
-    head
+    return head
 end
 
 val(x::ListNode) = x.val
@@ -30,10 +30,10 @@ Base.:(==)(x::ListNode, y::ListNode) = x.val == y.val && x.next == y.next
 #####
 
 Base.@kwdef mutable struct TreeNode{V}
-    val::V=0
-    left::Union{Nothing, TreeNode}=nothing
-    right::Union{Nothing, TreeNode}=nothing
+    val::V = 0
+    left::Union{Nothing,TreeNode} = nothing
+    right::Union{Nothing,TreeNode} = nothing
 end
 
-TreeNode(x) = TreeNode(;val=x)
-TreeNode(x,left) = TreeNode(;val=x, left=left)
+TreeNode(x) = TreeNode(; val=x)
+TreeNode(x, left) = TreeNode(; val=x, left=left)

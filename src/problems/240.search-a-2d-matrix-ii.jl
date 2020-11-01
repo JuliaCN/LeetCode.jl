@@ -40,5 +40,5 @@ function search_matrix(matrix::Matrix{Int}, target::Int)::Bool
         end
     end
 
-    false
+    return false
 end

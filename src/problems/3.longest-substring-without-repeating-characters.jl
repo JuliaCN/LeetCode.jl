@@ -53,5 +53,5 @@ function length_of_longest_substring(s::String)::Int
         push!(seen, x)
         res = max(res, length(seen))
     end
-    res
+    return res
 end
