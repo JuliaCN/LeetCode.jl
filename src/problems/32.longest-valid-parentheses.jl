@@ -41,11 +41,11 @@ function longest_valid_parentheses(s::String)::Int
     n = 0
     for i in 2:length(s)
         if s[i] == ')'
-            # case 1: ()()
             if s[i - 1] == '('
+                # case 1: ()()
                 dp[i] = i == 2 ? 2 : dp[i - 2] + 2
-                # case 2: (())
             else
+                # case 2: (())
                 i₍ = i - dp[i - 1] - 1
                 if i₍ >= 1 && s[i₍] == '('
                     if dp[i - 1] > 0
