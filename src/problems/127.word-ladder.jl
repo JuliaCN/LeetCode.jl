@@ -36,8 +36,8 @@ Output: 0
 
 Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
 =#
-import Pkg
-Pkg.add("DataStructures")
+# import Pkg
+# Pkg.add("DataStructures")
 using DataStructures
 # @lc code=start
 function ladderLength(beginWord::String, endWord::String, wordList::Vector{String})::Int
