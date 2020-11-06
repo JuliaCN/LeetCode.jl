@@ -2,8 +2,8 @@
 # @lc app=leetcode id=127 lang=julia
 #
 # [127] Word Ladder
-#=
-Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:
+#= 
+Given two words (begin_word and end_word), and a dictionary's word list, find the length of shortest transformation sequence from begin_word to end_word, such that:
 
 Only one letter can be changed at a time.
 Each transformed word must exist in the word list.
@@ -13,13 +13,13 @@ Return 0 if there is no such transformation sequence.
 All words have the same length.
 All words contain only lowercase alphabetic characters.
 You may assume no duplicates in the word list.
-You may assume beginWord and endWord are non-empty and are not the same.
+You may assume begin_word and end_word are non-empty and are not the same.
 Example 1:
 
 Input:
-beginWord = "hit",
-endWord = "cog",
-wordList = ["hot","dot","dog","lot","log","cog"]
+begin_word = "hit",
+end_word = "cog",
+word_list = ["hot","dot","dog","lot","log","cog"]
 
 Output: 5
 
@@ -28,32 +28,44 @@ return its length 5.
 Example 2:
 
 Input:
-beginWord = "hit"
-endWord = "cog"
-wordList = ["hot","dot","dog","lot","log"]
+begin_word = "hit"
+end_word = "cog"
+word_list = ["hot","dot","dog","lot","log"]
 
 Output: 0
 
-Explanation: The endWord "cog" is not in wordList, therefore no possible transformation.
-=#
+Explanation: The end_word "cog" is not in word_list, therefore no possible transformation. =#
 # import Pkg
 # Pkg.add("DataStructures")
 using DataStructures
 # @lc code=start
-function ladderLength(beginWord::String, endWord::String, wordList::Vector{String})::Int
-    if !(endWord in wordList) 
+function ladderLength(begin_word::String, end_word::String, word_list::Vector{String})::Int
+    function isadj(s1, s2)
+        flg = false
+        for i in 1:length(s1)
+            if s1[i] != s2[i]
+                if flg
+                    return false
+                else
+                    flg = true
+                end
+            end
+        end
+        return true
+    end
+    if !(end_word in word_list) 
         return 0
     end
-    !(beginWord in wordList) && push!(wordList, beginWord)
-    s, t = findall(x -> x == beginWord, wordList)[1], findall(x -> x == endWord, wordList)[1]
-    wl2 = collect.(wordList)
-    # println(s, " ", t)
-    len = length(wordList)
+    !(begin_word in word_list) && push!(word_list, begin_word)
+    s, t = findall(x -> x == begin_word, word_list)[1], findall(x -> x == end_word, word_list)[1]
+    # println(s, ", ", t)
+    # wl = collect.(word_list)
+    len = length(word_list)
     edges = [Set{Int}() for i in 1:len]
     ## construct adj list
     for i in 1:len
-        for j in i+1:len
-            if sum(wl2[i] .!= wl2[j]) == 1
+        for j in i + 1:len
+            if isadj(word_list[i], word_list[j])
                 push!(edges[i], j)
                 push!(edges[j], i)
             end
