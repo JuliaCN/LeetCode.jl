@@ -1,5 +1,5 @@
 #
-# @lc app=leetcode id=120 lang=python3
+# @lc app=leetcode id=120 lang=julia
 #
 # [120] Triangle
 #
