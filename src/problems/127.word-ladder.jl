@@ -44,9 +44,9 @@ function ladderLength(beginWord::String, endWord::String, wordList::Vector{Strin
     if !(endWord in wordList) 
         return 0
     end
-    wl2 = collect.(wordList)
     !(beginWord in wordList) && push!(wordList, beginWord)
     s, t = findall(x -> x == beginWord, wordList)[1], findall(x -> x == endWord, wordList)[1]
+    wl2 = collect.(wordList)
     # println(s, " ", t)
     len = length(wordList)
     edges = [Set{Int}() for i in 1:len]
@@ -81,7 +81,6 @@ function ladderLength(beginWord::String, endWord::String, wordList::Vector{Strin
         end
         for neib in edges[rt2]
             if visited[neib] == 1
-                println(neib)
                 return dis2 + dists[neib] - 1
             elseif visited[neib] == 0
                 visited[neib] = 2
