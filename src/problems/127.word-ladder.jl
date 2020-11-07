@@ -39,7 +39,7 @@ Explanation: The end_word "cog" is not in word_list, therefore no possible trans
 # Pkg.add("DataStructures")
 using DataStructures
 # @lc code=start
-function ladderLength(begin_word::String, end_word::String, word_list::Vector{String})::Int
+function ladder_length(begin_word::String, end_word::String, word_list::Vector{String})::Int
     function isadj(s1, s2)
         flg = false
         for i in 1:length(s1)

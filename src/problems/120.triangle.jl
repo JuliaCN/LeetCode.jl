@@ -22,7 +22,7 @@ Bonus point if you are able to do this using only O(n) extra space, where n is t
 
 =#
 # @lc code=start
-function minimumTotal(triangle::Vector{Vector{Int}}) 
+function minimum_total(triangle::Vector{Vector{Int}}) 
     length(triangle) == 1 && return triangle[1][1];
     dp = fill(0, length(triangle))
     tmp = dp[:]
