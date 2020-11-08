@@ -4,6 +4,6 @@
     @test leaf_similar(t1, t2) == true
     @test leaf_similar(TreeNode(1), TreeNode(1)) == true
     @test leaf_similar(TreeNode(1), TreeNode(2)) == false
-    @test leaf_similar(TreeNode(1, TreeNode(2)), TreeNode(2, TreeNode(2))) == false
+    @test leaf_similar(TreeNode(1, TreeNode(2)), TreeNode(2, TreeNode(2))) == true
     @test leaf_similar(TreeNode(1, TreeNode(2), TreeNode(3)), TreeNode(2, TreeNode(3), TreeNode(2))) == false
 end
