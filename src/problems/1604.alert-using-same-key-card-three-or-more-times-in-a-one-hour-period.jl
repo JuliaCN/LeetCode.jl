@@ -48,7 +48,7 @@ keyName[i] contains only lowercase English letters. =#
 using Dates
 function alert_names(key_name::Vector{String}, key_time::Vector{String})
     res = Vector{String}()
-    mp = Dict{String, Vector{Time}}()
+    mp = Dict{String,Vector{Time}}()
     for (idx, name) in enumerate(key_name)
         if !haskey(mp, name)
             mp[name] = String[]
@@ -57,16 +57,15 @@ function alert_names(key_name::Vector{String}, key_time::Vector{String})
     end
     for (name, time) in mp
         sort!(time)
-        for idx in 1:length(time)-2
+        for idx in 1:(length(time) - 2)
             time1h = time[idx] + Hour(1)
-            if time[idx+1] <= time1h && time[idx+2] <= time1h
+            if time[idx + 1] <= time1h && time[idx + 2] <= time1h
                 push!(res, name)
                 break
             end
         end
     end
-    sort!(res)
-end 
-        
-# @lc code=end
+    return sort!(res)
+end
 
+# @lc code=end
