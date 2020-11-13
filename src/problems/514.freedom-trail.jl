@@ -16,7 +16,6 @@ You can rotate the ring clockwise or anticlockwise one place, which counts as 1 
 If the character key[i] has been aligned at the 12:00 direction, you need to press the center button to spell, which also counts as 1 step. After the pressing, you could begin to spell the next character in the key (next stage), otherwise, you've finished all the spelling.
 Example:
 
-
  
 Input: ring = "godding", key = "gd"
 Output: 4
@@ -33,7 +32,7 @@ It's guaranteed that string key could always be spelled by rotating the string r
 =#
 # @lc code=start
 function find_rotate_steps(ring::String, key::String)
-    lenr, lenk = length(ring), length(key)    
+    lenr, lenk = length(ring), length(key)
     dp1 = fill(typemax(Int), lenr)
     dp2 = dp1[:]
     mp = [Int[] for i in 1:26]
@@ -46,13 +45,14 @@ function find_rotate_steps(ring::String, key::String)
     for i in 2:lenk
         for idx1 in mp[key[i] - 'a' + 1]
             for idx2 in mp[key[i - 1] - 'a' + 1]
-                dp2[idx1] = min(dp2[idx1], dp1[idx2] + min(abs(idx2 - idx1), lenr - abs(idx2 - idx1)) )
+                dp2[idx1] = min(
+                    dp2[idx1], dp1[idx2] + min(abs(idx2 - idx1), lenr - abs(idx2 - idx1))
+                )
             end
         end
         dp1, dp2 = dp2, dp1
         dp2 .= typemax(Int)
     end
-    minimum(dp1) + lenk
+    return minimum(dp1) + lenk
 end
 # @lc code=end
-
