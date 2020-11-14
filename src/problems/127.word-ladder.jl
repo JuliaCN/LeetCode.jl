@@ -53,18 +53,19 @@ function ladder_length(begin_word::String, end_word::String, word_list::Vector{S
         end
         return true
     end
-    if !(end_word in word_list) 
+    if !(end_word in word_list)
         return 0
     end
     !(begin_word in word_list) && push!(word_list, begin_word)
-    s, t = findall(x -> x == begin_word, word_list)[1], findall(x -> x == end_word, word_list)[1]
+    s, t = findall(x -> x == begin_word, word_list)[1],
+    findall(x -> x == end_word, word_list)[1]
     # println(s, ", ", t)
     # wl = collect.(word_list)
     len = length(word_list)
     edges = [Set{Int}() for i in 1:len]
     ## construct adj list
     for i in 1:len
-        for j in i + 1:len
+        for j in (i + 1):len
             if isadj(word_list[i], word_list[j])
                 push!(edges[i], j)
                 push!(edges[j], i)
@@ -75,12 +76,14 @@ function ladder_length(begin_word::String, end_word::String, word_list::Vector{S
     qs, qt = Queue{Int}(), Queue{Int}()
     dists = [0 for i in 1:len]
     visited = [0 for i in 1:len]
-    enqueue!(qs, s); enqueue!(qt, t);
-    visited[s] = 1; visited[t] = 2;
-    dists[s] = dists[t] = 1;
+    enqueue!(qs, s)
+    enqueue!(qt, t)
+    visited[s] = 1
+    visited[t] = 2
+    dists[s] = dists[t] = 1
     while !isempty(qs) && !isempty(qt)
         rt1, rt2 = dequeue!(qs), dequeue!(qt)
-        dis1, dis2 = dists[rt1] + 1, dists[rt2] + 1 
+        dis1, dis2 = dists[rt1] + 1, dists[rt2] + 1
         # println(rt1, " ", dis1)
         for neib in edges[rt1]
             if visited[neib] == 2
@@ -99,10 +102,9 @@ function ladder_length(begin_word::String, end_word::String, word_list::Vector{S
                 enqueue!(qt, neib)
                 dists[neib] = dis2
             end
-        end 
+        end
     end
     return 0
 end
 
 # @lc code=end
-
