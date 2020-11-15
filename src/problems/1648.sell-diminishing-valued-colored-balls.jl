@@ -16,7 +16,6 @@ Return the maximum total value that you can attain after selling orders colored 
 
 Example 1:
 
-
 Input: inventory = [2,5], orders = 4
 Output: 14
 Explanation: Sell the 1st color 1 time (2) and the 2nd color 3 times (5 + 4 + 3).
@@ -48,21 +47,21 @@ function max_profit(inventory::Vector{Int}, orders::Int)
     rest = sum(inventory) - orders
     sort!(inventory)
     len = length(inventory)
-    for n in inventory 
+    for n in inventory
         if rest ÷ len >= n
             len -= 1
             rest -= n
-        else break
+        else
+            break
         end
     end
-    q = rest ÷ len 
+    q = rest ÷ len
     r = rest - q * len
     ret = 0
-    for i in length(inventory) - len + 1:length(inventory)
-        ret += sum(q + 2:inventory[i])     
+    for i in (length(inventory) - len + 1):length(inventory)
+        ret += sum((q + 2):inventory[i])
     end
     ret += (q + 1) * (len - r)
-    ret % (10 ^ 9 + 7)
+    return ret % (10^9 + 7)
 end
 # @lc code=end
-
