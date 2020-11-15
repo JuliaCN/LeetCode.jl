@@ -1,5 +1,5 @@
 @testset "1260.shift-2-d-grid.jl" begin
-    A = [1 2 3; 4 5 6; 7 8 9;]
+    A = [1 2 3; 4 5 6; 7 8 9]
     @test shift_grid(A, 1) == [9 1 2; 3 4 5; 6 7 8]
 
     A = [

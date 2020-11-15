@@ -38,16 +38,18 @@ end
 TreeNode(x) = TreeNode(; val=x)
 TreeNode(x, left) = TreeNode(; val=x, left=left)
 
-Base.:(==)(t1::TreeNode, t2::TreeNode) = t1.val == t2.val && t1.left == t2.left && t1.right == t2.right
+function Base.:(==)(t1::TreeNode, t2::TreeNode)
+    return t1.val == t2.val && t1.left == t2.left && t1.right == t2.right
+end
 
-function Base.convert(::Type{TreeNode{V}}, xs::Vector) where V
+function Base.convert(::Type{TreeNode{V}}, xs::Vector) where {V}
     @assert length(xs) > 0
     root = TreeNode(xs[1])
     _build_tree!(root, xs, 1)
-    root
+    return root
 end
 
-function _build_tree!(t::TreeNode, xs::Vector, i::Int = 1)
+function _build_tree!(t::TreeNode, xs::Vector, i::Int=1)
     n = length(xs)
     i_left = i * 2
     if i_left <= n && !isnothing(xs[i_left])
