@@ -49,7 +49,6 @@ Output: "lovely"
 @lc code=start
 """
 function toLowerCase(s::String)::String
-    lowercase(s)
+    return lowercase(s)
 end
 # @lc code=end
-

@@ -77,12 +77,12 @@ Both of the given trees will have values in the range [0, 200].
 
 @lc code=start
 """
-function leaf_similar(root1::TreeNode{V}, root2::TreeNode{V})::Bool where V
+function leaf_similar(root1::TreeNode{V}, root2::TreeNode{V})::Bool where {V}
     leaves1 = V[]
     leaves2 = V[]
     find_leaves!(root1, leaves1)
     find_leaves!(root2, leaves2)
-    leaves1 == leaves2
+    return leaves1 == leaves2
 end
 
 function find_leaves!(t::TreeNode, leaves)
@@ -97,4 +97,3 @@ end
 find_leaves!(::Nothing, leaves) = nothing
 
 # @lc code=end
-
