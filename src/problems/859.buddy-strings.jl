@@ -77,8 +77,8 @@ A and B consist of lowercase letters.
 """
 function buddy_strings(A::String, B::String)::Bool
     if length(A) == length(B)
-        different_pairs = Pair{Char, Char}[]
-        for (a,b) in zip(A, B)
+        different_pairs = Pair{Char,Char}[]
+        for (a, b) in zip(A, B)
             if a != b
                 push!(different_pairs, a => b)
             end
@@ -87,7 +87,7 @@ function buddy_strings(A::String, B::String)::Bool
             # check if A contains at least 2 duplicate letters
             length(Set(A)) < length(A)
         elseif length(different_pairs) == 2
-            ((x,y),(z,w)) = different_pairs
+            ((x, y), (z, w)) = different_pairs
             x == w && y == z
         else
             false
@@ -97,4 +97,3 @@ function buddy_strings(A::String, B::String)::Bool
     end
 end
 # @lc code=end
-

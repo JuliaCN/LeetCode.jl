@@ -73,7 +73,6 @@ function shift_grid(grid::Matrix{Int}, k::Int)::Matrix{Int}
         i′ = mod1(i + k, length(LI))
         res[i′] = A[i]
     end
-    res'
+    return res'
 end
 # @lc code=end
-
