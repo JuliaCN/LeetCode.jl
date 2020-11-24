@@ -48,7 +48,9 @@ nums2.length == n
 
 @lc code=start
 """
-function merge_sorted_array(nums1::AbstractVector{Int}, m::Int, nums2::AbstractVector{Int}, n::Int)::Nothing
+function merge_sorted_array(
+    nums1::AbstractVector{Int}, m::Int, nums2::AbstractVector{Int}, n::Int
+)::Nothing
     i = m + n
     while m > 0 && n > 0
         if nums1[m] > nums2[n]
@@ -66,6 +68,6 @@ function merge_sorted_array(nums1::AbstractVector{Int}, m::Int, nums2::AbstractV
         n -= 1
     end
 
-    nothing
+    return nothing
 end
 # @lc code=end
