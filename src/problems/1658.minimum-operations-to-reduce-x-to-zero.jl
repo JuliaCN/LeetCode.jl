@@ -40,24 +40,24 @@ function min_operations(nums::Vector{Int}, x::Int)
         return -1
     end
     len = length(nums)
-    rlm, llm, res = len, len, len 
-    for i in 1:len - 1   
-        if ((nums[i + 1] += nums[i]) > x) 
+    rlm, llm, res = len, len, len
+    for i in 1:(len - 1)
+        if ((nums[i + 1] += nums[i]) > x)
             rlm = i
             break
         end
     end
-    if rm == len 
+    if rm == len
         if nums[end] < x
             return -1
         else
             return len
         end
     end
-    for i in 1:len - 1
+    for i in 1:(len - 1)
         if ((rnums[i + 1] += rnums[i]) > x)
             llm = i
-            break            
+            break
         end
     end
     i, j = 1, llm
