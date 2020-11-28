@@ -48,12 +48,12 @@ Constraints:
 using DataStructures
 function furthest_building(heights::Vector{Int}, bricks::Int, ladders::Int)
     q = Int[]
-    for i in 1:length(heights) - 1
+    for i in 1:(length(heights) - 1)
         diff = heights[i + 1] - heights[i]
         if diff > 0
             if diff > bricks && ladders == 0
                 return i - 1
-            end 
+            end
             if bricks >= diff
                 heappush!(q, diff)
                 bricks -= diff
@@ -69,4 +69,3 @@ function furthest_building(heights::Vector{Int}, bricks::Int, ladders::Int)
     return length(heights) - 1
 end
 # @lc code=end
-

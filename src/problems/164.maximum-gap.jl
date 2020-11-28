@@ -27,8 +27,7 @@ Try to solve it in linear time/space.
 # @lc code=start
 function maximum_gap(nums::Vector{Int})::Int
     sort!(nums)
-    return length(nums) < 2 ? 0 : maximum(@view(nums[2:end]) - @view(nums[1:end - 1]))
+    return length(nums) < 2 ? 0 : maximum(@view(nums[2:end]) - @view(nums[1:(end - 1)]))
 end
-        
-# @lc code=end
 
+# @lc code=end
