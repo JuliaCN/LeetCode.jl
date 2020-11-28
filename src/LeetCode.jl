@@ -4,7 +4,7 @@ const LC = LeetCode
 export LC
 
 using Markdown
-
+using DataStructures
 include("common.jl")
 include("problems/problems.jl")
 
