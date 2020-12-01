@@ -3,4 +3,3 @@
     @test reorganize_string("aab") == "aba"
     @test reorganize_string("aaba") == ""
 end
-
