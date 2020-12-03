@@ -1,5 +1,6 @@
 # LeetCode in Julia - 用 Julia 编写力扣题目
 
+[![Documentation][docs-dev-img]][docs-dev-url]
 [![Unit Test][action-img]][action-url]
 [![Code Style: Blue][blue-img]][blue-url]
 
@@ -23,3 +24,5 @@
 [action-url]: https://github.com/JuliaCN/LeetCode.jl/actions
 [blue-img]: https://img.shields.io/badge/code%20style-blue-4495d1.svg
 [blue-url]: https://github.com/invenia/BlueStyle
+[docs-dev-img]: https://img.shields.io/badge/docs-dev-blue.svg
+[docs-dev-url]: https://github.com/JuliaCN/LeetCode.jl/latest
