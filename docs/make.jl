@@ -39,3 +39,5 @@ makedocs(format = format,
 
 # 3. postprocess after makedocs
 postprocess_cb()
+
+deploydocs(repo = "github.com/JuliaCN/LeetCode.jl.git")
