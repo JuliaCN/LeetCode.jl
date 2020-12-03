@@ -1,6 +1,7 @@
 # LeetCode
 
-[![Build Status](https://travis-ci.com/JuliaCN/LeetCode.jl.svg?branch=master)](https://travis-ci.com/JuliaCN/LeetCode.jl) [![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
+[![Unit Test][action-img]][action-url]
+[![Code Style: Blue][blue-img]][blue-url]
 
 
 [中文说明](README-zh-cn.md)
@@ -16,3 +17,8 @@ A community driven project to provide solutions for LeetCode problems in the Jul
 5. Run `pkg> test` locally to make sure test passes. The test will also format your codes.
 6. Commit your changes and make a pull request.
 7. You may also **WATCH** this project to help review other's PR or **STAR** this project to spread JuliaLang to others.
+
+[action-img]: https://github.com/JuliaCN/LeetCode.jl/workflows/Unit%20test/badge.svg
+[action-url]: https://github.com/JuliaCN/LeetCode.jl/actions
+[blue-img]: https://img.shields.io/badge/code%20style-blue-4495d1.svg
+[blue-url]: https://github.com/invenia/BlueStyle

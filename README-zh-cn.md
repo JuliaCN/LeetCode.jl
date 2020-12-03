@@ -1,6 +1,7 @@
 # LeetCode in Julia - 用 Julia 编写力扣题目
 
-[![Build Status](https://travis-ci.com/JuliaCN/LeetCode.jl.svg?branch=master)](https://travis-ci.com/JuliaCN/LeetCode.jl) [![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
+[![Unit Test][action-img]][action-url]
+[![Code Style: Blue][blue-img]][blue-url]
 
 社区驱动的项目：用 Julia 做 LeetCode 题目
 
@@ -17,3 +18,8 @@
 6. 通过 `pkg> test` 测试结果是否正确， 测试过程会格式化代码
 7. 提交（commit）你的更改，并开启一个新的合并请求（pull request）。
 8. 你还可以 **关注（WATCH）** 此项目以帮助审阅其他人的合并请求，或者 **点个赞（STAR）** 以鼓励本项目的贡献者们。
+
+[action-img]: https://github.com/JuliaCN/LeetCode.jl/workflows/Unit%20test/badge.svg
+[action-url]: https://github.com/JuliaCN/LeetCode.jl/actions
+[blue-img]: https://img.shields.io/badge/code%20style-blue-4495d1.svg
+[blue-url]: https://github.com/invenia/BlueStyle
