@@ -29,21 +29,22 @@ function diff_files(repo, tree, pathspecs=""; filter=DEFAULT_DIFF_FILTER)
 end
 
 """
-    format_diff_file(root, pathspecs=""; filter)
+    format_diff_file(root, tree="HEAD", pathspecs=""; filter)
 
 Apply JuliaFormatter to git diff (.jl) files.
 
 # Inputs
 
 - `root::String`: the root path to the git repo
+- `tree::String`: git tree spec
 - `pathspecs::String=""`: same to `git diff -- <pathspecs>`
 - `filter=identity`: a function that used to filter out files of interested.
 """
-function format_diff_file(root::String, pathspecs::String=""; filter=identity)
+function format_diff_file(root::String, tree="HEAD", pathspecs::String=""; filter=identity)
     repo = LibGit2.GitRepo(root)
 
     jl_diff = Base.filter(
-        x -> endswith(x, ".jl"), joinpath.(root, diff_files(repo, "HEAD", pathspecs))
+        x -> endswith(x, ".jl"), joinpath.(root, diff_files(repo, tree, pathspecs))
     )
     for file in filter(jl_diff)
         format(file, BlueStyle(); verbose=true)

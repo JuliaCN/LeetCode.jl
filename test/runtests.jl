@@ -12,4 +12,4 @@ root = abspath(@__DIR__, "..")
 end
 
 # trigger an auto-format after test
-LeetCode.format_diff_file(root)
+LeetCode.format_diff_file(root, "HEAD~1")
