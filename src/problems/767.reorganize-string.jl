@@ -26,7 +26,7 @@ function reorganize_string(S::String)
     ascii_a, len = Int('a'), length(S)
     mp = fill(0, 26)
     for ch in char_arr
-        mp[ch - ascii_a + 1] += 1 
+        mp[ch - ascii_a + 1] += 1
     end
     max_freq = argmax(mp)
     if mp[max_freq] > (len + 1) ÷ 2
@@ -48,6 +48,5 @@ function reorganize_string(S::String)
     end
     # println(res)
     return String(res)
-end        
+end
 # @lc code=end
-
