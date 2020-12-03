@@ -5,6 +5,7 @@ export LC
 
 using Markdown
 using DataStructures
+include("format_utils.jl")
 include("common.jl")
 include("problems/problems.jl")
 
