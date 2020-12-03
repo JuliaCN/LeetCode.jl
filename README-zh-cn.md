@@ -25,4 +25,4 @@
 [blue-img]: https://img.shields.io/badge/code%20style-blue-4495d1.svg
 [blue-url]: https://github.com/invenia/BlueStyle
 [docs-dev-img]: https://img.shields.io/badge/docs-dev-blue.svg
-[docs-dev-url]: https://github.com/JuliaCN/LeetCode.jl/latest
+[docs-dev-url]: https://cn.julialang.org/LeetCode.jl/dev/
