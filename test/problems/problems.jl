@@ -1,7 +1,7 @@
 @testset "problems" begin
     is_ci = get(ENV, "CI", nothing) == "true"
     if is_ci
-        test_files = filter(isfile, readdir(@__DIR__; join=true))
+        test_files = filter(isfile, joinpath.(@__DIR__, readdir(@__DIR__)))
     else
         repo = LibGit2.GitRepo(root)
         problem_dir = relpath(@__DIR__, root) # "test/problems"
