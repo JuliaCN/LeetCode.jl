@@ -1,5 +1,6 @@
 using LeetCode
 using Test
+include("format_utils.jl")
 
 # Every problem is run in a sandbox environment, test requirements are put into "requirements.jl"
 # and will be included for each single problem.
@@ -12,4 +13,4 @@ root = abspath(@__DIR__, "..")
 end
 
 # trigger an auto-format after test
-LeetCode.format_diff_file(root, "HEAD~1")
+format_diff_file(root, "HEAD~1")

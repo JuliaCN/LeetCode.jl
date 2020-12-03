@@ -3,10 +3,10 @@
     if is_ci
         test_files = filter(isfile, readdir(@__DIR__; join=true))
     else
-        repo = LeetCode.LibGit2.GitRepo(root)
+        repo = LibGit2.GitRepo(root)
         problem_dir = relpath(@__DIR__, root) # "test/problems"
 
-        test_files = filter(LeetCode.diff_files(repo, "HEAD~1", "")) do f
+        test_files = filter(diff_files(repo, "HEAD~1", "")) do f
             startswith(f, problem_dir) && endswith(f, ".jl")
         end
     end
