@@ -1,35 +1,65 @@
+#
+# @lc app=leetcode id=1 lang=julia
+#
+# [1] Two Sum
+#
+# https://leetcode.com/problems/two-sum/description/
+#
+# algorithms
+# Easy (45.91%)
+# Likes:    18029
+# Dislikes: 647
+# Total Accepted:    3.6M
+# Total Submissions: 7.8M
+# Testcase Example:  '[2,7,11,15]\n9'
 """
-@lc app=leetcode id=1 lang=python
+Given an array of integers nums and an integer target, return indices of the
+two numbers such that they add up to target.
 
-[1] Two Sum
+You may assume that each input would have exactly one solution, and you may
+not use the same element twice.
 
-https://leetcode.com/problems/two-sum/description/
+You can return the answer in any order.
 
-algorithms
-Easy (44.95%)
-Total Accepted:    2.5M
-Total Submissions: 5.5M
-Testcase Example:  '[2,7,11,15]\n9'
 
-<p>Given an array of integers, return <strong>indices</strong> of the two
-numbers such that they add up to a specific target.</p>
+Example 1:
 
-<p>You may assume that each input would have
-<strong><em>exactly</em></strong> one solution, and you may not use the
-<em>same</em> element twice.</p>
 
-<p><strong>Example:</strong></p>
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Output: Because nums[0] + nums[1] == 9, we return [0, 1].
 
-<pre>
-Given nums = [2, 7, 11, 15], target = 9,
 
-Because nums[<strong>0</strong>] + nums[<strong>1</strong>] = 2 + 7 = 9,
-return [<strong>0</strong>, <strong>1</strong>].
-</pre>
+Example 2:
+
+
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+
+
+Example 3:
+
+
+Input: nums = [3,3], target = 6
+Output: [0,1]
+
+
+
+Constraints:
+
+
+2 <= nums.length <= 10^3
+-10^9 <= nums[i] <= 10^9
+-10^9 <= target <= 10^9
+Only one valid answer exists.
+
+
 
 """
+# @lc code=start
 function two_sum(nums::Vector{Int}, target::Int)::Union{Nothing,Tuple{Int,Int}}
     seen = Dict{Int,Int}()
+
     for (i, n) in enumerate(nums)
         m = target - n
         if haskey(seen, m)
@@ -39,3 +69,4 @@ function two_sum(nums::Vector{Int}, target::Int)::Union{Nothing,Tuple{Int,Int}}
         end
     end
 end
+# @lc code=end
