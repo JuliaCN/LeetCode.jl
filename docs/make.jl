@@ -20,6 +20,6 @@ makedocs(format = format,
          sitename = "LeetCode")
 
 # 3. postprocess after makedocs
-#postprocess_cb() # FIXME: broken
+postprocess_cb()
 
 deploydocs(repo = "github.com/JuliaCN/LeetCode.jl.git")
