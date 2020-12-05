@@ -20,6 +20,20 @@
 7. 提交（commit）你的更改，并开启一个新的合并请求（pull request）。
 8. 你还可以 **关注（WATCH）** 此项目以帮助审阅其他人的合并请求，或者 **点个赞（STAR）** 以鼓励本项目的贡献者们。
 
+## 代码模板
+```julia
+# ---
+# date: 2020-10-31
+# author: Tian Jun
+# ---
+
+# 在这里添加你的代码
+#
+# 注意:
+#   - 以 ## 开头的内容被认为是 Julia 的注释
+#   - 以 # 开头的内容被认为是正常的markdown内容
+```
+
 [action-img]: https://github.com/JuliaCN/LeetCode.jl/workflows/Unit%20test/badge.svg
 [action-url]: https://github.com/JuliaCN/LeetCode.jl/actions
 [blue-img]: https://img.shields.io/badge/code%20style-blue-4495d1.svg

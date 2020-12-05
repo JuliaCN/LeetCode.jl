@@ -19,6 +19,20 @@ A community driven project to provide solutions for LeetCode problems in the Jul
 6. Commit your changes and make a pull request.
 7. You may also **WATCH** this project to help review other's PR or **STAR** this project to spread JuliaLang to others.
 
+## Code template
+```julia
+# ---
+# date: 2020-10-31
+# author: Tian Jun
+# ---
+
+#src write your solution here
+#src
+#src Note:
+#src - line starting with `##` is the Julia code comments.
+#src - line starting with a single `#` will be parsed as __markdown__ comment
+```
+
 [action-img]: https://github.com/JuliaCN/LeetCode.jl/workflows/Unit%20test/badge.svg
 [action-url]: https://github.com/JuliaCN/LeetCode.jl/actions
 [blue-img]: https://img.shields.io/badge/code%20style-blue-4495d1.svg
