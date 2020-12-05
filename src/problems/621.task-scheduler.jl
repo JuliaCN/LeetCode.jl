@@ -51,7 +51,7 @@ function least_interval(tasks::Vector{Char}, n::Int)::Int
         counter[UInt8(ch) - 0x40] += 1
     end
     sort!(counter, rev = true)
-    res = (n + 1) * counter[begin] - n
+    res = (n + 1) * counter[1] - n
     for i in 2:26
         if counter[i] == counter[i - 1]
             res += 1
