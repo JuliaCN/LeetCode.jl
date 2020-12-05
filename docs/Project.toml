@@ -1,0 +1,9 @@
+[deps]
+DemoCards = "311a05b2-6137-4a5a-b473-18580a3d38b5"
+Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+LeetCode = "177aac61-66e1-4cb4-9340-6393b6c3fb4c"
+
+[compat]
+Documenter = "0.25"
+DemoCards = "0.3"
