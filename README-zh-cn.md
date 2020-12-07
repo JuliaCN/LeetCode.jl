@@ -26,12 +26,15 @@
 # date: 2020-10-31
 # author: Tian Jun
 # ---
+# 注意：
+#   - 将 date 和 author 改成解答的日期以及你自己的名字
+#   - 如果不方便提供日期或者名字的话，可以删掉上面的 date 和 author 信息
 
 # 在这里添加你的代码
 #
 # 注意:
 #   - 以 ## 开头的内容被认为是 Julia 的注释
-#   - 以 # 开头的内容被认为是正常的markdown内容
+#   - 以 # 开头的内容被认为是正常的 markdown 内容
 ```
 
 [action-img]: https://github.com/JuliaCN/LeetCode.jl/workflows/Unit%20test/badge.svg
