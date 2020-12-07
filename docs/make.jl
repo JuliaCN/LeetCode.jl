@@ -52,6 +52,6 @@ makedocs(format = format,
          sitename = "LeetCode")
 
 # 3. postprocess after makedocs
-#postprocess_cb()
+postprocess_cb()
 
-# deploydocs(repo = "github.com/JuliaCN/LeetCode.jl.git")
+deploydocs(repo = "github.com/JuliaCN/LeetCode.jl.git")
