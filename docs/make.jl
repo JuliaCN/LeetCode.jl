@@ -3,30 +3,35 @@ using DemoCards
 using JSON
 
 root = joinpath(@__DIR__, "..")
-page_root = joinpath(root, "docs", "problems")
-page_src = joinpath(root, "src", "problems")
-page_dest = joinpath(page_root, "id")
 
-# prepare page contents and page meta
+# these are tracked by git
+raw_problems_dir = joinpath(root, "src", "problems")
+
+# where the problems files are generated -- this won't be tracked by git
+page_root = abspath(root, "docs", "problems")
+page_problems = abspath(page_root, "problems")
+
 if isdir(page_root)
     rm(page_root; force=true, recursive=true)
 end
-mkpath(page_root)
-cp(page_src, page_dest; force=true)
-rm(joinpath(page_dest, "problems.jl")) # no need to render this
+mkpath(page_problems)
 
-# provide a configuration file to tell DemoCards that we want to use number order instead
-# of string order
-open(joinpath(page_dest, "config.json"), "w") do io
-    files = filter(x->x!="config.json", readdir(page_dest))
+# 1. copy the whole problems file dir
+cp(raw_problems_dir, page_problems; force=true)
+rm(joinpath(page_problems, "problems.jl")) # no need to render this
+
+# 2. provide a configuration file to tell DemoCards that we want to use number order instead of string order
+
+open(joinpath(page_problems, "config.json"), "w") do io
+    files = filter(x->x!="config.json", readdir(page_problems))
     sort!(files; by=x->parse(Int, split(x, ".")[1]))
-    JSON.print(io, Dict("title"=>"By ID", "order"=>files))
+    JSON.print(io, Dict("title"=>"Problems", "order"=>files))
 end
 
 ## build docs
 
 # 1. generate demo files
-demopage, postprocess_cb = makedemos("problems") # the relative path to docs/
+demopage, postprocess_cb = makedemos("problems")
 
 # 2. normal Documenter usage
 format = Documenter.HTML(prettyurls=get(ENV, "CI", nothing) == "true")

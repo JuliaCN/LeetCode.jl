@@ -1,33 +1,62 @@
-"""
-@lc app=leetcode id=1 lang=python
+# ---
+# title: 1. Two Sum
+# id: problem1
+# author: Tian Jun
+# date: 2020-10-31
+# difficulty: Easy
+# categories: Array, Hash Table
+# link: <https://leetcode.com/problems/two-sum/description/>
+# hidden: true
+# ---
+# 
+# Given an array of integers `nums` and an integer `target`, return _indices of
+# the two numbers such that they add up to`target`_.
+# 
+# You may assume that each input would have **_exactly_ one solution**, and you
+# may not use the _same_ element twice.
+# 
+# You can return the answer in any order.
+# 
+# 
+# 
+# **Example 1:**
+# 
+#     
+#     
+#     Input: nums = [2,7,11,15], target = 9
+#     Output: [0,1]
+#     Output: Because nums[0] + nums[1] == 9, we return [0, 1].
+#     
+# 
+# **Example 2:**
+# 
+#     
+#     
+#     Input: nums = [3,2,4], target = 6
+#     Output: [1,2]
+#     
+# 
+# **Example 3:**
+# 
+#     
+#     
+#     Input: nums = [3,3], target = 6
+#     Output: [0,1]
+#     
+# 
+# 
+# 
+# **Constraints:**
+# 
+#   * `2 <= nums.length <= 103`
+#   * `-109 <= nums[i] <= 109`
+#   * `-109 <= target <= 109`
+#   * **Only one valid answer exists.**
+# 
+# 
+## @lc code=start
+using LeetCode
 
-[1] Two Sum
-
-https://leetcode.com/problems/two-sum/description/
-
-algorithms
-Easy (44.95%)
-Total Accepted:    2.5M
-Total Submissions: 5.5M
-Testcase Example:  '[2,7,11,15]\n9'
-
-<p>Given an array of integers, return <strong>indices</strong> of the two
-numbers such that they add up to a specific target.</p>
-
-<p>You may assume that each input would have
-<strong><em>exactly</em></strong> one solution, and you may not use the
-<em>same</em> element twice.</p>
-
-<p><strong>Example:</strong></p>
-
-<pre>
-Given nums = [2, 7, 11, 15], target = 9,
-
-Because nums[<strong>0</strong>] + nums[<strong>1</strong>] = 2 + 7 = 9,
-return [<strong>0</strong>, <strong>1</strong>].
-</pre>
-
-"""
 function two_sum(nums::Vector{Int}, target::Int)::Union{Nothing,Tuple{Int,Int}}
     seen = Dict{Int,Int}()
     for (i, n) in enumerate(nums)
@@ -39,3 +68,4 @@ function two_sum(nums::Vector{Int}, target::Int)::Union{Nothing,Tuple{Int,Int}}
         end
     end
 end
+## @lc code=end
