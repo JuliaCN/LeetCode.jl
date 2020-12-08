@@ -44,6 +44,5 @@ It's guaranteed that the answer will be less than or equal to 2 * 109.
 """
 # @lc code=start
 unique_paths(m::Int, n::Int) = binomial(m + n - 2, n - 1)
-        
-# @lc code=end
 
+# @lc code=end
