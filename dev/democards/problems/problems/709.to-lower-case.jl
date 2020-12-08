@@ -1,0 +1,10 @@
+# @lc code=start
+using LeetCode
+
+function toLowerCase(s::String)::String
+    return lowercase(s)
+end
+# @lc code=end
+
+# This file was generated using Literate.jl, https://github.com/fredrikekre/Literate.jl
+
