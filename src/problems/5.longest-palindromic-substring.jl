@@ -1,41 +1,62 @@
-"""
+# ---
+# title: 5. Longest Palindromic Substring
+# id: problem5
+# author: Tian Jun
+# date: 2020-10-31
+# difficulty: Medium
+# categories: String, Dynamic Programming
+# link: <https://leetcode.com/problems/longest-palindromic-substring/description/>
+# hidden: true
+# ---
+# 
+# Given a string `s`, return  _the longest palindromic substring_ in `s`.
+# 
+# 
+# 
+# **Example 1:**
+# 
+#     
+#     
+#     Input: s = "babad"
+#     Output: "bab"
+#     **Note:** "aba" is also a valid answer.
+#     
+# 
+# **Example 2:**
+# 
+#     
+#     
+#     Input: s = "cbbd"
+#     Output: "bb"
+#     
+# 
+# **Example 3:**
+# 
+#     
+#     
+#     Input: s = "a"
+#     Output: "a"
+#     
+# 
+# **Example 4:**
+# 
+#     
+#     
+#     Input: s = "ac"
+#     Output: "a"
+#     
+# 
+# 
+# 
+# **Constraints:**
+# 
+#   * `1 <= s.length <= 1000`
+#   * `s` consist of only digits and English letters (lower-case and/or upper-case),
+# 
+# 
+## @lc code=start
+using LeetCode
 
-@lc app=leetcode id=5 lang=python3
-
-[5] Longest Palindromic Substring
-
-https://leetcode.com/problems/longest-palindromic-substring/description/
-
-algorithms
-Medium (28.55%)
-Likes:    7706
-Dislikes: 565
-Total Accepted:    1M
-Total Submissions: 3.4M
-Testcase Example:  '"babad"'
-
-Given a string s, find the longest palindromic substring in s. You may assume
-that the maximum length of s is 1000.
-
-Example 1:
-
-
-Input: "babad"
-Output: "bab"
-Note: "aba" is also a valid answer.
-
-
-Example 2:
-
-
-Input: "cbbd"
-Output: "bb"
-
-
-
-
-@lc code=start
-"""
 function longest_palindrome(s::String)::AbstractString
     res = ""
     for i in 1:length(s)
@@ -58,3 +79,4 @@ function _longest_palindrome(s, l, r)
     end
     return SubString(s, l + 1, r - 1)
 end
+## @lc code=end

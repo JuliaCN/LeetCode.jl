@@ -10,10 +10,7 @@
 
 1. [Fork](https://guides.github.com/activities/forking/) 本项目
 2. 使用 `git clone` 本项目
-3. 在 `src/problems/` 路径下新建一个文件夹。
-    你可能会想要使用像 [leetcode-cli](https://github.com/skygragon/leetcode-cli) 这样辅助工具，
-    通过 `leetcode show 1 -g -x -l python` 命令来生成一个 `python` 的模板，并将其重命名为 `.jl` 文件。
-    （如果你使用 VSCode 你也可能需要 [LeetCode VSCode 插件](https://marketplace.visualstudio.com/items?itemName=LeetCode.vscode-leetcode)）
+3. 在 `src/unresolved` 路径下选择题目模板文件，打开并填写你的解答，完成后请将其**移动**(**剪切**)到`src/problems`路径下。
 4. 在 `test/problems` 文件夹下编写测试样例，确保你的解答能满足题目的要求。
 5. 对于一些共同的组件，将他们放到 `src/common.jl` 中，并在 `test/common.jl` 里添加测试。
 6. 通过 `pkg> test` 测试结果是否正确， 测试过程会格式化代码
@@ -23,19 +20,85 @@
 ## 代码模板
 ```julia
 # ---
-# date: 2020-10-31
+# title: 1. Two Sum
+# id: problem1
 # author: Tian Jun
+# date: 2020-10-31
+# difficulty: Easy
+# categories: Array, Hash Table
+# link: <https://leetcode.com/problems/two-sum/description/>
+# hidden: true
 # ---
-# 注意：
-#   - 将 date 和 author 改成解答的日期以及你自己的名字
-#   - 如果不方便提供日期或者名字的话，可以删掉上面的 date 和 author 信息
+# 
+# Given an array of integers `nums` and an integer `target`, return _indices of
+# the two numbers such that they add up to`target`_.
+# 
+# You may assume that each input would have **_exactly_ one solution**, and you
+# may not use the _same_ element twice.
+# 
+# You can return the answer in any order.
+# 
+# 
+# 
+# **Example 1:**
+# 
+#     
+#     
+#     Input: nums = [2,7,11,15], target = 9
+#     Output: [0,1]
+#     Output: Because nums[0] + nums[1] == 9, we return [0, 1].
+#     
+# 
+# **Example 2:**
+# 
+#     
+#     
+#     Input: nums = [3,2,4], target = 6
+#     Output: [1,2]
+#     
+# 
+# **Example 3:**
+# 
+#     
+#     
+#     Input: nums = [3,3], target = 6
+#     Output: [0,1]
+#     
+# 
+# 
+# 
+# **Constraints:**
+# 
+#   * `2 <= nums.length <= 103`
+#   * `-109 <= nums[i] <= 109`
+#   * `-109 <= target <= 109`
+#   * **Only one valid answer exists.**
+# 
+# 
+## @lc code=start
+using LeetCode
 
-# 在这里添加你的代码
-#
-# 注意:
-#   - 以 ## 开头的内容被认为是 Julia 的注释
-#   - 以 # 开头的内容被认为是正常的 markdown 内容
+function two_sum(nums::Vector{Int}, target::Int)::Union{Nothing,Tuple{Int,Int}}
+    seen = Dict{Int,Int}()
+    for (i, n) in enumerate(nums)
+        m = target - n
+        if haskey(seen, m)
+            return seen[m], i
+        else
+            seen[n] = i
+        end
+    end
+end
+## @lc code=end
 ```
+
+## 需要注意的事项
+
+- 将 date 和 author 改成解答的日期以及你自己的名字，如果不方便提供日期或者名字的话，可以删掉题目里的 date 和 author 信息
+- 代码注释所要注意的：
+    - 以 ## 开头的内容被认为是 Julia 的注释
+    - 以 # 开头的内容被认为是正常的 __markdown__ 内容
+
 
 [action-img]: https://github.com/JuliaCN/LeetCode.jl/workflows/Unit%20test/badge.svg
 [action-url]: https://github.com/JuliaCN/LeetCode.jl/actions

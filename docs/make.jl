@@ -5,36 +5,27 @@ using JSON
 root = joinpath(@__DIR__, "..")
 
 # these are tracked by git
-raw_unresolved_dir = joinpath(root, "src", "unresolved")
-raw_resolved_dir = joinpath(root, "src", "resolved")
+raw_problems_dir = joinpath(root, "src", "problems")
 
-# where the unresolved and resolved files are generated -- this won't be tracked by git
+# where the problems files are generated -- this won't be tracked by git
 page_root = abspath(root, "docs", "problems")
-page_unresolved = abspath(page_root, "unresolved")
-page_resolved = abspath(page_root, "resolved")
+page_problems = abspath(page_root, "problems")
 
 if isdir(page_root)
     rm(page_root; force=true, recursive=true)
 end
-mkpath(page_unresolved)
-mkpath(page_resolved)
+mkpath(page_problems)
 
-# 1. copy the whole resolved and unresolved file dir
-cp(raw_unresolved_dir, page_unresolved; force=true)
-cp(raw_resolved_dir, page_resolved; force=true)
-rm(joinpath(page_resolved, "problems.jl")) # no need to render this
+# 1. copy the whole problems file dir
+cp(raw_problems_dir, page_problems; force=true)
+rm(joinpath(page_problems, "problems.jl")) # no need to render this
 
 # 2. provide a configuration file to tell DemoCards that we want to use number order instead of string order
-open(joinpath(page_unresolved, "config.json"), "w") do io
-    files = filter(x->x!="config.json", readdir(page_unresolved))
-    sort!(files; by=x->parse(Int, split(x, ".")[1]))
-    JSON.print(io, Dict("title"=>"Unresolved Problems", "order"=>files))
-end
 
-open(joinpath(page_resolved, "config.json"), "w") do io
-    files = filter(x->x!="config.json", readdir(page_resolved))
+open(joinpath(page_problems, "config.json"), "w") do io
+    files = filter(x->x!="config.json", readdir(page_problems))
     sort!(files; by=x->parse(Int, split(x, ".")[1]))
-    JSON.print(io, Dict("title"=>"Resolved Problems", "order"=>files))
+    JSON.print(io, Dict("title"=>"Problems", "order"=>files))
 end
 
 ## build docs

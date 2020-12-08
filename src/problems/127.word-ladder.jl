@@ -1,44 +1,62 @@
-#
-# @lc app=leetcode id=127 lang=julia
-#
-# [127] Word Ladder
-#= 
-Given two words (begin_word and end_word), and a dictionary's word list, find the length of shortest transformation sequence from begin_word to end_word, such that:
-
-Only one letter can be changed at a time.
-Each transformed word must exist in the word list.
-Note:
-
-Return 0 if there is no such transformation sequence.
-All words have the same length.
-All words contain only lowercase alphabetic characters.
-You may assume no duplicates in the word list.
-You may assume begin_word and end_word are non-empty and are not the same.
-Example 1:
-
-Input:
-begin_word = "hit",
-end_word = "cog",
-word_list = ["hot","dot","dog","lot","log","cog"]
-
-Output: 5
-
-Explanation: As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
-return its length 5.
-Example 2:
-
-Input:
-begin_word = "hit"
-end_word = "cog"
-word_list = ["hot","dot","dog","lot","log"]
-
-Output: 0
-
-Explanation: The end_word "cog" is not in word_list, therefore no possible transformation. =#
-# import Pkg
-# Pkg.add("DataStructures")
+# ---
+# title: 127. Word Ladder
+# id: problem127
+# author: Tian Jun
+# date: 2020-10-31
+# difficulty: Medium
+# categories: Breadth-first Search
+# link: <https://leetcode.com/problems/word-ladder/description/>
+# hidden: true
+# ---
+# 
+# Given two words ( _beginWord_ and _endWord_ ), and a dictionary's word list,
+# find the length of shortest transformation sequence from _beginWord_ to
+# _endWord_ , such that:
+# 
+#   1. Only one letter can be changed at a time.
+#   2. Each transformed word must exist in the word list.
+# 
+# **Note:**
+# 
+#   * Return 0 if there is no such transformation sequence.
+#   * All words have the same length.
+#   * All words contain only lowercase alphabetic characters.
+#   * You may assume no duplicates in the word list.
+#   * You may assume _beginWord_ and _endWord_ are non-empty and are not the same.
+# 
+# **Example 1:**
+# 
+#     
+#     
+#     Input:
+#     beginWord = "hit",
+#     endWord = "cog",
+#     wordList = ["hot","dot","dog","lot","log","cog"]
+#     
+#     Output: 5
+#     
+#     Explanation: As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
+#     return its length 5.
+#     
+# 
+# **Example 2:**
+# 
+#     
+#     
+#     Input:
+#     beginWord = "hit"
+#     endWord = "cog"
+#     wordList = ["hot","dot","dog","lot","log"]
+#     
+#     Output:  0
+#     
+#     Explanation:  The endWord "cog" is not in wordList, therefore no possible ** ** transformation.
+#     
+# 
+# 
+## @lc code=start
+using LeetCode
 using DataStructures
-# @lc code=start
 function ladder_length(begin_word::String, end_word::String, word_list::Vector{String})::Int
     function isadj(s1, s2)
         flg = false
@@ -59,11 +77,11 @@ function ladder_length(begin_word::String, end_word::String, word_list::Vector{S
     !(begin_word in word_list) && push!(word_list, begin_word)
     s, t = findall(x -> x == begin_word, word_list)[1],
     findall(x -> x == end_word, word_list)[1]
-    # println(s, ", ", t)
-    # wl = collect.(word_list)
+    ## println(s, ", ", t)
+    ### wl = collect.(word_list)
     len = length(word_list)
     edges = [Set{Int}() for i in 1:len]
-    ## construct adj list
+    ### construct adj list
     for i in 1:len
         for j in (i + 1):len
             if isadj(word_list[i], word_list[j])
@@ -84,7 +102,7 @@ function ladder_length(begin_word::String, end_word::String, word_list::Vector{S
     while !isempty(qs) && !isempty(qt)
         rt1, rt2 = dequeue!(qs), dequeue!(qt)
         dis1, dis2 = dists[rt1] + 1, dists[rt2] + 1
-        # println(rt1, " ", dis1)
+        ## println(rt1, " ", dis1)
         for neib in edges[rt1]
             if visited[neib] == 2
                 return dis1 + dists[neib] - 1
@@ -106,5 +124,4 @@ function ladder_length(begin_word::String, end_word::String, word_list::Vector{S
     end
     return 0
 end
-
-# @lc code=end
+## @lc code=end
