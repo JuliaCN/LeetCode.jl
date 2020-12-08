@@ -12,7 +12,7 @@ A community driven project to provide solutions for LeetCode problems in the Jul
 ## How to contribute?
 
 1. [Fork](https://guides.github.com/activities/forking/) this project.
-2. Select a problem template file under the `src/unresolved/` folder, open and write the code, after finishing please **move\cut** to the `src/problems` folder. 
+2. Select a problem template file under the `src/unresolved/` folder, open and write the code, after finishing please **MOVE / CUT** to the `src/problems` folder. 
 3. Write test cases inside the `test/problems` folder to make sure the solutions work as expected.
 4. For some common components, please put them into the `src/common.jl` file and add test cases in `test/common.jl`.
 5. Run `pkg> test` locally to make sure test passes. The test will also format your codes.
