@@ -2,7 +2,7 @@
 # title: 543. Diameter of Binary Tree
 # id: problem543
 # author: Tian Jun
-# date: 2020-10-31
+# date: 2020-11-14
 # difficulty: Easy
 # categories: Tree
 # link: <https://leetcode.com/problems/diameter-of-binary-tree/description/>

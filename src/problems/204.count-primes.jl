@@ -1,8 +1,8 @@
 # ---
 # title: 204. Count Primes
 # id: problem204
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-12-03
 # difficulty: Easy
 # categories: Hash Table, Math
 # link: <https://leetcode.com/problems/count-primes/description/>

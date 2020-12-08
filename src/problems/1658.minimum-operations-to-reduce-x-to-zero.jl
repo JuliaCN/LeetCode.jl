@@ -1,8 +1,8 @@
 # ---
 # title: 1658. Minimum Operations to Reduce X to Zero
 # id: problem1658
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-11-23
 # difficulty: Medium
 # categories: Two Pointers, Binary Search, Greedy
 # link: <https://leetcode.com/problems/minimum-operations-to-reduce-x-to-zero/description/>

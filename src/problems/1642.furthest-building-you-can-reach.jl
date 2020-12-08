@@ -1,8 +1,8 @@
 # ---
 # title: 1642. Furthest Building You Can Reach
 # id: problem1642
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-11-26
 # difficulty: Medium
 # categories: Binary Search, Heap
 # link: <https://leetcode.com/problems/furthest-building-you-can-reach/description/>

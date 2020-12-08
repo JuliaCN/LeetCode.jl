@@ -1,8 +1,8 @@
 # ---
 # title: 621. Task Scheduler
 # id: problem621
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-12-03
 # difficulty: Medium
 # categories: Array, Greedy, Queue
 # link: <https://leetcode.com/problems/task-scheduler/description/>

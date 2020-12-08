@@ -2,7 +2,7 @@
 # title: 392. Is Subsequence
 # id: problem392
 # author: Tian Jun
-# date: 2020-10-31
+# date: 2020-11-14
 # difficulty: Easy
 # categories: Binary Search, Dynamic Programming, Greedy
 # link: <https://leetcode.com/problems/is-subsequence/description/>

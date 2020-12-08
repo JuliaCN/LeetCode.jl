@@ -1,8 +1,8 @@
 # ---
 # title: 240. Search a 2D Matrix II
 # id: problem240
-# author: Tian Jun
-# date: 2020-10-31
+# author: woclass
+# date: 2020-10-29
 # difficulty: Medium
 # categories: Binary Search, Divide and Conquer
 # link: <https://leetcode.com/problems/search-a-2d-matrix-ii/description/>

@@ -1,8 +1,8 @@
 # ---
 # title: 861. Score After Flipping Matrix
 # id: problem861
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-12-07
 # difficulty: Medium
 # categories: Greedy
 # link: <https://leetcode.com/problems/score-after-flipping-matrix/description/>

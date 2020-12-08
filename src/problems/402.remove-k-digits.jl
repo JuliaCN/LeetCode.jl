@@ -1,8 +1,8 @@
 # ---
 # title: 402. Remove K Digits
 # id: problem402
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-11-15
 # difficulty: Medium
 # categories: Stack, Greedy
 # link: <https://leetcode.com/problems/remove-k-digits/description/>

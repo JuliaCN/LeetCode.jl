@@ -1,8 +1,8 @@
 # ---
 # title: 127. Word Ladder
 # id: problem127
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-11-07
 # difficulty: Medium
 # categories: Breadth-first Search
 # link: <https://leetcode.com/problems/word-ladder/description/>

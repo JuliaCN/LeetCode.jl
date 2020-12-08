@@ -2,7 +2,7 @@
 # title: 396. Rotate Function
 # id: problem396
 # author: Tian Jun
-# date: 2020-10-31
+# date: 2020-11-14
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/rotate-function/description/>

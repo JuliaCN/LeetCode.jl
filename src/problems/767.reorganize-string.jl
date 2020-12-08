@@ -1,8 +1,8 @@
 # ---
 # title: 767. Reorganize String
 # id: problem767
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-11-30
 # difficulty: Medium
 # categories: String, Heap, Greedy, Sort
 # link: <https://leetcode.com/problems/reorganize-string/description/>

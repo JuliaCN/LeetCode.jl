@@ -1,8 +1,8 @@
 # ---
 # title: 452. Minimum Number of Arrows to Burst Balloons
 # id: problem452
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-11-23
 # difficulty: Medium
 # categories: Greedy, Sort
 # link: <https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/description/>
