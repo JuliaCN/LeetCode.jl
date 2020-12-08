@@ -1,8 +1,8 @@
 # ---
 # title: 1604. Alert Using Same Key-Card Three or More Times in a One Hour Period
 # id: problem1604
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-11-08
 # difficulty: Medium
 # categories: String, Ordered Map
 # link: <https://leetcode.com/problems/alert-using-same-key-card-three-or-more-times-in-a-one-hour-period/description/>

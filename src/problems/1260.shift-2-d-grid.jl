@@ -2,7 +2,7 @@
 # title: 1260. Shift 2D Grid
 # id: problem1260
 # author: Tian Jun
-# date: 2020-10-31
+# date: 2020-11-14
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/shift-2d-grid/description/>

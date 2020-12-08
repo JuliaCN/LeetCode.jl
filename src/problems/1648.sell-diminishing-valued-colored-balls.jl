@@ -1,8 +1,8 @@
 # ---
 # title: 1648. Sell Diminishing-Valued Colored Balls
 # id: problem1648
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-11-08
 # difficulty: Medium
 # categories: Math, Greedy, Sort
 # link: <https://leetcode.com/problems/sell-diminishing-valued-colored-balls/description/>

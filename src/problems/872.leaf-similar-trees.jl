@@ -2,7 +2,7 @@
 # title: 872. Leaf-Similar Trees
 # id: problem872
 # author: Tian Jun
-# date: 2020-10-31
+# date: 2020-11-14
 # difficulty: Easy
 # categories: Tree, Depth-first Search
 # link: <https://leetcode.com/problems/leaf-similar-trees/description/>

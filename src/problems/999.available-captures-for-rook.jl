@@ -2,7 +2,7 @@
 # title: 999. Available Captures for Rook
 # id: problem999
 # author: Tian Jun
-# date: 2020-10-31
+# date: 2020-11-14
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/available-captures-for-rook/description/>

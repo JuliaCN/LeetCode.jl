@@ -1,8 +1,8 @@
 # ---
 # title: 122. Best Time to Buy and Sell Stock II
 # id: problem122
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-11-08
 # difficulty: Easy
 # categories: Array, Greedy
 # link: <https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/>

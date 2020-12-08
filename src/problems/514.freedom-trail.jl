@@ -1,8 +1,8 @@
 # ---
 # title: 514. Freedom Trail
 # id: problem514
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-11-11
 # difficulty: Hard
 # categories: Divide and Conquer, Dynamic Programming, Depth-first Search
 # link: <https://leetcode.com/problems/freedom-trail/description/>

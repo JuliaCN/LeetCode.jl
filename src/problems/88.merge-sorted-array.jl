@@ -2,7 +2,7 @@
 # title: 88. Merge Sorted Array
 # id: problem88
 # author: Tian Jun
-# date: 2020-10-31
+# date: 2020-11-24
 # difficulty: Easy
 # categories: Array, Two Pointers
 # link: <https://leetcode.com/problems/merge-sorted-array/description/>

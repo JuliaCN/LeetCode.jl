@@ -1,9 +1,9 @@
 [deps]
+DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
 DemoCards = "311a05b2-6137-4a5a-b473-18580a3d38b5"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
 LeetCode = "177aac61-66e1-4cb4-9340-6393b6c3fb4c"
-ProgressMeter = "92933f4c-e287-5a05-a399-4b506db050ca"
 
 [compat]
 DemoCards = "0.3"

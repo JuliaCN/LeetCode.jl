@@ -1,8 +1,8 @@
 # ---
 # title: 134. Gas Station
 # id: problem134
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-11-18
 # difficulty: Medium
 # categories: Greedy
 # link: <https://leetcode.com/problems/gas-station/description/>

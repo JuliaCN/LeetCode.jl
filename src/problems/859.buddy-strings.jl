@@ -2,7 +2,7 @@
 # title: 859. Buddy Strings
 # id: problem859
 # author: Tian Jun
-# date: 2020-10-31
+# date: 2020-11-14
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/buddy-strings/description/>

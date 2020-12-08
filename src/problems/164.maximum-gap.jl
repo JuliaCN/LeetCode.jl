@@ -1,8 +1,8 @@
 # ---
 # title: 164. Maximum Gap
 # id: problem164
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-11-26
 # difficulty: Hard
 # categories: Sort
 # link: <https://leetcode.com/problems/maximum-gap/description/>

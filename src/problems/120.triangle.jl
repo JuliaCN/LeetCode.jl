@@ -1,8 +1,8 @@
 # ---
 # title: 120. Triangle
 # id: problem120
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-11-07
 # difficulty: Medium
 # categories: Array, Dynamic Programming
 # link: <https://leetcode.com/problems/triangle/description/>

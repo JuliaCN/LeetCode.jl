@@ -1,8 +1,8 @@
 # ---
 # title: 454. 4Sum II
 # id: problem454
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-11-27
 # difficulty: Medium
 # categories: Hash Table, Binary Search
 # link: <https://leetcode.com/problems/4sum-ii/description/>
