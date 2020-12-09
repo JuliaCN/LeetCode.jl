@@ -1,8 +1,8 @@
 # ---
 # title: 62. Unique Paths
 # id: problem62
-# author: Tian Jun
-# date: 2020-10-31
+# author: AquaIndigo
+# date: 2020-12-09
 # difficulty: Medium
 # categories: Array, Dynamic Programming
 # link: <https://leetcode.com/problems/unique-paths/description/>
@@ -69,6 +69,6 @@
 # 
 ## @lc code=start
 using LeetCode
-
+unique_paths(m::Int, n::Int) = binomial(m + n - 2, n - 1)
 ## add your code here:
 ## @lc code=end
