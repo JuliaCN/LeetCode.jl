@@ -7628,3 +7628,18 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 
 .hljs-strong {
   font-weight: bold; }
+
+.none {
+  color: transparent;
+  text-shadow: 3px 3px 15px rgba(0, 0, 0, 1);
+}
+.none .hljs-comment,
+.none .hljs-built_in,
+.none .hljs-meta,
+.none .hljs-keyword,
+.none .hljs-comment,
+.none .hljs-string,
+.none .hljs-literal,
+.none .hljs-number {
+  color: transparent;
+}
