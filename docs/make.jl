@@ -35,9 +35,7 @@ end
 demopage, postprocess_cb = makedemos("problems")
 
 # 2. normal Documenter usage
-format = Documenter.HTML(
-    prettyurls=get(ENV, "CI", nothing) == "true"
-    )
+format = Documenter.HTML(prettyurls=get(ENV, "CI", nothing) == "true")
 makedocs(format = format,
          pages = [
             "Home" => "index.md",
@@ -50,8 +48,7 @@ js_dir = abspath(root, "docs", "build", "assets")
 css_dir = abspath(js_dir, "themes")
 
 # 3.1 modify the css file to seting the style of code
-for filename in readdir(css_dir)
-    css_file = joinpath(css_dir, filename)
+for css_file in readdir(css_dir; join=true)
     # change the permissions mode of files
     chmod(css_file, 0o777)
 
