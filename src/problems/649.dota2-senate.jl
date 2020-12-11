@@ -1,8 +1,8 @@
 # ---
 # title: 649. Dota2 Senate
 # id: problem649
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2020-12-11
 # difficulty: Medium
 # categories: Greedy
 # link: <https://leetcode.com/problems/dota2-senate/description/>
@@ -77,6 +77,17 @@
 # 
 ## @lc code=start
 using LeetCode
+function predict_party_victory(senate::String)
+    len = length(senate)
+    radiant, dire = Queue{Int}(), Queue{Int}()
+    for (idx, ch) in enumerate(senate)
+        (ch == 'R') ? enqueue!(radiant, idx) : enqueue!(dire, idx)
+    end
+    while !isempty(radiant) && !isempty(dire)
+        r_front, d_fromt = dequeue!(radiant), dequeue!(dire)
+        (r_front < d_fromt) ? enqueue!(radiant, r_front + len) : enqueue!(dire, d_fromt + len)
 
-## add your code here:
+    end
+    return isempty(dire) ? "Radiant" : "Dire"
+end
 ## @lc code=end
