@@ -1,5 +1,3 @@
-using DataStructures
-
 #####
 # ListNode
 #####
