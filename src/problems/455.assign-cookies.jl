@@ -1,8 +1,8 @@
 # ---
 # title: 455. Assign Cookies
 # id: problem455
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2020-12-09
 # difficulty: Easy
 # categories: Greedy
 # link: <https://leetcode.com/problems/assign-cookies/description/>
@@ -56,5 +56,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function findContentChildren(g::Vector{Int}, s::Vector{Int})::Int
+    sort!(g)
+    sort!(s)
+
+    child, cookie = 1, 1
+
+    while child <= length(g) && cookie <= length(s)
+        if g[child] <= s[cookie]
+            child += 1
+        end
+        cookie += 1
+    end
+
+    return child - 1
+end
 ## @lc code=end

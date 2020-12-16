@@ -1,8 +1,8 @@
 # ---
 # title: 135. Candy
 # id: problem135
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2020-12-09
 # difficulty: Hard
 # categories: Greedy
 # link: <https://leetcode.com/problems/candy/description/>
@@ -43,5 +43,27 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function candy(ratings::Vector{Int})::Int
+    sizes = length(ratings)
+    if sizes < 2
+        return sizes 
+    end
+
+    nums = ones(Int, sizes)
+    ## from left to right 
+    for i in 2: sizes
+        if ratings[i] > ratings[i - 1]
+            nums[i] = nums[i - 1] + 1
+        end
+    end
+
+    ## from right to left
+    for i in sizes: -1: 2
+        if ratings[i] < ratings[i - 1]
+            nums[i - 1] = max(nums[i - 1], nums[i] + 1)
+        end
+    end
+
+    return sum(nums)
+end
 ## @lc code=end

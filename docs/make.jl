@@ -6,6 +6,7 @@ root = joinpath(@__DIR__, "..")
 
 # these are tracked by git
 raw_problems_dir = joinpath(root, "src", "problems")
+raw_theme_dir = joinpath(root, "docs", "leetcode_theme")
 
 # where the problems files are generated -- this won't be tracked by git
 page_root = abspath(root, "docs", "problems")
@@ -42,7 +43,32 @@ makedocs(format = format,
          ],
          sitename = "LeetCode")
 
-# 3. postprocess after makedocs
+# 3. hide the code
+js_dir = abspath(root, "docs", "build", "assets")
+css_dir = abspath(js_dir, "themes")
+
+# 3.1 modify the css file to seting the style of code
+for css_file in readdir(css_dir; join=true)
+    # change the permissions mode of files
+    chmod(css_file, 0o777)
+
+    # add code in the end of line
+    css_data = read(joinpath(raw_theme_dir, "leetcode.css"))
+    open(css_file, "a") do io
+        write(io, css_data)
+    end
+end
+
+# 3.2 modify the documenter.js to setting the mouse actions
+documenter_file = joinpath(js_dir, "documenter.js")
+
+# add code in the end of line
+js_data = read(joinpath(raw_theme_dir, "leetcode.js"))
+open(documenter_file, "a") do io
+    write(io, js_data)
+end 
+
+# 4. postprocess after makedocs
 postprocess_cb()
 
 deploydocs(repo = "github.com/JuliaCN/LeetCode.jl.git")
