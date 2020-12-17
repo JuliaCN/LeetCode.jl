@@ -1,4 +1,4 @@
-@testset "679.24-game.jl" begin
+@testset "738.monotone-increasing-digits.jl" begin
     @test monotone_increasing_digits(10) == 9
     @test monotone_increasing_digits(332) == 299
     @test monotone_increasing_digits(1234) == 1234
