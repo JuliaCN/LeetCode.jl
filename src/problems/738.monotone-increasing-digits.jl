@@ -1,8 +1,8 @@
 # ---
 # title: 738. Monotone Increasing Digits
 # id: problem738
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2020-12-16
 # difficulty: Medium
 # categories: Greedy
 # link: <https://leetcode.com/problems/monotone-increasing-digits/description/>
@@ -45,5 +45,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function monotone_increasing_digits(N::Int)::Int
+    some_ones = 111111111
+    res = 0
+    for _ in 1:9 
+        while res + some_ones > N
+            some_ones ÷= 10           
+        end
+        res += some_ones
+    end
+    return res
+end
+
 ## @lc code=end
