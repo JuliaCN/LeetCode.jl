@@ -1,8 +1,8 @@
 # ---
 # title: 389. Find the Difference
 # id: problem389
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2020-12-18
 # difficulty: Easy
 # categories: Hash Table, Bit Manipulation
 # link: <https://leetcode.com/problems/find-the-difference/description/>
@@ -63,5 +63,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_the_difference(s::String, t::String)::Char
+    cnt = fill(0, 26)
+    for ch in codeunits(s)
+        cnt[ch - 0x60] += 1
+    end
+    for ch in codeunits(t)
+        if((cnt[ch - 0x60] -= 1) < 0) 
+            return Char(ch)
+        end
+    end
+    return t[end]
+end
 ## @lc code=end
