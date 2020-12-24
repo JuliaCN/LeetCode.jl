@@ -1,8 +1,8 @@
 # ---
 # title: 316. Remove Duplicate Letters
 # id: problem316
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2020-12-20
 # difficulty: Medium
 # categories: String, Stack, Greedy
 # link: <https://leetcode.com/problems/remove-duplicate-letters/description/>
@@ -45,5 +45,23 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function remove_duplicate_letters(s::String)::String
+    stk = Char[]
+    added = Set{Char}()
+    remain = fill(0, 26)
+    for ch in s
+        remain[ch - 'a' + 1] += 1 
+    end
+    for ch in s
+        if !(ch in added)
+            while !isempty(stk) && stk[end] > ch && remain[stk[end] - 'a' + 1] > 0
+                pop!(added, pop!(stk))
+            end
+            push!(added, ch)
+            push!(stk, ch)
+        end
+        remain[ch - 'a' + 1] -= 1
+    end
+    return join(stk)
+end
 ## @lc code=end
