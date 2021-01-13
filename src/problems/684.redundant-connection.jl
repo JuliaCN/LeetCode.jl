@@ -1,8 +1,8 @@
 # ---
 # title: 684. Redundant Connection
 # id: problem684
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-13
 # difficulty: Medium
 # categories: Tree, Union Find, Graph
 # link: <https://leetcode.com/problems/redundant-connection/description/>
@@ -68,5 +68,35 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function UFS()
+
+    function findRoot(u::Int, farther::Vector{Int})
+        return (u == farther[u]) ? (u) : (farther[u] = findRoot(farther[u], farther))        
+    end 
+    
+    function merge(u::Int, v::Int, farther::Vector{Int})
+        u = findRoot(u, farther)
+        v = findRoot(v, farther)
+        (u == v) || (farther[u] = v)
+        nothing
+    end
+
+    function issameRoot(u::Int, v::Int, farther::Vector{Int})
+        return findRoot(u, farther) == findRoot(v, farther) 
+    end
+
+    findRoot, merge, issameRoot
+end
+
+function findRedundantConnection(edges::Vector{Vector{Int}})::Vector{Int}
+    farther = collect(1:1000)
+    findRoot, merge, issameRoot = UFS()
+    for edge in edges
+        if issameRoot(edge..., farther)
+            return edge
+        end
+        merge(edge..., farther)
+    end
+    []
+end
 ## @lc code=end
