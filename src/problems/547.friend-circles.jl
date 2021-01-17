@@ -1,8 +1,8 @@
 # ---
 # title: 547. Friend Circles
 # id: problem547
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-17
 # difficulty: Medium
 # categories: Depth-first Search, Union Find
 # link: <https://leetcode.com/problems/friend-circles/description/>
@@ -60,6 +60,28 @@
 # 
 ## @lc code=start
 using LeetCode
-
-## add your code here:
+using DataStructures
+function find_circle_num(is_connected::Vector{Vector{Int}})
+    len = length(is_connected)
+    visited = fill(false, len)
+    q = Queue{Int}()
+    res = 0
+    for i in 1:len
+        if !visited[i]
+            visited[i] = true   
+            enqueue!(q, i)
+            while !isempty(q)
+                frt = dequeue!(q)
+                for j in 1:len
+                    if !visited[j] && is_connected[frt][j] == 1
+                        visited[j] = true
+                        enqueue!(q, j)
+                    end 
+                end
+            end
+            res += 1
+        end
+    end
+    res
+end 
 ## @lc code=end
