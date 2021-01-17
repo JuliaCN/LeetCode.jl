@@ -1,8 +1,8 @@
 # ---
 # title: 239. Sliding Window Maximum
 # id: problem239
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-17
 # difficulty: Hard
 # categories: Heap, Sliding Window, Dequeue
 # link: <https://leetcode.com/problems/sliding-window-maximum/description/>

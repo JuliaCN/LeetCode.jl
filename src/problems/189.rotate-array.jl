@@ -1,8 +1,8 @@
 # ---
 # title: 189. Rotate Array
 # id: problem189
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-17
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/rotate-array/description/>
