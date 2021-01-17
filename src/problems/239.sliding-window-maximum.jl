@@ -87,9 +87,6 @@ function max_sliding_window(nums::Vector{Int}, k::Int)::Vector{Int}
         while !isempty(q) && nums[first(q)] < num
             popfirst!(q)
         end
-        while !isempty(q) && nums[last(q)] < num
-            pop!(q)
-        end
         push!(q, i)
     end
     for i in k:len
