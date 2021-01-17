@@ -1,8 +1,8 @@
 # ---
 # title: 189. Rotate Array
 # id: problem189
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-17
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/rotate-array/description/>
@@ -54,5 +54,11 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function rotate_arr(nums::Vector{Int}, k::Int)
+    k %= length(nums)
+    reverse!(nums) 
+    reverse!(@view nums[1:k])
+    reverse!(@view nums[k+1:end])
+    nums
+end
 ## @lc code=end

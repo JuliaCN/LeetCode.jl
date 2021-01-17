@@ -1,8 +1,8 @@
 # ---
 # title: 149. Max Points on a Line
 # id: problem149
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-17
 # difficulty: Hard
 # categories: Hash Table, Math
 # link: <https://leetcode.com/problems/max-points-on-a-line/description/>

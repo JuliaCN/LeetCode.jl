@@ -1,8 +1,8 @@
 # ---
 # title: 509. Fibonacci Number
 # id: problem509
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-17
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/fibonacci-number/description/>
@@ -60,5 +60,7 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function fib(n::Int)
+    [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811, 514229, 832040][n]
+end
 ## @lc code=end

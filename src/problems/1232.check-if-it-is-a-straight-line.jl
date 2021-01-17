@@ -1,8 +1,8 @@
 # ---
 # title: 1232. Check If It Is a Straight Line
 # id: problem1232
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-17
 # difficulty: Easy
 # categories: Array, Math, Geometry
 # link: <https://leetcode.com/problems/check-if-it-is-a-straight-line/description/>

@@ -1,8 +1,8 @@
 # ---
 # title: 830. Positions of Large Groups
 # id: problem830
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-17
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/positions-of-large-groups/description/>
@@ -72,5 +72,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function large_group_positions(s::String)::Vector{Vector{Int}}
+    ch = s[1]
+    bg = 1
+    res = Vector{Int}[]
+    for i in 2:length(s)
+        if s[i] != ch
+            if i - bg > 2
+                push!(res, [bg - 1, i - 2]) #1-index to 0-index 
+            end
+            ch = s[i]
+            bg = i 
+        end
+    end
+    res
+end
 ## @lc code=end
