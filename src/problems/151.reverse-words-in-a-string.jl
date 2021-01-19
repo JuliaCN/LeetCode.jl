@@ -1,8 +1,8 @@
 # ---
 # title: 151. Reverse Words in a String
 # id: problem151
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-19
 # difficulty: Medium
 # categories: String
 # link: <https://leetcode.com/problems/reverse-words-in-a-string/description/>
@@ -85,5 +85,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function reverse_words(s::String)
+    s_s = split(s, " ", keepempty = false)
+    join(reverse(s_s), " ")
+end
 ## @lc code=end
