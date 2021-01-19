@@ -1,8 +1,8 @@
 # ---
 # title: 150. Evaluate Reverse Polish Notation
 # id: problem150
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-19
 # difficulty: Medium
 # categories: Stack
 # link: <https://leetcode.com/problems/evaluate-reverse-polish-notation/description/>
@@ -57,6 +57,31 @@
 # 
 ## @lc code=start
 using LeetCode
+using DataStructures
+function eval_rpn(tokens::Vector{String})
+    stk = Stack{Int}()
+    for token in tokens
+        if token == "+"
+            num2 = pop!(stk)
+            num1 = pop!(stk)
+            push!(stk, num1 + num2)
+        elseif token == "-"
+            num2 = pop!(stk)
+            num1 = pop!(stk)
+            push!(stk, num1 - num2)
+        elseif token == "*"
+            num2 = pop!(stk)
+            num1 = pop!(stk)
+            push!(stk, num1 * num2)
+        elseif token == "/"
+            num2 = pop!(stk)
+            num1 = pop!(stk)
+            push!(stk, num1 ÷ num2)
+        else
+            push!(stk, parse(Int, token))
+        end
+    end
+    top(stk)
+end
 
-## add your code here:
 ## @lc code=end
