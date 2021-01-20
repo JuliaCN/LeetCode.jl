@@ -1,8 +1,8 @@
 # ---
 # title: 200. Number of Islands
 # id: problem200
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-20
 # difficulty: Medium
 # categories: Depth-first Search, Breadth-first Search, Union Find
 # link: <https://leetcode.com/problems/number-of-islands/description/>
@@ -57,5 +57,31 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function lands_num(grid::Vector{Vector{String}})
+    nr, nc = length(grid), length(grid[1])
+    function dfs(grid::Vector{Vector{String}}, r, c)
+        grid[r][c] = "0"
+        (r + 1 <= nr) && grid[r+1][c] == "1" && dfs(grid, r+1, c)
+        (r - 1 > 0) && grid[r-1][c] == "1" && dfs(grid, r-1, c)
+        (c + 1 <= nc) && grid[r][c+1] == "1" && dfs(grid, r, c+1)
+        (c - 1 > 0) && grid[r][c-1] == "1" && dfs(grid, r, c-1)        
+        nothing
+    end
+    res = 0
+    for i in 1:nr
+        for j in 1:nc
+            if grid[i][j] == "1"
+                res += 1
+                dfs(grid, i, j)                
+            end 
+        end
+    end    
+    res
+end 
+lands_num([
+         ["1","1","1","1","0"],
+         ["1","1","0","1","0"],
+         ["1","1","0","0","0"],
+         ["0","0","0","0","0"]
+       ])
 ## @lc code=end
