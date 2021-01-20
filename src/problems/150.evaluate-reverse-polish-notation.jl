@@ -57,7 +57,6 @@
 # 
 ## @lc code=start
 using LeetCode
-using DataStructures
 function eval_rpn(tokens::Vector{String})
     stk = Stack{Int}()
     for token in tokens
