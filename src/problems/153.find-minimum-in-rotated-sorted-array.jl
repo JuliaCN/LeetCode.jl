@@ -1,8 +1,8 @@
 # ---
 # title: 153. Find Minimum in Rotated Sorted Array
 # id: problem153
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-19
 # difficulty: Medium
 # categories: Array, Binary Search
 # link: <https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/>
@@ -65,5 +65,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_min_153(nums::Vector{Int})
+    left, right = 1, length(nums)
+    while left < right
+        mid = (left + right) ÷ 2
+        (nums[mid] < nums[right]) ? (right = mid) : (left = mid + 1)
+    end
+    nums[left]
+end
 ## @lc code=end
