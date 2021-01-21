@@ -1,8 +1,8 @@
 # ---
 # title: 216. Combination Sum III
 # id: problem216
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-21
 # difficulty: Medium
 # categories: Array, Backtracking
 # link: <https://leetcode.com/problems/combination-sum-iii/description/>
@@ -83,5 +83,17 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function combination_sum3(k::Int, n::Int)
+    function combination_sum3(k::Int, n::Int, s::Int)::Vector{Vector{Int}}
+        if s + k - 1 > 9 || sum(s:(s + k - 1)) > n
+            return []
+        elseif k == 1 && s == n
+            return [[n]]
+        end
+        choose_s = combination_sum3(k - 1, n - s, s + 1)
+        notchoose_s = combination_sum3(k, n, s + 1)
+        return [[[s, cs...] for cs in choose_s]..., notchoose_s...]
+    end
+    return combination_sum3(k, n, 1)
+end
 ## @lc code=end
