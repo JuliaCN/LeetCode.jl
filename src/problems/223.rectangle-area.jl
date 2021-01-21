@@ -1,8 +1,8 @@
 # ---
 # title: 223. Rectangle Area
 # id: problem223
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-21
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/rectangle-area/description/>
@@ -34,5 +34,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function compute_area(coord::Vector{Int})
+    if coord[1] > coord[5]
+        coord[1:4], coord[5:8] = coord[5:8], coord[1:4]
+    end
+    if coord[8] <= coord[2] || coord[6] >= coord[4] || coord[5] >= coord[3]
+        return 0
+    end
+    return (coord[3] - coord[1]) * (coord[4] - coord[2]) + 
+            (coord[7] - coord[5]) * (coord[8] - coord[6]) -
+            (min(coord[3], coord[7]) - coord[5]) * (min(coord[8], coord[4]) - max(coord[2], coord[6]))
+end
 ## @lc code=end
