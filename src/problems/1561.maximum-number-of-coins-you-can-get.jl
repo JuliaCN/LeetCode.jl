@@ -1,8 +1,8 @@
 # ---
 # title: 1561. Maximum Number of Coins You Can Get
 # id: problem1561
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-22
 # difficulty: Medium
 # categories: Sort
 # link: <https://leetcode.com/problems/maximum-number-of-coins-you-can-get/description/>
@@ -65,5 +65,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_coins(piles::Vector{Int})
+    len = length(sort!(piles))
+    return sum(piles[i] for i in len ÷ 3 + 1 : 2 : len - 1)
+end
 ## @lc code=end
