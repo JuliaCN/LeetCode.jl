@@ -1,8 +1,8 @@
 # ---
 # title: 1558. Minimum Numbers of Function Calls to Make Target Array
 # id: problem1558
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-22
 # difficulty: Medium
 # categories: Greedy
 # link: <https://leetcode.com/problems/minimum-numbers-of-function-calls-to-make-target-array/description/>
@@ -79,5 +79,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function min_operations1558(nums::Vector{Int})
+    m = maximum(nums)
+    res = 0
+    for num in nums
+        while num > 0
+            num &= (num - 1) 
+            res += 1
+        end
+    end
+    while m > 1
+        m >>= 1
+        res += 1
+    end
+    res
+end
 ## @lc code=end
