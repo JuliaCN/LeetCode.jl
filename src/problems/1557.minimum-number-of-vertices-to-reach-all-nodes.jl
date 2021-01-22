@@ -1,8 +1,8 @@
 # ---
 # title: 1557. Minimum Number of Vertices to Reach All Nodes
 # id: problem1557
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-22
 # difficulty: Medium
 # categories: Graph
 # link: <https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes/description/>
@@ -55,5 +55,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_smallest_set_of_vertices(n::Int, edges::Vector{Vector{Int}})::Vector{Int}
+    set = Set(edge[2] for edge in edges)
+    res = Int[]
+    for i in 0:n-1
+        (i in set) || push!(res, i)
+    end
+    res    
+end
 ## @lc code=end

@@ -1,8 +1,8 @@
 # ---
 # title: 1556. Thousand Separator
 # id: problem1556
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-22
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/thousand-separator/description/>
@@ -56,5 +56,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function thousand_separator(n::Int)
+    s = string(n)
+    r = length(s) % 3
+    ed = 0
+    if r == 0
+        r += 3
+        ed += 1
+    end
+    res = s[1:r]
+    for i in 1 : length(s) ÷ 3 - ed
+        res *= "." * s[r + i * 3 - 2 : r + i * 3]
+    end
+    res
+end
 ## @lc code=end

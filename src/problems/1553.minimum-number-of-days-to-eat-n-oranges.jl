@@ -1,8 +1,8 @@
 # ---
 # title: 1553. Minimum Number of Days to Eat N Oranges
 # id: problem1553
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-22
 # difficulty: Hard
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/minimum-number-of-days-to-eat-n-oranges/description/>
@@ -75,5 +75,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function min_days_1553(n::Int)
+    memo = Dict{Int, Int}()
+    memo[0] = 0
+    memo[1] = 1
+    function min_days(n::Int)
+        if haskey(memo, n)
+            return memo[n]
+        end
+        return memo[n] = 1 + min(min_days(n ÷ 2) + n % 2, min_days(n ÷ 3) + n % 3)
+    end
+    min_days(n)
+end
 ## @lc code=end

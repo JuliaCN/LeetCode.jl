@@ -1,8 +1,8 @@
 # ---
 # title: 1551. Minimum Operations to Make Array Equal
 # id: problem1551
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-22
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/minimum-operations-to-make-array-equal/description/>
@@ -52,5 +52,7 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function min_operations_1551(n::Int)
+    return 2 * sum(1 : (n - 1) ÷ 2) + (n & 1 == 0) * (n ÷ 2)
+end
 ## @lc code=end

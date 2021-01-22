@@ -1,8 +1,8 @@
 # ---
 # title: 1552. Magnetic Force Between Two Balls
 # id: problem1552
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-22
 # difficulty: Medium
 # categories: Array, Binary Search
 # link: <https://leetcode.com/problems/magnetic-force-between-two-balls/description/>
@@ -57,5 +57,28 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_distance(position::Vector{Int}, m::Int)
+    sort!(position)
+    lowest, highest = 1, position[end] - position[1] 
+    while lowest < highest
+        mid = (highest + lowest + 1) ÷ 2
+        left_pos = position[1]
+        left_num = m - 1
+        for pos in position
+            if pos - left_pos >= mid 
+                left_pos = pos
+                left_num -= 1
+                if left_num == 0
+                    break
+                end
+            end
+        end
+        if left_num == 0
+            lowest = mid 
+        else
+            highest = mid - 1
+        end
+    end
+    lowest
+end
 ## @lc code=end
