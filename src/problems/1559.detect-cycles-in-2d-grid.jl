@@ -74,7 +74,6 @@
 ## @lc code=start
 using LeetCode
 
-using DataStructures
 function contains_cycle(grid::Vector{Vector{String}})
     function bfs(grid::Vector{Vector{String}}, r::Int, c::Int)
         sym = grid[r][c]
