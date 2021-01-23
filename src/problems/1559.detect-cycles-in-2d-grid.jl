@@ -130,7 +130,7 @@ function contains_cycle(grid::Vector{Vector{String}})
     for r in 1 : nr  
         for c in 1 : nc
             if !visited[r, c] && bfs(grid, r, c)
-                # println(grid[r][c])
+                ## println(grid[r][c])
                 return true
             end
         end
