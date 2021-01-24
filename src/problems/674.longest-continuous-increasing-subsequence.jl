@@ -1,8 +1,8 @@
 # ---
 # title: 674. Longest Continuous Increasing Subsequence
 # id: problem674
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-24
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/longest-continuous-increasing-subsequence/description/>
@@ -51,5 +51,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_length_of_lcis(nums::Vector{Int})
+    res, tmp = 0, 1
+    for i in 2:length(nums)
+        if nums[i] > nums[i - 1]
+            tmp += 1
+        else
+            res = max(res, tmp)
+            tmp = 1            
+        end
+    end
+    min(max(tmp, res), length(nums))
+end
 ## @lc code=end
