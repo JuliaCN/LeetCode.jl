@@ -1,8 +1,8 @@
 # ---
 # title: 678. Valid Parenthesis String
 # id: problem678
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-24
 # difficulty: Medium
 # categories: String
 # link: <https://leetcode.com/problems/valid-parenthesis-string/description/>
@@ -51,5 +51,23 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function check_valid_string(s::String)
+    lo, hi = 0, 0
+    for ch in s
+        if ch == '('
+            lo += 1
+            hi += 1
+        elseif ch == ')'
+            (lo > 0) && (lo -= 1)
+            hi -= 1
+        else
+            (lo > 0) && (lo -= 1)
+            hi += 1
+        end
+        if hi < 0
+            return false
+        end
+    end
+    return lo == 0
+end
 ## @lc code=end
