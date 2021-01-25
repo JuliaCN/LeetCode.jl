@@ -1,8 +1,8 @@
 # ---
 # title: 962. Maximum Width Ramp
 # id: problem962
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-25
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/maximum-width-ramp/description/>
@@ -49,5 +49,20 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_width_ramp(A::Vector{Int})
+    res = 0
+    stk = [1]
+    for i in 2:length(A)
+        (A[i] < A[stk[end]]) && (push!(stk, i))
+    end
+    println(stk)
+    for i in length(A):-1:2
+        idx = i
+        while !isempty(stk) && A[stk[end]] <= A[i]
+            idx = pop!(stk)
+        end
+        res = max(i - idx, res)
+    end
+    return res
+end
 ## @lc code=end

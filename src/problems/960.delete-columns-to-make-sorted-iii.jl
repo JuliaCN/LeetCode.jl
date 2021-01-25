@@ -1,8 +1,8 @@
 # ---
 # title: 960. Delete Columns to Make Sorted III
 # id: problem960
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-25
 # difficulty: Hard
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/delete-columns-to-make-sorted-iii/description/>
@@ -69,5 +69,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function min_deletion_size(A::Vector{String})
+    word_len = length(A[1])
+    dp = fill(1, word_len)    
+    for i in word_len - 1 : -1 : 1
+        for j in i + 1 : word_len
+            all(word[i] < word[j] for word in A) && (dp[i] = max(dp[i], dp[j] + 1))
+        end
+    end
+    word_len - maximum(dp)
+end
 ## @lc code=end
