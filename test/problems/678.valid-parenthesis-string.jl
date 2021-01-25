@@ -2,5 +2,6 @@
     @test check_valid_string("(())((())()()(*)(*()(())())())()()((()())((()))(*") == false
     @test check_valid_string(")(") == false
     @test check_valid_string("(*))") == true
-    
+    @test check_valid_string("(*)") == true
+    @test check_valid_string("()") == true
 end
