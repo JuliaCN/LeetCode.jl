@@ -22,12 +22,6 @@ function lands_num(grid::Vector{Vector{String}})
     end
     res
 end
-lands_num([
-         ["1","1","1","1","0"],
-         ["1","1","0","1","0"],
-         ["1","1","0","0","0"],
-         ["0","0","0","0","0"]
-       ])
 # @lc code=end
 
 # This file was generated using Literate.jl, https://github.com/fredrikekre/Literate.jl
