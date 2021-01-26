@@ -1,8 +1,8 @@
 # ---
 # title: 961. N-Repeated Element in Size 2N Array
 # id: problem961
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-25
 # difficulty: Easy
 # categories: Hash Table
 # link: <https://leetcode.com/problems/n-repeated-element-in-size-2n-array/description/>
@@ -52,5 +52,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function repeated_n_times(A::Vector{Int})
+    for i in 2:length(A) 
+        if A[i] == A[i - 1]
+            return A[i]
+        end
+    end
+    """
+    3X3X OR 3XX3 OR X3X3
+    """
+    return (A[1] == A[3] || A[1] == A[4]) ? A[1] : A[2]
+end
 ## @lc code=end
