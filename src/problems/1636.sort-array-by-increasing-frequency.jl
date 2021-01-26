@@ -1,8 +1,8 @@
 # ---
 # title: 1636. Sort Array by Increasing Frequency
 # id: problem1636
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-25
 # difficulty: Easy
 # categories: Array, Sort
 # link: <https://leetcode.com/problems/sort-array-by-increasing-frequency/description/>
@@ -53,5 +53,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function frequency_sort(nums::Vector{Int})
+    freq = counter(nums)
+    sort!(nums, by = x -> (freq[x], -x))
+end
 ## @lc code=end
