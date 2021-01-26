@@ -80,7 +80,7 @@ function eval_rpn(tokens::Vector{String})
             push!(stk, parse(Int, token))
         end
     end
-    top(stk)
+    first(stk)
 end
 
 ## @lc code=end

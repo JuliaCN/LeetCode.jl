@@ -96,7 +96,7 @@ function count_substrings(s::String, t::String)
     end 
     res = 0
     for i in 1:length(s)
-        res += count_substr(@view(s[i:end]), t)
+        res += count_substr(SubString(s, i), t)
     end
     return res
 end
