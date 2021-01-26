@@ -2,7 +2,7 @@
 # title: 1638. Count Substrings That Differ by One Character
 # id: problem1638
 # author: Tian Jun
-# date: 2020-10-31
+# date: 2021-01-26
 # difficulty: Medium
 # categories: Hash Table, String, Trie, Rolling Hash
 # link: <https://leetcode.com/problems/count-substrings-that-differ-by-one-character/description/>
@@ -80,5 +80,24 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function count_substrings(s::String, t::String)
+    function count_substr(s::SubString{String}, t::String)
+        res, len_s, len_t = 0, length(s), length(t)
+        for i in 1:len_t
+            j, k, diff = 1, i, 0
+            while diff < 2 && j <= len_s && k <= len_t 
+                res += diff
+                diff += (s[j] != t[k])
+                j += 1; k += 1;
+            end
+            res += (diff == 1)
+        end
+        res
+    end 
+    res = 0
+    for i in 1:length(s)
+        res += count_substr(@view(s[i:end]), t)
+    end
+    return res
+end
 ## @lc code=end

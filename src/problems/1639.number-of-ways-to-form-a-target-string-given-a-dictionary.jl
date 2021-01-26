@@ -1,8 +1,8 @@
 # ---
 # title: 1639. Number of Ways to Form a Target String Given a Dictionary
 # id: problem1639
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-26
 # difficulty: Hard
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/number-of-ways-to-form-a-target-string-given-a-dictionary/description/>
