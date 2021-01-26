@@ -2,7 +2,7 @@
 # title: 1636. Sort Array by Increasing Frequency
 # id: problem1636
 # author: Indigo
-# date: 2021-01-25
+# date: 2021-01-26
 # difficulty: Easy
 # categories: Array, Sort
 # link: <https://leetcode.com/problems/sort-array-by-increasing-frequency/description/>

@@ -2,7 +2,7 @@
 # title: 1637. Widest Vertical Area Between Two Points Containing No Points
 # id: problem1637
 # author: Tian Jun
-# date: 2020-10-31
+# date: 2021-01-26
 # difficulty: Medium
 # categories: Sort
 # link: <https://leetcode.com/problems/widest-vertical-area-between-two-points-containing-no-points/description/>
@@ -54,5 +54,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_width_of_vertical_area(points::Vector{Vector{Int}})
+    sort!(points)
+    return maximum(points[i][1] - points[i - 1][1] for i in 2 : length(points))
+end
 ## @lc code=end
