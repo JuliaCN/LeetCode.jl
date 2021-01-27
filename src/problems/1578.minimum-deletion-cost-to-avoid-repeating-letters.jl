@@ -1,8 +1,8 @@
 # ---
 # title: 1578. Minimum Deletion Cost to Avoid Repeating Letters
 # id: problem1578
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-27
 # difficulty: Medium
 # categories: Greedy
 # link: <https://leetcode.com/problems/minimum-deletion-cost-to-avoid-repeating-letters/description/>
@@ -61,5 +61,21 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function min_cost_1578(s::String, cost::Vector{Int})
+    if length(s) == 0
+        return 0
+    end
+    s *= "0"
+    lst_char = s[1]
+    len, res = 1, 0
+    for i in 2:length(s)
+        if s[i] == lst_char
+            len += 1
+        else
+            res += sum(cost[i-len:i-1]) - maximum(cost[i-len:i-1])
+            len, lst_char = 1, s[i]
+        end
+    end
+    res
+end
 ## @lc code=end
