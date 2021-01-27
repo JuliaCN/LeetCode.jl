@@ -1,8 +1,8 @@
 # ---
 # title: 1576. Replace All ?'s to Avoid Consecutive Repeating Characters
 # id: problem1576
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-27
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/replace-all-s-to-avoid-consecutive-repeating-characters/description/>
@@ -67,5 +67,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function modify_string(s::String)
+    char_vec = collect(s)
+    for i in 1:length(char_vec)
+        if char_vec[i] == '?'
+            char_vec[i] = 'a'
+            (i > 1 && char_vec[i - 1] == 'a') && (char_vec[i] += 1)
+            (i < length(char_vec) && char_vec[i + 1] == char_vec[i]) && (char_vec[i] += 1) 
+            (i > 1 && char_vec[i - 1] == char_vec[i]) && (char_vec[i] += 1)
+        end
+    end
+    return join(char_vec)
+end
 ## @lc code=end
