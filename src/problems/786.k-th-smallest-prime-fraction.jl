@@ -39,7 +39,6 @@
 ## @lc code=start
 using LeetCode
 
-using DataStructures
 function kth_smallest_prime_fraction(arr::Vector{Int}, k::Int)
     hp = BinaryMinHeap(1 .// arr[2:end])
     next_prime = Dict((arr[i], arr[i+1]) for i in 1:length(arr)-1)

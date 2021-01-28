@@ -1,5 +1,6 @@
 @testset "786.k-th-smallest-prime-fraction.jl" begin
     res = [1//5, 1//3, 2//5, 1//2, 3//5, 2//3]
+    arr = [1,2,3,5]
     for i in 1:6
         @test kth_smallest_prime_fraction(arr, i) == res[i]   
     end

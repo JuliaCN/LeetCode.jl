@@ -42,7 +42,7 @@
 # 
 ## @lc code=start
 using LeetCode
-using DataStructures
+
 function num_rabbits(answer::Vector{Int})
     cnt = counter(answer)
     res = 0

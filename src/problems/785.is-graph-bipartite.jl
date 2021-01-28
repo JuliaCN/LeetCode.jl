@@ -61,7 +61,7 @@
 # 
 ## @lc code=start
 using LeetCode
-using DataStructures
+
 function is_bipartite(graph::Vector{Vector{Int}})
     for edge in graph
         edge .+= 1
