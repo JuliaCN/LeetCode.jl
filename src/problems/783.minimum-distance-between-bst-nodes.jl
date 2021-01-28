@@ -1,8 +1,8 @@
 # ---
 # title: 783. Minimum Distance Between BST Nodes
 # id: problem783
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-28
 # difficulty: Easy
 # categories: Tree, Recursion
 # link: <https://leetcode.com/problems/minimum-distance-between-bst-nodes/description/>
@@ -42,5 +42,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function min_diff_in_bst(root::TreeNode)
+    prev, ans = typemin(Int) >> 1, typemax(Int)
+    function dfs(root::TreeNode)
+        (root.left !== nothing) && (dfs(root.left))
+        ans = min(root.val - prev, ans) 
+        prev = root.val
+        (root.right !== nothing) && (dfs(root.right))
+    end
+    dfs(root)
+    ans
+end
 ## @lc code=end

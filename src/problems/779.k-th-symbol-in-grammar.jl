@@ -1,8 +1,8 @@
 # ---
 # title: 779. K-th Symbol in Grammar
 # id: problem779
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-28
 # difficulty: Medium
 # categories: Recursion
 # link: <https://leetcode.com/problems/k-th-symbol-in-grammar/description/>
@@ -47,5 +47,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function kth_grammar(N::Int, K::Int)
+    res = false
+    for i in 1:N 
+        iseven(K) && (res = !res)
+        K = (K + 1) >> 1
+    end
+    res
+end
 ## @lc code=end

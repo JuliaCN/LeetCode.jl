@@ -1,8 +1,8 @@
 # ---
 # title: 775. Global and Local Inversions
 # id: problem775
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-28
 # difficulty: Medium
 # categories: Array, Math
 # link: <https://leetcode.com/problems/global-and-local-inversions/description/>
@@ -49,5 +49,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function is_ideal_permutation(A::Vector{Int})
+    m = A[end]
+    for i in length(A):-1:3
+        m = min(m, A[i])
+        if A[i - 2] > m
+            return false
+        end
+    end
+    return true
+end
 ## @lc code=end

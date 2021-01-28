@@ -1,8 +1,8 @@
 # ---
 # title: 781. Rabbits in Forest
 # id: problem781
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-28
 # difficulty: Medium
 # categories: Hash Table, Math
 # link: <https://leetcode.com/problems/rabbits-in-forest/description/>
@@ -43,5 +43,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function num_rabbits(answer::Vector{Int})
+    cnt = counter(answer)
+    res = 0
+    for (key, v) in cnt
+        res += ((v - 1) ÷ (key + 1) + 1) * (key + 1)
+    end
+    res
+end
 ## @lc code=end

@@ -1,8 +1,8 @@
 # ---
 # title: 784. Letter Case Permutation
 # id: problem784
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-28
 # difficulty: Medium
 # categories: Backtracking, Bit Manipulation
 # link: <https://leetcode.com/problems/letter-case-permutation/description/>
@@ -60,5 +60,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function letter_case_permutation(s::String)
+    ans = [""]
+    for i in s
+        if isletter(i)
+            tmp = ans[:]
+            ans .*= lowercase(i)
+            tmp .*= uppercase(i)
+            append!(ans, tmp)
+        else
+            ans .*= i
+        end
+    end
+    ans
+end
 ## @lc code=end
