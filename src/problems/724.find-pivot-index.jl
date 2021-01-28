@@ -1,8 +1,8 @@
 # ---
 # title: 724. Find Pivot Index
 # id: problem724
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-28
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/find-pivot-index/description/>
@@ -53,5 +53,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function pivot_index(nums::Vector{Int})
+    if isempty(nums)
+        return 0
+    end
+    total = sum(nums)
+    left, right = 0, total
+    for i in 1:length(nums) 
+        right -= nums[i]
+        if left == right
+            return i
+        end
+        left += nums[i]
+    end
+    return (left == nums[end]) ? length(nums) : 0
+end
 ## @lc code=end

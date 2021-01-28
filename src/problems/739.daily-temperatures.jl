@@ -1,8 +1,8 @@
 # ---
 # title: 739. Daily Temperatures
 # id: problem739
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-28
 # difficulty: Medium
 # categories: Hash Table, Stack
 # link: <https://leetcode.com/problems/daily-temperatures/description/>
@@ -24,5 +24,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function daily_temperatures(T::Vector{Int})
+    res = fill(0, length(T))    
+    stk = Int[]
+    for i in 1:length(T)
+        while !isempty(stk) && T[stk[end]] < T[i]
+            res[stk[end]] = i - stk[end]
+            pop!(stk)
+        end
+        push!(stk, i)
+    end
+    res
+end
 ## @lc code=end
