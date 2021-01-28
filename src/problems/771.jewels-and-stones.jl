@@ -1,8 +1,8 @@
 # ---
 # title: 771. Jewels and Stones
 # id: problem771
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-28
 # difficulty: Easy
 # categories: Hash Table
 # link: <https://leetcode.com/problems/jewels-and-stones/description/>
@@ -43,5 +43,11 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function num_jewels_in_stones(jewels::String, stones::String)
+    mp = fill(0, 128)
+    for i in codeunits(jewels) 
+        mp[i] = 1        
+    end
+    sum(mp[i] for i in codeunits(stones))
+end
 ## @lc code=end
