@@ -1,6 +1,6 @@
 # @lc code=start
 using LeetCode
-using DataStructures
+
 function find_circle_num(is_connected::Vector{Vector{Int}})
     len = length(is_connected)
     visited = fill(false, len)

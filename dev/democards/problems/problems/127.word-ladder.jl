@@ -1,6 +1,6 @@
 # @lc code=start
 using LeetCode
-using DataStructures
+
 function ladder_length(begin_word::String, end_word::String, word_list::Vector{String})::Int
     function isadj(s1, s2)
         flg = false

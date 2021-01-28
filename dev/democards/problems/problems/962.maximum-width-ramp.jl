@@ -7,7 +7,6 @@ function max_width_ramp(A::Vector{Int})
     for i in 2:length(A)
         (A[i] < A[stk[end]]) && (push!(stk, i))
     end
-    println(stk)
     for i in length(A):-1:2
         idx = i
         while !isempty(stk) && A[stk[end]] <= A[i]

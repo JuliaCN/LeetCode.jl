@@ -1,6 +1,5 @@
 # @lc code=start
 using LeetCode
-using DataStructures
 
 function furthest_building(heights::Vector{Int}, bricks::Int, ladders::Int)
     q = Int[]
