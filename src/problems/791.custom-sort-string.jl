@@ -1,8 +1,8 @@
 # ---
 # title: 791. Custom Sort String
 # id: problem791
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-29
 # difficulty: Medium
 # categories: String
 # link: <https://leetcode.com/problems/custom-sort-string/description/>
@@ -43,5 +43,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function custom_sort_string(S::String, T::String)
+    letter_rank = fill(0, 128)
+    for (idx, ch) in enumerate(codeunits(S)) 
+        letter_rank[ch] = idx
+    end
+    u = codeunits(T)[:]
+    sort!(u, by = x -> letter_rank[x])
+    String(u)
+end
 ## @lc code=end
