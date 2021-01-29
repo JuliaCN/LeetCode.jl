@@ -1,8 +1,8 @@
 # ---
 # title: 789. Escape The Ghosts
 # id: problem789
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-29
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/escape-the-ghosts/description/>
@@ -86,5 +86,9 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function escape_ghosts(ghosts::Vector{Vector{Int}}, target::Vector{Int})
+    dist1 = sum(abs, target)
+    dist2 = minimum(sum(abs, g .- target) for g in ghosts)
+    return dist1 < dist2
+end
 ## @lc code=end
