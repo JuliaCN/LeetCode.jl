@@ -1,8 +1,8 @@
 # ---
 # title: 790. Domino and Tromino Tiling
 # id: problem790
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-29
 # difficulty: Medium
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/domino-and-tromino-tiling/description/>
@@ -48,5 +48,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function num_tilings(N::Int)
+    f0, f1= 1, 1
+    g0, g1 = 0, 1
+    for i in 1:N-1
+        f0, f1, g0, g1 = f1, f0 + f1 + 2 * g0, g1, g1 + f1
+    end
+    f1
+end
 ## @lc code=end
