@@ -1,8 +1,8 @@
 # ---
 # title: 1003. Check If Word Is Valid After Substitutions
 # id: problem1003
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-30
 # difficulty: Medium
 # categories: String, Stack
 # link: <https://leetcode.com/problems/check-if-word-is-valid-after-substitutions/description/>
@@ -71,5 +71,10 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function is_valid_abc_str(s::String)
+    while occursin("abc", s) 
+        s = replace(s, "abc" => "")
+    end
+    return s == ""
+end
 ## @lc code=end
