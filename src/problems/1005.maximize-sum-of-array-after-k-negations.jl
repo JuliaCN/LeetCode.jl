@@ -1,8 +1,8 @@
 # ---
 # title: 1005. Maximize Sum Of Array After K Negations
 # id: problem1005
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-30
 # difficulty: Easy
 # categories: Greedy
 # link: <https://leetcode.com/problems/maximize-sum-of-array-after-k-negations/description/>
@@ -57,5 +57,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+using DataStructures
+function largest_sum_after_k_negations(A::Vector{Int}, K::Int)
+    total = sum(A)
+    pq = BinaryMinHeap(A)
+    for _ in 1:K 
+        m = pop!(pq)
+        total -= 2 * m
+        push!(pq, -m)
+    end
+    total
+end
 ## @lc code=end
