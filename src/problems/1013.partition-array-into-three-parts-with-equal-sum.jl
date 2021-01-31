@@ -1,8 +1,8 @@
 # ---
 # title: 1013. Partition Array Into Three Parts With Equal Sum
 # id: problem1013
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-30
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/partition-array-into-three-parts-with-equal-sum/description/>
@@ -55,5 +55,24 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function can_three_parts_equal_sum(arr::Vector{Int})
+    function can_three_parts_equal_sum(arr::AbstractVector{Int}, n::Int)
+        targ = sum(arr)
+        if targ % n != 0 || length(arr) == 0
+            return false
+        elseif n == 1
+            return true
+        end
+        targ ÷= n
+        acc = 0
+        for i in 1:length(arr)
+            acc += arr[i]
+            if targ == acc
+                return can_three_parts_equal_sum(@view(arr[i+1:end]), n-1)
+            end
+        end
+        false
+    end
+    can_three_parts_equal_sum(arr, 3)
+end
 ## @lc code=end

@@ -1,8 +1,8 @@
 # ---
 # title: 1008. Construct Binary Search Tree from Preorder Traversal
 # id: problem1008
-# author: Tian Jun
-# date: 2020-10-31
+# author: Idnigo
+# date: 2021-01-30
 # difficulty: Medium
 # categories: Tree
 # link: <https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/description/>
@@ -42,5 +42,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function bst_from_preorder(preorder::AbstractVector{Int})
+    if isempty(preorder)
+        return nothing
+    end
+    i, f = 2, preorder[1]
+    root = TreeNode(f)
+    while i <= length(preorder) && preorder[i] < f
+        i += 1
+    end
+    i -= 1
+    root.left = bst_from_preorder(@view preorder[2:i])
+    root.right = bst_from_preorder(@view preorder[i+1:end])
+    root
+end
 ## @lc code=end

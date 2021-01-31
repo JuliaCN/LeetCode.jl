@@ -1,8 +1,8 @@
 # ---
 # title: 1011. Capacity To Ship Packages Within D Days
 # id: problem1011
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-30
 # difficulty: Medium
 # categories: Array, Binary Search
 # link: <https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/description/>
@@ -76,5 +76,25 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function ship_within_days(weights::Vector{Int}, D::Int)
+    lo, hi = maximum(weights), sum(weights)
+    while lo < hi
+        mid = (lo + hi) ÷ 2
+        cnt = 1
+        tt = 0
+        for w in weights
+            tt += w
+            if tt > mid
+                cnt += 1
+                tt = w
+            end
+        end
+        if cnt > D
+            lo = mid + 1
+        else
+            hi = mid
+        end
+    end
+    lo
+end
 ## @lc code=end
