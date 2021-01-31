@@ -1,8 +1,8 @@
 # ---
 # title: 788. Rotated Digits
 # id: problem788
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-29
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/rotated-digits/description/>
@@ -39,5 +39,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function rotated_digits(N::Int)
+    if N <= 9
+        return count(==(1), [0, 1, -1, -1, 1, 1, -1, 0, 1][1:N])
+    end
+    ans, dp = 0, vcat([0, 0, 1, -1, -1, 1, 1, -1, 0, 1], fill(0, N - 9))
+    for i in 1:N-1
+        dp[i + 1] = (-1 in [dp[i ÷ 10 + 1], dp[i % 10 + 1]]) ? -1 : (dp[i ÷ 10 + 1] | dp[i % 10 + 1])
+        ans += (dp[i + 1] == 1)
+    end
+    ans
+end
 ## @lc code=end

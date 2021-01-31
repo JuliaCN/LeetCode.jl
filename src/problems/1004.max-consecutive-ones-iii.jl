@@ -1,8 +1,8 @@
 # ---
 # title: 1004. Max Consecutive Ones III
 # id: problem1004
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2020-01-30
 # difficulty: Medium
 # categories: Two Pointers, Sliding Window
 # link: <https://leetcode.com/problems/max-consecutive-ones-iii/description/>
@@ -48,5 +48,23 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function longest_ones(A::Vector{Int}, K::Int)
+    l = r = 1
+    len = length(A)
+    cnt = res = 0
+    while r <= len
+        if A[r] == 0
+            cnt += 1
+        end
+        r += 1
+        while cnt > K
+            if A[l] == 0
+                cnt -= 1
+            end
+            l += 1
+        end
+        res = max(res, r - l)
+    end
+    res
+end
 ## @lc code=end

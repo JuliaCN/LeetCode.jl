@@ -1,8 +1,8 @@
 # ---
 # title: 792. Number of Matching Subsequences
 # id: problem792
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-29
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/number-of-matching-subsequences/description/>
@@ -33,5 +33,23 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function num_matching_subseq(S::String, words::Vector{String})
+    map = Dict{Char, Vector{String}}((ch, []) for ch in 'a':'z')
+    for w in words
+        push!(map[w[1]], w[2:end])
+    end
+    res = 0
+    for ch in S
+        wds = String[]
+        wds, map[ch] = map[ch], wds
+        for w in wds
+            if w == ""
+                res += 1
+            else
+                push!(map[w[1]], w[2:end])
+            end
+        end
+    end
+    res
+end
 ## @lc code=end

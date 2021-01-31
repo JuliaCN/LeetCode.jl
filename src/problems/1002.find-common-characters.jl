@@ -1,8 +1,8 @@
 # ---
 # title: 1002. Find Common Characters
 # id: problem1002
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-30
 # difficulty: Easy
 # categories: Array, Hash Table
 # link: <https://leetcode.com/problems/find-common-characters/description/>
@@ -47,5 +47,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function common_chars(A::Vector{String})
+    cnt = counter(A[1])
+    for i in 2:length(A)
+        tmp_cnt = counter(A[i])
+        for k in union(keys(tmp_cnt), keys(cnt))
+            cnt[k] = min(cnt[k], tmp_cnt[k]) 
+        end
+    end
+    vcat([fill(k, v) for (k, v) in cnt if v > 0]...)
+end
 ## @lc code=end
