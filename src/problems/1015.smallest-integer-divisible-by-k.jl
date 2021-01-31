@@ -1,8 +1,8 @@
 # ---
 # title: 1015. Smallest Integer Divisible by K
 # id: problem1015
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-30
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/smallest-integer-divisible-by-k/description/>
@@ -56,5 +56,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function smallest_repunit_div_by_k(K::Int)
+    if K % 2 == 0 || K % 5 == 0
+        return -1
+    end
+    r, len = 0, 1
+    while true
+        r = (10 * r % K + 1) % K
+        if r == 0
+            return len
+        end
+        len += 1
+    end
+    len
+end
 ## @lc code=end
