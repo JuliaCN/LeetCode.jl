@@ -1,8 +1,8 @@
 # ---
 # title: 1006. Clumsy Factorial
 # id: problem1006
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-31
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/clumsy-factorial/description/>
@@ -60,5 +60,11 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function clumsy(N::Int)
+    if N <= 4
+        return [1, 2, 6, 7][N]
+    end
+    mod = 1 + (N & 3)
+    return N + [1, 2, 2, -1][mod]
+end
 ## @lc code=end
