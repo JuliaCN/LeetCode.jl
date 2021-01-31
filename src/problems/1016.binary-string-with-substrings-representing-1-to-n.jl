@@ -1,8 +1,8 @@
 # ---
 # title: 1016. Binary String With Substrings Representing 1 To N
 # id: problem1016
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-30
 # difficulty: Medium
 # categories: String
 # link: <https://leetcode.com/problems/binary-string-with-substrings-representing-1-to-n/description/>
@@ -42,5 +42,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function query_string(S::String, N::Int)
+    m = (N >> 1) + 1
+    for i in m:N
+        s_bit = digits(i; base=2) |> reverse! |> join
+        if !occursin(s_bit, S)
+            return false
+        end
+    end
+    return true
+end
 ## @lc code=end
