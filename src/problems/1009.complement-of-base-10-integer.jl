@@ -1,8 +1,8 @@
 # ---
 # title: 1009. Complement of Base 10 Integer
 # id: problem1009
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-30
 # difficulty: Easy
 # categories: Math
 # link: <https://leetcode.com/problems/complement-of-base-10-integer/description/>
@@ -61,5 +61,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function bitwise_complement(N::Int)
+    res = 0
+    for i in 0:31
+        if N > 0
+            res += ((1 - (N & 1)) << i)
+            N >>= 1
+        else
+            return res
+        end
+    end
+    res
+end
 ## @lc code=end
