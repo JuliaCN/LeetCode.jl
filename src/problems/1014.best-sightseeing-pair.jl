@@ -1,8 +1,8 @@
 # ---
 # title: 1014. Best Sightseeing Pair
 # id: problem1014
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-01-30
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/best-sightseeing-pair/description/>
@@ -41,5 +41,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_score_sightseeing_pair(A::Vector{Int})
+    res, mx = 0, A[1] + 0
+    for j in 2:length(A)
+        res = max(res, A[j] - j + 1 + mx)
+        mx = max(mx, A[j] + j - 1)
+    end
+    res
+end
 ## @lc code=end
