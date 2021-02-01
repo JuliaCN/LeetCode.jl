@@ -1,8 +1,8 @@
 # ---
 # title: 897. Increasing Order Search Tree
 # id: problem897
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-01
 # difficulty: Easy
 # categories: Tree, Depth-first Search, Recursion
 # link: <https://leetcode.com/problems/increasing-order-search-tree/description/>
@@ -46,5 +46,17 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function increasing_bst(root::TreeNode{Int})
+    p = TreeNode(0)
+    q = p
+    function mid_tranv(root::TreeNode{Int})
+        (root.left !== nothing) && mid_tranv(root.left)
+        q.right = TreeNode(root.val)
+        q = q.right
+        (root.right !== nothing) && mid_tranv(root.right)
+        nothing
+    end
+    mid_tranv(root)
+    p.right
+end
 ## @lc code=end
