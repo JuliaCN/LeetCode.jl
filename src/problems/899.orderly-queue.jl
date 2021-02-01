@@ -57,7 +57,7 @@ function orderly_queue(S::String, K::Int)
     if K == 1
         res = S
         for i in 2:length(S)
-            println(S[i:end] * S[1:i-1])
+            res = min(res, S[i:end] * S[1:i-1])
         end
         return res
     end
