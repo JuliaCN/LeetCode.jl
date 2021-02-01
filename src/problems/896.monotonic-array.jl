@@ -1,8 +1,8 @@
 # ---
 # title: 896. Monotonic Array
 # id: problem896
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-01
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/monotonic-array/description/>
@@ -70,5 +70,7 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function is_monotonic(A::Vector{Int})
+    return issorted(A) || issorted(A; rev = true)
+end
 ## @lc code=end

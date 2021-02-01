@@ -1,8 +1,8 @@
 # ---
 # title: 898. Bitwise ORs of Subarrays
 # id: problem898
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-01
 # difficulty: Medium
 # categories: Dynamic Programming, Bit Manipulation
 # link: <https://leetcode.com/problems/bitwise-ors-of-subarrays/description/>
@@ -63,5 +63,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function subarray_bitwise_ors(A::Vector{Int})
+    res = Set{Int}()
+    cur = Set{Int}()
+    for num in A
+        cur2 = Set{Int}()
+        for n in cur
+            push!(cur2, n | num)
+        end
+        push!(cur2, num)
+        cur = cur2
+        union!(res, cur)
+    end
+    return length(res)
+end
 ## @lc code=end

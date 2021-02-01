@@ -1,8 +1,8 @@
 # ---
 # title: 890. Find and Replace Pattern
 # id: problem890
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-01
 # difficulty: Medium
 # categories: String
 # link: <https://leetcode.com/problems/find-and-replace-pattern/description/>
@@ -47,5 +47,27 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_and_replace_pattern(words::Vector{String}, pattern::String)
+    function arr_pattern(s::String)
+        arr_pt = Char[]
+        dct = Dict{Char, Char}()
+        cur_ch = 'a'
+        for ch in s 
+            if !haskey(dct, ch)
+                dct[ch] = cur_ch
+                cur_ch += 1
+            end
+            push!(arr_pt, dct[ch])
+        end
+        arr_pt
+    end
+    res = String[]
+    a_pt = arr_pattern(pattern)
+    for w in words
+        if a_pt == arr_pattern(w)
+            push!(res, w)
+        end
+    end
+    res
+end
 ## @lc code=end
