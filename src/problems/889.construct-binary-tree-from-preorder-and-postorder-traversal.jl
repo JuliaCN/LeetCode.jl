@@ -1,8 +1,8 @@
 # ---
 # title: 889. Construct Binary Tree from Preorder and Postorder Traversal
 # id: problem889
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-01
 # difficulty: Medium
 # categories: Tree
 # link: <https://leetcode.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/description/>
@@ -36,5 +36,17 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function construct_from_pre_post(pre::Vector{Int}, post::Vector{Int})
+    if isempty(pre)
+        return nothing
+    end
+    root = TreeNode(pre[1])
+    if length(pre) == 1
+        return root
+    end
+    idx = findfirst(==(pre[2]), post)
+    root.left = construct_from_pre_post(pre[2:1+idx], post[1:idx])
+    root.right = construct_from_pre_post(pre[2+idx:end], post[1+idx:end-1])
+    root
+end
 ## @lc code=end
