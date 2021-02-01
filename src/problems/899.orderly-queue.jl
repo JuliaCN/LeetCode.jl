@@ -1,8 +1,8 @@
 # ---
 # title: 899. Orderly Queue
 # id: problem899
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-01
 # difficulty: Hard
 # categories: Math, String
 # link: <https://leetcode.com/problems/orderly-queue/description/>
@@ -53,5 +53,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function orderly_queue(S::String, K::Int)
+    if K == 1
+        res = S
+        for i in 2:length(S)
+            println(S[i:end] * S[1:i-1])
+        end
+        return res
+    end
+    c_units = codeunits(S)[:]
+    return c_units |> sort! |> String
+end
 ## @lc code=end
