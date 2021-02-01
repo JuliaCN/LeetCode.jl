@@ -1,8 +1,8 @@
 # ---
 # title: 894. All Possible Full Binary Trees
 # id: problem894
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-01
 # difficulty: Medium
 # categories: Tree, Recursion
 # link: <https://leetcode.com/problems/all-possible-full-binary-trees/description/>
@@ -41,5 +41,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function all_possible_fbt(N::Int)
+    cache_res = [TreeNode{Int}[] for i in 1:N]
+    cache_res[1] = [TreeNode(0)]
+    if N % 2 == 0
+        return TreeNode[]
+    end
+    for n in 3:2:N
+        for i in 1:2:n-1
+            lres = cache_res[i]
+            rres = cache_res[n-i-1]
+            append!(cache_res[n], TreeNode(0, lr, rr) for lr in lres for rr in rres)
+        end
+    end
+    return cache_res[N]
+end
 ## @lc code=end

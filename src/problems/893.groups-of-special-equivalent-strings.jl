@@ -64,18 +64,15 @@
 using LeetCode
 
 function num_special_equiv_groups(A::Vector{String})
-    dct = Set{Vector{Int}}()
+    st = Set{Vector{Int}}()
     res = 0
     for s in A
         cnt = fill(0, 26 * 2)
         for i in 1:length(s)
-            (i % 2 == 1) ? (cnt[s[i] - 'a' + 1] += 1) : (cnt[s[i] - 'a' + 1 + 26] += 1)
+            cnt[s[i] - 'a' + 1 + (i % 2)] += 1
         end
-        if !(cnt in dct)
-            push!(dct, cnt)
-            res += 1
-        end
+        !(cnt in st) && push!(st, cnt)
     end
-    res
+    length(st)
 end
 ## @lc code=end
