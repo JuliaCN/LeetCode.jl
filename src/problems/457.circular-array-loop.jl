@@ -1,8 +1,8 @@
 # ---
 # title: 457. Circular Array Loop
 # id: problem457
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-02
 # difficulty: Medium
 # categories: Array, Two Pointers
 # link: <https://leetcode.com/problems/circular-array-loop/description/>
@@ -67,5 +67,24 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function circular_array_loop(nums::Vector{Int})
+    len = length(nums)
+    for i in 1:length(nums)
+        if nums[i] == -2000 || nums[i] == 2000 
+            continue
+        end
+        j = mod1(i + nums[i], len)
+        lst = i
+        nums[i] = 2000 * sign(nums[i])
+        while true
+            if nums[i] * nums[j] < 0 || j == lst
+                break
+            elseif abs(nums[j]) == 2000 && j ≥ i
+                return true 
+            end
+            nums[j], j, lst = 2000 * sign(nums[j]), mod1(nums[j] + j, len), j
+        end
+    end
+    return false
+end
 ## @lc code=end
