@@ -6,19 +6,15 @@ function longest_ones(A::Vector{Int}, K::Int)
     len = length(A)
     cnt = res = 0
     while r <= len
-        if A[r] == 0
-            cnt += 1
-        end
+        (A[r] == 0) && (cnt += 1)
         r += 1
         while cnt > K
-            if A[l] == 0
-                cnt -= 1
-            end
+            (A[l] == 0) && (cnt -= 1)
             l += 1
         end
         res = max(res, r - l)
     end
-    res
+    return res
 end
 # @lc code=end
 

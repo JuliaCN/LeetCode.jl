@@ -13,13 +13,11 @@ function can_three_parts_equal_sum(arr::Vector{Int})
         acc = 0
         for i in 1:length(arr)
             acc += arr[i]
-            if targ == acc
-                return can_three_parts_equal_sum(@view(arr[i+1:end]), n-1)
-            end
+            targ == acc && return can_three_parts_equal_sum(@view(arr[(i + 1):end]), n - 1)
         end
-        false
+        return false
     end
-    can_three_parts_equal_sum(arr, 3)
+    return can_three_parts_equal_sum(arr, 3)
 end
 # @lc code=end
 
