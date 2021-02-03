@@ -64,9 +64,7 @@ function find132pattern(nums::Vector{Int})
     stk = Int[]
     second_great = typemin(Int)
     for num in Iterators.reverse(nums)
-        if second_great > num
-            return true
-        end
+        second_great > num && return true
         while !isempty(stk) && stk[end] < num
             second_great = pop!(stk)
         end

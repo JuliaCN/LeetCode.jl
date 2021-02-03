@@ -36,6 +36,6 @@ function find_max_consecutive_ones(nums::Vector{Int})
         num == 1 ? tmp += 1 : tmp = 0
         cnt = max(tmp, cnt)
     end
-    max(tmp, cnt)
+    return max(tmp, cnt)
 end
 ## @lc code=end

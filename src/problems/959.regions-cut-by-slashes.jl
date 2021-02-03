@@ -120,7 +120,6 @@ function regions_by_slashes(grid::Vector{String})
             end
         end
     end
-    display(new_grid)
     for r in 1 : len * 3
         for c in 1 : len * 3
             if new_grid[r, c] == 0

@@ -89,12 +89,8 @@ function ship_within_days(weights::Vector{Int}, D::Int)
                 tt = w
             end
         end
-        if cnt > D
-            lo = mid + 1
-        else
-            hi = mid
-        end
+        cnt > D ? (lo = mid + 1) : (hi = mid)
     end
-    lo
+    return lo
 end
 ## @lc code=end
