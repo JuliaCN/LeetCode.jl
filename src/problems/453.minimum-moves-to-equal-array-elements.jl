@@ -1,8 +1,8 @@
 # ---
 # title: 453. Minimum Moves to Equal Array Elements
 # id: problem453
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-02
 # difficulty: Easy
 # categories: Math
 # link: <https://leetcode.com/problems/minimum-moves-to-equal-array-elements/description/>
@@ -33,5 +33,7 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function min_moves_453(nums::Vector{Int})
+    sum(nums) - minimum(nums) * length(nums)
+end
 ## @lc code=end

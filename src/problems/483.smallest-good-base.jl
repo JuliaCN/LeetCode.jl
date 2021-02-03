@@ -1,8 +1,8 @@
 # ---
 # title: 483. Smallest Good Base
 # id: problem483
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-03
 # difficulty: Hard
 # categories: Math, Binary Search
 # link: <https://leetcode.com/problems/smallest-good-base/description/>
@@ -59,5 +59,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function smallest_good_base(n::Int)
+    for m in 62:-1:2
+        k = floor(Int, n^(1 / m))
+        k ≤ 1 && continue
+        s = (Int128(k)^(m + 1) - 1) ÷ (k - 1)
+        (s == n) && return k
+    end
+    n - 1
+end
 ## @lc code=end

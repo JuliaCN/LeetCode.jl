@@ -1,8 +1,8 @@
 # ---
 # title: 482. License Key Formatting
 # id: problem482
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-03
 # difficulty: Easy
 # categories: 
 # link: <https://leetcode.com/problems/license-key-formatting/description/>
@@ -55,5 +55,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function license_key_formatting(S::String, K::Int)
+    res = ""
+    cnt = 0
+    for i in length(S):-1:1
+        if cnt == K
+            res *= '-'
+            cnt = 0
+        end
+        if S[i] != '-'
+            res *= uppercase(S[i])
+            cnt += 1
+        end
+    end
+    reverse(res)
+end
 ## @lc code=end

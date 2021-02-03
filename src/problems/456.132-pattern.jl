@@ -1,8 +1,8 @@
 # ---
 # title: 456. 132 Pattern
 # id: problem456
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-02
 # difficulty: Medium
 # categories: Stack
 # link: <https://leetcode.com/problems/132-pattern/description/>
@@ -60,5 +60,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find132pattern(nums::Vector{Int})
+    stk = Int[]
+    second_great = typemin(Int)
+    for num in Iterators.reverse(nums)
+        second_great > num && return true
+        while !isempty(stk) && stk[end] < num
+            second_great = pop!(stk)
+        end
+        push!(stk, num)
+    end
+    return false
+end
 ## @lc code=end

@@ -1,8 +1,8 @@
 # ---
 # title: 458. Poor Pigs
 # id: problem458
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-02
 # difficulty: Hard
 # categories: Math
 # link: <https://leetcode.com/problems/poor-pigs/description/>
@@ -63,5 +63,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function poor_pigs(buckets::Int, minutesToDie::Int, minutesToTest::Int)
+    state = minutesToTest ÷ minutesToDie + 1
+    return ceil(Int, log(buckets) / log(state))
+end
 ## @lc code=end

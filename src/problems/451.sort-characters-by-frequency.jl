@@ -1,8 +1,8 @@
 # ---
 # title: 451. Sort Characters By Frequency
 # id: problem451
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-02
 # difficulty: Medium
 # categories: Hash Table, Heap
 # link: <https://leetcode.com/problems/sort-characters-by-frequency/description/>
@@ -61,5 +61,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function frequency_sort(s::String)
+    u_vec = codeunits(s)[:]
+    freq = fill(0, 128)
+    for n in codeunits(s)
+        freq[n] += 1
+    end
+    sort!(u_vec; by=x -> freq[x], rev = true)
+    String(u_vec)
+end
 ## @lc code=end

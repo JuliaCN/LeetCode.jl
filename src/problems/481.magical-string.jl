@@ -1,8 +1,8 @@
 # ---
 # title: 481. Magical String
 # id: problem481
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-03
 # difficulty: Medium
 # categories: 
 # link: <https://leetcode.com/problems/magical-string/description/>
@@ -46,5 +46,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function magical_string(n::Int)
+    res = "122"
+    idx = 2
+    while length(res) < n
+        res *= '1'^(res[idx+=1] - '0')
+        res *= '2'^(res[idx += 1] - '0')
+    end
+    return count(==('1'), SubString(res, 1, n))
+end
 ## @lc code=end

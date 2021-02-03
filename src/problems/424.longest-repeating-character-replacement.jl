@@ -1,8 +1,8 @@
 # ---
 # title: 424. Longest Repeating Character Replacement
 # id: problem424
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2020-02-02
 # difficulty: Medium
 # categories: Two Pointers, Sliding Window
 # link: <https://leetcode.com/problems/longest-repeating-character-replacement/description/>
@@ -58,5 +58,17 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function character_replacement(s::String, k::Int)
+    i, j, len, maxn = 1, 1, length(s), 0
+    cntr = fill(0, 26)
+    while j ≤ len
+        maxn = max(maxn, cntr[s[j] - 'A' + 1] += 1)
+        if maxn + k < j - i + 1
+            cntr[s[i] - 'A' + 1] -= 1
+            i += 1
+        end
+        j += 1
+    end
+    j - i
+end
 ## @lc code=end
