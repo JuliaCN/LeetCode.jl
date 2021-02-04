@@ -1,8 +1,8 @@
 # ---
 # title: 643. Maximum Average Subarray I
 # id: problem643
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-04
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/maximum-average-subarray-i/description/>
@@ -35,5 +35,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_max_average(nums::Vector{Int}, K::Int)
+    res = sum(@view(nums[1:K]))
+    tmp = res
+    i, j = 1, K + 1
+    while j ≤ length(nums)
+        tmp += nums[j] - nums[i]
+        res = max(tmp, res)
+        i += 1
+        j += 1
+    end
+    res / K
+end
 ## @lc code=end
