@@ -1,8 +1,8 @@
 # ---
 # title: 459. Repeated Substring Pattern
 # id: problem459
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-04
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/repeated-substring-pattern/description/>
@@ -46,5 +46,7 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function repeated_substring_pattern(s::String)
+    findnext(s, s^2, 2) != length(s) + 1 : 2 * length(s)
+end
 ## @lc code=end
