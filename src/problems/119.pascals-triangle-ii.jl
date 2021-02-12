@@ -1,8 +1,8 @@
 # ---
 # title: 119. Pascal's Triangle II
 # id: problem119
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-12
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/pascals-triangle-ii/description/>
@@ -58,5 +58,11 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function get_pascal_row(row_index::Int)
+    res = fill(1, row_index + 1)
+    for i in 2:row_index
+        res[2:i] .= @view(res[1:(i - 1)]) + @view(res[2:i])
+    end
+    res
+end
 ## @lc code=end
