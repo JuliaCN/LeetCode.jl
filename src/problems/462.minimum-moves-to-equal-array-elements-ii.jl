@@ -1,8 +1,8 @@
 # ---
 # title: 462. Minimum Moves to Equal Array Elements II
 # id: problem462
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-04
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/description/>
@@ -35,5 +35,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function min_moves2(nums::Vector{Int})
+    median = partialsort!(nums, (length(nums) + 1) ÷ 2)
+    return sum(abs, num - median for num in nums)
+end
 ## @lc code=end

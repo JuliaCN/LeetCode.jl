@@ -1,8 +1,8 @@
 # ---
 # title: 1432. Max Difference You Can Get From Changing an Integer
 # id: problem1432
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-06
 # difficulty: Medium
 # categories: String
 # link: <https://leetcode.com/problems/max-difference-you-can-get-from-changing-an-integer/description/>
@@ -80,5 +80,17 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_score_1432(card_points::Vector{Int}, k::Int)
+    len, tt = length(card_points), sum(card_points)
+    i, j = 1, len - k
+    minn = sum(card_points[i:j])
+    tmp = minn
+    while j < len
+        tmp -= card_points[i]
+        i += 1
+        tmp += card_points[j += 1]
+        minn = min(tmp, minn)
+    end
+    tt - minn
+end
 ## @lc code=end

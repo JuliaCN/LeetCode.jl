@@ -1,8 +1,8 @@
 # ---
 # title: 461. Hamming Distance
 # id: problem461
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-04
 # difficulty: Easy
 # categories: Bit Manipulation
 # link: <https://leetcode.com/problems/hamming-distance/description/>
@@ -38,5 +38,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function hamming_distance(x::Int, y::Int)
+    res = 0
+    while x != 0 || y != 0
+        res += (x & 1) ⊻ (y & 1)
+        x >>= 1
+        y >>= 1
+    end
+    res
+end
 ## @lc code=end
