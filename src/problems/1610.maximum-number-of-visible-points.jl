@@ -1,8 +1,8 @@
 # ---
 # title: 1610. Maximum Number of Visible Points
 # id: problem1610
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-17
 # difficulty: Hard
 # categories: Two Pointers, Geometry
 # link: <https://leetcode.com/problems/maximum-number-of-visible-points/description/>
@@ -80,5 +80,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_visible_points(points::Vector{Vector{Int}}, view_angle::Int,
+                            location::Vector{Int})
+    points .-= Ref(location)
+    len = length(points)
+    angles = [atand(point...) for point in points if point != [0, 0]]
+    res, samen = 0, len - length(angles)
+    sort!(angles)
+    angles = vcat(angles, angles .+ 360)
+    for i in 1:length(angles)÷2
+        idx = searchsortedlast(@view(angles[i+1:end]), angles[i] + view_angle)  
+        res = max(res, idx+1+samen)
+    end
+    res
+end
 ## @lc code=end
