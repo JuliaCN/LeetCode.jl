@@ -1,8 +1,8 @@
 # ---
 # title: 995. Minimum Number of K Consecutive Bit Flips
 # id: problem995
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-18
 # difficulty: Hard
 # categories: Greedy, Sliding Window
 # link: <https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/description/>
@@ -57,7 +57,20 @@
 # 
 # 
 ## @lc code=start
-using LeetCode
+using LeetCode, DataStructures
 
-## add your code here:
+function min_k_bit_flips(A::Vector{Int}, K::Int)
+    len, res = length(A), 0
+    q = Queue{Int}()
+    for i in 1:len
+        (!isempty(q) && first(q) <= i - K) && dequeue!(q)
+        
+        if (length(q) & 1) == A[i]
+            (i + K - 1 > len) && return -1 
+            enqueue!(q, i)
+            res += 1
+        end
+    end
+    res
+end
 ## @lc code=end
