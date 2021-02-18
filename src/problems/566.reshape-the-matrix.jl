@@ -1,8 +1,8 @@
 # ---
 # title: 566. Reshape the Matrix
 # id: problem566
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-02-17
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/reshape-the-matrix/description/>
@@ -65,9 +65,7 @@ using LeetCode
 function matrixReshape(nums::Vector{Vector{Int}}, r::Int, c::Int)
     m, n = length(nums), length(nums[1])
 
-    if m * n != r * c
-        return nums
-    end
+    m * n != r * c && return nums
 
     ans = [[0 for _ in 1: c] for _ in 1: r]
 
