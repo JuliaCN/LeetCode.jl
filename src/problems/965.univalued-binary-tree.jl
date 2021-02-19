@@ -1,8 +1,8 @@
 # ---
 # title: 965. Univalued Binary Tree
 # id: problem965
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-19
 # difficulty: Easy
 # categories: Tree
 # link: <https://leetcode.com/problems/univalued-binary-tree/description/>
@@ -46,5 +46,11 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function is_unival_tree(root::TreeNode)
+    is_unival_tree(::Nothing, ::Int) = true
+    is_unival_tree(root::TreeNode, val::Int) = 
+        (root.val != val) ? false :
+               is_unival_tree(root.left, val) && is_unival_tree(root.right, val)
+    return is_unival_tree(root, root.val)
+end
 ## @lc code=end
