@@ -1,8 +1,8 @@
 # ---
 # title: 969. Pancake Sorting
 # id: problem969
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-19
 # difficulty: Medium
 # categories: Array, Sort
 # link: <https://leetcode.com/problems/pancake-sorting/description/>
@@ -65,5 +65,24 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function pancake_sort(arr::Vector{Int})
+    len = length(arr)
+    res = Int[]
+    for i in len:-1:1
+        v = @view(arr[1:i])
+        agm = argmax(v)
+        if i != agm
+            append!(res, (agm, i))
+            pancake_sort!(arr, (agm, i))
+        end
+    end
+    return res
+end
+function pancake_sort!(arr::Vector{Int}, ops)
+    for op in ops
+        reverse!(@view(arr[1:op]))
+    end
+    return arr
+end
+
 ## @lc code=end
