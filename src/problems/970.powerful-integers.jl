@@ -1,8 +1,8 @@
 # ---
 # title: 970. Powerful Integers
 # id: problem970
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-19
 # difficulty: Easy
 # categories: Hash Table, Math
 # link: <https://leetcode.com/problems/powerful-integers/description/>
@@ -56,5 +56,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function powerful_integers(x::Int, y::Int, bound::Int)
+    res = Set{Int}()
+    i = 1
+    while i < bound
+        j = 1
+        while i + j ≤ bound
+            push!(res, i + j)
+            j *= y
+            (y == 1) && break
+        end
+        i *= x
+        (x == 1) && break
+    end
+    res
+end
 ## @lc code=end
