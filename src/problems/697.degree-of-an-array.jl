@@ -81,8 +81,4 @@ function find_shortest_sub_array(nums::Vector{Int})
     return min_length
 end
 
-
-
-
-## add your code here:
 ## @lc code=end
