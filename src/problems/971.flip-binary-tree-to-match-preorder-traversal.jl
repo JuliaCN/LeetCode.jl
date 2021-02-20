@@ -1,8 +1,8 @@
 # ---
 # title: 971. Flip Binary Tree To Match Preorder Traversal
 # id: problem971
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-20
 # difficulty: Medium
 # categories: Tree, Depth-first Search
 # link: <https://leetcode.com/problems/flip-binary-tree-to-match-preorder-traversal/description/>
@@ -72,5 +72,26 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function flip_match_voyage(root::TreeNode, voyage::Vector{Int})
+    res = Int[]
+    i = 1
+    dfs(::Nothing) = nothing
+    function dfs(node::TreeNode)
+        if node.val != voyage[i]
+            res = [-1]
+            return
+        end
+        i += 1
+        if i ≤ length(voyage) && node.left !== nothing && node.left.val != voyage[i]
+            push!(res, node.val)
+            dfs(node.right)
+            dfs(node.left)
+        else
+            dfs(node.left)
+            dfs(node.right)
+        end
+    end
+    dfs(root)
+    return (!isempty(res) && res[1] == -1) ? [-1] : res
+end
 ## @lc code=end
