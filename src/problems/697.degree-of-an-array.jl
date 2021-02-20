@@ -53,7 +53,7 @@
 using LeetCode
 
 function find_shortest_sub_array(nums::Vector{Int})
-    mp = Dict{Int, Vector{Int}}()
+    mp = Dict{Int,Vector{Int}}()
 
     ## mp[num] = [count, left_point, right_point]
     for (i, num) in enumerate(nums)
@@ -66,7 +66,7 @@ function find_shortest_sub_array(nums::Vector{Int})
     end
 
     max_num = min_length = 0
-    
+
     for (cnt, left, right) in values(mp)
         if cnt > max_num
             max_num = cnt

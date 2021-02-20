@@ -1,8 +1,8 @@
 # ---
 # title: 1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
 # id: problem1438
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-02-21
 # difficulty: Medium
 # categories: Array, Sliding Window
 # link: <https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/description/>
@@ -62,7 +62,40 @@
 # 
 # 
 ## @lc code=start
-using LeetCode
+using LeetCode, DataStructures
 
-## add your code here:
+function longest_subarray(nums::Vector{Int}, limit::Int)
+    queMin, queMax = Deque{Int}(), Deque{Int}()
+    n = length(nums)
+    left = right = 1
+    res = 0
+
+    while right <= n
+        while !isempty(queMin) && !isempty(queMax) && last(queMax) < nums[right]
+            pop!(queMax)
+        end
+        while !isempty(queMin) && !isempty(queMax) && last(queMin) > nums[right]
+            pop!(queMin)
+        end
+        push!(queMax, nums[right])
+        push!(queMin, nums[right])
+
+        while !isempty(queMin) && !isempty(queMax) && first(queMax) - first(queMin) > limit
+            if nums[left] == first(queMin)
+                popfirst!(queMin)
+            end
+            if nums[left] == first(queMax)
+                popfirst!(queMax)
+            end
+            left += 1
+        end
+        
+        res = max(res, right - left + 1)
+        right += 1
+       
+    end
+
+    return res
+end
+
 ## @lc code=end
