@@ -1,8 +1,8 @@
 # ---
 # title: 974. Subarray Sums Divisible by K
 # id: problem974
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-21
 # difficulty: Medium
 # categories: Array, Hash Table
 # link: <https://leetcode.com/problems/subarray-sums-divisible-by-k/description/>
@@ -36,5 +36,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function subarrays_div_by_k(A::Vector{Int}, K::Int)
+    dct = DefaultDict{Int,Int}(0)
+    dct[0] = 1
+    prex = res = 0
+    for num in A
+        prex = mod(num + prex, K)
+        res += dct[prex]
+        dct[prex] += 1
+    end
+    res
+end
 ## @lc code=end
