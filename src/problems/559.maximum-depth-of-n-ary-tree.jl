@@ -1,8 +1,8 @@
 # ---
 # title: 559. Maximum Depth of N-ary Tree
 # id: problem559
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-16
 # difficulty: Easy
 # categories: Tree, Depth-first Search, Breadth-first Search
 # link: <https://leetcode.com/problems/maximum-depth-of-n-ary-tree/description/>
@@ -50,5 +50,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_depth_559(tree::Vector{Vector{Int}})
+    isempty(tree) && return 0
+    q = Queue{Tuple{Int, Int}}()
+    enqueue!(q, (1, 1))
+    res = 1
+    while !isempty(q)
+        frt = dequeue!(q)
+        res = frt[2]
+        for son in tree[frt[1]]
+            enqueue!(q, (son, res + 1))
+        end
+    end
+    res
+end
 ## @lc code=end

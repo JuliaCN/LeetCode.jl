@@ -1,8 +1,8 @@
 # ---
 # title: 998. Maximum Binary Tree II
 # id: problem998
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-18
 # difficulty: Medium
 # categories: Tree
 # link: <https://leetcode.com/problems/maximum-binary-tree-ii/description/>
@@ -81,5 +81,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function insert_into_max_tree(root::TreeNode{Int}, val::Int)
+    tmp = TreeNode(val)
+    if val > root.val 
+        tmp.left = root
+        return tmp
+    end
+    root.right = insert_into_max_tree(root.right, val)
+    return root
+end
+insert_into_max_tree(::Nothing, val::Int) = TreeNode(val)
 ## @lc code=end

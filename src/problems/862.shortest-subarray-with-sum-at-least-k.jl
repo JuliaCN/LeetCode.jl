@@ -1,8 +1,8 @@
 # ---
 # title: 862. Shortest Subarray with Sum at Least K
 # id: problem862
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-17
 # difficulty: Hard
 # categories: Binary Search, Queue
 # link: <https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/description/>
@@ -52,5 +52,21 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function shortest_subarray(A::Vector{Int}, K::Int)
+    dq = Deque{Int}()
+    prex = fill(0, length(A) + 1)
+    cumsum!(@view(prex[2:end]), A)
+    res = typemax(Int)
+    for i in 1:length(prex) 
+        while !isempty(dq) && prex[i] - prex[first(dq)] ≥ K
+            res = min(res, i - first(dq))
+            popfirst!(dq)
+        end
+        while !isempty(dq) && prex[i] ≤ prex[last(dq)] 
+            pop!(dq)
+        end
+        push!(dq, i)
+    end
+    res == typemax(Int) ? -1 : res
+end
 ## @lc code=end

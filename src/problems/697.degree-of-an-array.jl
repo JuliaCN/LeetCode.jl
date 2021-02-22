@@ -1,8 +1,8 @@
 # ---
 # title: 697. Degree of an Array
 # id: problem697
-# author: Qling
-# date: 2021-12-20
+# author: Indigo
+# date: 2021-02-20
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/degree-of-an-array/description/>
@@ -55,30 +55,23 @@ using LeetCode
 function find_shortest_sub_array(nums::Vector{Int})
     mp = Dict{Int,Vector{Int}}()
 
-    ## mp[num] = [count, left_point, right_point]
-    for (i, num) in enumerate(nums)
-        if haskey(mp, num)
+    for (idx, num) in enumerate(nums)
+        if num in keys(mp)
             mp[num][1] += 1
-            mp[num][3] = i
+            mp[num][3] = idx
         else
-            mp[num] = [1, i, i]
+            mp[num] = [1, idx, idx]
         end
     end
-
-    max_num = min_length = 0
-
-    for (cnt, left, right) in values(mp)
-        if cnt > max_num
-            max_num = cnt
-            min_length = right - left + 1
-        elseif cnt == max_num
-            if min_length > (span = right - left + 1)
-                min_length = span
-            end
+    maxn = minlen = 0
+    for (cnt, l, r) in values(mp)
+        if maxn < cnt
+            maxn = cnt
+            minlen = r - l + 1
+        elseif maxn == cnt
+            minlen = min(minlen, r - l + 1)
         end
     end
-
-    return min_length
+    minlen
 end
-
 ## @lc code=end

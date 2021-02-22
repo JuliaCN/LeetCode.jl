@@ -1,8 +1,8 @@
 # ---
 # title: 561. Array Partition I
 # id: problem561
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-16
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/array-partition-i/description/>
@@ -48,5 +48,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function array_pair_sum(nums::Vector{Int})
+    sort!(nums)
+    sum(nums[1:2:end])
+end
 ## @lc code=end

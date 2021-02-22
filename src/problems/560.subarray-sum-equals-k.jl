@@ -1,8 +1,8 @@
 # ---
 # title: 560. Subarray Sum Equals K
 # id: problem560
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-16
 # difficulty: Medium
 # categories: Array, Hash Table
 # link: <https://leetcode.com/problems/subarray-sum-equals-k/description/>
@@ -42,5 +42,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function subarray_sum(nums::Vector{Int}, k::Int)
+    mp = DefaultDict(0, 0 => 1)
+    res, pre_sum = 0, 0
+    for num in nums
+        pre_sum += num
+        res += mp[pre_sum - k]
+        mp[pre_sum] += 1
+    end
+    res
+end
 ## @lc code=end
