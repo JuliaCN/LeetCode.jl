@@ -1,8 +1,8 @@
 # ---
 # title: 1052. Grumpy Bookstore Owner
 # id: problem1052
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-23
 # difficulty: Medium
 # categories: Array, Sliding Window
 # link: <https://leetcode.com/problems/grumpy-bookstore-owner/description/>
@@ -48,5 +48,21 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_satisfied(customers::Vector{Int}, grumpy::Vector{Int}, k::Int)
+    k ≥ length(grumpy) && return sum(customers)
+    total, len = 0, length(grumpy)
+    for i in eachindex(grumpy)
+        total += (1 - grumpy[i]) * customers[i]
+    end
+    window_sum = sum(@view(customers[1:k])' * @view(grumpy[1:k]))
+    i, j, maxn = 1, k, window_sum
+    while j + 1 ≤ len
+        window_sum -= grumpy[i] * customers[i]
+        i += 1
+        j += 1
+        window_sum += grumpy[j] * customers[j]
+        maxn = max(maxn, window_sum)
+    end
+    total + maxn
+end
 ## @lc code=end
