@@ -1,8 +1,8 @@
 # ---
 # title: 766. Toeplitz Matrix
 # id: problem766
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-02-22
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/toeplitz-matrix/description/>
@@ -63,5 +63,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function is_toeplitz_matrix(matrix::Vector{Vector{Int}})
+    m, n = length(matrix), length(matrix[1])
+
+    for i in 1: m - 1
+        (matrix[i][1: end - 1] != matrix[i + 1][2: end]) && return false
+    end
+
+    return true
+
+end
+
 ## @lc code=end
