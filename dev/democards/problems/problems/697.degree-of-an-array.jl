@@ -3,6 +3,7 @@ using LeetCode
 
 function find_shortest_sub_array(nums::Vector{Int})
     mp = Dict{Int,Vector{Int}}()
+
     for (idx, num) in enumerate(nums)
         if num in keys(mp)
             mp[num][1] += 1
