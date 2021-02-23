@@ -1,8 +1,8 @@
 # ---
 # title: 832. Flipping an Image
 # id: problem832
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-24
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/flipping-an-image/description/>
@@ -47,5 +47,11 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function flip_and_invert_image!(A)
+    for row in A
+        reverse!(row)
+        row .= 1 .- row
+    end
+    A
+end
 ## @lc code=end
