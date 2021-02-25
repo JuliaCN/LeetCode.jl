@@ -1,8 +1,8 @@
 # ---
 # title: 832. Flipping an Image
 # id: problem832
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-02-24
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/flipping-an-image/description/>

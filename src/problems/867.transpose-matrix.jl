@@ -1,8 +1,8 @@
 # ---
 # title: 867. Transpose Matrix
 # id: problem867
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-02-25
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/transpose-matrix/description/>
