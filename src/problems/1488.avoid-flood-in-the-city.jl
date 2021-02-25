@@ -1,8 +1,8 @@
 # ---
 # title: 1488. Avoid Flood in The City
 # id: problem1488
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-02-25
 # difficulty: Medium
 # categories: Array, Hash Table
 # link: <https://leetcode.com/problems/avoid-flood-in-the-city/description/>
