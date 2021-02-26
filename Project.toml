@@ -5,7 +5,6 @@ version = "0.1.0"
 
 [deps]
 BenchmarkTools = "6e4b80f9-dd63-53aa-95a3-0cdb28fa8baf"
-BisectPy = "e91bece4-a713-11e8-30d4-f1bdfdaa459e"
 DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 JuliaFormatter = "98e50ef6-434e-11e9-1051-2b60c6c9e899"
