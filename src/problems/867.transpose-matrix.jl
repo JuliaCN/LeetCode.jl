@@ -46,7 +46,7 @@
 ## @lc code=start
 using LeetCode
 
-function transpose(matrix::Vector{Vector{Int}})
+function transpose_867(matrix::Vector{Vector{Int}})
     len1, len2 = length(matrix), length(matrix[1])
     res = [fill(0, len1) for _ in 1:len2]
     for i in 1:len1, j in 1:len2
