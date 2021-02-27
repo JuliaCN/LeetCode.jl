@@ -1,8 +1,8 @@
 # ---
 # title: 867. Transpose Matrix
 # id: problem867
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-02-25
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/transpose-matrix/description/>
@@ -46,12 +46,15 @@
 ## @lc code=start
 using LeetCode
 
-function transpose_867(matrix::Vector{Vector{Int}})
-    len1, len2 = length(matrix), length(matrix[1])
-    res = [fill(0, len1) for _ in 1:len2]
-    for i in 1:len1, j in 1:len2
-        res[j][i] = matrix[i][j]
+function transpose_matrix(matrix::Vector{Vector{Int}})::Vector{Vector{Int}}
+    m, n = length(matrix), length(matrix[1])
+
+    transpose_mat = [[0 for _ = 1:m] for _ = 1:n]
+
+    for i = 1:m, j = 1:n
+        transpose_mat[j][i] = matrix[i][j]
     end
-    return res
+
+    return transpose_mat
 end
 ## @lc code=end

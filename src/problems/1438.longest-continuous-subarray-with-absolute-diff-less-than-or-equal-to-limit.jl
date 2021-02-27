@@ -1,7 +1,7 @@
 # ---
 # title: 1438. Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
 # id: problem1438
-# author: Indigo
+# author: Qling
 # date: 2021-02-21
 # difficulty: Medium
 # categories: Array, Sliding Window
@@ -62,30 +62,40 @@
 # 
 # 
 ## @lc code=start
+
 using LeetCode
 
 function longest_subarray(nums::Vector{Int}, limit::Int)
-    q_max, q_min = Deque{Int}(), Deque{Int}()
-    len = length(nums)
+    queMin, queMax = Deque{Int}(), Deque{Int}()
+    n = length(nums)
     left = right = 1
     res = 0
-    while right ≤ len
-        while !isempty(q_max) && last(q_max) < nums[right]
-            pop!(q_max)
+
+    while right <= n
+        while !isempty(queMin) && !isempty(queMax) && last(queMax) < nums[right]
+            pop!(queMax)
         end
-        while !isempty(q_min) && last(q_min) > nums[right]
-            pop!(q_min)
+        while !isempty(queMin) && !isempty(queMax) && last(queMin) > nums[right]
+            pop!(queMin)
         end
-        push!(q_max, nums[right])
-        push!(q_min, nums[right])
-        while !isempty(q_max) && !isempty(q_min) && first(q_max) - first(q_min) > limit
-            nums[left] == first(q_max) && popfirst!(q_max)
-            nums[left] == first(q_min) && popfirst!(q_min)
+        push!(queMax, nums[right])
+        push!(queMin, nums[right])
+
+        while !isempty(queMin) && !isempty(queMax) && first(queMax) - first(queMin) > limit
+            if nums[left] == first(queMin)
+                popfirst!(queMin)
+            end
+            if nums[left] == first(queMax)
+                popfirst!(queMax)
+            end
             left += 1
         end
+        
         res = max(res, right - left + 1)
         right += 1
+       
     end
+
     return res
 end
 ## @lc code=end
