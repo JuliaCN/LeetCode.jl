@@ -2,6 +2,7 @@
 
 [![Documentation][docs-dev-img]][docs-dev-url]
 [![Unit Test][action-img]][action-url]
+[![codecov](https://codecov.io/gh/JuliaCN/LeetCode.jl/branch/master/graph/badge.svg?token=Q87T0TRFYQ)](https://codecov.io/gh/JuliaCN/LeetCode.jl)
 [![Code Style: Blue][blue-img]][blue-url]
 
 
