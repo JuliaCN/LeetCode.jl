@@ -1,6 +1,7 @@
 # @lc code=start
 using LeetCode
 
+
 function max_satisfied(customers::Vector{Int}, grumpy::Vector{Int}, x::Int)
     n = length(customers)
     satisfied = sum(customers[1:x])
