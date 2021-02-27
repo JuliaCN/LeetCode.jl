@@ -62,7 +62,8 @@
 # 
 # 
 ## @lc code=start
-using LeetCode, DataStructures
+
+using LeetCode
 
 function longest_subarray(nums::Vector{Int}, limit::Int)
     queMin, queMax = Deque{Int}(), Deque{Int}()
@@ -97,5 +98,4 @@ function longest_subarray(nums::Vector{Int}, limit::Int)
 
     return res
 end
-
 ## @lc code=end

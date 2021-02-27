@@ -1,8 +1,8 @@
 # ---
 # title: 979. Distribute Coins in Binary Tree
 # id: problem979
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-21
 # difficulty: Medium
 # categories: Tree, Depth-first Search
 # link: <https://leetcode.com/problems/distribute-coins-in-binary-tree/description/>
@@ -72,5 +72,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function distribute_coins(root::TreeNode{Int})
+    dfs(::Nothing) = 0
+    function dfs(root::TreeNode{Int})
+        l = dfs(root.left)        
+        r = dfs(root.right)
+        res = res + abs(l) + abs(r)
+        root.val + l + r - 1
+    end
+    res = 0
+    dfs(root)
+    res
+end
 ## @lc code=end

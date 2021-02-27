@@ -1,8 +1,8 @@
 # ---
 # title: 976. Largest Perimeter Triangle
 # id: problem976
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-21
 # difficulty: Easy
 # categories: Math, Sort
 # link: <https://leetcode.com/problems/largest-perimeter-triangle/description/>
@@ -59,5 +59,11 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function largest_perimeter(A::Vector{Int})
+    sort!(A; rev=true)
+    for i in 1:(length(A) - 2)
+        (A[i] < A[i + 1] + A[i + 2]) && return A[i] + A[i + 1] + A[i + 2]
+    end
+    return 0
+end
 ## @lc code=end
