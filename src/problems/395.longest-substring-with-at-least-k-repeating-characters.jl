@@ -1,8 +1,8 @@
 # ---
 # title: 395. Longest Substring with At Least K Repeating Characters
 # id: problem395
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-02-27
 # difficulty: Medium
 # categories: Divide and Conquer, Recursion, Sliding Window
 # link: <https://leetcode.com/problems/longest-substring-with-at-least-k-repeating-characters/description/>
@@ -45,5 +45,22 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function longest_substring_395(s::String, k::Int)
+    function dfs(l::Int, r::Int)
+        l > r && return 0
+        cnt = counter(SubString(s, l, r))
+        split_set = Int[]
+        for i in l:r
+            (cnt[s[i]] < k) && push!(split_set, i)
+        end
+        isempty(split_set) && return r - l + 1
+        lft, res = l, 0
+        for rt in split_set 
+            res = max(res, dfs(lft, rt - 1))
+            lft = rt + 1
+        end
+        res
+    end
+    dfs(1, length(s))
+end
 ## @lc code=end
