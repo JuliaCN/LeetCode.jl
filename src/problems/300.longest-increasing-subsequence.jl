@@ -1,8 +1,8 @@
 # ---
 # title: 300. Longest Increasing Subsequence
 # id: problem300
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-03-04
 # difficulty: Medium
 # categories: Binary Search, Dynamic Programming
 # link: <https://leetcode.com/problems/longest-increasing-subsequence/description/>
@@ -61,5 +61,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function length_of_LIS(nums::Vector{Int})
+    f = [first(nums)]
+    for num in @view(nums[2:end])
+        if num > f[end] 
+            push!(f, num)
+        else
+            f[searchsortedfirst(f, num)] = num
+        end
+    end
+    length(f)
+end
 ## @lc code=end
