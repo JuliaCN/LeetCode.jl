@@ -1,8 +1,8 @@
 # ---
 # title: 354. Russian Doll Envelopes
 # id: problem354
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-03-04
 # difficulty: Hard
 # categories: Binary Search, Dynamic Programming
 # link: <https://leetcode.com/problems/russian-doll-envelopes/description/>
@@ -33,5 +33,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_envelopes(envelopes::Vector{Vector{Int}})
+    isempty(envelopes) && return 0
+    len = length(envelopes)
+    sort!(envelopes, by = x -> (x[1], -x[2]))
+    dp = [envelopes[1][2]]
+    for envo in @view(envelopes[2:end])
+        if envo[2] > dp[end]
+            push!(dp, envo[2])
+        else
+            dp[searchsortedfirst(dp, envo[2])] = envo[2]
+        end
+    end
+    length(dp)
+end
 ## @lc code=end
