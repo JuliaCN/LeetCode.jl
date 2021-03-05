@@ -1,8 +1,8 @@
 # ---
 # title: 518. Coin Change 2
 # id: problem518
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-03-03
 # difficulty: Medium
 # categories: 
 # link: <https://leetcode.com/problems/coin-change-2/description/>
@@ -60,5 +60,22 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function change(amount::Int, coins::Vector{Int})
+    :Int
+    dp = fill(0, amount)
+
+    for coin in coins
+        for x = coin:amount
+            if x == coin
+                dp[x] += 1
+            else
+                dp[x] += dp[x-coin]
+            end
+        end
+    end
+
+    return dp[amount]
+
+end
+
 ## @lc code=end
