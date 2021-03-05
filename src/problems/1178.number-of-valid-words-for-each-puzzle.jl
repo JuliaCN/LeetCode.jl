@@ -1,8 +1,8 @@
 # ---
 # title: 1178. Number of Valid Words for Each Puzzle
 # id: problem1178
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-02-26
 # difficulty: Hard
 # categories: Hash Table, Bit Manipulation
 # link: <https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/description/>
@@ -56,5 +56,45 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function get_bit_mask(word::String)::Int
+    mask = 0
+
+    for c in word
+        i = Int(c) - Int('a')
+        mask |= 1 << i
+    end
+
+    return mask
+end
+
+function find_num_of_valid_words(
+    words::Vector{String},
+    puzzles::Vector{String},
+)::Vector{Int}
+    letter_frequencies = Dict{Int,Int}()
+
+    for word in words
+        mask = get_bit_mask(word)
+        letter_frequencies[mask] = get(letter_frequencies, mask, 0) + 1
+    end
+
+    solution = fill(0, length(puzzles))
+
+    for (i, puzzle) in enumerate(puzzles)
+        mask = get_bit_mask(puzzle)
+        sub_mask = mask
+        first_bit_index = Int(puzzle[1]) - Int('a')
+
+        while true
+            if (sub_mask >> first_bit_index & 1) == 1
+                solution[i] += get(letter_frequencies, sub_mask, 0)
+            end
+            (sub_mask == 0) && break
+
+            sub_mask = (sub_mask - 1) & mask
+        end
+    end
+
+    return solution
+end
 ## @lc code=end
