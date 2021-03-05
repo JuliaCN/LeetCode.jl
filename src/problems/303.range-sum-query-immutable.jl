@@ -1,8 +1,8 @@
 # ---
 # title: 303. Range Sum Query - Immutable
 # id: problem303
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-03-01
 # difficulty: Easy
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/range-sum-query-immutable/description/>
@@ -49,5 +49,22 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+struct NumArray
+    sums::Vector
+    function NumArray(nums::Vector)
+        n = length(nums)
+        sums = nums[:]
+
+        for i = 2:n
+            sums[i] = sums[i-1] + nums[i]
+        end
+        new(sums)
+    end
+end
+
+function sum_range(nums::NumArray, i::Int, j::Int)
+    i == j && return 0
+    i == 1 && return nums.sums[j]
+    return nums.sums[j] - nums.sums[i-1]
+end
 ## @lc code=end

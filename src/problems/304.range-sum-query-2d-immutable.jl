@@ -1,8 +1,8 @@
 # ---
 # title: 304. Range Sum Query 2D - Immutable
 # id: problem304
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-03-02
 # difficulty: Medium
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/range-sum-query-2d-immutable/description/>
@@ -44,5 +44,21 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+struct NumMatrix
+    sums::Vector{Vector{Int}}
+    function NumMatrix(matrix::Vector{Vector{Int}})
+        m, n = length(matrix), length(matrix[1])
+        sums = [fill(0, n + 1) for _ = 1:m]
+
+        for i = 1:m, j = 1:n
+            sums[i][j+1] = sums[i][j] + matrix[i][j]
+        end
+
+        new(sums)
+    end
+end
+
+sum_region(matrix::NumMatrix, row1::Int, col1::Int, row2::Int, col2::Int) =
+    sum(matrix.sums[i][col2+1] - matrix.sums[i][col1] for i = row1:row2)
+
 ## @lc code=end
