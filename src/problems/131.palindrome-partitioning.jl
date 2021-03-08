@@ -32,17 +32,9 @@ using LeetCode
 
 function partition_ps(s::String)
     len = length(s)
-    is_ps = fill(false, len, len)
-    is_ps[1, 1] = true
-    for i in 2:len
-        is_ps[i, i] = true
-        is_ps[i-1, i] = s[i-1] == s[i]
-        @inbounds for k in 1:min(i-1, len - i)
-            s[i - k] == s[i + k] ? is_ps[i-k, i + k] = true : break
-        end
-        @inbounds for k in 1:min(i - 2, len - i)
-            s[i - 1 - k] == s[i + k] ? is_ps[i - 1 - k, i + k] = true : break
-        end
+    is_ps = fill(true, len, len)
+    for i in len:-1:1, j in (i + 1):len
+        is_ps[i, j] = (s[i] == s[j]) && is_ps[i + 1, j - 1]
     end
     function dfs(start::Int)
         start == len && return [[SubString(s, len, len)]]
