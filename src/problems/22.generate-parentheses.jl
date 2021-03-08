@@ -1,8 +1,8 @@
 # ---
 # title: 22. Generate Parentheses
 # id: problem22
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-03-08
 # difficulty: Medium
 # categories: String, Backtracking
 # link: <https://leetcode.com/problems/generate-parentheses/description/>
@@ -40,5 +40,25 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function _generate!(p::String, left::Int, right::Int, res::Vector{String})
+    if right == 0
+        push!(res, p)
+    else
+        if left > 0
+            _generate!(string(p, "("), left - 1, right, res)
+        end
+
+        if right > left
+            _generate!(string(p, ")"), left, right - 1, res)
+        end
+    end
+end
+
+function generate_parenthesis(n::Int)::Vector{String}
+    res = String[]
+    _generate!("", n, n, res)
+    return res
+end
+
+
 ## @lc code=end

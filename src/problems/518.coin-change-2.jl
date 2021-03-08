@@ -60,22 +60,14 @@
 ## @lc code=start
 using LeetCode
 
-function change(amount::Int, coins::Vector{Int})
-    :Int
+function change(amount::Int, coins::Vector{Int})::Int
     dp = fill(0, amount)
 
-    for coin in coins
-        for x = coin:amount
-            if x == coin
-                dp[x] += 1
-            else
-                dp[x] += dp[x-coin]
-            end
-        end
+    for coin in coins, x in coin:amount
+        dp[x] += (x == coin) ? 1 : dp[x - coin]
     end
 
     return dp[amount]
-
 end
 
 ## @lc code=end
