@@ -10,7 +10,7 @@ function next_greater_elements(nums::Vector{Int})
         end
         (rd == 1) && push!(stk, idx)
     end
-    res
+    return res
 end
 # @lc code=end
 

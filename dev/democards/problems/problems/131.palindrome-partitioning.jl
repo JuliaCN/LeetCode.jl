@@ -16,9 +16,9 @@ function partition_ps(s::String)
                 push!(res, pushfirst!(it, SubString(s, start, ed)))
             end
         end
-        res
+        return res
     end
-    dfs(1)
+    return dfs(1)
 end
 # @lc code=end
 
