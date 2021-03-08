@@ -1,8 +1,8 @@
 # ---
 # title: 132. Palindrome Partitioning II
 # id: problem132
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-03-08
 # difficulty: Hard
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/palindrome-partitioning-ii/description/>
@@ -52,5 +52,23 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function partition_ps132(s::String)
+    len = length(s)
+    is_ps = fill(true, len, len)
+    dp = fill(typemax(Int) >> 4, len)
+    dp[1] = 0
+    for i in len:-1:1, j in (i + 1):len
+        is_ps[i, j] = (s[i] == s[j]) && is_ps[i + 1, j - 1]
+    end
+    for i in 2:len
+        if is_ps[1, i]
+            dp[i] = 0
+        else
+            for j in 2:i
+                (is_ps[j, i]) && (dp[i] = min(dp[i], dp[j - 1] + 1))
+            end
+        end
+    end
+    return dp[end]
+end
 ## @lc code=end
