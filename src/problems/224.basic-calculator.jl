@@ -1,8 +1,8 @@
 # ---
 # title: 224. Basic Calculator
 # id: problem224
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-03-10
 # difficulty: Hard
 # categories: Math, Stack
 # link: <https://leetcode.com/problems/basic-calculator/description/>
@@ -45,5 +45,27 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function calculate(s::String)::Int
+    res, num, sign, stk = 0, 0, 1, []
+    for c in s
+        if isdigit(c)
+            num = 10 * num + parse(Int, c)
+        elseif c in ['-', '+']
+            res += num * sign
+            num = 0
+            sign = (c == '-') ? -1 : 1
+        elseif c == '('
+            push!(stk, res)
+            push!(stk, sign)
+            res, sign = 0, 1
+        elseif c == ')'
+            res += num * sign
+            res *= pop!(stk)
+            res += pop!(stk)
+            num = 0
+        end
+    end
+
+    return res + num * sign
+end
 ## @lc code=end
