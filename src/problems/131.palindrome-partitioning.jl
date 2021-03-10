@@ -40,13 +40,13 @@ function partition_ps(s::String)
         start == len && return [[SubString(s, len, len)]]
         res = Vector{String}[]
         for ed in start:len
-            !is_ps[start, ed] && continue 
+            !is_ps[start, ed] && continue
             for it in dfs(ed + 1)
                 push!(res, pushfirst!(it, SubString(s, start, ed)))
-            end            
+            end
         end
-        res
+        return res
     end
-    dfs(1)
+    return dfs(1)
 end
 ## @lc code=end
