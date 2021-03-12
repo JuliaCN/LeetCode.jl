@@ -75,7 +75,7 @@ function is_valid_verialization(preorder::String)
             i += 1
         else
             while i <= len && preorder[i] != ','
-                i += 1                
+                i += 1
             end
             cnt += 1
         end

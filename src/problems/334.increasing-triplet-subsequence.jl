@@ -1,8 +1,8 @@
 # ---
 # title: 334. Increasing Triplet Subsequence
 # id: problem334
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-03-12
 # difficulty: Medium
 # categories: 
 # link: <https://leetcode.com/problems/increasing-triplet-subsequence/description/>
@@ -41,5 +41,21 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function increasing_triplet(nums::Vector{Int})
+    fst_min = scd_min = nums[1]
+    len = length(nums)
+    idx = 2
+    while idx <= len
+        (nums[idx] != fst_min) && break
+        idx += 1
+    end
+    (idx >= len) && return false
+    fst_min, scd_min = minmax(fst_min, nums[idx])
+    for num in @view(nums[(idx + 1):end])
+        (num > scd_min) && return true
+        scd_min = num
+        fst_min, scd_min = minmax(fst_min, scd_min)
+    end
+    return false
+end
 ## @lc code=end
