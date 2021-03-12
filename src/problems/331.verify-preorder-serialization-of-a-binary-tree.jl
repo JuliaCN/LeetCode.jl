@@ -1,8 +1,8 @@
 # ---
 # title: 331. Verify Preorder Serialization of a Binary Tree
 # id: problem331
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-03-12
 # difficulty: Medium
 # categories: Stack
 # link: <https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/description/>
@@ -63,5 +63,23 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function is_valid_verialization(preorder::String)
+    len = length(preorder)
+    i, cnt = 1, 1
+    while i <= len
+        (cnt == 0) && return false
+        if preorder[i] == ','
+            i += 1
+        elseif preorder[i] == '#'
+            cnt -= 1
+            i += 1
+        else
+            while i <= len && preorder[i] != ','
+                i += 1                
+            end
+            cnt += 1
+        end
+    end
+    return cnt == 0
+end
 ## @lc code=end
