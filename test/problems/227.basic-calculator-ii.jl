@@ -3,7 +3,4 @@
     @test calculate_ii("14-3/2") == 13
     @test calculate_ii("3/2") == 1
     @test calculate_ii("3+ 5 / 2") == 5
-
-
-
 end
