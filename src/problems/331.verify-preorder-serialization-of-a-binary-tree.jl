@@ -1,8 +1,8 @@
 # ---
 # title: 331. Verify Preorder Serialization of a Binary Tree
 # id: problem331
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-03-12
 # difficulty: Medium
 # categories: Stack
 # link: <https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/description/>
@@ -63,5 +63,17 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function is_valid_serialization(preorder::String)::Bool
+    p = split(preorder, ",")
+    slot = 1
+
+    for node in p
+        slot == 0 && return false
+
+        slot = (node == "#") ? (slot - 1) : (slot + 1)
+    end
+
+    return slot == 0
+end
+
 ## @lc code=end
