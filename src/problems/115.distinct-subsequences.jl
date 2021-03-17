@@ -1,8 +1,8 @@
 # ---
 # title: 115. Distinct Subsequences
 # id: problem115
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-03-17
 # difficulty: Hard
 # categories: String, Dynamic Programming
 # link: <https://leetcode.com/problems/distinct-subsequences/description/>
@@ -59,5 +59,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function num_distinct(s::String, t::String)
+    len_s, len_t = length(s), length(t)
+    dp = fill(0, len_s, len_t)
+    dp[1, 1] = s[1] == t[1]
+    for i in 2:len_s
+        dp[i, 1] = dp[i - 1, 1] + (s[i] == t[1])
+    end
+    for j in 2:len_t, i in j:len_s
+        dp[i, j] = dp[i - 1, j] + dp[i - 1, j - 1] * (s[i] == t[j])
+    end
+    dp[end, end]
+end
 ## @lc code=end
