@@ -1,8 +1,8 @@
 # ---
 # title: 1047. Remove All Adjacent Duplicates In String
 # id: problem1047
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-03-09
 # difficulty: Easy
 # categories: Stack
 # link: <https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/description/>
@@ -40,5 +40,17 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function remove_duplicates(S::String)::String
+    stk = Char[]
+
+    for ch in S
+        if !isempty(stk) && stk[end] == ch
+            pop!(stk)
+        else
+            push!(stk, ch)
+        end
+    end
+
+    return join(stk)
+end
 ## @lc code=end
