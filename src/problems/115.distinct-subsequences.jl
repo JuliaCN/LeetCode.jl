@@ -61,6 +61,7 @@ using LeetCode
 
 function num_distinct(s::String, t::String)
     len_s, len_t = length(s), length(t)
+    (len_t == 0) && return 1
     dp = fill(0, len_s, len_t)
     dp[1, 1] = s[1] == t[1]
     for i in 2:len_s
