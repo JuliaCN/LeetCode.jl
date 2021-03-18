@@ -1,8 +1,8 @@
 # ---
 # title: 92. Reverse Linked List II
 # id: problem92
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-03-18
 # difficulty: Medium
 # categories: Linked List
 # link: <https://leetcode.com/problems/reverse-linked-list-ii/description/>
@@ -25,5 +25,23 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function reverse_between(head::ListNode, m::Int, n::Int)::ListNode
+    (isnothing(head) || m == n) && return head
+    p = dummy = ListNode()
+    next!(dummy, head)
+    for _ = 1:m-1
+        p = next(p)
+    end
+
+    tail = next(p)
+
+    for _ = 1:n-m
+        tmp = next(p)
+        next!(p, next(tail))
+        next!(tail, next(next(tail)))
+        next!(next(p), tmp)
+    end
+
+    return next(dummy)
+end
 ## @lc code=end
