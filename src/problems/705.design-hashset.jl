@@ -1,8 +1,8 @@
 # ---
 # title: 705. Design HashSet
 # id: problem705
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-03-14
 # difficulty: Easy
 # categories: Hash Table, Design
 # link: <https://leetcode.com/problems/design-hashset/description/>
@@ -44,5 +44,34 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+struct MyHashSet
+    buckets::Int
+    table::Vector{Vector{T}} where {T}
+    MyHashSet() = new(1009, [[] for _ = 1:1009])
+end
+
+hash_705(hash_set::MyHashSet, key::Int) = mod1(key, hash_set.buckets)
+
+function add_705!(hash_set::MyHashSet, key)
+    hash_key = hash_705(hash_set, key)
+
+    key ∈ hash_set.table[hash_key] && return
+
+    push!(hash_set.table[hash_key], key)
+    return
+end
+
+function remove_705!(hash_set::MyHashSet, key::Int)
+    hash_key = hash_705(hash_set, key)
+
+    key ∉ hash_set.table[hash_key] && return
+
+    deleteat!(hash_set.table[hash_key], hash_set.table[hash_key] .== key)
+end
+
+function contains_705(hash_set::MyHashSet, key::Int)
+    hash_key = hash_705(hash_set, key)
+
+    return key ∈ hash_set.table[hash_key]
+end
 ## @lc code=end

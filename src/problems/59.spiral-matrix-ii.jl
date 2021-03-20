@@ -1,8 +1,8 @@
 # ---
 # title: 59. Spiral Matrix II
 # id: problem59
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-03-16
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/spiral-matrix-ii/description/>
@@ -42,5 +42,20 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function generate_matrix(n::Int)::Vector{Vector{Int}}
+    mat = [fill(0, n) for _ = 1:n]
+    i, j, di, dj = 1, 1, 0, 1
+
+    for k = 1:n*n
+        mat[i][j] = k
+        if mat[mod1(i + di, n)][mod1(j + dj, n)] != 0
+            di, dj = dj, -di
+        end
+
+        i += di
+        j += dj
+    end
+
+    return mat
+end
 ## @lc code=end

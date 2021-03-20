@@ -1,7 +1,7 @@
 # ---
 # title: 115. Distinct Subsequences
 # id: problem115
-# author: Indigo
+# author: Qling
 # date: 2021-03-17
 # difficulty: Hard
 # categories: String, Dynamic Programming
@@ -59,17 +59,16 @@
 ## @lc code=start
 using LeetCode
 
-function num_distinct(s::String, t::String)
-    len_s, len_t = length(s), length(t)
-    (len_t == 0) && return 1
-    dp = fill(0, len_s, len_t)
-    dp[1, 1] = s[1] == t[1]
-    for i in 2:len_s
-        dp[i, 1] = dp[i - 1, 1] + (s[i] == t[1])
+function num_distinct(s::String, t::String)::Int32
+    m, n = length(s) + 1, length(t) + 1
+    dp = fill(0, m, n)
+
+    dp[:, 1] .= 1
+
+    for i = 2:m, j = 2:n
+        dp[i, j] = (s[i-1] == t[j-1]) ? (dp[i-1, j-1] + dp[i-1, j]) : dp[i-1, j]
     end
-    for j in 2:len_t, i in j:len_s
-        dp[i, j] = dp[i - 1, j] + dp[i - 1, j - 1] * (s[i] == t[j])
-    end
-    dp[end, end]
+
+    return dp[m, n]
 end
 ## @lc code=end
