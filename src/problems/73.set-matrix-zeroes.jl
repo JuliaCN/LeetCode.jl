@@ -1,8 +1,8 @@
 # ---
 # title: 73. Set Matrix Zeroes
 # id: problem73
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-03-25
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/set-matrix-zeroes/description/>
@@ -54,5 +54,36 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function set_zeroes(matrix::Vector{Vector{Int}})::Vector{Vector{Int}}
+    is_col = false
+    m, n = length(matrix), length(matrix[1])
+
+    for i in 1:m
+        matrix[i][1] == 0 && (is_col = true)
+        
+        for j in 2:n
+            matrix[i][j] == 0 && (matrix[i][1] = matrix[1][j] = 0)
+        end
+    end
+
+    for i in 2:m, j in 2:n
+        (matrix[i][1] == 0 || matrix[1][j] == 0) && (matrix[i][j] = 0)
+    end
+
+    ## See if the first row needs to be set to zero as well
+    if matrix[1][1] == 0
+        for j in 1: n
+            matrix[1][j] = 0
+        end
+    end
+
+    ## See if the first column needs to be set to zero as well 
+    if is_col
+        for i in 1:m
+            matrix[i][1] = 0
+        end
+    end
+
+    return matrix
+end
 ## @lc code=end

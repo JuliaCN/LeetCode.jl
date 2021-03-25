@@ -25,7 +25,7 @@
 ## @lc code=start
 using LeetCode
 
-function reverse_between(head::ListNode, m::Int, n::Int)::ListNode
+function reverse_between(head::ListNode{Int}, m::Int, n::Int)::ListNode
     (isnothing(head) || m == n) && return head
     p = dummy = ListNode()
     next!(dummy, head)
