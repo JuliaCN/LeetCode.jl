@@ -1,8 +1,8 @@
 # ---
 # title: 1603. Design Parking System
 # id: problem1603
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-03-25
 # difficulty: Easy
 # categories: Design
 # link: <https://leetcode.com/problems/design-parking-system/description/>
@@ -50,5 +50,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+struct ParkingSystem
+    A::Vector{Int}
+    ParkingSystem(big, median, small) = new([big, median, small])
+end
+
+function add_car(parking::ParkingSystem, car_type::Int)::Bool
+    parking.A[car_type] -= 1
+    return parking.A[car_type] >= 0
+end
 ## @lc code=end

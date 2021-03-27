@@ -1,8 +1,8 @@
 # ---
 # title: 191. Number of 1 Bits
 # id: problem191
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-03-25
 # difficulty: Easy
 # categories: Bit Manipulation
 # link: <https://leetcode.com/problems/number-of-1-bits/description/>
@@ -60,5 +60,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function hamming_weight(n::UInt32)::Int
+    count = 0
+    while n > 0
+        n &= n - 1
+        count += 1
+    end
+
+    return count
+end
 ## @lc code=end

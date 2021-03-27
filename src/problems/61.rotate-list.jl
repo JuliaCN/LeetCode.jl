@@ -1,8 +1,8 @@
 # ---
 # title: 61. Rotate List
 # id: problem61
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-03-27
 # difficulty: Medium
 # categories: Linked List, Two Pointers
 # link: <https://leetcode.com/problems/rotate-list/description/>
@@ -45,5 +45,26 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function rotate_right(head::ListNode, k::Int)::ListNode
+    isnothing(head) && return head
+
+    last_element, length = head, 1
+    while !isnothing(next(last_element))
+        last_element = next(last_element)
+        length += 1
+    end
+
+    k = k % length
+    next!(last_element, head)
+
+    temp_element = head
+    for _ = 0:(length-k-2)
+        temp_element = next(temp_element)
+    end
+
+    answer = next(temp_element)
+    next!(temp_element, nothing)
+
+    return answer
+end
 ## @lc code=end
