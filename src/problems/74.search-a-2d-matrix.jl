@@ -1,7 +1,7 @@
 # ---
 # title: 74. Search a 2D Matrix
 # id: problem74
-# authore Qling
+# author: Qling
 # date: 2021-03-30
 # difficulty: Medium
 # categories: Array, Binary Search
