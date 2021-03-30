@@ -1,8 +1,8 @@
 # ---
 # title: 74. Search a 2D Matrix
 # id: problem74
-# author: Tian Jun
-# date: 2020-10-31
+# authore Qling
+# date: 2021-03-30
 # difficulty: Medium
 # categories: Array, Binary Search
 # link: <https://leetcode.com/problems/search-a-2d-matrix/description/>
@@ -58,5 +58,24 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function search_matrix(matrix::Vector{Vector{Int}}, target::Int)::Bool
+    m, n = length(matrix), length(matrix[1])
+
+    (m == 0 || n == 0) && return false
+    left, right = 1, m * n
+
+    while left <= right
+        mid = left + (right - left) ÷ 2
+        num = matrix[mid÷n][mod1(mid, n)]
+        if num == target
+            return true
+        elseif num < target
+            left = mid + 1
+        else
+            right = mid - 1
+        end
+    end
+
+    return false
+end
 ## @lc code=end

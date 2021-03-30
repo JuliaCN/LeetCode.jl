@@ -1,8 +1,8 @@
 # ---
 # title: 190. Reverse Bits
 # id: problem190
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-03-29
 # difficulty: Easy
 # categories: Bit Manipulation
 # link: <https://leetcode.com/problems/reverse-bits/description/>
@@ -50,5 +50,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function reverse_bit(n::UInt32)::UInt32
+    ret, power = 0, 31
+    while n != 0
+        ret += (n & 1) << power
+        power -= 1
+        n = n >> 1
+    end
+
+    return ret
+end
 ## @lc code=end
