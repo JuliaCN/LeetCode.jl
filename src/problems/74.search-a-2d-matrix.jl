@@ -66,7 +66,7 @@ function search_matrix(matrix::Vector{Vector{Int}}, target::Int)::Bool
 
     while left <= right
         mid = left + (right - left) ÷ 2
-        num = matrix[mid÷n][mod1(mid, n)]
+        num = matrix[mid ÷ n][mod1(mid, n)]
         if num == target
             return true
         elseif num < target
