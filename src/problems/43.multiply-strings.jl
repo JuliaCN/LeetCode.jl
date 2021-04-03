@@ -1,8 +1,8 @@
 # ---
 # title: 43. Multiply Strings
 # id: problem43
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-04-03
 # difficulty: Medium
 # categories: Math, String
 # link: <https://leetcode.com/problems/multiply-strings/description/>
@@ -45,5 +45,31 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function trap(height::Vector{Int})::Int32
+    left, right = 1, length(height)
+    left_max, right_max = 0, 0
+    res = 0
+
+    while left <= right
+        if height[left] < height[right]
+            if (span = left_max - height[left]) > 0
+                res += span
+            else
+                left_max = height[left]
+            end
+
+            left += 1
+        else
+            if (span = right_max - height[right]) > 0
+                res += span
+            else
+                right_max = height[right]
+            end
+
+            right -= 1
+        end
+    end
+
+    return res
+end
 ## @lc code=end
