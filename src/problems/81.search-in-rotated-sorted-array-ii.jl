@@ -1,8 +1,8 @@
 # ---
 # title: 81. Search in Rotated Sorted Array II
 # id: problem81
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-04-09
 # difficulty: Medium
 # categories: Array, Binary Search
 # link: <https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/>
@@ -41,5 +41,29 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function search(nums::Vector{Int}, target::Int)::Bool
+    left, right = 1, length(nums)
+    while left <= right
+        mid = (left + right) >> 1
+        (nums[mid] == target) && return true
+        if nums[mid] == nums[left]
+            left += 1
+        elseif nums[mid] <= nums[right]
+            if nums[mid] < target <= nums[right]
+                left = mid + 1
+            else
+                right = mid - 1
+            end
+        else
+            if nums[left] <= target < nums[mid]
+                right = mid - 1
+            else
+                left = mid + 1
+            end
+        end
+    end
+
+    return false
+end
 ## @lc code=end
+
