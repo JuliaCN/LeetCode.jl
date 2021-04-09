@@ -1,8 +1,8 @@
 # ---
 # title: 719. Find K-th Smallest Pair Distance
 # id: problem719
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-04-07
 # difficulty: Hard
 # categories: Array, Binary Search, Heap
 # link: <https://leetcode.com/problems/find-k-th-smallest-pair-distance/description/>
@@ -39,5 +39,31 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function smallest_distance_pair(nums::Vector{Int}, k::Int)::Int
+    sort!(nums)
+    n = length(nums)
+    function count_not_greater(diff)
+        i, ans = 1, 0
+        for j in 2: n
+            while nums[j] - nums[i] > diff
+                i += 1
+            ans += j - i
+            end
+        end
+
+        return ans
+    end
+
+    left, right = 0, nums[end] - nums[1]
+    while left <= right
+        mid = (left + right) >> 1
+        if count_not_greater(mid) >= k
+            right = mid - 1
+        else
+            left = mid + 1
+        end
+    end
+
+    return left
+end
 ## @lc code=end
