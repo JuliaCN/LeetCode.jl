@@ -1,8 +1,8 @@
 # ---
 # title: 45. Jump Game II
 # id: problem45
-# author: Indigo
-# date: 2021-04-14
+# author: Tian Jun
+# date: 2020-10-31
 # difficulty: Hard
 # categories: Array, Greedy
 # link: <https://leetcode.com/problems/jump-game-ii/description/>
@@ -49,16 +49,5 @@
 ## @lc code=start
 using LeetCode
 
-function jump45(nums::Vector{Int})
-    max_pos, len, ed, step = 1, length(nums), 1, 0
-    for i in 1:len-1
-        max_pos = max(max_pos, i + nums[i])
-        if i == ed
-            ed = max_pos
-            step += 1
-        end
-    end
-    step
-end
-
+## add your code here:
 ## @lc code=end
