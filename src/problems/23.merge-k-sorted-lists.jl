@@ -62,7 +62,6 @@
 # 
 ## @lc code=start
 using LeetCode
-using DataStructures
 
 Base.isless(l1::ListNode, l2::ListNode) = l1.val < l2.val
     
