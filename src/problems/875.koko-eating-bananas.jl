@@ -1,8 +1,8 @@
 # ---
 # title: 875. Koko Eating Bananas
 # id: problem875
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-04-07
 # difficulty: Medium
 # categories: Binary Search
 # link: <https://leetcode.com/problems/koko-eating-bananas/description/>
@@ -61,5 +61,25 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function min_eating_speed(piles::Vector{Int}, h::Int)::Int
+    function possible(mid)
+        t = 0
+        for pile in piles
+            t += cld(pile, mid)
+        end
+        return t <= h
+    end
+
+    left, right = 1, maximum(piles)
+    while left <= right
+        mid = (left + right) >> 1
+        if possible(mid)
+            right = mid - 1
+        else
+            left = mid + 1
+        end
+    end
+
+    return left
+end
 ## @lc code=end

@@ -1,7 +1,7 @@
 # ---
 # title: 26. Remove Duplicates from Sorted Array
 # id: problem26
-# author: Tian Jun
+# author: Qling
 # date: 2020-10-31
 # difficulty: Easy
 # categories: Array, Two Pointers
@@ -69,5 +69,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function remove_duplicates1!(nums::Vector{Int})::Int
+    j = 2
+    for i in 2: length(nums)
+        if nums[i] != nums[j - 1]
+            nums[j] = nums[i]
+            j += 1
+        end
+    end
+
+    return j - 1
+end
+
 ## @lc code=end

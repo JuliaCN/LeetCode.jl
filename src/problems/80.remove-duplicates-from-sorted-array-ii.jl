@@ -1,8 +1,8 @@
 # ---
 # title: 80. Remove Duplicates from Sorted Array II
 # id: problem80
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-04-06
 # difficulty: Medium
 # categories: Array, Two Pointers
 # link: <https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/description/>
@@ -70,5 +70,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function remove_duplicates2!(nums::Vector{Int})::Int
+    j = 3
+    for i in 3: length(nums)
+        if nums[i] != nums[j - 2]
+            nums[j] = nums[i]
+            j += 1
+        end
+    end
+
+    return j - 1
+end
 ## @lc code=end

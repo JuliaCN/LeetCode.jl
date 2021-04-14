@@ -1,8 +1,8 @@
 # ---
 # title: 475. Heaters
 # id: problem475
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-04-07
 # difficulty: Medium
 # categories: Binary Search
 # link: <https://leetcode.com/problems/heaters/description/>
@@ -61,5 +61,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_radius(houses::Vector{Int}, heaters::Vector{Int})::Int
+    sort!(heaters)
+    heaters = [-Inf; heaters; Inf]
+    res = 0
+    for house in houses
+        loc = searchsortedfirst(heaters, house)
+        res = max(res, min(house - heaters[loc - 1], heaters[loc] - house))
+    end
+
+    return convert(Int, res)
+end
+
 ## @lc code=end
