@@ -106,6 +106,6 @@ function find_min_height_trees(n::Int, edges::Vector{Vector{Int}})
             res = [u; q]
         end
     end
-    res
+    return res
 end
 ## @lc code=end
