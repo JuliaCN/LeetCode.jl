@@ -5,6 +5,7 @@ export LC
 
 using Markdown
 using DataStructures
+using OffsetArrays
 include("common.jl")
 include("problems/problems.jl")
 
