@@ -70,6 +70,6 @@ function xor_operation(n::Int, start::Int)
         res ⊻= start
         start += 2
     end
-    res
+    return res
 end
 ## @lc code=end
