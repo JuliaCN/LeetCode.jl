@@ -1,8 +1,8 @@
 # ---
 # title: 1486. XOR Operation in an Array
 # id: problem1486
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-05-14
 # difficulty: Easy
 # categories: Array, Bit Manipulation
 # link: <https://leetcode.com/problems/xor-operation-in-an-array/description/>
@@ -64,5 +64,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function xor_operation(n::Int, start::Int)
+    res = 0
+    for _ in 1:n
+        res ⊻= start
+        start += 2
+    end
+    res
+end
 ## @lc code=end
