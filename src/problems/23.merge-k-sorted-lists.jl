@@ -64,8 +64,8 @@
 using LeetCode
 
 Base.isless(l1::ListNode, l2::ListNode) = l1.val < l2.val
-    
-function merge_k_lists(lists::Vector{T}) where T <: Union{ListNode{Int}, Nothing}
+
+function merge_k_lists(lists::Vector{T}) where {T<:Union{ListNode{Int},Nothing}}
     pq = BinaryMinHeap{ListNode{Int}}()
     for l in lists
         isnothing(l) || push!(pq, l)
@@ -78,6 +78,6 @@ function merge_k_lists(lists::Vector{T}) where T <: Union{ListNode{Int}, Nothing
         tp_list = tp_list.next
         isnothing(tp_list) || push!(pq, tp_list)
     end
-    res.next   
+    return res.next
 end
 ## @lc code=end
