@@ -1,8 +1,8 @@
 # ---
 # title: 1310. XOR Queries of a Subarray
 # id: problem1310
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-05-14
 # difficulty: Medium
 # categories: Bit Manipulation
 # link: <https://leetcode.com/problems/xor-queries-of-a-subarray/description/>
@@ -57,5 +57,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function xor_queries(arr::Vector{Int}, queries::Vector{Vector{Int}})
+    pushfirst!(arr, 0)
+    off_arr = OffsetArray(arr, -1)
+    for i in 1:(length(arr) - 1)
+        @inbounds off_arr[i] = off_arr[i] ⊻ off_arr[i - 1]
+    end
+    res = fill(0, length(queries))
+    for (idx, q) in enumerate(queries)
+        @inbounds res[idx] = off_arr[q[2] + 1] ⊻ off_arr[q[1]]
+    end
+    return res
+end
 ## @lc code=end

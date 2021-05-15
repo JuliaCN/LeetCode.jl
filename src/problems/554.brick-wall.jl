@@ -1,8 +1,8 @@
 # ---
 # title: 554. Brick Wall
 # id: problem554
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-05-13
 # difficulty: Medium
 # categories: Hash Table
 # link: <https://leetcode.com/problems/brick-wall/description/>
@@ -54,5 +54,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function least_bricks(wall::Vector{Vector{Int}})
+    tb = Dict{Int, Int}()
+    for row in wall
+        acc = 0
+        for i in @view(row[1:end-1])
+            acc += i
+            haskey(tb, acc) ? tb[acc] += 1 : tb[acc] = 1
+        end
+    end
+    isempty(tb) && return length(wall)
+    length(wall) - maximum(values(tb))
+end
 ## @lc code=end
