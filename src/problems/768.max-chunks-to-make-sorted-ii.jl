@@ -1,8 +1,8 @@
 # ---
 # title: 768. Max Chunks To Make Sorted II
 # id: problem768
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-05-15
 # difficulty: Hard
 # categories: Array
 # link: <https://leetcode.com/problems/max-chunks-to-make-sorted-ii/description/>
@@ -54,5 +54,29 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_chunks_to_sorted(arr::Vector{Int})::Int
+    count = DefaultDict(1)
+    non_zeros, res = 0, 0
+
+    for (a, b) in zip(arr, sort(arr))
+        count[a] += 1
+        if count[a] == 0
+            non_zeros -= 1
+        elseif count[a] == 1
+            non_zeros += 1
+        end
+
+        count[b] -= 1
+        if count[b] == 0
+            non_zeros -= 1
+        elseif count[b] == -1
+            non_zeros += 1
+        end
+
+        (non_zeros == 0) && (res += 1)
+    end
+
+    return res
+end
+
 ## @lc code=end
