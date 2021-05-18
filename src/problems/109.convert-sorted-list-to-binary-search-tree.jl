@@ -1,8 +1,8 @@
 # ---
 # title: 109. Convert Sorted List to Binary Search Tree
 # id: problem109
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-05-18
 # difficulty: Medium
 # categories: Linked List, Depth-first Search
 # link: <https://leetcode.com/problems/convert-sorted-list-to-binary-search-tree/description/>
@@ -64,5 +64,24 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function sorted_list_to_bst(head::Union{ListNode, Nothing})::Union{TreeNode, Nothing}
+    isnothing(head) && return
+    isnothing(head.next) && return TreeNode(head.val)
+
+    slow, fast = head, head.next.next
+    while !isnothing(fast) && !isnothing(fast.next)
+        fast = fast.next.next
+        slow = slow.next
+    end
+
+    tmp = slow.next
+    slow.next = nothing
+
+    root = TreeNode(tmp.val)
+    root.left = sorted_list_to_bst(head)
+    root.right = sorted_list_to_bst(tmp.next)
+
+    return root
+end
+
 ## @lc code=end
