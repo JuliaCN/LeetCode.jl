@@ -15,4 +15,5 @@
             )
         )
     @test t == convert(TreeNode{Int}, xs)
+    @test t == TreeNode{Int}(xs)
 end
