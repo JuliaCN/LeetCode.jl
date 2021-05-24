@@ -49,6 +49,8 @@ function Base.convert(::Type{TreeNode{V}}, xs::Vector) where {V}
     return root
 end
 
+TreeNode{V}(xs::Vector) where {V} = convert(TreeNode{V}, xs)
+
 function _build_tree!(t::TreeNode, xs::Vector, i::Int=1)
     n = length(xs)
     i_left = i * 2

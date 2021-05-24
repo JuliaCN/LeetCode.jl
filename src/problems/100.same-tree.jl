@@ -1,8 +1,8 @@
 # ---
 # title: 100. Same Tree
 # id: problem100
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-05-23
 # difficulty: Easy
 # categories: Tree, Depth-first Search
 # link: <https://leetcode.com/problems/same-tree/description/>
@@ -57,5 +57,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function is_same_tree(p::Union{TreeNode, Nothing}, q::Union{TreeNode, Nothing})::Bool
+    if isnothing(p) && isnothing(q)
+        return true
+    elseif isnothing(p) || isnothing(q)
+        return false
+    elseif p.val != q.val
+        return false
+    else
+        return is_same_tree(p.left, p.left) && is_same_tree(p.right, p.right)
+    end
+end
+
 ## @lc code=end
