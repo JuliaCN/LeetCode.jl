@@ -1,8 +1,8 @@
 # ---
 # title: 129. Sum Root to Leaf Numbers
 # id: problem129
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-05-24
 # difficulty: Medium
 # categories: Tree, Depth-first Search
 # link: <https://leetcode.com/problems/sum-root-to-leaf-numbers/description/>
@@ -53,6 +53,28 @@
 # 
 ## @lc code=start
 using LeetCode
+using DataStructures
 
-## add your code here:
+function sum_numbers(root::TreeNode)::Int
+    queue, res = Deque{TreeNode}(), 0
+
+    !isnothing(root) && push!(queue, root)
+
+    while !isempty(queue)
+        node = popfirst!(queue)
+        if isnothing(node.left) && isnothing(node.right)
+            res += node.val
+        end
+        if !isnothing(node.left)
+            node.left.val += node.val * 10
+            push!(queue, node.left)
+        end
+        if !isnothing(node.right)
+            node.right.val += node.val * 10
+            push!(queue, node.right)
+        end
+    end
+
+    return res
+end
 ## @lc code=end
