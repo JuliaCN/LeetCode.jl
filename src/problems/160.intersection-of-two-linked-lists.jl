@@ -1,8 +1,8 @@
 # ---
 # title: 160. Intersection of Two Linked Lists
 # id: problem160
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-05-19
 # difficulty: Easy
 # categories: Linked List
 # link: <https://leetcode.com/problems/intersection-of-two-linked-lists/description/>
@@ -71,5 +71,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function get_intersection_node(head_a::ListNode, head_b::ListNode)::Union{ListNode,Nothing}
+    isnothing(head_a) || isnothing(head_b) && return nothing
+    pa, pb = head_a, head_b
+
+    while pa != pb
+        pa = isnothing(pa) ? head_b : pa.next
+        pb = isnothing(pb) ? head_a : pb.next
+    end
+
+    return pa
+end
 ## @lc code=end

@@ -1,8 +1,8 @@
 # ---
 # title: 24. Swap Nodes in Pairs
 # id: problem24
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-05-17
 # difficulty: Medium
 # categories: Linked List
 # link: <https://leetcode.com/problems/swap-nodes-in-pairs/description/>
@@ -53,5 +53,21 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function swap_pairs(head::ListNode)::ListNode
+    pre = dummpy = ListNode()
+    pre.next = head
+
+    while !isnothing(next(pre)) && !isnothing(next(next(pre)))
+        a = pre.next
+        b = a.next
+
+        ## `pre->a->b->b.next` => `pre->b->a->b.next`
+        pre.next, b.next, a.next = b, a, b.next
+
+        pre = a
+    end
+
+    return dummpy.next
+end
+
 ## @lc code=end
