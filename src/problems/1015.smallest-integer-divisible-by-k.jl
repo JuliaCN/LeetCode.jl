@@ -64,6 +64,5 @@ function smallest_repunit_div_by_k(K::Int)
         r == 0 && return len
         len += 1
     end
-    return len
 end
 ## @lc code=end

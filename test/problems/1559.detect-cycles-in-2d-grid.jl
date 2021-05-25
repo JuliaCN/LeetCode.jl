@@ -10,4 +10,8 @@
     @test contains_cycle([["a","b","b"],
                         ["b","z","b"],
                         ["b","b","a"]]) == false
+    @test contains_cycle([["a","a","a","a"],
+                        ["a","a","a","a"],
+                        ["a","a","a","a"],
+                        ["a","a","a","a"]]) == true
 end
