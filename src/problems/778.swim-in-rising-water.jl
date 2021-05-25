@@ -86,7 +86,7 @@ function swim_in_water(grid::Vector{Vector{Int}})
             end
         end
     end
-    return 0
+    ## return 0
 end
 
 ## @lc code=end
