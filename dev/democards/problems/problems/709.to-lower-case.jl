@@ -1,7 +1,7 @@
 # @lc code=start
 using LeetCode
 
-function toLowerCase(s::String)::String
+function to_lower_case(s::String)::String
     return lowercase(s)
 end
 # @lc code=end
