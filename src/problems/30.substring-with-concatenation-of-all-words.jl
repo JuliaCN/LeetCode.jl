@@ -59,7 +59,7 @@
 using LeetCode
 using DataStructures
 
-function find_substring(s::String, words::Vector{String})::Vector{Int}
+function find_word_concatenation(s::String, words::Vector{String})::Vector{Int}
     (length(words) == 0 || length(words[1]) == 0) && return 0
     words_map = counter(words)
     results_indices = Int[]
