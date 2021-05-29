@@ -70,10 +70,10 @@ function num_submatrix_sum_target(matrix::AbstractMatrix{Int}, target::Int)
         pref_sum[i, j] = pref_sum[i - 1, j] + pref_sum[i, j - 1] + matrix[i, j] - pref_sum[i - 1, j - 1]
     end
     res = 0
-    for top in 1:m, bot in top:m
+    for tp in 1:m, bot in tp:m
         sum_cnt = Dict{Int, Int}()
         for r in 1:n
-            rows_sum = pref_sum[bot, r] - pref_sum[top - 1, r]
+            rows_sum = pref_sum[bot, r] - pref_sum[tp - 1, r]
             rows_sum == target && (res += 1)
             res += get(sum_cnt, rows_sum - target, 0)
             sum_cnt[rows_sum] = get(sum_cnt, rows_sum, 0) + 1
