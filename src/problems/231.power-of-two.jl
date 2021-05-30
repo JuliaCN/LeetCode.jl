@@ -69,5 +69,7 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function is_power_of_two(n::Int)
+    return n > 0 && (n & (n - 1)) == 0
+end
 ## @lc code=end
