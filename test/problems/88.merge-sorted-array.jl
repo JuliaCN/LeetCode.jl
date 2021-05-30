@@ -7,8 +7,10 @@
     merge_sorted_array(nums1, m, nums2, n)
     @test nums1 == [1, 2, 2, 3, 5, 6]
 
+    nums1 = [1, 2, 3, 0, 0, 0]
+    m = 3
     nums2 = [0, 0, 1]
     n = 3
     merge_sorted_array(nums1, m, nums2, n)
-    @test nums1 == [0, 0, 1, 1, 2, 2]
+    @test nums1 == [0, 0, 1, 1, 2, 3]
 end
