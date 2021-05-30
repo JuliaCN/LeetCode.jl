@@ -1,8 +1,8 @@
 # ---
 # title: 447. Number of Boomerangs
 # id: problem447
-# author: Tian Jun
-# date: 2020-10-31
+# author: Qling
+# date: 2021-05-30
 # difficulty: Medium
 # categories: Hash Table, Math
 # link: <https://leetcode.com/problems/number-of-boomerangs/description/>
@@ -56,6 +56,23 @@
 # 
 ## @lc code=start
 using LeetCode
+using DataStructures
 
-## add your code here:
+function number_of_boomerangs(points::Vector{Vector{Int}})::Int
+    res = 0
+    for p in points
+        distance_frequency = DefaultDict(0)
+        for q in points
+            p == q && continue
+            dis = (p[1] - q[1]) ^ 2 + (p[2] - q[2]) ^ 2
+            distance_frequency[dis] += 1
+        end
+
+        for k in values(distance_frequency)
+            k > 1 && (res += k * (k - 1))
+        end
+    end
+
+    return res
+end
 ## @lc code=end
