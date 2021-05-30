@@ -4,4 +4,5 @@
     @test find_min_arrow_shots([[1, 2], [2, 3], [3, 4], [4, 5]]) == 2
     @test find_min_arrow_shots([[2, 3], [2, 3]]) == 1
     @test find_min_arrow_shots([[1, 2]]) == 1
+    @test find_min_arrow_shots(Vector{Int}[]) == 0
 end

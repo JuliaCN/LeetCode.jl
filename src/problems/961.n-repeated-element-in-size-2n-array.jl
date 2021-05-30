@@ -58,9 +58,8 @@ function repeated_n_times(A::Vector{Int})
             return A[i]
         end
     end
-    """
-    3X3X OR 3XX3 OR X3X3
-    """
+    
+    ## 3X3X OR 3XX3 OR X3X3
     return (A[1] == A[3] || A[1] == A[4]) ? A[1] : A[2]
 end
 ## @lc code=end

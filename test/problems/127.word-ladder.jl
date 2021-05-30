@@ -4570,4 +4570,5 @@
     ]
     @test ladder_length(s, t, wl) == 20
     @test ladder_length("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]) == 5
+    @test ladder_length("hit", "cog", ["hot", "dot", "dog", "lot", "log"]) == 0
 end

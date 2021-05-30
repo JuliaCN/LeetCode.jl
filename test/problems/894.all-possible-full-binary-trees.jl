@@ -38,4 +38,5 @@
                            TreeNode{Int64}(0, nothing, nothing))]
     @test all_possible_fbt(3) == [TreeNode{Int64}(0, TreeNode{Int64}(0, nothing, nothing),
                            TreeNode{Int64}(0, nothing, nothing))]
+    @test all_possible_fbt(2) == TreeNode{Int}[]
 end

@@ -69,10 +69,9 @@
 using LeetCode
 
 function UFS()
-
     function findRoot(u::Int, farther::Vector{Int})
         return (u == farther[u]) ? (u) : (farther[u] = findRoot(farther[u], farther))        
-    end 
+    end
     
     function merge(u::Int, v::Int, farther::Vector{Int})
         u = findRoot(u, farther)
@@ -97,6 +96,5 @@ function findRedundantConnection(edges::Vector{Vector{Int}})::Vector{Int}
         end
         merge(edge..., farther)
     end
-    []
 end
 ## @lc code=end
