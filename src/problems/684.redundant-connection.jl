@@ -97,6 +97,5 @@ function findRedundantConnection(edges::Vector{Vector{Int}})::Vector{Int}
         end
         merge(edge..., farther)
     end
-    []
 end
 ## @lc code=end
