@@ -16,7 +16,8 @@ function max_sum_submatrix(matrix::AbstractMatrix{Int}, k::Int)
         push!(ss, 0)
         for r in 1:n
             rows_sum = pref_sum[bot, r] - pref_sum[tp - 1, r]
-            res = max(res, rows_sum - deref((ss, searchsortedfirst(ss, rows_sum - k))))
+            tk = searchsortedfirst(ss, rows_sum - k)
+            tk != pastendsemitoken(ss) && (res = max(res, rows_sum - deref((ss, tk))))
             push!(ss, rows_sum)
         end
     end
