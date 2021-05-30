@@ -2,7 +2,6 @@
 using LeetCode
 
 function UFS()
-
     function findRoot(u::Int, farther::Vector{Int})
         return (u == farther[u]) ? (u) : (farther[u] = findRoot(farther[u], farther))
     end
@@ -30,7 +29,6 @@ function findRedundantConnection(edges::Vector{Vector{Int}})::Vector{Int}
         end
         merge(edge..., farther)
     end
-    []
 end
 # @lc code=end
 

@@ -19,6 +19,7 @@ function merge_sorted_array(
     while n > 0
         nums1[i] = nums2[n]
         n -= 1
+        i -= 1
     end
 
     return nothing

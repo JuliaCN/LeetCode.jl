@@ -5,7 +5,7 @@ function all_possible_fbt(N::Int)
     cache_res = [TreeNode{Int}[] for i in 1:N]
     cache_res[1] = [TreeNode(0)]
     if N % 2 == 0
-        return TreeNode[]
+        return TreeNode{Int}[]
     end
     for n in 3:2:N
         for i in 1:2:n-1

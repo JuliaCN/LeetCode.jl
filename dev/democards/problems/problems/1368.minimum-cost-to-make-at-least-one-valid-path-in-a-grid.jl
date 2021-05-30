@@ -18,7 +18,6 @@ function min_cost1368(grid::Matrix)
             grid[x, y] == i ? pushfirst!(dq, (nx, ny, w)) : push!(dq, (nx, ny, w + 1))
         end
     end
-    return 0
 end
 # @lc code=end
 

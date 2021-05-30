@@ -2,9 +2,8 @@
 using LeetCode
 function wiggle_max_length(nums::Vector{Int})::Int
     len = length(nums)
-    if len < 2
-        return len
-    end
+    (len < 2) && return len
+
     pre_diff = nums[2] - nums[1]
     res = (pre_diff == 0 ? 1 : 2)
     for i in 3:len
