@@ -71,6 +71,5 @@ function bitwise_complement(N::Int)
             return res
         end
     end
-    res
 end
 ## @lc code=end

@@ -63,6 +63,5 @@ function first_missing_positive(nums::Vector{Int})
     for i in 1:len
         (nums[i] != i) && return i
     end
-    return 0
 end
 ## @lc code=end

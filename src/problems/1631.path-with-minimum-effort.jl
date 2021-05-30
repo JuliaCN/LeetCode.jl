@@ -93,6 +93,5 @@ function minimum_effort_path(heights::Vector{Vector{Int}})
             return dist
         end
     end
-    return 0
 end
 ## @lc code=end
