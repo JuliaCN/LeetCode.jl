@@ -64,7 +64,7 @@ function number_of_boomerangs(points::Vector{Vector{Int}})::Int
         distance_frequency = DefaultDict(0)
         for q in points
             p == q && continue
-            dis = (p[1] - q[1]) ^ 2 + (p[2] - q[2]) ^ 2
+            dis = (p[1] - q[1])^2 + (p[2] - q[2])^2
             distance_frequency[dis] += 1
         end
 

@@ -76,7 +76,7 @@ function find_word_concatenation(s::String, words::Vector{String})::Vector{Int}
             ## Add the word to the 'words_seen' map
             words_seen[word] += 1
             ## No need to process further if the word has higher frequency than required
-            words_seen[word] > get!(words_map, word, 0) && break
+            words_seen[word] > get(words_map, word, 0) && break
 
             ## Store index if we have found all the words
             (j + 1 == words_count) && push!(results_indices, i)
