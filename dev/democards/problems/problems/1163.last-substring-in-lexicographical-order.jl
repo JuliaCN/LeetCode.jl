@@ -16,6 +16,10 @@ function last_substring(s::String)
             new_window_len = 1
         end
     end
+    if new_window_len > window_len
+        window_len = new_window_len
+        pos = mc_pos[end] - new_window_len + 1
+    end
     return s[pos:end]
 end
 # @lc code=end

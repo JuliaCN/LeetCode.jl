@@ -8,53 +8,18 @@ Explanation: The optimal solution is to remove the last three elements and the f
 using LeetCode
 
 function min_operations(nums::Vector{Int}, x::Int)
-    rnums = reverse(nums)
-    if nums[1] &gt; x &amp;&amp; rnums[1] &gt; x
-        return -1
-    end
+    target = sum(nums) - x
+    target &lt; 0 &amp;&amp; return -1
+    println(target)
+    left, right, maxn = 0, 0, -1
     len = length(nums)
-    rlm, llm, res = len, len, len
-    for i in 1:(len - 1)
-        if ((nums[i + 1] += nums[i]) &gt; x)
-            rlm = i
-            break
+    while right &lt; len
+        target -= nums[right += 1]
+        while target &lt; 0
+            target += nums[left += 1]
         end
+        (target == 0) &amp;&amp; (maxn = max(maxn, right - left))
     end
-    if rm == len
-        if nums[end] &lt; x
-            return -1
-        else
-            return len
-        end
-    end
-    for i in 1:(len - 1)
-        if ((rnums[i + 1] += rnums[i]) &gt; x)
-            llm = i
-            break
-        end
-    end
-    i, j = 1, llm
-    while i &lt;= rlm &amp;&amp; j &gt; 0
-        if nums[i] == x
-            res = min(i, res)
-            i += 1
-        elseif rnums[j] == x
-            res = min(j, res)
-            j -= 1
-        else
-            sm = nums[i] + rnums[j]
-            # println(i,&quot; &quot;, j,&quot; &quot;, sm)
-            if sm == x
-                res = min(i + j, res)
-                i += 1
-                j -= 1
-            elseif sm &gt; x
-                j -= 1
-            else
-                i += 1
-            end
-        end
-    end
-    return res
+    maxn == -1 ? maxn : len - maxn
 end
-# @lc code=end</code></pre><hr/><p><em>This page was generated using <a href="https://github.com/johnnychen94/DemoCards.jl">DemoCards.jl</a> and <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../1648.sell-diminishing-valued-colored-balls/">« 1648. Sell Diminishing-Valued Colored Balls</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Monday 31 May 2021 12:59">Monday 31 May 2021</span>. Using Julia version 1.6.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+# @lc code=end</code></pre><hr/><p><em>This page was generated using <a href="https://github.com/johnnychen94/DemoCards.jl">DemoCards.jl</a> and <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../1648.sell-diminishing-valued-colored-balls/">« 1648. Sell Diminishing-Valued Colored Balls</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Monday 31 May 2021 14:57">Monday 31 May 2021</span>. Using Julia version 1.6.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
