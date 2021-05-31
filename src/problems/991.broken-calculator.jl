@@ -1,8 +1,8 @@
 # ---
 # title: 991. Broken Calculator
 # id: problem991
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-05-31
 # difficulty: Medium
 # categories: Math, Greedy
 # link: <https://leetcode.com/problems/broken-calculator/description/>
@@ -68,5 +68,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function broken_calc(x::Integer, y::Integer)
+    cnt = 0
+    while x < y
+        isodd(y) ? (y += 1) : y >>= 1
+        cnt += 1
+    end
+    return cnt + x - y
+end
 ## @lc code=end
