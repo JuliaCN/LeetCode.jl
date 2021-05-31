@@ -6,6 +6,12 @@
     ]) == false
 
     @test validTicTacToe([
+        'X' '_' '_'
+        '_' '_' '_'
+        '_' '_' '_'
+    ]) == true
+
+    @test validTicTacToe([
         'X' 'O' 'X'
         '_' 'X' '_'
         '_' '_' '_'
@@ -22,4 +28,17 @@
         'O' '_' 'O'
         'X' 'O' 'X'
     ]) == true
+
+    @test validTicTacToe([
+        'X' 'O' 'X'
+        '_' 'O' '_'
+        'X' 'O' 'X'
+    ]) == false
+
+    @test validTicTacToe([
+        'X' 'O' 'X'
+        'O' '_' '_'
+        'X' 'O' 'X'
+    ]) == true
+
 end
