@@ -70,11 +70,10 @@ using LeetCode
 
 function broken_calc(x::Integer, y::Integer)
     cnt = 0
-    while x != y
-        y < x && return cnt + x - y
+    while x < y
         isodd(y) ? (y += 1) : y >>= 1
         cnt += 1
     end
-    return cnt
+    return cnt + x - y
 end
 ## @lc code=end
