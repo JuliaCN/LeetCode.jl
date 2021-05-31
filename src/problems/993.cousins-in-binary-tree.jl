@@ -78,7 +78,7 @@ function is_cousins(root::TreeNode{Int}, x, y)
         end
         length(rec_parent) == 0 && continue
         length(rec_parent) == 1 && return false
-        length(rec_parent) == 2 && return rec_parent[1] == rec_parent[2]        
+        length(rec_parent) == 2 && return rec_parent[1] != rec_parent[2]        
     end
 end
 ## @lc code=end
