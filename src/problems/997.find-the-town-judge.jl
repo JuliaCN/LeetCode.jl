@@ -1,8 +1,8 @@
 # ---
 # title: 997. Find the Town Judge
 # id: problem997
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-05-31
 # difficulty: Easy
 # categories: Graph
 # link: <https://leetcode.com/problems/find-the-town-judge/description/>
@@ -81,5 +81,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_judge(N::Int, trust::Vector{Vector{Int}})
+    cnt = fill(0, N)
+    for t in trust
+        cnt[t[1]] -= 1
+        cnt[t[2]] += 1
+    end
+    res = findfirst(==(N - 1), cnt)
+    return isnothing(res) ? -1 : res
+end
 ## @lc code=end

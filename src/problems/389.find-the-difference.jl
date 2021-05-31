@@ -73,6 +73,5 @@ function find_the_difference(s::String, t::String)::Char
             return Char(ch)
         end
     end
-    return t[end]
 end
 ## @lc code=end
