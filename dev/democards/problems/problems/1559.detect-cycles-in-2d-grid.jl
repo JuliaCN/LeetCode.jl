@@ -2,6 +2,7 @@
 using LeetCode
 
 function contains_cycle(grid::Vector{Vector{String}})
+    dirs = ((1, 0, 3), (-1, 0, 0), (0, 1, 1), (0, -1, 2))
     function bfs(grid::Vector{Vector{String}}, r::Int, c::Int)
         sym = grid[r][c]
         q_pos = Queue{Pair{Int, Int}}()
@@ -12,41 +13,16 @@ function contains_cycle(grid::Vector{Vector{String}})
         while !isempty(q_pos)
             pos = dequeue!(q_pos)
             dir = dequeue!(q_dir)
-            if pos.first < nr && dir != 3 && sym == grid[pos.first + 1][pos.second]
-                if visited[pos.first + 1, pos.second]
-                    return true
-                else
-                    visited[pos.first + 1, pos.second] = true
-                    enqueue!(q_pos, Pair(pos.first + 1, pos.second))
-                    enqueue!(q_dir, 1)
-                end
-            end
-            if pos.first > 1 && dir != 1 && sym == grid[pos.first - 1][pos.second]
-                if visited[pos.first - 1, pos.second]
-                    return true
-                else
-                    visited[pos.first - 1, pos.second] = true
-                    enqueue!(q_pos, Pair(pos.first - 1, pos.second))
-                    enqueue!(q_dir, 3)
-                end
-            end
-            if pos.second < nc && dir != 2 && sym == grid[pos.first][pos.second + 1]
-                if visited[pos.first, pos.second + 1]
-                    return true
-                else
-                    visited[pos.first, pos.second + 1] = true
-                    enqueue!(q_pos, Pair(pos.first, pos.second + 1))
-                    enqueue!(q_dir, 4)
-                end
-            end
-
-            if pos.second > 1 && dir != 4 && sym == grid[pos.first][pos.second - 1]
-                if visited[pos.first, pos.second - 1]
-                    return true
-                else
-                    visited[pos.first, pos.second - 1] = true
-                    enqueue!(q_pos, Pair(pos.first, pos.second - 1))
-                    enqueue!(q_dir, 2)
+            for d in dirs
+                nx, ny = pos.first + d[1], pos.second + d[2]
+                if 0 < nx <= nr && 0 < ny <= nc && dir != d[3] && sym == grid[nx][ny]
+                    if visited[nx, ny]
+                        return true
+                    else
+                        visited[nx, ny] = true
+                        enqueue!(q_pos, Pair(nx, ny))
+                        enqueue!(q_dir, 3 - d[3])
+                    end
                 end
             end
         end
