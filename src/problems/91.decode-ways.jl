@@ -74,16 +74,13 @@
 using LeetCode
 
 function num_decodings(s)
-    st = Set{String}()
-    for i in 1:26
-        push!(st, string(i))
+    len = length(s)
+    dp = fill(0, len + 1)
+    dp[1] = 1
+    for i in 1:len
+        s[i] != '0' && (dp[i + 1] += dp[i])
+        (i > 1 && s[i - 1] != '0' && parse(Int, s[i-1:i]) <= 26) && (dp[i + 1] += dp[i - 1])
     end
-    function _num_decoding(s::AbstractString, st::Set{String})::Int
-        (length(s) == 0 || s[1] == '0') && return 0
-        res = s ∈ st ? 1 : 0
-        (length(s) > 1 && SubString(s, 1, 2) ∈ st) && (res += _num_decoding(SubString(s, 3), st))
-        return _num_decoding(SubString(s, 2), st) + res
-    end
-    _num_decoding(s, st)
+    dp[end]
 end
 ## @lc code=end
