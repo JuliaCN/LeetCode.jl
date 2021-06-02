@@ -1,8 +1,8 @@
 # ---
 # title: 89. Gray Code
 # id: problem89
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-02
 # difficulty: Medium
 # categories: Backtracking
 # link: <https://leetcode.com/problems/gray-code/description/>
@@ -51,5 +51,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function gray_code(N::Int)
+    powN = 1 << N
+    res = Array{Int}(undef, powN)
+    for i in 0:powN-1
+        res[i + 1] = i ⊻ (i >> 1);
+    end
+    res
+end
 ## @lc code=end
