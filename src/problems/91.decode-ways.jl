@@ -1,8 +1,8 @@
 # ---
 # title: 91. Decode Ways
 # id: problem91
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indig
+# date: 2021-06-02
 # difficulty: Medium
 # categories: String, Dynamic Programming
 # link: <https://leetcode.com/problems/decode-ways/description/>
@@ -73,5 +73,17 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function num_decodings(s)
+    st = Set{String}()
+    for i in 1:26
+        push!(st, string(i))
+    end
+    function _num_decoding(s::AbstractString, st::Set{String})::Int
+        (length(s) == 0 || s[1] == '0') && return 0
+        res = s ∈ st ? 1 : 0
+        (length(s) > 1 && SubString(s, 1, 2) ∈ st) && (res += _num_decoding(SubString(s, 3), st))
+        return _num_decoding(SubString(s, 2), st) + res
+    end
+    _num_decoding(s, st)
+end
 ## @lc code=end
