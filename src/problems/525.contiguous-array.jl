@@ -1,8 +1,8 @@
 # ---
 # title: 525. Contiguous Array
 # id: problem525
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-03
 # difficulty: Medium
 # categories: Hash Table
 # link: <https://leetcode.com/problems/contiguous-array/description/>
@@ -36,5 +36,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_max_length(nums::Vector{Int})
+    dc = Dict(0 => 0)
+    acc = 0
+    res = 0
+    for i in 1:length(nums)
+        acc += nums[i] == 0 ? -1 : 1
+        haskey(dc, acc) ? res = max(res, i - dc[acc]) : dc[acc] = i
+    end
+    return res
+end
 ## @lc code=end
