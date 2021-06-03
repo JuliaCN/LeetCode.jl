@@ -38,9 +38,8 @@ using LeetCode
 
 function find_max_length(nums::Vector{Int})
     dc = Dict(0 => 0)
-    acc = 0
-    res = 0
-    for i in 1:length(nums)
+    res = acc = 0
+    @inbounds for i in eachindex(nums)
         acc += nums[i] == 0 ? -1 : 1
         haskey(dc, acc) ? res = max(res, i - dc[acc]) : dc[acc] = i
     end

@@ -1,8 +1,8 @@
 # ---
 # title: 137. Single Number II
 # id: problem137
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-03
 # difficulty: Medium
 # categories: Bit Manipulation
 # link: <https://leetcode.com/problems/single-number-ii/description/>
@@ -48,5 +48,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function single_number(nums::Vector{Int})::Int
+    a, b = 0, 0
+    for num in nums
+        b = (b ⊻ num) & ~a
+        a = (a ⊻ num) & ~b
+    end
+    return b
+end
 ## @lc code=end
