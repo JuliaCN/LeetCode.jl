@@ -1,5 +1,3 @@
-using DataStructures: delete!
-using Base: cache_dependencies
 # ---
 # title: 146. LRU Cache
 # id: problem146
@@ -81,7 +79,7 @@ function Base.setindex!(cache::LRUCache, val, key)
         delete!(cache.data, key)
         cache[key] = val
     else
-        length(cache.data) == cache.cap && delete!(cache.data, first(cache.data.keys))
+        length(cache.data) == cache.cap && delete!(cache.data, first(cache.data|> keys))
         cache.data[key] = val
     end
 end

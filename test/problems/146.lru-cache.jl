@@ -3,10 +3,8 @@
     cache[1] = 1
     cache[2] = 2
     @test cache[1] == 1
-    println(cache)
     cache[3] = 3
     @test cache[2] == -1
-    println(cache)
     cache[4] = 4
     @test cache[1] == -1
     @test cache[3] == 3
