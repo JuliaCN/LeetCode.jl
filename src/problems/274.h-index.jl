@@ -1,8 +1,10 @@
+using Base.Iterators: eachindex
+using OffsetArrays: Iterators
 # ---
 # title: 274. H-Index
 # id: problem274
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-05
 # difficulty: Medium
 # categories: Hash Table, Sort
 # link: <https://leetcode.com/problems/h-index/description/>
@@ -35,5 +37,17 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+using OffsetArrays
+function h_index(citations::Vector{Int})::Int
+    len = length(citations)
+    cnt = OffsetArray(fill(0, len + 1), -1)
+    for c in citations
+        cnt[min(c, len)] += 1        
+    end
+    c = 0
+    for i in Iterators.reverse(eachindex(cnt))
+        c += cnt[i]
+        c == i && return i
+    end
+end
 ## @lc code=end
