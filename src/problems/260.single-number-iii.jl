@@ -1,8 +1,8 @@
 # ---
 # title: 260. Single Number III
 # id: problem260
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-05
 # difficulty: Medium
 # categories: Bit Manipulation
 # link: <https://leetcode.com/problems/single-number-iii/description/>
@@ -54,5 +54,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function single_number_iii(nums::Vector{T}) where T <: Integer 
+    res = reduce(⊻, nums; init = zero(T))
+    div = one(T)
+    while (div & res) == 0
+        div <<= one(T)
+    end
+    a = b = 0
+    for n in nums
+        (div & n == 0) ? a ⊻= n : b ⊻= n 
+    end
+    return a, b
+end
 ## @lc code=end
