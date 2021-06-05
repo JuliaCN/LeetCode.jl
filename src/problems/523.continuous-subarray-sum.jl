@@ -1,8 +1,9 @@
+using Core: print
 # ---
 # title: 523. Continuous Subarray Sum
 # id: problem523
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-02
 # difficulty: Medium
 # categories: Math, Dynamic Programming
 # link: <https://leetcode.com/problems/continuous-subarray-sum/description/>
@@ -45,5 +46,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function check_subarray_sum(nums::Vector{Int}, k::Int)
+    pushfirst!(nums, 0)
+    cumsum!(nums, nums)
+    nums .%= k
+    st = Set{Int}()
+    len = length(nums)
+    for i in 3:len
+        nums[i] ∈ st && return true
+        push!(st, nums[i - 1])
+    end
+    return false
+end
 ## @lc code=end

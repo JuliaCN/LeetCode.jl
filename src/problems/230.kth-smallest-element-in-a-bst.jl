@@ -1,8 +1,8 @@
 # ---
 # title: 230. Kth Smallest Element in a BST
 # id: problem230
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-03
 # difficulty: Medium
 # categories: Binary Search, Tree
 # link: <https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/>
@@ -57,5 +57,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function kth_smallest_in_BST(root, k::Int)::Int
+    isnothing(root) && return true
+    arr = Int[]
+    function pre_tra(root::TreeNode{Int})
+        pre_tra(root.left)
+        push!(arr, root.val)
+        pre_tra(root.right)
+    end
+    pre_tra(::Nothing) = nothing
+    pre_tra(root)
+    arr[k]
+end
 ## @lc code=end

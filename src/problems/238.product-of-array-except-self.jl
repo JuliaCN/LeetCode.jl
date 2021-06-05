@@ -1,8 +1,8 @@
 # ---
 # title: 238. Product of Array Except Self
 # id: problem238
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-03
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/product-of-array-except-self/description/>
@@ -35,5 +35,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function product_except_self(nums::Vector{Int})
+    cnt_zeros = count(==(0), nums)
+    cnt_zeros > 1 && return fill(0, size(nums))
+    mult = 1
+    for num in nums
+        num != 0 && (mult *= num)
+    end
+    res = fill(0, length(nums))
+    (cnt_zeros == 1) ? (res[findfirst(==(0), nums)] = mult) : (res .= mult .÷ nums)
+    return res
+end
 ## @lc code=end

@@ -1,8 +1,8 @@
 # ---
 # title: 102. Binary Tree Level Order Traversal
 # id: problem102
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-02
 # difficulty: Medium
 # categories: Tree, Breadth-first Search
 # link: <https://leetcode.com/problems/binary-tree-level-order-traversal/description/>
@@ -39,5 +39,22 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function level_order(root::Union{Nothing, TreeNode{Int}})
+    isnothing(root) && return Int[]
+    q = TreeNode{Int}[]
+    q2 = TreeNode{Int}[]
+    res = Vector{Int}[]
+    push!(q, root)
+    while !isempty(q)
+        push!(res, Int[])
+        while !isempty(q)
+            fst = popfirst!(q)
+            push!(res[end], fst.val)
+            !isnothing(fst.left) && push!(q2, fst.left) 
+            !isnothing(fst.right) && push!(q2, fst.right)
+        end
+        q, q2 = q2, q
+    end    
+    return res
+end
 ## @lc code=end

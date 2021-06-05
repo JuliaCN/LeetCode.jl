@@ -1,8 +1,8 @@
 # ---
 # title: 91. Decode Ways
 # id: problem91
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indig
+# date: 2021-06-02
 # difficulty: Medium
 # categories: String, Dynamic Programming
 # link: <https://leetcode.com/problems/decode-ways/description/>
@@ -73,5 +73,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function num_decodings(s)
+    len = length(s)
+    dp = fill(0, len + 1)
+    dp[1] = 1
+    for i in 1:len
+        s[i] != '0' && (dp[i + 1] += dp[i])
+        (i > 1 && s[i - 1] != '0' && parse(Int, s[i-1:i]) <= 26) && (dp[i + 1] += dp[i - 1])
+    end
+    dp[end]
+end
 ## @lc code=end

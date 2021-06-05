@@ -1,8 +1,8 @@
 # ---
 # title: 98. Validate Binary Search Tree
 # id: problem98
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-02
 # difficulty: Medium
 # categories: Tree, Depth-first Search, Recursion
 # link: <https://leetcode.com/problems/validate-binary-search-tree/description/>
@@ -52,5 +52,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function is_valid_BST(root)
+    isnothing(root) && return true
+    arr = Int[]
+    function pre_tra(root::TreeNode{Int})
+        pre_tra(root.left)
+        push!(arr, root.val)
+        pre_tra(root.right)
+    end
+    pre_tra(::Nothing) = nothing
+    pre_tra(root)
+    return issorted(arr)
+end
 ## @lc code=end

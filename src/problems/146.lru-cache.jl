@@ -1,8 +1,8 @@
 # ---
 # title: 146. LRU Cache
 # id: problem146
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-03
 # difficulty: Medium
 # categories: Design
 # link: <https://leetcode.com/problems/lru-cache/description/>
@@ -60,5 +60,28 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+struct LRUCache
+    cap::Int
+    data::OrderedDict{Int, Int}
+    LRUCache(cap::Int) = new(cap, OrderedDict{Int, Int}())
+end
+
+function Base.getindex(cache::LRUCache, key) 
+    key ∉ keys(cache.data) && return -1
+    res = cache.data[key]
+    delete!(cache.data, key)
+    cache.data[key] = res
+    return res
+end
+
+function Base.setindex!(cache::LRUCache, val, key)
+    if key in keys(cache.data)
+        delete!(cache.data, key)
+        cache[key] = val
+    else
+        length(cache.data) == cache.cap && delete!(cache.data, first(cache.data|> keys))
+        cache.data[key] = val
+    end
+end
+
 ## @lc code=end

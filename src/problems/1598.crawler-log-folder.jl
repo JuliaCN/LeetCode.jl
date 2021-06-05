@@ -1,8 +1,8 @@
 # ---
 # title: 1598. Crawler Log Folder
 # id: problem1598
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-01
 # difficulty: Easy
 # categories: Stack
 # link: <https://leetcode.com/problems/crawler-log-folder/description/>
@@ -72,5 +72,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function min_operations_1198(logs::Vector{String})
+    res = 0
+    for lg in logs
+        if lg == "../"
+            res = max(0, res - 1)
+        elseif lg != "./"
+            res += 1
+        end
+    end
+    return res
+end
 ## @lc code=end
