@@ -66,7 +66,6 @@ function ladder_length(begin_word::String, end_word::String, word_list::Vector{S
             end
         end
     end
-    return 0
 end
 # @lc code=end
 

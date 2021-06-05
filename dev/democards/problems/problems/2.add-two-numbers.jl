@@ -21,6 +21,7 @@ function add_two_numbers(l1::ListNode, l2::ListNode)::ListNode
         carry, v = divrem(v1 + v2 + carry, 10)
         next!(cur, ListNode(v))
         cur = next(cur)
+        val!(cur, v)
     end
     return next(fake_head)
 end
