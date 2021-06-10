@@ -1,8 +1,8 @@
 # ---
 # title: 318. Maximum Product of Word Lengths
 # id: problem318
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-10
 # difficulty: Medium
 # categories: Bit Manipulation
 # link: <https://leetcode.com/problems/maximum-product-of-word-lengths/description/>
@@ -51,5 +51,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_product(words::Vector{String})
+    mp = Dict{UInt32, Int}()    
+    for word in words
+        init = zero(UInt32)
+        for c in word
+            init |= UInt32(1) << (c - 'a')
+        end
+        mp[init] = max(length(word), get(mp, init, 0))
+    end
+    res = 0
+    for x in keys(mp), y in keys(mp)
+        (x & y == 0) && (res = max(res, mp[x] * mp[y]))        
+    end
+    return res
+end
 ## @lc code=end
