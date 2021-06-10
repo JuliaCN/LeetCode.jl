@@ -72,11 +72,11 @@
 using LeetCode
 
 function coin_change(coins::Vector{Int}, amount::Int)
-    res = OffsetArray(fill(typemax(Int) >> 2, 1 + amount), -1)
+    res = OffsetArray(fill(amount + 1, 1 + amount), -1)
     res[0] = 0
-    for coin in coins, i in 0:(amount - coin)
+    @inbounds for coin in coins, i in 0:(amount - coin)
         res[i + coin] = min(res[i + coin], res[i] + 1)
     end
-    return res[end] == (typemax(Int) >> 2) ? -1 : res[end]
+    return res[end] == amount + 1 ? -1 : res[end]
 end
 ## @lc code=end
