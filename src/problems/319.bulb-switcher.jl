@@ -1,8 +1,8 @@
 # ---
 # title: 319. Bulb Switcher
 # id: problem319
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-10
 # difficulty: Medium
 # categories: Math, Brainteaser
 # link: <https://leetcode.com/problems/bulb-switcher/description/>
@@ -60,5 +60,6 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+bulb_switch(n::Int) = isqrt(n)
+    
 ## @lc code=end

@@ -1,8 +1,8 @@
 # ---
 # title: 322. Coin Change
 # id: problem322
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-10
 # difficulty: Medium
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/coin-change/description/>
@@ -71,5 +71,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function coin_change(coins::Vector{Int}, amount::Int)
+    res = OffsetArray(fill(typemax(Int) >> 2, 1 + amount), -1)
+    res[0] = 0
+    for coin in coins, i in 0:(amount - coin)
+        res[i + coin] = min(res[i + coin], res[i] + 1)
+    end
+    return res[end] == (typemax(Int) >> 2) ? -1 : res[end]
+end
 ## @lc code=end
