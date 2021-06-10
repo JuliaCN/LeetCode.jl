@@ -1,8 +1,8 @@
 # ---
 # title: 313. Super Ugly Number
 # id: problem313
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-10
 # difficulty: Medium
 # categories: Math, Heap
 # link: <https://leetcode.com/problems/super-ugly-number/description/>
@@ -34,5 +34,22 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function nth_super_ugly_number(n::Int, primes::Vector{Int})
+    dp = fill(1, n)
+    len = length(primes)
+    cur_min = primes[:]
+    ptrs = fill(1, len)
+    
+    @inbounds for i in 2:n
+        minn = minimum(cur_min)
+        dp[i] = minn
+        @simd for pidx in 1:len
+            if minn == cur_min[pidx]
+                ptrs[pidx] += 1
+                cur_min[pidx] = dp[ptrs[pidx]] * primes[pidx]
+            end
+        end
+    end
+    return dp[end]
+end
 ## @lc code=end
