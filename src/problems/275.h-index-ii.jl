@@ -1,8 +1,8 @@
 # ---
 # title: 275. H-Index II
 # id: problem275
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-05
 # difficulty: Medium
 # categories: Binary Search
 # link: <https://leetcode.com/problems/h-index-ii/description/>
@@ -43,5 +43,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function h_index_ii(citations::Vector{Int})
+    l, r = 1, length(citations) + 1
+    while l < r
+        mid = l + r >> 1
+        if citations[end + 1 - mid] >= mid
+            l = mid
+        else
+            r = mid - 1
+        end
+    end
+    return r
+end
 ## @lc code=end

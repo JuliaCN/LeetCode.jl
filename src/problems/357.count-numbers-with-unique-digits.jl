@@ -1,8 +1,8 @@
 # ---
 # title: 357. Count Numbers with Unique Digits
 # id: problem357
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-14
 # difficulty: Medium
 # categories: Math, Dynamic Programming, Backtracking
 # link: <https://leetcode.com/problems/count-numbers-with-unique-digits/description/>
@@ -32,5 +32,10 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function count_numbers_with_unique_digits(n::Int)
+    n > 10 && return count_numbers_with_unique_digits(10)
+    n == 0 && return 1
+    return 9 * binomial(9, n - 1) * factorial(n - 1) +
+           count_numbers_with_unique_digits(n - 1)
+end
 ## @lc code=end

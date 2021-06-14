@@ -1,8 +1,8 @@
 # ---
 # title: 343. Integer Break
 # id: problem343
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-14
 # difficulty: Medium
 # categories: Math, Dynamic Programming
 # link: <https://leetcode.com/problems/integer-break/description/>
@@ -35,5 +35,11 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function integer_break(n::Int)
+    n <= 3 && return n - 1
+    a, b = n ÷ 3, n % 3
+    b == 0 && return 3 ^ a
+    b == 1 && return 3 ^ (a - 1) * 4
+    return 3 ^ a * 2
+end
 ## @lc code=end

@@ -1,8 +1,8 @@
 # ---
 # title: 324. Wiggle Sort II
 # id: problem324
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-10
 # difficulty: Medium
 # categories: Sort
 # link: <https://leetcode.com/problems/wiggle-sort-ii/description/>
@@ -36,5 +36,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function wiggle_sort!(nums::Vector{Int})
+    len = length(nums)
+    md = len ÷ 2
+    partialsort!(nums, md)
+    nums[1], nums[md] = nums[md], nums[1]
+    i, j = 2, len
+    iseven(len) && (j -= 1)
+    while i <= j
+        nums[i], nums[j] = nums[j], nums[i]
+        i += 2
+        j -= 2
+    end
+    return nums
+end
 ## @lc code=end
