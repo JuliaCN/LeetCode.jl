@@ -1,8 +1,8 @@
 # ---
 # title: 373. Find K Pairs with Smallest Sums
 # id: problem373
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-14
 # difficulty: Medium
 # categories: Heap
 # link: <https://leetcode.com/problems/find-k-pairs-with-smallest-sums/description/>
@@ -47,6 +47,14 @@
 # 
 ## @lc code=start
 using LeetCode
-
-## add your code here:
+using DataStructures
+function k_smallest_pairs(nums1::Vector{Int}, nums2::Vector{Int}, k::Int)
+    hp = Tuple{Int, Int}[]
+    odr = Base.Order.By(x -> -x[1] - x[2])
+    for n1 in nums1, n2 in nums2
+        heappush!(hp, (n1, n2), odr)
+        length(hp) > k && heappop!(hp, odr)
+    end
+    sort!(hp; by = x -> x[1] + x[2])
+end
 ## @lc code=end
