@@ -9,4 +9,6 @@
     @test cache[1] == -1
     @test cache[3] == 3
     @test cache[4] == 4
+    cache[4] = 2
+    @test cache[4] == 2
 end
