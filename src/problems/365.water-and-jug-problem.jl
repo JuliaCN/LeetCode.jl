@@ -1,8 +1,8 @@
 # ---
 # title: 365. Water and Jug Problem
 # id: problem365
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-14
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/water-and-jug-problem/description/>
@@ -51,5 +51,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function can_measure_water(jug1_cap::Int, jug2_cap::Int, target::Int)
+    target > jug1_cap + jug2_cap && return false
+    return target % gcd(jug2_cap, jug1_cap) == 0 ? true : false
+end
 ## @lc code=end
