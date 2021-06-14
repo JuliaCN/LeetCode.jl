@@ -1,8 +1,8 @@
 # ---
 # title: 377. Combination Sum IV
 # id: problem377
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-14
 # difficulty: Medium
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/combination-sum-iv/description/>
@@ -48,5 +48,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function combination_sum4(nums::Vector{Int}, target::Int)
+    dp = OffsetArray(fill(0, target + 1), -1)
+    dp[0] = 1
+    for i in 1:target, num in nums
+        (num <= i) && (dp[i] += dp[i - num])
+    end
+    return dp[end]
+end
 ## @lc code=end
