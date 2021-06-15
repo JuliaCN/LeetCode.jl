@@ -18,7 +18,7 @@ end
 function Base.setindex!(cache::LRUCache, val, key)
     if key in keys(cache.data)
         delete!(cache.data, key)
-        cache[key] = val
+        cache.data[key] = val
     else
         length(cache.data) == cache.cap && delete!(cache.data, first(cache.data|> keys))
         cache.data[key] = val
