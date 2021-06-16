@@ -1,8 +1,8 @@
 # ---
 # title: 386. Lexicographical Numbers
 # id: problem386
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-15
 # difficulty: Medium
 # categories: 
 # link: <https://leetcode.com/problems/lexicographical-numbers/description/>
@@ -20,5 +20,21 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function lexical_order(n)
+    res = Vector{Int}(undef, n)
+    cur = 1
+    for i in 1:n
+        res[i] = cur
+        if 10cur <= n
+            cur *= 10
+        else
+            (cur >= n) && (cur ÷= 10)
+            cur += 1
+            while cur % 10 == 0
+                cur ÷= 10
+            end
+        end
+    end
+    return res
+end
 ## @lc code=end
