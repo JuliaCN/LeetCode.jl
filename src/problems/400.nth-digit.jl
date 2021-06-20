@@ -1,8 +1,8 @@
 # ---
 # title: 400. Nth Digit
 # id: problem400
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-20
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/nth-digit/description/>
@@ -45,5 +45,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_nth_digit(n::Int)
+    ant = [0, 10, 190, 2890, 38890, 488890, 5888890, 68888890, 788888890];
+    num_begin = [0, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000]
+    idx = searchsortedlast(ant, n)
+    num = (n - ant[idx]) ÷ idx + num_begin[idx]
+    posi = (n - ant[idx]) % idx
+    return num % (10 ^ (idx - posi)) ÷ 10 ^ (idx - posi - 1)
+end
 ## @lc code=end
