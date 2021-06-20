@@ -1,8 +1,8 @@
 # ---
 # title: 413. Arithmetic Slices
 # id: problem413
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-20
 # difficulty: Medium
 # categories: Math, Dynamic Programming
 # link: <https://leetcode.com/problems/arithmetic-slices/description/>
@@ -53,5 +53,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function number_of_arithmetic_slices(nums::Vector{Int})
+    dp, res = 0, 0
+    for i in 3:length(nums)
+        if nums[i] + nums[i - 2] == (nums[i - 1] << 1)
+            dp = dp + 1
+            res += dp
+        else
+            dp = 0
+        end        
+    end
+    return res
+end
 ## @lc code=end
