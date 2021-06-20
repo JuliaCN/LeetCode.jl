@@ -1,8 +1,8 @@
 # ---
 # title: 852. Peak Index in a Mountain Array
 # id: problem852
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-15
 # difficulty: Easy
 # categories: Binary Search
 # link: <https://leetcode.com/problems/peak-index-in-a-mountain-array/description/>
@@ -74,5 +74,7 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+peak_index_in_mountain_array(arr) =
+    searchsortedfirst(1:(length(arr) - 1), length(arr) - 1; by=i -> arr[i] > arr[i + 1])
+
 ## @lc code=end

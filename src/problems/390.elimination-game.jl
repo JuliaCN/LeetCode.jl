@@ -1,8 +1,8 @@
 # ---
 # title: 390. Elimination Game
 # id: problem390
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-20
 # difficulty: Medium
 # categories: 
 # link: <https://leetcode.com/problems/elimination-game/description/>
@@ -40,5 +40,6 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+last_remaining(n::Int)::Int = n == 1 ? 1 : 2 * (n ÷ 2 + 1 - last_remaining(n ÷ 2))
+
 ## @lc code=end
