@@ -2,7 +2,7 @@
 using LeetCode
 
 function max_rotate_function(A::Vector{Int})::Int
-    # f(i+1) = f(i) + ∑(A) - A[end] * length(A)
+    # f(i+1) = f(i) + ∑(A) - A[i] * length(A)
     s = sum(A)
     n = length(A)
     cur = sum(k -> (k - 1) * A[k], 1:n)
