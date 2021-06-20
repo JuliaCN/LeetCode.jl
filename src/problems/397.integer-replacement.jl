@@ -1,8 +1,8 @@
 # ---
 # title: 397. Integer Replacement
 # id: problem397
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-20
 # difficulty: Medium
 # categories: Math, Bit Manipulation
 # link: <https://leetcode.com/problems/integer-replacement/description/>
@@ -55,5 +55,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function integer_replacement(n::Int)
+    res = 0
+    while n != 1
+        if iseven(n)
+            n >>= 1
+        elseif n & 2 == 0 || n == 3
+            n -= 1
+        else
+            n += 1
+        end
+        res += 1
+    end
+    return res
+end
 ## @lc code=end
