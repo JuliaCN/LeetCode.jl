@@ -1,8 +1,8 @@
 # ---
 # title: 442. Find All Duplicates in an Array
 # id: problem442
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-21
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/find-all-duplicates-in-an-array/description/>
@@ -31,5 +31,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_duplicates_442(nums::Vector{Int})
+    res = Int[]
+    for num in nums
+        absn = abs(num)
+        nums[absn] < 0 ? push!(res, absn) : (nums[absn] = -nums[absn])
+    end
+    return res
+end
 ## @lc code=end
