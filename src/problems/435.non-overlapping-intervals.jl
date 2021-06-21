@@ -1,8 +1,8 @@
 # ---
 # title: 435. Non-overlapping Intervals
 # id: problem435
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-21
 # difficulty: Medium
 # categories: Greedy
 # link: <https://leetcode.com/problems/non-overlapping-intervals/description/>
@@ -52,5 +52,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function erase_overlap_intervals(intervals::Vector{Tuple{Int,Int}})
+    isempty(intervals) && return 0
+    sort!(intervals; by=x -> x[2])
+    lst, res = intervals[1][2], -1
+    for intv in intervals
+        intv[1] < lst ? res += 1 : lst = intv[2]
+    end
+    return res
+end
 ## @lc code=end

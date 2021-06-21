@@ -1,8 +1,8 @@
 # ---
 # title: 437. Path Sum III
 # id: problem437
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-21
 # difficulty: Medium
 # categories: Tree
 # link: <https://leetcode.com/problems/path-sum-iii/description/>
@@ -44,5 +44,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function tree_path_sum(root::TreeNode{Int}, sm::Int)::Int
+    res = 0
+    tsum(::Nothing, sm::Int) = nothing
+    function tsum(root::TreeNode{Int}, sm::Int)::Nothing
+        sm -= root.val
+        sm == 0 && (res += 1)
+        tsum(root.left, sm)
+        tsum(root.right, sm)
+    end
+    tsum(root, sm)
+    res += tree_path_sum(root.left, sm)
+    res += tree_path_sum(root.right, sm)
+end
+
+tree_path_sum(root::Nothing, sum::Int) = 0
 ## @lc code=end
