@@ -1,6 +1,6 @@
 # @lc code=start
 using LeetCode
-
+"""
 function stone_game(piles::Vector{Int})
     len = length(piles)
     dp = Matrix{Int}(undef, len, len)
@@ -12,7 +12,7 @@ function stone_game(piles::Vector{Int})
     end
     return dp[1, end] > 0
 end
-
+"""
 stone_game(::Vector{Int}) = true
 # @lc code=end
 
