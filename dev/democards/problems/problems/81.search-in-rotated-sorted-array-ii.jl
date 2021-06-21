@@ -1,7 +1,7 @@
 # @lc code=start
 using LeetCode
 
-function search(nums::Vector{Int}, target::Int)::Bool
+function search_rotate(nums::Vector{Int}, target::Int)::Bool
     left, right = 1, length(nums)
     while left <= right
         mid = (left + right) >> 1
