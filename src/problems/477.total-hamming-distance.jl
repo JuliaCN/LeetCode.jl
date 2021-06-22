@@ -1,8 +1,8 @@
 # ---
 # title: 477. Total Hamming Distance
 # id: problem477
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-22
 # difficulty: Medium
 # categories: Bit Manipulation
 # link: <https://leetcode.com/problems/total-hamming-distance/description/>
@@ -38,5 +38,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function total_hamming_distance(nums)
+    res, n = 0, length(nums)
+    for i in 0:30
+        c = 0
+        for num in nums
+            c += (num >> i) & 1
+        end
+        res += c * (n - c)
+    end
+    return res
+end
 ## @lc code=end
