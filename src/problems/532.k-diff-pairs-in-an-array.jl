@@ -1,8 +1,8 @@
 # ---
 # title: 532. K-diff Pairs in an Array
 # id: problem532
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-22
 # difficulty: Medium
 # categories: Array, Two Pointers
 # link: <https://leetcode.com/problems/k-diff-pairs-in-an-array/description/>
@@ -79,5 +79,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_kpairs(nums::Vector{Int}, k::Int)
+    cntr = counter(nums)
+    res = 0
+    if k > 0
+        for (ky, vl) in cntr
+            res += (ky - k in keys(cntr)) ? 1 : 0
+        end
+    else
+        for (ky, vl) in cntr
+            res += ifelse(vl > 1, 1, 0)
+        end
+    end
+    return res
+end
 ## @lc code=end
