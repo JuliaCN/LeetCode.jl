@@ -1,8 +1,8 @@
 # ---
 # title: 474. Ones and Zeroes
 # id: problem474
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-22
 # difficulty: Medium
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/ones-and-zeroes/description/>
@@ -52,5 +52,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_max_form(strs::Vector{String}, m::Int, n::Int)
+    dp = OffsetArray(fill(0, m + 1, n + 1), -1, -1)
+    for str in strs
+        o = count(==('1'), str)
+        z = length(str) - o
+        for j in m:-1:z, k in n:-1:o
+            dp[j, k] = max(dp[j, k], dp[j - z, k - o] + 1)            
+        end
+    end
+    return dp[end]
+end
 ## @lc code=end
