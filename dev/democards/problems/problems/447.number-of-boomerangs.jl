@@ -1,6 +1,5 @@
 # @lc code=start
 using LeetCode
-using DataStructures
 
 function number_of_boomerangs(points::Vector{Vector{Int}})::Int
     res = 0
