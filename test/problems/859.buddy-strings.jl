@@ -18,4 +18,6 @@
     A = ""
     B = "aa"
     @test buddy_strings(A, B) == false
+
+    @test buddy_strings("abc", "bca") == false
 end

@@ -1,8 +1,8 @@
 # ---
 # title: 553. Optimal Division
 # id: problem553
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-23
 # difficulty: Medium
 # categories: Math, String
 # link: <https://leetcode.com/problems/optimal-division/description/>
@@ -45,5 +45,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function optimal_division(nums::Vector{Int})
+    (length(nums) == 1) && return string(nums[1])
+    (length(nums) == 2) && return string(nums[1]) * "/" * string(nums[1])
+    res = "$(nums[1])/($(nums[2])"
+    for i in 3:length(nums)
+        res *= "/$(nums[i])"
+    end
+    return res * ")"
+end
 ## @lc code=end
