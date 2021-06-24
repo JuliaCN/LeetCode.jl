@@ -1,8 +1,8 @@
 # ---
 # title: 540. Single Element in a Sorted Array
 # id: problem540
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-23
 # difficulty: Medium
 # categories: Binary Search
 # link: <https://leetcode.com/problems/single-element-in-a-sorted-array/description/>
@@ -44,5 +44,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function single_non_duplicate(nums::Vector{Int})
+    i, j = 1, length(nums)
+    while i < j
+        mid = (i + j) >> 1
+        if isodd(mid)
+            nums[mid] == nums[mid + 1] ? (i = mid + 2) : (j = mid)
+        else
+            nums[mid] == nums[mid + 1] ? (j = mid - 1) : (i = mid + 1)
+        end
+    end
+    return nums[i]
+end
 ## @lc code=end

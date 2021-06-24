@@ -1,8 +1,8 @@
 # ---
 # title: 537. Complex Number Multiplication
 # id: problem537
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-23
 # difficulty: Medium
 # categories: Math, String
 # link: <https://leetcode.com/problems/complex-number-multiplication/description/>
@@ -42,5 +42,10 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function complex_number_multiply(num1::String, num2::String)
+    num1 = replace(num1, "i" => "im")
+    num2 = replace(num2, "i" => "im")
+    mult = eval(Meta.parse(num1)) * eval(Meta.parse(num2))
+    return "$(mult.re)+$(mult.im)i"
+end
 ## @lc code=end

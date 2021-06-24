@@ -1,8 +1,8 @@
 # ---
 # title: 807. Max Increase to Keep City Skyline
 # id: problem807
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-23
 # difficulty: Medium
 # categories: 
 # link: <https://leetcode.com/problems/max-increase-to-keep-city-skyline/description/>
@@ -56,5 +56,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_increase_keeping_skyline(grid::Matrix{Int})
+    n = size(grid, 1)
+    col_max = maximum(grid; dims=1)
+    row_max = maximum(grid; dims=2)
+    res = 0
+    for i in 1:n, j in 1:n
+        res += min(row_max[i], col_max[j]) - grid[i, j]
+    end
+    return res
+end
 ## @lc code=end

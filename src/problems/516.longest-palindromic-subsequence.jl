@@ -1,8 +1,8 @@
 # ---
 # title: 516. Longest Palindromic Subsequence
 # id: problem516
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-22
 # difficulty: Medium
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/longest-palindromic-subsequence/description/>
@@ -59,5 +59,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function longest_palindrome_subseq(s::String)
+    len = length(s)
+    dp = fill(0, len, len)
+    for i in len:-1:1
+        dp[i, i] = 1
+        for j in i+1:len
+            dp[i, j] = (s[i] == s[j]) ? dp[i + 1, j - 1] + 2 : max(dp[i + 1, j], dp[i, j - 1])
+        end
+    end
+    return dp[1, len]
+end
 ## @lc code=end

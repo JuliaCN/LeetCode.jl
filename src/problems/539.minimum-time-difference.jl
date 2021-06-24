@@ -1,8 +1,8 @@
 # ---
 # title: 539. Minimum Time Difference
 # id: problem539
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-23
 # difficulty: Medium
 # categories: String
 # link: <https://leetcode.com/problems/minimum-time-difference/description/>
@@ -41,5 +41,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_min_difference(time_points::Vector{String})
+    ttp = Tuple{Int, Int}[]    
+    for t in time_points
+        st = split(t, ':')
+        push!(ttp, (parse(Int, st[1]), parse(Int, st[2])))
+    end
+    sort!(ttp)
+    push!(ttp, (ttp[1][1] + 24, ttp[1][2]))
+    return minimum((ttp[i][1] - ttp[i-1][1]) * 60 + (ttp[i][2] - ttp[i-1][2]) for i in 2:length(ttp))
+end
 ## @lc code=end
