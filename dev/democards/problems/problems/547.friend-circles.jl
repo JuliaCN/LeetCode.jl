@@ -1,28 +1,15 @@
+using DataStructures: merge
+
 # @lc code=start
 using LeetCode
 
 function find_circle_num(is_connected::Vector{Vector{Int}})
     len = length(is_connected)
-    visited = fill(false, len)
-    q = Queue{Int}()
-    res = 0
-    for i in 1:len
-        if !visited[i]
-            visited[i] = true
-            enqueue!(q, i)
-            while !isempty(q)
-                frt = dequeue!(q)
-                for j in 1:len
-                    if !visited[j] && is_connected[frt][j] == 1
-                        visited[j] = true
-                        enqueue!(q, j)
-                    end
-                end
-            end
-            res += 1
-        end
+    djst = IntDisjointSets(len)
+    for i in 1:len, j in (i + 1):len
+        (is_connected[i][j] == 1) && (root_union!(djst, i, j))
     end
-    res
+    return djst.ngroups
 end
 # @lc code=end
 
