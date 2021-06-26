@@ -1,8 +1,8 @@
 # ---
 # title: 593. Valid Square
 # id: problem593
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-26
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/valid-square/description/>
@@ -55,5 +55,10 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function valid_square(ps::Vector{Vector{Int}})
+    sort!(ps)
+    ps[1] + ps[4] != ps[2] + ps[3] && return false
+    sum((ps[1] .- ps[2]) .^ 2) != sum((ps[1] .- ps[3]) .^ 2) && return false
+    return true
+end
 ## @lc code=end
