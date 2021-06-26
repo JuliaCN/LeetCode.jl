@@ -68,3 +68,15 @@ function _build_tree!(t::TreeNode, xs::Vector, i::Int=1)
         t.right = nothing
     end
 end
+
+function next_perm!(itr)::Bool                      
+    (isempty(itr) || length(itr) == 1) && return false
+        
+    i = findlast(idx -> itr[idx + 1] > itr[idx], 1:lastindex(itr) - 1)             
+    isnothing(i) && (reverse!(itr); return false)
+      
+    j = findlast(idx -> itr[idx] > itr[i], i+1:lastindex(itr)) + i
+    itr[i], itr[j] = itr[j], itr[i] 
+    reverse!(itr, i + 1)
+    return true
+end

@@ -1,8 +1,8 @@
 # ---
 # title: 581. Shortest Unsorted Continuous Subarray
 # id: problem581
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-26
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/shortest-unsorted-continuous-subarray/description/>
@@ -53,5 +53,22 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_unsorted_subarray(nums::Vector{Int})
+    stk = Int[]
+    l, r = length(nums) + 1, 1
+    for i in eachindex(nums)
+        while !isempty(stk) && nums[stk[end]] > nums[i]
+            l = min(l, pop!(stk))
+        end
+        push!(stk, i)
+    end
+    empty!(stk)
+    for i in length(nums):-1:1
+        while !isempty(stk) && nums[stk[end]] < nums[i]
+            r = max(r, pop!(stk))
+        end
+        push!(stk, i)
+    end
+    return r - l > 0 ? r - l + 1 : 0
+end
 ## @lc code=end

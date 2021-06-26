@@ -1,8 +1,8 @@
 # ---
 # title: 31. Next Permutation
 # id: problem31
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-24
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/next-permutation/description/>
@@ -63,5 +63,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function next_permutation(nums::Vector{Int})
+    next_perm!(nums)
+    return nums
+end
 ## @lc code=end
