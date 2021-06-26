@@ -1,8 +1,8 @@
 # ---
 # title: 592. Fraction Addition and Subtraction
 # id: problem592
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-26
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/fraction-addition-and-subtraction/description/>
@@ -60,5 +60,9 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function fraction_addition(expression::String)
+    expression = replace(expression, "/" => "//")
+    res = eval(Meta.parse(expression))
+    return "$(res.num)/$(res.den)"
+end
 ## @lc code=end
