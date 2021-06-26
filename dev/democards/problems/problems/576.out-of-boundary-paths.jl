@@ -3,9 +3,8 @@ using LeetCode
 
 function find_paths(m, n, N, i, j)
     dp = zeros(Int, m, n)
-
+    t = copy(dp)
     for _ in 1:N
-        t = copy(dp)
         inds = CartesianIndices(t)
         for x in inds
             v = 0
@@ -15,8 +14,9 @@ function find_paths(m, n, N, i, j)
             end
             dp[x] = v
         end
+        dp, t = t, dp
     end
-    return dp[i, j] % (10^9 + 7)
+    return t[i, j] % (10^9 + 7)
 end
 # @lc code=end
 
