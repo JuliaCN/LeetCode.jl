@@ -1,8 +1,8 @@
 # ---
 # title: 673. Number of Longest Increasing Subsequence
 # id: problem673
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-27
 # difficulty: Medium
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/number-of-longest-increasing-subsequence/description/>
@@ -46,5 +46,22 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_number_of_LIS(nums::Vector{Int})
+    len = length(nums)
+    len <= 1 && return len
+    dp = fill(1, len)
+    cnt = copy(dp)
+    for i in 2:len, j in 1:(i - 1)
+        nums[i] <= nums[j] && continue
+        if dp[i] <= dp[j]
+            dp[i] = dp[j] + 1
+            cnt[i] = cnt[j]
+        elseif dp[i] == dp[j] + 1
+            cnt[i] += cnt[j]
+        end
+    end
+    max_len = maximum(dp)
+    println(max_len)
+    return sum(c for (idx, c) in enumerate(cnt) if dp[idx] == max_len)
+end
 ## @lc code=end
