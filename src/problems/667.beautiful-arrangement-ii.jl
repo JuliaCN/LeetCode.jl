@@ -1,8 +1,8 @@
 # ---
 # title: 667. Beautiful Arrangement II
 # id: problem667
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-28
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/beautiful-arrangement-ii/description/>
@@ -43,5 +43,17 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function beautiful_arrangement(n, k)
+    res = [1:(n-k);]
+    i = res[end] + 1
+    j = n
+    while i < j
+        push!(res, j)
+        j -= 1
+        push!(res, i)
+        i += 1
+    end
+    i == j && push!(res, i)
+    return res
+end
 ## @lc code=end
