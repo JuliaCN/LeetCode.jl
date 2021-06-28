@@ -1,8 +1,8 @@
 # ---
 # title: 633. Sum of Square Numbers
 # id: problem633
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-27
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/sum-of-square-numbers/description/>
@@ -65,5 +65,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function judge_square_sum(n::Int)
+    upper = isqrt(n)
+    i = 0
+    while i <= upper
+        ss = i ^ 2 + upper ^ 2
+        ss == n && return true
+        ss > n ? (upper -= 1) : (i += 1)
+    end
+    return false
+end
 ## @lc code=end
