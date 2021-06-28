@@ -3,7 +3,6 @@ using LeetCode
 
 function max_envelopes(envelopes::Vector{Vector{Int}})
     isempty(envelopes) && return 0
-    len = length(envelopes)
     sort!(envelopes, by = x -> (x[1], -x[2]))
     dp = [envelopes[1][2]]
     for envo in @view(envelopes[2:end])
