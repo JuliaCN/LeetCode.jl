@@ -1,8 +1,8 @@
 # ---
 # title: 654. Maximum Binary Tree
 # id: problem654
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-28
 # difficulty: Medium
 # categories: Tree
 # link: <https://leetcode.com/problems/maximum-binary-tree/description/>
@@ -43,5 +43,11 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function construct_maximum_binary_tree(nums::AbstractVector{Int})::Union{TreeNode{Int}, Nothing}
+    isempty(nums) && return nothing
+    max_idx = argmax(nums)
+    return TreeNode(nums[max_idx],
+                    construct_maximum_binary_tree(@view(nums[1:(max_idx - 1)])),
+                    construct_maximum_binary_tree(@view(nums[(max_idx + 1):end])))
+end
 ## @lc code=end
