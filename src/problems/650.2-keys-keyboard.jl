@@ -1,8 +1,8 @@
 # ---
 # title: 650. 2 Keys Keyboard
 # id: problem650
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-28
 # difficulty: Medium
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/2-keys-keyboard/description/>
@@ -46,5 +46,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function min_steps650(n::Int)
+    res, k = 0, 2
+    while n != 1
+        if n % k == 0
+            res += k
+            n ÷= k
+        else
+            k += 1
+        end
+    end
+    return res
+end
 ## @lc code=end
