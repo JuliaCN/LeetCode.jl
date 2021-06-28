@@ -43,7 +43,7 @@
 ## @lc code=start
 using LeetCode
 
-function construct_maximum_binary_tree(nums::AbstractVector{Int})::Union{TreeNode{Int}, Nothing}
+function construct_maximum_binary_tree(nums::AbstractVector{Int})
     isempty(nums) && return nothing
     max_idx = argmax(nums)
     return TreeNode(nums[max_idx],
