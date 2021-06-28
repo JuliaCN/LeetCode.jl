@@ -19,5 +19,3 @@
     @test TreeNode{Int}([6,3,5,nothing,2,0,nothing,nothing,1]) == 
     TreeNode(6, TreeNode(3, nothing, TreeNode(2, nothing, TreeNode(1))), TreeNode(5, TreeNode(0)))
 end
-
-using Test
