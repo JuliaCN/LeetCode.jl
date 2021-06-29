@@ -1,8 +1,8 @@
 # ---
 # title: 695. Max Area of Island
 # id: problem695
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-29
 # difficulty: Medium
 # categories: Array, Depth-first Search
 # link: <https://leetcode.com/problems/max-area-of-island/description/>
@@ -47,5 +47,21 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_area_of_island(grid::Matrix{Int})
+    function dfs(grid::Matrix{Int}, I)
+        grid[I] = 0
+        res = 1
+        idcs = CartesianIndices(grid)
+        for neighb in ((1, 0), (0, 1), (-1, 0), (0, -1))
+            new_I = I + CartesianIndex(neighb)
+            (new_I ∈ idcs && grid[new_I] == 1) && (res += dfs(grid, new_I))
+        end
+        return res
+    end
+    res = 0
+    for I in CartesianIndices(grid)
+        (grid[I] == 1) && (res = max(res, dfs(grid, I)))
+    end
+    return res
+end
 ## @lc code=end

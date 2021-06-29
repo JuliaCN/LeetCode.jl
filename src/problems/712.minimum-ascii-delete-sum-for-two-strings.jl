@@ -1,8 +1,8 @@
 # ---
 # title: 712. Minimum ASCII Delete Sum for Two Strings
 # id: problem712
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-29
 # difficulty: Medium
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/description/>
@@ -44,5 +44,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function minimum_delete_sum(s1::String, s2::String)
+    m, n = length(s1) + 1, length(s2) + 1
+    dp = fill(0, m, n)
+    dp[2:end, 1] .= cumsum(codeunits(s1))
+    dp[1, 2:end] .= cumsum(codeunits(s2))
+    for i in 2:m, j in 2:n
+        dp[i, j] = (s1[i - 1] == s2[j - 1]) ? (dp[i - 1, j - 1]) :
+                   min(dp[i - 1, j] + Int(s1[i - 1]), dp[i, j - 1] + Int(s2[j - 1]))
+    end
+    return dp[m, n]
+end
 ## @lc code=end

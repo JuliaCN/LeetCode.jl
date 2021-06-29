@@ -1,8 +1,8 @@
 # ---
 # title: 735. Asteroid Collision
 # id: problem735
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-29
 # difficulty: Medium
 # categories: Stack
 # link: <https://leetcode.com/problems/asteroid-collision/description/>
@@ -69,5 +69,25 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function asteroid_collision(asteroids::Vector{Int})
+    res = Int[]
+    for ast in asteroids
+        ast > 0 && (push!(res, ast); continue)
+        flg = true
+        while !isempty(res) && res[end] > 0
+            cmp = res[end] + ast
+            if cmp < 0
+                pop!(res)
+            elseif cmp == 0
+                pop!(res)
+                flg = false
+            else
+                flg = false
+                break
+            end
+        end
+        flg && push!(res, ast)
+    end
+    return res
+end
 ## @lc code=end
