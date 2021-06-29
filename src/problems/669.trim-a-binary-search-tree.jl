@@ -1,8 +1,8 @@
 # ---
 # title: 669. Trim a Binary Search Tree
 # id: problem669
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-28
 # difficulty: Easy
 # categories: Tree
 # link: <https://leetcode.com/problems/trim-a-binary-search-tree/description/>
@@ -78,5 +78,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+trim_BST(::Nothing, L::Int, R::Int) = nothing
+
+function trim_BST(root::TreeNode{Int}, L::Int, R::Int)
+    root.val > R && return trim_BST(root.left, L, R)
+    root.val < L && return trim_BST(root.right, L, R)
+    root.left = trim_BST(root.left, L, R)
+    root.right = trim_BST(root.right, L, R)
+    return root
+end
 ## @lc code=end

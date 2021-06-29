@@ -44,29 +44,39 @@ end
 
 function Base.convert(::Type{TreeNode{V}}, xs::Vector) where {V}
     @assert length(xs) > 0
-    root = TreeNode(xs[1])
-    _build_tree!(root, xs, 1)
+    root = _build_tree!(V, xs)
     return root
 end
 
 TreeNode{V}(xs::Vector) where {V} = convert(TreeNode{V}, xs)
 
-function _build_tree!(t::TreeNode, xs::Vector, i::Int=1)
-    n = length(xs)
-    i_left = i * 2
-    if i_left <= n && !isnothing(xs[i_left])
-        t.left = TreeNode(xs[i_left])
-        _build_tree!(t.left, xs, i_left)
-    else
-        t.left = nothing
+function _build_tree!(::Type{T}, xs::Vector) where T
+    res = TreeNode(xs[1])
+    q1 = TreeNode{T}[res]
+    q2 = TreeNode{T}[]
+    idx, len = 2, length(xs)
+    while idx <= len
+        while !isempty(q1)
+            qf = popfirst!(q1)
+            idx > len && break
+            if isnothing(xs[idx])
+                qf.left = nothing
+            else
+                qf.left = TreeNode(xs[idx])
+                push!(q2, qf.left)
+            end
+            (idx += 1) > len && break
+            if isnothing(xs[idx])
+                qf.right = nothing
+            else
+                qf.right = TreeNode(xs[idx])
+                push!(q2, qf.right)
+            end
+            idx += 1
+        end
+        q1, q2 = q2, q1
     end
-    i_right = i * 2 + 1
-    if i_right <= n && !isnothing(xs[i_right])
-        t.right = TreeNode(xs[i_right])
-        _build_tree!(t.right, xs, i_right)
-    else
-        t.right = nothing
-    end
+    return res
 end
 
 function next_perm!(itr)::Bool                      

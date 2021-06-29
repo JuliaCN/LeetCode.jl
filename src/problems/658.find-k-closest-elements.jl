@@ -1,8 +1,8 @@
 # ---
 # title: 658. Find K Closest Elements
 # id: problem658
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-28
 # difficulty: Medium
 # categories: Binary Search
 # link: <https://leetcode.com/problems/find-k-closest-elements/description/>
@@ -48,5 +48,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_closest_elements(arr::Vector{Int}, k::Int, x::Int)
+    res = Int[]
+    j = searchsortedfirst(arr, x)
+    i = j - 1
+    for _ in 1:k
+        if i == 0 || (j <= length(arr) && arr[j] - x < x - arr[i])
+            push!(res, arr[j])
+            j += 1
+        else
+            pushfirst!(res, arr[i])
+            i -= 1
+        end
+    end
+    return res
+end
 ## @lc code=end

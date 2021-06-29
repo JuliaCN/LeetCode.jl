@@ -1,8 +1,8 @@
 # ---
 # title: 670. Maximum Swap
 # id: problem670
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-28
 # difficulty: Medium
 # categories: Array, Math
 # link: <https://leetcode.com/problems/maximum-swap/description/>
@@ -38,5 +38,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function maximum_swap670(nums::Int)
+    dgs = digits(nums)
+    for i in 1:length(dgs)
+        cur = @view(dgs[i:end])
+        max_idx = argmax(cur)
+        max_idx == lastindex(cur) && continue
+        dgs[end], dgs[max_idx] = dgs[max_idx], dgs[end]
+        break
+    end
+    return [10 .^ (0:length(dgs)-1);]' * dgs
+end
 ## @lc code=end
