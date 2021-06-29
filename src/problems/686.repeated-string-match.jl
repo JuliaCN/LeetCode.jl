@@ -1,8 +1,8 @@
 # ---
 # title: 686. Repeated String Match
 # id: problem686
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-29
 # difficulty: Medium
 # categories: String
 # link: <https://leetcode.com/problems/repeated-string-match/description/>
@@ -63,5 +63,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function repeated_string_match(a::String, b::String)
+    minres = (length(b) - 1) ÷ length(a) + 1
+    s = a ^ minres
+    for i in 0:2
+        occursin(b, s) && return minres + i
+        s *= a
+    end
+    return -1
+end
 ## @lc code=end
