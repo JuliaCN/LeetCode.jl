@@ -1,4 +1,5 @@
 @testset "662.maximum-width-of-binary-tree.jl" begin
+    @test width_of_binary_tree(nothing) == 0
     @test width_of_binary_tree(TreeNode{Int}([1, 3, 2, 5, 3, nothing, 9])) == 4
     @test width_of_binary_tree(TreeNode{Int}([1, 3, nothing, 5, 3])) == 2
     @test width_of_binary_tree(TreeNode{Int}([1, 3, 2, 5])) == 2
