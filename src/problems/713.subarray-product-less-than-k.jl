@@ -1,8 +1,8 @@
 # ---
 # title: 713. Subarray Product Less Than K
 # id: problem713
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-29
 # difficulty: Medium
 # categories: Array, Two Pointers
 # link: <https://leetcode.com/problems/subarray-product-less-than-k/description/>
@@ -34,5 +34,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function num_subarray_productLess_than_k(nums::Vector{Int}, k::Int)
+    k <= 1 && return 0
+    res, left = 0, 1
+    p = 1
+    for (right, val) in enumerate(nums)
+        p *= val
+        while p >= k
+            p ÷= nums[left]
+            left += 1
+        end
+        res += right - left + 1
+    end
+    return res
+end
 ## @lc code=end
