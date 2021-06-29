@@ -1,8 +1,8 @@
 # ---
 # title: 718. Maximum Length of Repeated Subarray
 # id: problem718
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-06-29
 # difficulty: Medium
 # categories: Array, Hash Table, Binary Search, Dynamic Programming
 # link: <https://leetcode.com/problems/maximum-length-of-repeated-subarray/description/>
@@ -37,5 +37,6 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+find_length718(nums1::Vector{Int}, nums2::Vector{Int}) = 
+    longest_common_subsequence(nums1, nums2)
 ## @lc code=end
