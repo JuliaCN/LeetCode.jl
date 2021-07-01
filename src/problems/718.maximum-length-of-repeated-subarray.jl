@@ -47,6 +47,5 @@ function longest_common_substring(itr1, itr2)
     return maximum(dp)
 end
 
-find_length718(nums1::Vector{Int}, nums2::Vector{Int}) = 
-    longest_common_substring(nums1, nums2)
+find_length718(nums1::Vector{Int}, nums2::Vector{Int}) = longest_common_substring(nums1, nums2)
 ## @lc code=end
