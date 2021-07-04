@@ -1,4 +1,3 @@
-using Core: print
 # ---
 # title: 523. Continuous Subarray Sum
 # id: problem523

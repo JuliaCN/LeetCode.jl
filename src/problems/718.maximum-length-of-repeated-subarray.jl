@@ -43,7 +43,6 @@ function longest_common_substring(itr1, itr2)
     for i in 2: m, j in 2: n
         (itr1[i - 1] == itr2[j - 1]) && (dp[i, j] = dp[i - 1, j - 1] + 1)
     end
-    println(dp)
     return maximum(dp)
 end
 
