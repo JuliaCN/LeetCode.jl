@@ -1,8 +1,8 @@
 # ---
 # title: 743. Network Delay Time
 # id: problem743
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-01
 # difficulty: Medium
 # categories: Heap, Depth-first Search, Breadth-first Search, Graph
 # link: <https://leetcode.com/problems/network-delay-time/description/>
@@ -43,5 +43,20 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function network_delay_time(times::Vector{Vector{Int}}, n::Int, k::Int)
+    graph = [Tuple{Int,Int}[] for _ in 1:n]
+    for (u, v, t) in times
+        push!(graph[u], (v, t))
+    end
+    pq = PriorityQueue{Int,Int}([(k, 0)])
+    res = Int[]
+    while !isempty(pq)
+        node, d = dequeue_pair!(pq)
+        for (neb, d1) in graph[node]
+            pq[neb] = min(get(pq, neb, typemax(Int)), d + d1)
+        end
+        push!(res, d)
+    end
+    return length(res) == n ? maximum(res) : -1
+end
 ## @lc code=end

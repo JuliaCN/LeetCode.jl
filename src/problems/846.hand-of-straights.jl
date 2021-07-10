@@ -1,8 +1,8 @@
 # ---
 # title: 846. Hand of Straights
 # id: problem846
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-09
 # difficulty: Medium
 # categories: Ordered Map
 # link: <https://leetcode.com/problems/hand-of-straights/description/>
@@ -52,5 +52,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function is_n_straight_hand(hand::Vector{Int}, group_size::Integer)::Bool
+    length(hand) % group_size == 0 || return false
+    cntr = counter(hand)    
+    while !isempty(cntr)
+        k = minimum(keys(cntr))
+        v = cntr[k]
+        for i in (0:group_size-1) .+ k
+            cntr[i] -= v
+            cntr[i] < 0 && return false
+            cntr[i] == 0 && pop!(cntr.map, i)
+        end
+    end
+    return true
+end
 ## @lc code=end

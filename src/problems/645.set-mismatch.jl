@@ -1,8 +1,8 @@
 # ---
 # title: 645. Set Mismatch
 # id: problem645
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-04
 # difficulty: Easy
 # categories: Hash Table, Math
 # link: <https://leetcode.com/problems/set-mismatch/description/>
@@ -35,5 +35,11 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_error_nums(nums::Vector{Int})
+    cnt = fill(0x0, length(nums))
+    for num in nums
+        cnt[num] += 1
+    end
+    return findfirst(==(0x2), cnt), findfirst(==(0x0), cnt)
+end
 ## @lc code=end
