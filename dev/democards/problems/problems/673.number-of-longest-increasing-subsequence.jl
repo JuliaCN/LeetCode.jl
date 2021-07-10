@@ -16,7 +16,6 @@ function find_number_of_LIS(nums::Vector{Int})
         end
     end
     max_len = maximum(dp)
-    println(max_len)
     return sum(c for (idx, c) in enumerate(cnt) if dp[idx] == max_len)
 end
 # @lc code=end

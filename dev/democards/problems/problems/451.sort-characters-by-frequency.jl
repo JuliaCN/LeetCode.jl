@@ -7,7 +7,7 @@ function frequency_sort(s::String)
     for n in codeunits(s)
         freq[n] += 1
     end
-    sort!(u_vec; by=x -> freq[x], rev = true)
+    sort!(u_vec; by=x -> (freq[x], x), rev = true)
     String(u_vec)
 end
 # @lc code=end

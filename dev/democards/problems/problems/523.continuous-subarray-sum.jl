@@ -1,5 +1,3 @@
-using Core: print
-
 # @lc code=start
 using LeetCode
 
