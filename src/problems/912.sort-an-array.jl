@@ -1,8 +1,8 @@
 # ---
 # title: 912. Sort an Array
 # id: problem912
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-12
 # difficulty: Medium
 # categories: 
 # link: <https://leetcode.com/problems/sort-an-array/description/>
@@ -40,5 +40,5 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+sort_array(nums::Vector{Int}) = sort!(nums)
 ## @lc code=end
