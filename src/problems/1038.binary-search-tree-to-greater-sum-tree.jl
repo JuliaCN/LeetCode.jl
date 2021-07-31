@@ -1,8 +1,8 @@
 # ---
 # title: 1038. Binary Search Tree to Greater Sum Tree
 # id: problem1038
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-31
 # difficulty: Medium
 # categories: Binary Search Tree
 # link: <https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree/description/>

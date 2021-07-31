@@ -1,8 +1,8 @@
 # ---
 # title: 1041. Robot Bounded In Circle
 # id: problem1041
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-31
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/robot-bounded-in-circle/description/>
