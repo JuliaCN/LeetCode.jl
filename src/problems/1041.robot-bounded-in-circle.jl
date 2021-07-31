@@ -75,11 +75,11 @@ function is_robot_bounded(instructions::String)::Bool
             x += dirs[st][1]
             y += dirs[st][2]
         elseif ch == 'L'
-            st = (st + 1) % 4
+            st = mod1(st + 1, 4)
         else
-            st = (st - 1) % 4
+            st = mod1(st - 1, 4)
         end
     end
-    return (x, y) == (0, 0) && st != 1
+    return (x, y) == (0, 0) || st != 1
 end
 ## @lc code=end
