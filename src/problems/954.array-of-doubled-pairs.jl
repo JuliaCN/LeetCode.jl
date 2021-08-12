@@ -1,7 +1,7 @@
 # ---
 # title: 954. Array of Doubled Pairs
 # id: problem954
-# author: Tian Jun, Jimmy Shen
+# author: Jimmy Shen
 # date: 2021-08-11
 # difficulty: Medium
 # categories: Array, Hash Table
