@@ -1,8 +1,8 @@
 # ---
 # title: 1035. Uncrossed Lines
 # id: problem1035
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-31
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/uncrossed-lines/description/>
@@ -64,5 +64,6 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+max_uncrossed_lines(nums1::Vector{Int}, nums2::Vector{Int}) = 
+    longest_common_subsequence(nums1, nums2)
 ## @lc code=end

@@ -1,8 +1,8 @@
 # ---
 # title: 1041. Robot Bounded In Circle
 # id: problem1041
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-31
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/robot-bounded-in-circle/description/>
@@ -66,5 +66,20 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function is_robot_bounded(instructions::String)::Bool
+    x, y = 0, 0
+    dirs = ((0, 1), (1, 0), (0, -1), (-1, 0))
+    st = 1
+    for ch in instructions
+        if ch == 'G'
+            x += dirs[st][1]
+            y += dirs[st][2]
+        elseif ch == 'L'
+            st = mod1(st + 1, 4)
+        else
+            st = mod1(st - 1, 4)
+        end
+    end
+    return (x, y) == (0, 0) || st != 1
+end
 ## @lc code=end

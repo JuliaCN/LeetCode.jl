@@ -1,8 +1,8 @@
 # ---
 # title: 754. Reach a Number
 # id: problem754
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-11
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/reach-a-number/description/>
@@ -48,5 +48,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function reach_number(target::Integer)
+    target = abs(target)
+    k = 0
+    while target > 0
+        k += 1
+        target = target - k
+    end
+    return iseven(target) ? k : k + 1 + k % 2
+end
 ## @lc code=end

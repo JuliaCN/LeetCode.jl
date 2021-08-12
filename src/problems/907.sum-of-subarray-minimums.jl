@@ -1,8 +1,8 @@
 # ---
 # title: 907. Sum of Subarray Minimums
 # id: problem907
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-12
 # difficulty: Medium
 # categories: Array, Stack
 # link: <https://leetcode.com/problems/sum-of-subarray-minimums/description/>
@@ -67,5 +67,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function sum_subarray_mins(arr::Vector{Int})
+    csum, res, md = 0, 0, Int(1e9) + 7
+    stk = Int[]
+    for i in eachindex(arr)
+        while !isempty(stk) && arr[stk[end]] >= arr[i]
+            tp = pop!(stk)
+            ntop = isempty(stk) ? 0 : stk[end]
+            csum += (arr[i] - arr[tp]) * (tp - ntop);
+        end
+        csum += arr[i]
+        push!(stk, i)
+        res += csum
+    end
+    return res % md
+end
 ## @lc code=end

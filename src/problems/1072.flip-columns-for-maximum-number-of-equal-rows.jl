@@ -1,8 +1,8 @@
 # ---
 # title: 1072. Flip Columns For Maximum Number of Equal Rows
 # id: problem1072
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-18
 # difficulty: Medium
 # categories: Hash Table
 # link: <https://leetcode.com/problems/flip-columns-for-maximum-number-of-equal-rows/description/>
@@ -58,5 +58,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_equal_rows_after_flips(mat::Matrix{Int})
+    mp = Dict{Vector{Int}, Int}()
+    for row in eachrow(mat)
+        row[1] == 1 && (row .= 1 .- row)
+        mp[row] = get(mp, row, 0) + 1
+    end
+    return maximum(values(mp))
+end
 ## @lc code=end

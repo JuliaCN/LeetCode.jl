@@ -1,8 +1,8 @@
 # ---
 # title: 915. Partition Array into Disjoint Intervals
 # id: problem915
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-12
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/partition-array-into-disjoint-intervals/description/>
@@ -53,5 +53,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function partition_disjoint(nums::Vector{Int})
+    n, pos = length(nums), 0
+    maxn = leftm = nums[1]
+    for i in 2:n
+        maxn = max(maxn, nums[i])
+        if nums[i] < leftm
+            leftm = maxn
+            pos = i
+        end
+    end
+    return pos
+end
 ## @lc code=end
