@@ -54,6 +54,8 @@
 ## @lc code=start
 using LeetCode
 using DataStructures
+aa = Vector{Vector{String}}()
+push!(aa, ["bbb"])
 function groupAnagrams(strs::Vector{String})::Vector{Vector{String}}
     swords = DefaultDict{AbstractString, Vector{String}}(Vector{Int})
     for word in strs

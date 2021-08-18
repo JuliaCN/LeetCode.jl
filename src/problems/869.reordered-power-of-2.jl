@@ -1,8 +1,8 @@
 # ---
 # title: 869. Reordered Power of 2
 # id: problem869
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-11
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/reordered-power-of-2/description/>
@@ -67,5 +67,20 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function reordered_power_of2(n::Integer)
+    cntr1 = OffsetArray(fill(0, 10), -1)
+    cntr2 = OffsetArray(fill(0, 10), -1)
+    function count_num!(cntr, n::Integer)
+        fill!(cntr, 0)
+        for d in digits(n)
+            cntr[d] += 1            
+        end
+        cntr
+    end
+    count_num!(cntr1, n)
+    for i in 0:31
+        (cntr1 == count_num!(cntr2, 1 << i)) && return true
+    end
+    return false
+end
 ## @lc code=end

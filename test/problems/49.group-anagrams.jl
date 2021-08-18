@@ -8,5 +8,4 @@
     @test check(["eat","tea","tan","ate","nat","bat"], [["bat"],["nat","tan"],["ate","eat","tea"]])
     @test check([""], [""])
     @test check(["a"], ["a"])
-    # @test jump45([2, 3, 1, 1, 4]) == 2
 end

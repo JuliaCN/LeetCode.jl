@@ -1,8 +1,8 @@
 # ---
 # title: 1038. Binary Search Tree to Greater Sum Tree
 # id: problem1038
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-31
 # difficulty: Medium
 # categories: Binary Search Tree
 # link: <https://leetcode.com/problems/binary-search-tree-to-greater-sum-tree/description/>
@@ -72,5 +72,17 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+bst_to_gst(::Nothing) = nothing
+function bst_to_gst(root::TreeNode{Int})::TreeNode{Int}
+    s = 0
+    rev_first_ord(::Nothing) = nothing
+    function rev_first_ord(node::TreeNode{Int})
+        rev_first_ord(node.right)
+        s += node.val
+        node.val = s
+        return rev_first_ord(node.left)
+    end
+    !isnothing(root) && rev_first_ord(root)
+    return root
+end
 ## @lc code=end

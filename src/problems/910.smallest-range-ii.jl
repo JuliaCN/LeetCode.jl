@@ -1,8 +1,8 @@
 # ---
 # title: 910. Smallest Range II
 # id: problem910
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-12
 # difficulty: Medium
 # categories: Math, Greedy
 # link: <https://leetcode.com/problems/smallest-range-ii/description/>
@@ -58,5 +58,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function smallest_rangeII(nums::Vector{Int}, k::Integer)
+    sort!(nums)
+    res = nums[end] - nums[1]
+    for i in 2:length(nums)
+        res = min(res, max(nums[end] - k, nums[i - 1] + k) - min(nums[1] + k, nums[i] - k))
+    end    
+    return res
+end
 ## @lc code=end
