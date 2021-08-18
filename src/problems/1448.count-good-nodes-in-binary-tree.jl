@@ -59,5 +59,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function goodNodes(root::TreeNode)::Int
+    dfs(::Nothing...) = 0
+    function dfs(n::TreeNode, mval::Int)::Int
+        res = 0
+        (n.val >= mval) && (res += 1)
+        n_max = max(mval, n.val)
+        res += dfs(n.left, n_max)
+        res += dfs(n.right, n_max)
+        return res
+    end
+    return dfs(root, typemin(Int))
+end
 ## @lc code=end
