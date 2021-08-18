@@ -1,7 +1,7 @@
 # ---
 # title: 1448. Count Good Nodes in Binary Tree
 # id: problem1448
-# author: Tian Jun, Jimmy Shen
+# author: Jimmy Shen
 # date: 2020-08-18
 # difficulty: Medium
 # categories: Tree, Depth-first Search

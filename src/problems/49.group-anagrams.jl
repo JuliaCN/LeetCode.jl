@@ -1,7 +1,7 @@
 # ---
 # title: 49. Group Anagrams
 # id: problem49
-# author: Tian Jun, Jimmy Shen
+# author: Jimmy Shen
 # date: 2021-08-12
 # difficulty: Medium
 # categories: Hash Table, String
