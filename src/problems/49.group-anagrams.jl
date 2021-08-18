@@ -1,8 +1,8 @@
 # ---
 # title: 49. Group Anagrams
 # id: problem49
-# author: Tian Jun
-# date: 2020-10-31
+# author: Tian Jun, Jimmy Shen
+# date: 2021-08-12
 # difficulty: Medium
 # categories: Hash Table, String
 # link: <https://leetcode.com/problems/group-anagrams/description/>
@@ -53,6 +53,17 @@
 # 
 ## @lc code=start
 using LeetCode
-
-## add your code here:
+using DataStructures
+function groupAnagrams(strs::Vector{String})::Vector{Vector{String}}
+    swords = DefaultDict{AbstractString, Vector{String}}(Vector{Int})
+    for word in strs
+        key = join(sort(collect(word)))
+        push!(swords[key], word)
+    end
+    res = Vector{Vector{String}}()
+    for (k, v) in swords
+        push!(res, v)
+    end
+    return res
+end
 ## @lc code=end
