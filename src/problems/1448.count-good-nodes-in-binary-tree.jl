@@ -1,8 +1,8 @@
 # ---
 # title: 1448. Count Good Nodes in Binary Tree
 # id: problem1448
-# author: Tian Jun
-# date: 2020-10-31
+# author: Tian Jun, Jimmy Shen
+# date: 2020-08-18
 # difficulty: Medium
 # categories: Tree, Depth-first Search
 # link: <https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/>
@@ -60,7 +60,7 @@
 using LeetCode
 
 function goodNodes(root::TreeNode)::Int
-    dfs(::Nothing...) = 0
+    dfs(::Nothing, args...) = 0
     function dfs(n::TreeNode, mval::Int)::Int
         res = 0
         (n.val >= mval) && (res += 1)
