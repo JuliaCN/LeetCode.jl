@@ -1,6 +1,6 @@
 @testset "49.group-anagrams.jl" begin
     function check(input, reference)
-        res = groupAnagrams(input)
+        res = group_anagrams(input)
         res = sort(map(sort, res))
         ref = sort(map(sort, res))
         return res == ref
