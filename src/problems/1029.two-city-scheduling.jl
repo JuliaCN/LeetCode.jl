@@ -1,8 +1,8 @@
 # ---
 # title: 1029. Two City Scheduling
 # id: problem1029
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-07-31
 # difficulty: Medium
 # categories: Greedy
 # link: <https://leetcode.com/problems/two-city-scheduling/description/>
@@ -62,5 +62,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function two_city_sched_cost(costs::Vector{Vector{Int}})::Int    
+    sort!(costs; by = x -> x[1] - x[2])
+    n = length(costs) ÷ 2
+    res = 0
+    for i in 1:n
+        res += costs[i][1] + costs[i + n][2]
+    end
+    res
+end
 ## @lc code=end
