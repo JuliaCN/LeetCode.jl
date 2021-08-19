@@ -1,7 +1,7 @@
 # ---
 # title: 56. Merge Intervals
 # id: problem56
-# author: Tian Jun
+# author: Jimmy Shen
 # date: 2020-10-31
 # difficulty: Medium
 # categories: Array, Sort
