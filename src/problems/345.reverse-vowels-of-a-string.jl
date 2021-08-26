@@ -1,8 +1,8 @@
 # ---
 # title: 345. Reverse Vowels of a String
 # id: problem345
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-08-19
 # difficulty: Easy
 # categories: Two Pointers, String
 # link: <https://leetcode.com/problems/reverse-vowels-of-a-string/description/>
@@ -36,5 +36,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function reverse_vowels(s::String)
+    in_chars = codeunits(s)[:]
+    indices = Int[]
+    vowels = Set(['a', 'e', 'i', 'o', 'u'])
+    for i in 1:length(s)
+        s[i] ∈ vowels && push!(indices, i)
+    end
+    reverse!(@view(in_chars[indices]))
+    in_chars |> pointer |> unsafe_string
+end
 ## @lc code=end

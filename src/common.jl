@@ -92,15 +92,16 @@ function next_perm!(itr)::Bool
 end
 
 """
-``mat = mat ^ p \\pmod m``
+``res = mat ^ p \\pmod m``
 """
 function mat_fast_mul(mat::AbstractMatrix{T}, p::T, m::T=typemax(T)) where T
     p == 0 && return (ones(T, size(mat)))
     (m == 1 || m == -1) && return (zeros(T, size(mat)))
-    res = LinearAlgebra.I(size(mat, 1)) |> typeof(mat)
     base = mat .% m
+    res = copy(base)
     tmp = typeof(mat)(undef, size(mat))
     t = prevpow(2, p)
+    p -= t
     while true
         if p >= t
             LinearAlgebra.mul!(tmp, res, base)
