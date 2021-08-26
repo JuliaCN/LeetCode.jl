@@ -1,0 +1,6 @@
+#!/bin/bash
+for file in $(git ls-files -o  --exclude-standard --full-name | grep ".*jl$" | xargs basename --)
+do
+echo @testset \"$file\" begin > ./test/problems/$file
+echo end >> ./test/problems/$file
+done
