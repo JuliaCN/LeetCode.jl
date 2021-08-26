@@ -2,7 +2,7 @@
 using LeetCode
 
 # add your code here:
-function canReorderDoubled(arr::Vector{Int})::Bool
+function can_reorder_doubled(arr::Vector{Int})::Bool
     cnt = counter(arr)
     for a in sort!(arr; by=abs)
         cnt[a] == 0 && continue
