@@ -1,8 +1,8 @@
 # ---
 # title: 1588. Sum of All Odd Length Subarrays
 # id: problem1588
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-08-30
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/sum-of-all-odd-length-subarrays/description/>
@@ -63,5 +63,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function sum_odd_length_subarrays(arr::Vector{Int})::Int
+    res = 0
+    len = length(arr)
+    for i in 1:len
+        l, r = i - 1, len - i
+        lodd, rodd = (l + 1) ÷ 2, (r + 1) ÷ 2
+        leven, reven = l ÷ 2 + 1, r ÷ 2 + 1
+        res += arr[i] * (lodd * rodd + leven * reven) 
+    end
+    res
+end
 ## @lc code=end
