@@ -1,8 +1,8 @@
 # ---
 # title: 502. IPO
 # id: problem502
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-09-08
 # difficulty: Hard
 # categories: Heap, Greedy
 # link: <https://leetcode.com/problems/ipo/description/>
@@ -50,5 +50,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+using DataStructures
+function find_maximized_capital(k::Int, w::Int, profits::Vector{Int}, capital::Vector{Int})
+    arr = @view(collect(zip(capital, profits))[:])
+    sort!(arr)
+    hp = Int[]
+    for _ in 1:k
+        idx = searchsortedlast(arr, (w + 1, -1))
+        for item in @view(arr[1:idx])
+            heappush!(hp, -item[2])
+        end
+        arr = @view(arr[idx+1:end])
+        w -= isempty(hp) ? 0 : hp[1]
+    end
+    w
+end
 ## @lc code=end
