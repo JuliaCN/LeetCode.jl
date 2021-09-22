@@ -25,6 +25,17 @@ next!(x::ListNode, y) = x.next = y
 
 Base.:(==)(x::ListNode, y::ListNode) = x.val == y.val && x.next == y.next
 
+function length_of_list(x::ListNode)::Int
+    res = 0
+    while !isnothing(x)
+        x = x.next
+        res += 1
+    end
+    res
+end
+
+length_of_list(::Nothing) = 0 
+
 #####
 # TreeNode
 #####

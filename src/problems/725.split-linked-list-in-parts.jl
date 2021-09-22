@@ -1,8 +1,8 @@
 # ---
 # title: 725. Split Linked List in Parts
 # id: problem725
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-09-22
 # difficulty: Medium
 # categories: Linked List
 # link: <https://leetcode.com/problems/split-linked-list-in-parts/description/>
@@ -59,5 +59,28 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+split_list_to_parts(::Nothing, k::Int)::Vector{Union{ListNode{Int},Nothing}} =
+    fill(nothing, k)
+
+function split_list_to_parts(
+    head::ListNode{Int}, k::Int
+)::Vector{Union{ListNode{Int},Nothing}}
+    p = head
+    len = length_of_list(head)
+    first_m = mod(len, k)
+    base_n = len ÷ k
+    res = Vector{Union{ListNode{Int},Nothing}}(undef, k)
+    for i in 1:k
+        for _ in 1:(base_n - (i > first_m))
+            p = p.next
+        end
+        res[i] = head
+        if !isnothing(p)
+            head = p.next
+            p.next = nothing
+        end
+        p = head
+    end
+    return res
+end
 ## @lc code=end
