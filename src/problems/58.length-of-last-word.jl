@@ -1,8 +1,8 @@
 # ---
 # title: 58. Length of Last Word
 # id: problem58
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-09-22
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/length-of-last-word/description/>
@@ -44,5 +44,5 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+length_of_last_word(s::String) = length(rsplit(s, ' '; limit = 2, keepempty=false)[end])
 ## @lc code=end

@@ -50,7 +50,6 @@
 ## @lc code=start
 using LeetCode
 
-using DataStructures
 function find_maximized_capital(k::Int, w::Int, profits::Vector{Int}, capital::Vector{Int})
     arr = @view(collect(zip(capital, profits))[:])
     sort!(arr)
