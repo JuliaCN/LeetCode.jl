@@ -1,8 +1,8 @@
 # ---
 # title: 1480. Running Sum of 1d Array
 # id: problem1480
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-08-28
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/running-sum-of-1d-array/description/>
@@ -51,5 +51,5 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+running_sum(arr::Vector{<:Number}) = cumsum!(arr, arr)    
 ## @lc code=end
