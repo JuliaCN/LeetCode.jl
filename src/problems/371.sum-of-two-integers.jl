@@ -1,8 +1,8 @@
 # ---
 # title: 371. Sum of Two Integers
 # id: problem371
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2021-09-26
 # difficulty: Medium
 # categories: Bit Manipulation
 # link: <https://leetcode.com/problems/sum-of-two-integers/description/>
@@ -32,5 +32,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function get_sum371(a::Int, b::Int)::Int
+    while b != 0
+        carry = (a & b) << 1
+        a = a ⊻ b
+        b = carry
+    end
+    a
+end
 ## @lc code=end
