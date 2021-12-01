@@ -1,8 +1,8 @@
 # ---
 # title: 1207. Unique Number of Occurrences
 # id: problem1207
-# author: Tian Jun
-# date: 2020-10-31
+# author: Jerry Ling
+# date: 2021-11-30
 # difficulty: Easy
 # categories: Hash Table
 # link: <https://leetcode.com/problems/unique-number-of-occurrences/description/>
@@ -48,6 +48,15 @@
 # 
 ## @lc code=start
 using LeetCode
+
+function unique_number_of_occurrences(arr::Vector{Int})
+    counts = Dict{Int, Int}()
+    for a in arr
+        counts[a] = get(counts, a, 0) + 1
+    end
+    vs = values(counts)
+    return length(vs) == length(unique(vs))
+end
 
 ## add your code here:
 ## @lc code=end
