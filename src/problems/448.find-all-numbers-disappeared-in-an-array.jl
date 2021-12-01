@@ -1,8 +1,8 @@
 # ---
 # title: 448. Find All Numbers Disappeared in an Array
 # id: problem448
-# author: Tian Jun
-# date: 2020-10-31
+# author: Jerry Ling
+# date: 2021-11-30
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/description/>
@@ -31,6 +31,10 @@
 # 
 ## @lc code=start
 using LeetCode
+
+function find_all_numbers_disappeared_in_an_array(arr::Vector{Int})
+    return setdiff(eachindex(arr), arr)
+end
 
 ## add your code here:
 ## @lc code=end
