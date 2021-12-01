@@ -1,8 +1,8 @@
 # ---
 # title: 78. Subsets
 # id: problem78
-# author: Tian Jun
-# date: 2020-10-31
+# author: Jerry Ling
+# date: 2021-12-01
 # difficulty: Medium
 # categories: Array, Backtracking, Bit Manipulation
 # link: <https://leetcode.com/problems/subsets/description/>
@@ -41,6 +41,16 @@
 # 
 ## @lc code=start
 using LeetCode
+
+function subsets(arr::Vector{T}) where T
+    res = [T[]]
+    for e in arr
+        for i in eachindex(res)
+            push!(res, vcat(res[i], e))
+        end
+    end
+    res
+end
 
 ## add your code here:
 ## @lc code=end
