@@ -1,8 +1,8 @@
 # ---
 # title: 13. Roman to Integer
 # id: problem13
-# author: Tian Jun
-# date: 2020-10-31
+# author: Jerry Ling
+# date: 2021-12-13
 # difficulty: Easy
 # categories: Math, String
 # link: <https://leetcode.com/problems/roman-to-integer/description/>
@@ -94,6 +94,26 @@
 # 
 ## @lc code=start
 using LeetCode
+
+function roman_to_integer(s::AbstractString)
+    table = Dict(
+        'I'      =>       1,
+        'V'      =>       5,
+        'X'      =>       10,
+        'L'      =>       50,
+        'C'      =>       100,
+        'D'      =>       500,
+        'M'      =>       1000,
+    )
+
+    nums = [table[c] for c in s]
+
+    for idx = 1:lastindex(nums)-1
+        nums[idx] *= nums[idx] >= nums[idx+1] ? 1 : -1 
+    end
+
+    return sum(nums)
+end
 
 ## add your code here:
 ## @lc code=end
