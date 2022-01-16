@@ -1,8 +1,8 @@
 # ---
 # title: 70. Climbing Stairs
 # id: problem70
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-01-16
 # difficulty: Easy
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/climbing-stairs/description/>
@@ -49,5 +49,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function climbing_stairs(n::Int)::Int
+    n == 1 && return 1
+    a, b = 1, 2
+    for _ in 3:n
+        a, b = b, a + b
+    end
+    return b
+end
+
 ## @lc code=end

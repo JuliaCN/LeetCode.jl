@@ -1,8 +1,8 @@
 # ---
 # title: 55. Jump Game
 # id: problem55
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-01-16
 # difficulty: Medium
 # categories: Array, Greedy
 # link: <https://leetcode.com/problems/jump-game/description/>
@@ -48,5 +48,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function can_jump(nums::Vector{Int})::Bool
+    n, rightmost = length(nums), 1
+    for (i, num) in enumerate(nums)
+        i > rightmost && return false
+        rightmost = max(rightmost, i + num)
+        rightmost >= n && return true
+    end
+    return false
+end
+
 ## @lc code=end
