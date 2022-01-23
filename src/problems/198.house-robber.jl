@@ -1,8 +1,8 @@
 # ---
 # title: 198. House Robber
 # id: problem198
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-01-19
 # difficulty: Easy
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/house-robber/description/>
@@ -52,5 +52,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function rob(nums::Vector{Int})::Int
+    n = length(nums)
+    n == 1 && return nums[1]
+    first, second = nums[1], max(nums[1], nums[2])
+    for i in 3:n
+        first, second = second, max(second, first + nums[i])
+    end
+    return second
+end
+
 ## @lc code=end
