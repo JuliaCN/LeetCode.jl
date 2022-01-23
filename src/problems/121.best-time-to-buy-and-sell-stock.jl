@@ -1,8 +1,8 @@
 # ---
 # title: 121. Best Time to Buy and Sell Stock
 # id: problem121
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-01-17
 # difficulty: Easy
 # categories: Array, Dynamic Programming
 # link: <https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/>
@@ -41,5 +41,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_profit_121(prices::Vector{Int})::Int
+    min_cost, profit = prices[1], 0
+    for price in @view prices[2:end]
+        profit = max(profit, price - min_cost)
+        min_cost = min(min_cost, price)
+    end
+    return profit
+end
+
 ## @lc code=end
