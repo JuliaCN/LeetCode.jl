@@ -2,7 +2,7 @@
 # title: 1332. Remove Palindromic Subsequences
 # id: problem1332
 # author: Tian Jun
-# date: 2020-10-31
+# date: 2022-01-22
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/remove-palindromic-subsequences/description/>
@@ -70,5 +70,6 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+remove_palindromic_subsequences(s::String) = (s == reverse(s)) ? 1 : 2
+
 ## @lc code=end
