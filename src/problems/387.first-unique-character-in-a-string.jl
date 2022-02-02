@@ -1,8 +1,8 @@
 # ---
 # title: 387. First Unique Character in a String
 # id: problem387
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-01-23
 # difficulty: Easy
 # categories: Hash Table, String
 # link: <https://leetcode.com/problems/first-unique-character-in-a-string/description/>
@@ -31,5 +31,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function first_unique_char(s::String)::Int
+    table = Dict{Char,Bool}()
+    for i in s
+        table[i] = !haskey(table, i)
+    end
+    for (i, st) in enumerate(s)
+        table[st] && return i
+    end
+    return -1
+end
+
 ## @lc code=end
