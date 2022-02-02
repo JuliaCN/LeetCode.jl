@@ -1,8 +1,8 @@
 # ---
 # title: 344. Reverse String
 # id: problem344
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-01-19
 # difficulty: Easy
 # categories: Two Pointers, String
 # link: <https://leetcode.com/problems/reverse-string/description/>
@@ -41,5 +41,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function reverse_string!(s::Vector{Char})::Nothing
+    n = length(s)
+    for i in 1:(n ÷ 2)
+        s[i], s[end - i + 1] = s[end - i + 1], s[i]
+    end
+    return nothing
+end
+
 ## @lc code=end
