@@ -1,8 +1,8 @@
 # ---
 # title: 746. Min Cost Climbing Stairs
 # id: problem746
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-01-19
 # difficulty: Easy
 # categories: Array, Dynamic Programming
 # link: <https://leetcode.com/problems/min-cost-climbing-stairs/description/>
@@ -43,5 +43,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+## Dynamic Programming
+function min_cost_climbing_stairs(cost::Vector{Int})::Int
+    first, second = cost[1], cost[2]
+    for c in @view cost[3:end]
+        first, second = second, min(first, second) + c
+    end
+    return min(first, second)
+end
+
 ## @lc code=end
