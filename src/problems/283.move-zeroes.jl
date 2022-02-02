@@ -1,8 +1,8 @@
 # ---
 # title: 283. Move Zeroes
 # id: problem283
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-01-19
 # difficulty: Easy
 # categories: Array, Two Pointers
 # link: <https://leetcode.com/problems/move-zeroes/description/>
@@ -28,5 +28,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+## use double pointers
+function move_zeros!(nums::Vector{Int})::Nothing
+    p2 = 1
+    for p1 in 1:length(nums)
+        if nums[p1] != 0
+            nums[p1], nums[p2] = nums[p2], nums[p1]
+            p2 += 1
+        end
+    end
+    return nothing
+end
+
 ## @lc code=end
