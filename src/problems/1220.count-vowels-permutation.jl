@@ -1,8 +1,8 @@
 # ---
 # title: 1220. Count Vowels Permutation
 # id: problem1220
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-01-22
 # difficulty: Hard
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/count-vowels-permutation/description/>
@@ -58,5 +58,20 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function count_vowel_permutation(n::Int)::Int
+    table = Dict{Char,Int}(i => 1 for i in "aeiou")
+    quotient = 10^9 + 7
+    for _ in 1:(n - 1)
+        a = table['e'] + table['i'] + table['u']
+        e = table['a'] + table['i']
+        i = table['e'] + table['o']
+        o = table['i']
+        u = table['i'] + table['o']
+        table['a'], table['e'], table['i'], table['o'], table['u'] = map(
+            x -> mod(x, quotient), [a, e, i, o, u]
+        )
+    end
+    return mod(sum(values(table)), quotient)
+end
+
 ## @lc code=end
