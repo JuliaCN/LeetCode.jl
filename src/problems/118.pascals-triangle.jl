@@ -1,8 +1,8 @@
 # ---
 # title: 118. Pascal's Triangle
 # id: problem118
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-01-17
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/pascals-triangle/description/>
@@ -35,5 +35,5 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+pascals_triangle(numRows::Int) = [[binomial(k, i) for i in 0:k] for k in 0:(numRows - 1)]
 ## @lc code=end
