@@ -1,8 +1,8 @@
 # ---
 # title: 53. Maximum Subarray
 # id: problem53
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-01-16
 # difficulty: Easy
 # categories: Array, Divide and Conquer, Dynamic Programming
 # link: <https://leetcode.com/problems/maximum-subarray/description/>
@@ -70,5 +70,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function maximum_subarray(nums::Vector{Int})::Int
+    pre, max_res = 0, nums[1]
+    for num in nums
+        pre = max(pre + num, num)
+        max_res = max(pre, max_res)
+    end
+    return max_res
+end
+
 ## @lc code=end
