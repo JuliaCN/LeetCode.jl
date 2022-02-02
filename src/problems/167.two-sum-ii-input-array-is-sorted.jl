@@ -1,8 +1,8 @@
 # ---
 # title: 167. Two Sum II - Input array is sorted
 # id: problem167
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-01-19
 # difficulty: Easy
 # categories: Array, Two Pointers, Binary Search
 # link: <https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/>
@@ -60,5 +60,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+## use double pointers
+function two_sum_167(numbers::Vector{Int}, target::Int)::Vector{Int}
+    left, right = 1, length(numbers)
+    while left < right
+        if numbers[left] + numbers[right] > target
+            right -= 1
+        elseif numbers[left] + numbers[right] < target
+            left += 1
+        else
+            return [left, right]
+        end
+    end
+    return [-1, -1]
+end
+
 ## @lc code=end
