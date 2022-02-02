@@ -1,8 +1,8 @@
 # ---
 # title: 219. Contains Duplicate II
 # id: problem219
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-01-19
 # difficulty: Easy
 # categories: Array, Hash Table
 # link: <https://leetcode.com/problems/contains-duplicate-ii/description/>
@@ -41,5 +41,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function contains_nearby_duplicate(nums::Vector{Int}, k::Int)::Bool
+    pos = Dict{Int,Int}()
+    for (i, num) in enumerate(nums)
+        haskey(pos, num) && i - pos[num] <= k && return true
+        pos[num] = i
+    end
+    return false
+end
+
 ## @lc code=end
