@@ -1,8 +1,8 @@
 # ---
 # title: 19. Remove Nth Node From End of List
 # id: problem19
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-01-23
 # difficulty: Medium
 # categories: Linked List, Two Pointers
 # link: <https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/>
@@ -55,5 +55,21 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+## Double Pointers
+function remove_nth_from_end_by_double_pointers!(
+    head::ListNode, n::Int
+)::Union{Nothing,ListNode}
+    p1 = p2 = head
+    for _ in 1:n
+        p2 = next(p2)
+    end
+    ## remove the first node
+    isnothing(p2) && return next(head)
+    p2 = p2.next ## let distance(p1, p2) = n + 1
+    while !isnothing(p2)
+        p1, p2 = next(p1), next(p2)
+    end
+    p1.next = p1.next.next ## remove one node
+    return head
+end
 ## @lc code=end
