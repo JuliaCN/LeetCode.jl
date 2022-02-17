@@ -1,8 +1,8 @@
 # ---
 # title: 278. First Bad Version
 # id: problem278
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-12
 # difficulty: Easy
 # categories: Binary Search
 # link: <https://leetcode.com/problems/first-bad-version/description/>
@@ -54,5 +54,17 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function first_bad_version(n::Int, is_bad_version::Function)::Int
+    left, right = 1, n
+    while left <= right
+        mid = (left + right) >> 1
+        if is_bad_version(mid)
+            right = mid - 1
+        else
+            left = mid + 1
+        end
+    end
+    return left
+end
+
 ## @lc code=end
