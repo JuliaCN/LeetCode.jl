@@ -1,8 +1,8 @@
 # ---
 # title: 1447. Simplified Fractions
 # id: problem1447
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-10
 # difficulty: Medium
 # categories: Math
 # link: <https://leetcode.com/problems/simplified-fractions/description/>
@@ -57,5 +57,5 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+simplified_fractions(n::Int) = ["$p/$q" for q in 2:n for p in 1:(q - 1) if gcd(p, q) == 1]
 ## @lc code=end
