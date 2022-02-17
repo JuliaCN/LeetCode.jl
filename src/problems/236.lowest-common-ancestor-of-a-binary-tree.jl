@@ -1,8 +1,8 @@
 # ---
 # title: 236. Lowest Common Ancestor of a Binary Tree
 # id: problem236
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-10
 # difficulty: Medium
 # categories: Tree
 # link: <https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/description/>
@@ -64,5 +64,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function loweset_common_ancestor_236(
+    root::TreeNode{Int}, p::TreeNode{Int}, q::TreeNode{Int}
+)::TreeNode{Int}
+    function dfs(node::Union{TreeNode{Int},Nothing})
+        (isnothing(node) || node == p || node == q) && return node
+        left, right = dfs(node.left), dfs(node.right)
+        isnothing(left) && isnothing(right) && return nothing
+        !isnothing(left) && !isnothing(right) && return node
+        return !isnothing(left) ? left : right
+    end
+    return dfs(root)
+end
 ## @lc code=end
