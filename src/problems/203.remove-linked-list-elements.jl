@@ -1,8 +1,8 @@
 # ---
 # title: 203. Remove Linked List Elements
 # id: problem203
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-16
 # difficulty: Easy
 # categories: Linked List
 # link: <https://leetcode.com/problems/remove-linked-list-elements/description/>
@@ -23,5 +23,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function remove_elements!(
+    head::Union{ListNode,Nothing}, value::Int
+)::Union{ListNode,Nothing}
+    cur = fake_head = ListNode()
+    fake_head.next = head
+    while !isnothing(cur.next)
+        if cur.next.val == value
+            cur.next = cur.next.next
+        else
+            cur = cur.next
+        end
+    end
+    return fake_head.next
+end
 ## @lc code=end
