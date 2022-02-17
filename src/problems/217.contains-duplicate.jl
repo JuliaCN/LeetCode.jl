@@ -1,8 +1,8 @@
 # ---
 # title: 217. Contains Duplicate
 # id: problem217
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-10
 # difficulty: Easy
 # categories: Array, Hash Table
 # link: <https://leetcode.com/problems/contains-duplicate/description/>
@@ -39,5 +39,11 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function contains_duplicate(nums::Vector{Int})::Bool
+    hash_table = Int[]
+    for i in nums
+        !(i in hash_table) ? push!(hash_table, i) : return true
+    end
+    return false
+end
 ## @lc code=end
