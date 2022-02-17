@@ -1,8 +1,8 @@
 # ---
 # title: 136. Single Number
 # id: problem136
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-15
 # difficulty: Easy
 # categories: Hash Table, Bit Manipulation
 # link: <https://leetcode.com/problems/single-number/description/>
@@ -53,5 +53,11 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function single_number_136(nums::Vector{Int})::Int
+    a = 0
+    for i in nums
+        a ⊻= i
+    end
+    return a
+end
 ## @lc code=end
