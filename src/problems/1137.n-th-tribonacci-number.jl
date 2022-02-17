@@ -1,8 +1,8 @@
 # ---
 # title: 1137. N-th Tribonacci Number
 # id: problem1137
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-10
 # difficulty: Easy
 # categories: Recursion
 # link: <https://leetcode.com/problems/n-th-tribonacci-number/description/>
@@ -47,5 +47,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function tribonacci_1137(n::Int)::Int
+    n <= 1 && return n
+    a, b, c = 0, 1, 1
+    for _ in 1:(n - 2)
+        a, b, c = b, c, a + b + c
+    end
+    return c
+end
 ## @lc code=end
