@@ -1,8 +1,8 @@
 # ---
 # title: 1189. Maximum Number of Balloons
 # id: problem1189
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-13
 # difficulty: Easy
 # categories: Hash Table, String
 # link: <https://leetcode.com/problems/maximum-number-of-balloons/description/>
@@ -56,5 +56,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_num_of_ballons(text::String)::Int
+    words = Dict{Char,Int}(s => 0 for s in "balon")
+    for s in text
+        if haskey(words, s)
+            words[s] += 1
+        end
+    end
+    return min(words['b'], words['a'], words['l'] ÷ 2, words['o'] ÷ 2, words['n'])
+end
 ## @lc code=end
