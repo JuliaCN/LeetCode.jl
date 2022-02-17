@@ -1,8 +1,8 @@
 # ---
 # title: 226. Invert Binary Tree
 # id: problem226
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-17
 # difficulty: Easy
 # categories: Tree
 # link: <https://leetcode.com/problems/invert-binary-tree/description/>
@@ -45,5 +45,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function invert_tree!(root::Union{TreeNode{Int},Nothing})::Union{TreeNode,Nothing}
+    isnothing(root) && return nothing
+    queue = [root]
+    while !isempty(queue)
+        node = popfirst!(queue)
+        if !isnothing(node.left)
+            push!(queue, node.left)
+        end
+        if !isnothing(node.right)
+            push!(queue, node.right)
+        end
+        node.left, node.right = node.right, node.left
+    end
+    return root
+end
 ## @lc code=end
