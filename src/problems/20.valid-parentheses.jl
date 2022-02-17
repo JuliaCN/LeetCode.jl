@@ -1,8 +1,8 @@
 # ---
 # title: 20. Valid Parentheses
 # id: problem20
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-17
 # difficulty: Easy
 # categories: String, Stack
 # link: <https://leetcode.com/problems/valid-parentheses/description/>
@@ -70,5 +70,17 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function is_valid_parentheses(s::String)::Bool
+    unclose, left_side = Char[], Dict{Char,Char}(')' => '(', ']' => '[', '}' => '{')
+    for i in s
+        if i in "([{"
+            push!(unclose, i)
+        else
+            (isempty(unclose) || left_side[i] != unclose[end]) && return false
+            pop!(unclose)
+        end
+    end
+    return isempty(unclose)
+end
+
 ## @lc code=end
