@@ -1,8 +1,8 @@
 # ---
 # title: 141. Linked List Cycle
 # id: problem141
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-15
 # difficulty: Easy
 # categories: Linked List, Two Pointers
 # link: <https://leetcode.com/problems/linked-list-cycle/description/>
@@ -70,6 +70,13 @@
 # 
 ## @lc code=start
 using LeetCode
-
-## add your code here:
+function has_cycle(head::Union{ListNode,Nothing})::Bool
+    isnothing(head) && return false
+    swift = slow = head
+    while !isnothing(swift.next) && !isnothing(swift.next.next)
+        slow, swift = slow.next, swift.next.next
+        slow === swift && return true
+    end
+    return false
+end
 ## @lc code=end
