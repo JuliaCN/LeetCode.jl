@@ -1,8 +1,8 @@
 # ---
 # title: 101. Symmetric Tree
 # id: problem101
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-17
 # difficulty: Easy
 # categories: Tree, Depth-first Search, Breadth-first Search
 # link: <https://leetcode.com/problems/symmetric-tree/description/>
@@ -44,5 +44,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+is_symmetric_tree(root::TreeNode{Int})::Bool = is_mirror_tree(root.left, root.right)
+function is_mirror_tree(
+    t1::Union{TreeNode{Int},Nothing}, t2::Union{TreeNode{Int},Nothing}
+)::Bool
+    isnothing(t1) && isnothing(t2) && return true
+    (isnothing(t1) || isnothing(t2)) && return false
+    t1.val != t2.val && return false
+    return is_mirror_tree(t1.left, t2.right) && is_mirror_tree(t1.right, t2.left)
+end
 ## @lc code=end
