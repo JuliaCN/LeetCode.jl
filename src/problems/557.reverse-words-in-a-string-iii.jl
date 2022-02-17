@@ -1,8 +1,8 @@
 # ---
 # title: 557. Reverse Words in a String III
 # id: problem557
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-15
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/reverse-words-in-a-string-iii/description/>
@@ -26,6 +26,6 @@
 # 
 ## @lc code=start
 using LeetCode
+reverse_words_557(s::String) = join([reverse(i) for i in split(s)], " ")
 
-## add your code here:
 ## @lc code=end
