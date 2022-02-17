@@ -1,8 +1,8 @@
 # ---
 # title: 206. Reverse Linked List
 # id: problem206
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-17
 # difficulty: Easy
 # categories: Linked List
 # link: <https://leetcode.com/problems/reverse-linked-list/description/>
@@ -28,5 +28,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function reverse_list(head::Union{ListNode,Nothing})::Union{ListNode,Nothing}
+    new_head = pre_node = nothing
+    while !isnothing(head)
+        new_head = ListNode(head.val)
+        pre_node, new_head.next = new_head, pre_node
+        head = head.next
+    end
+    return new_head
+end
 ## @lc code=end
