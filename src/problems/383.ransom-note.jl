@@ -1,8 +1,8 @@
 # ---
 # title: 383. Ransom Note
 # id: problem383
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-15
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/ransom-note/description/>
@@ -50,6 +50,17 @@
 # 
 ## @lc code=start
 using LeetCode
+using DataStructures
 
-## add your code here:
+function can_construct(ransom_note::String, magazine::String)::Bool
+    words = DefaultDict{Char,Int}(0)
+    for i in magazine
+        words[i] += 1
+    end
+    for i in ransom_note
+        words[i] == 0 && return false
+        words[i] -= 1
+    end
+    return true
+end
 ## @lc code=end
