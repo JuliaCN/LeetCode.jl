@@ -57,5 +57,9 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function lucky_numbers(mat::Matrix{Int})::Vector{Int}
+    amax = argmin(mat; dims = 1)
+    amin = argmax(mat; dims = 2)
+    mat[intersect(amax, amin)]
+end
 ## @lc code=end

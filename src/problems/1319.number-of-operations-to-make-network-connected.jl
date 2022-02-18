@@ -78,8 +78,9 @@ using LeetCode
 
 function make_connected(n::Int, connections::Vector{Vector{Int}})
     if length(connections) < n - 1
-        return - 1
+        return -1
     end
+    father = collect(1:n)
     find_root(u::Int)::Int = (father[u] == u) ? u : (father[u] = find_root(father[u]))
     issame_root(u::Int, v::Int)::Bool = find_root(u) == find_root(v)
     function merge(u::Int, v::Int)
@@ -90,7 +91,6 @@ function make_connected(n::Int, connections::Vector{Vector{Int}})
             father[u_root] = v_root
         end
     end
-    father = collect(1:n)
     for connection in connections
         merge(connection[1], connection[2])
     end
