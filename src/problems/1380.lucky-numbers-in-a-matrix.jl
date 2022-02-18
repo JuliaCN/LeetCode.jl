@@ -1,8 +1,8 @@
 # ---
 # title: 1380. Lucky Numbers in a Matrix
 # id: problem1380
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-02-18
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/lucky-numbers-in-a-matrix/description/>
