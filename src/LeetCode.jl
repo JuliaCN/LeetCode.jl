@@ -10,7 +10,7 @@ include("common.jl")
 include("problems/problems.jl")
 
 # export all
-for n in names(@__MODULE__(); all=true)
+for n in names(LC; all=true)
     if Base.isidentifier(n) &&
        !startswith(String(n), "_") &&
        n ∉ (Symbol(@__MODULE__()), :eval, :include)
