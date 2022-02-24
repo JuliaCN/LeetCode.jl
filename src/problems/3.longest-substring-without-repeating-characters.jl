@@ -62,16 +62,16 @@
 using LeetCode
 
 function length_of_longest_substring(s::String)::Int
-    seen = Set{Char}()
-    res = 0
-
-    for x in s
-        if x in seen
-            empty!(seen)
+    max_string, max_len = "", 0
+    for c in s
+        ## if c occurs twice in max_string
+        if c in max_string
+            max_string = max_string[(findfirst(c, max_string) + 1):end] * c
+        else
+            max_string *= c
+            max_len = max(length(max_string), max_len)
         end
-        push!(seen, x)
-        res = max(res, length(seen))
     end
-    return res
+    return max_len
 end
 ## @lc code=end
