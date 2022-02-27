@@ -81,6 +81,6 @@ function find_min_fibonacci_numbers(k::Int)
         k -= fibs[idx]
         res += 1
     end
-    res
+    return res
 end
 ## @lc code=end
