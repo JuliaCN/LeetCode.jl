@@ -1,8 +1,8 @@
 # ---
 # title: 717. 1-bit and 2-bit Characters
 # id: problem717
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-20
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/1-bit-and-2-bit-characters/description/>
@@ -47,5 +47,9 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function is_one_bit_character(bits::Vector{Int})::Bool
+    pos = findlast(x -> x == 0, @view bits[1:(end - 1)])
+    pos === nothing && return length(bits) % 2 == 1
+    return (length(bits) - pos) % 2 == 1
+end
 ## @lc code=end

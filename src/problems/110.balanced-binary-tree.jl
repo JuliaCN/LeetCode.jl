@@ -1,8 +1,8 @@
 # ---
 # title: 110. Balanced Binary Tree
 # id: problem110
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-28
 # difficulty: Easy
 # categories: Tree, Depth-first Search
 # link: <https://leetcode.com/problems/balanced-binary-tree/description/>
@@ -57,5 +57,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+is_balanced_binary_tree(::Nothing) = true
+function is_balanced_binary_tree(root::TreeNode)::Bool
+    tree_depth(::Nothing, depth::Int) = depth
+    function tree_depth(tree::TreeNode, depth::Int)::Int
+        ## -1 for if tree is not balanceed
+        (lt = tree_depth(tree.left, depth + 1)) == -1 && return -1
+        (rt = tree_depth(tree.right, depth + 1)) == -1 && return -1
+        return abs(lt - rt) <= 1 ? max(lt, rt) : -1
+    end
+    return tree_depth(root, 0) != -1
+end
 ## @lc code=end

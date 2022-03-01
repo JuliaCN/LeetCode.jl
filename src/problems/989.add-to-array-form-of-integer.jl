@@ -88,3 +88,4 @@ function add_to_array_form(num::Vector{Int}, k::Int)::Vector{Int}
 
     return reverse(res)
 end
+## @lc code=end

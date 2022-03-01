@@ -1,8 +1,8 @@
 # ---
 # title: 112. Path Sum
 # id: problem112
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-21
 # difficulty: Easy
 # categories: Tree, Depth-first Search
 # link: <https://leetcode.com/problems/path-sum/description/>
@@ -35,5 +35,10 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+has_path_sum(::Nothing, ::Int) = false
+function has_path_sum(root::TreeNode, target_sum::Int)::Bool
+    root.val == target_sum && isnothing(root.left) && isnothing(root.right) && return true
+    return any(has_path_sum.([root.left, root.right], target_sum - root.val))
+end
+
 ## @lc code=end

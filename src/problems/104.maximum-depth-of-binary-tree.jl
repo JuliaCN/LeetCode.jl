@@ -1,8 +1,8 @@
 # ---
 # title: 104. Maximum Depth of Binary Tree
 # id: problem104
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-20
 # difficulty: Easy
 # categories: Tree, Depth-first Search, Recursion
 # link: <https://leetcode.com/problems/maximum-depth-of-binary-tree/description/>
@@ -61,5 +61,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+maximum_depth_of_btree(::Nothing) = 0
+function maximum_depth_of_btree(root::TreeNode)
+    return maximum(maximum_depth_of_btree, [root.left, root.right]) + 1
+end
 ## @lc code=end

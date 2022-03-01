@@ -1,8 +1,8 @@
 # ---
 # title: 838. Push Dominoes
 # id: problem838
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-21
 # difficulty: Medium
 # categories: Two Pointers, Dynamic Programming
 # link: <https://leetcode.com/problems/push-dominoes/description/>
@@ -60,5 +60,13 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function push_dominoes(dominoes::String)::String
+    ans = ""
+    rules = ("R.L" => "T", ".L" => "LL", "R." => "RR", "T" => "R.L")
+    while dominoes != ans
+        ans = dominoes
+        dominoes = foldl(replace, [dominoes, rules...])
+    end
+    return ans
+end
 ## @lc code=end

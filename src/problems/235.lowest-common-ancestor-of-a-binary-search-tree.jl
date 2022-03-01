@@ -1,8 +1,8 @@
 # ---
 # title: 235. Lowest Common Ancestor of a Binary Search Tree
 # id: problem235
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-23
 # difficulty: Easy
 # categories: Tree
 # link: <https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/description/>
@@ -64,5 +64,11 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function lowest_common_ancestor_235(root::TreeNode, p::TreeNode, q::TreeNode)::TreeNode
+    lv, gv = p.val < q.val ? (p.val, q.val) : (q.val, p.val)
+    while true
+        lv <= root.val <= gv && return root
+        root = root.val < lv ? root.right : root.left
+    end
+end
 ## @lc code=end

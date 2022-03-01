@@ -1,8 +1,8 @@
 # ---
 # title: 700. Search in a Binary Search Tree
 # id: problem700
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-22
 # difficulty: Easy
 # categories: Tree
 # link: <https://leetcode.com/problems/search-in-a-binary-search-tree/description/>
@@ -47,5 +47,10 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function search_bst(root::TreeNode, val::Int)::Union{TreeNode,Nothing}
+    while !isnothing(root)
+        root.val == val && return root
+        root = (root.val > val) ? root.left : root.right
+    end
+end
 ## @lc code=end

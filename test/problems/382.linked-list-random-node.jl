@@ -7,7 +7,6 @@
         end
         num = freq[1] + freq[2] + freq[3]
         !(freq[1] == 2 * freq[2] == freq[3]) &&
-            abs(freq[1] / num - freq[3] / num) + abs(freq[1] / num - freq[2] / num / 2) <=
-            0.03
+            abs(freq[1] / num - freq[3] / num) + abs(freq[1] / num - freq[2] / num / 2) <= 0.1
     end
 end

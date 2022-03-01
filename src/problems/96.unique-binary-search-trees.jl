@@ -1,8 +1,8 @@
 # ---
 # title: 96. Unique Binary Search Trees
 # id: problem96
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-23
 # difficulty: Medium
 # categories: Dynamic Programming, Tree
 # link: <https://leetcode.com/problems/unique-binary-search-trees/description/>
@@ -37,5 +37,5 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+num_of_trees(n::Int) = binomial(2 * n, n) - binomial(2 * n, n + 1)
 ## @lc code=end

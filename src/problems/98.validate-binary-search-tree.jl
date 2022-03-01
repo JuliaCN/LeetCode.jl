@@ -58,10 +58,10 @@ function is_valid_BST(root)
     function pre_tra(root::TreeNode{Int})
         pre_tra(root.left)
         push!(arr, root.val)
-        pre_tra(root.right)
+        return pre_tra(root.right)
     end
     pre_tra(::Nothing) = nothing
     pre_tra(root)
-    return issorted(arr)
+    return issorted(arr; lt=!isless, rev=true)
 end
 ## @lc code=end
