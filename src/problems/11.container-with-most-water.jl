@@ -1,8 +1,8 @@
 # ---
 # title: 11. Container With Most Water
 # id: problem11
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-17
 # difficulty: Medium
 # categories: Array, Two Pointers
 # link: <https://leetcode.com/problems/container-with-most-water/description/>
@@ -66,5 +66,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_area_of_container(height::Vector{Int})::Int
+    i, j, res = 1, length(height), 0
+    while i < j
+        res = max(res, min(height[i], height[j]) * (j - i))
+        height[i] < height[j] ? (i += 1) : (j -= 1)
+    end
+    return res
+end
 ## @lc code=end

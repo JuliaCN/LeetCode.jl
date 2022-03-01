@@ -1,8 +1,8 @@
 # ---
 # title: 701. Insert into a Binary Search Tree
 # id: problem701
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-22
 # difficulty: Medium
 # categories: Tree
 # link: <https://leetcode.com/problems/insert-into-a-binary-search-tree/description/>
@@ -61,5 +61,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+insert_into_bst(::Nothing, val::Int) = TreeNode(val)
+function insert_into_bst(root::TreeNode, val::Int)::TreeNode
+    if root.val > val
+        root.left = insert_into_bst(root.left, val)
+    else
+        root.right = insert_into_bst(root.right, val)
+    end
+    return root
+end
+
 ## @lc code=end

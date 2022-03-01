@@ -1,8 +1,8 @@
 # ---
 # title: 653. Two Sum IV - Input is a BST
 # id: problem653
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-23
 # difficulty: Easy
 # categories: Tree
 # link: <https://leetcode.com/problems/two-sum-iv-input-is-a-bst/description/>
@@ -72,5 +72,21 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function find_target_inorder_traversal(root::TreeNode, k::Int)::Bool
+    stack, nums = TreeNode{Int}[], Real[-Inf32] ## lowest bound
+    while !isempty(stack) || !isnothing(root)
+        while !isnothing(root)
+            push!(stack, root)
+            root = root.left
+        end
+        root = pop!(stack)
+        while nums[end] + root.val > k
+            pop!(nums)
+        end
+        root.val + nums[end] == k && return true
+        push!(nums, root.val)
+        root = root.right
+    end
+    return false
+end
 ## @lc code=end
