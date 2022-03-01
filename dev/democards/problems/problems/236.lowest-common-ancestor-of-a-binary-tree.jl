@@ -1,7 +1,7 @@
 # @lc code=start
 using LeetCode
 
-function loweset_common_ancestor_236(
+function lowest_common_ancestor_236(
     root::TreeNode{Int}, p::TreeNode{Int}, q::TreeNode{Int}
 )::TreeNode{Int}
     function dfs(node::Union{TreeNode{Int},Nothing})
