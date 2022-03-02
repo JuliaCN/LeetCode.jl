@@ -54,9 +54,9 @@ Base.@kwdef struct MedianFinder
     maxheap::BinaryMaxHeap{Int} = BinaryMaxHeap{Int}()
     minheap::BinaryMinHeap{Int} = BinaryMinHeap{Int}()
 end
-function Base.show(io::IO, heap::MedianFinder)
-    return print(io, "$(heap.maxheap.valtree):max -- min:$(reverse(heap.minheap.valtree))")
-end
+# function Base.show(io::IO, heap::MedianFinder)
+#     return print(io, "$(heap.maxheap.valtree):max -- min:$(reverse(heap.minheap.valtree))")
+# end
 
 function add_num!(heap::MedianFinder, num::Int)
     ## maximal element of maxheap <= minimal element of minheap
