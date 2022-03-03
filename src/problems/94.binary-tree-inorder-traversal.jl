@@ -1,8 +1,8 @@
 # ---
 # title: 94. Binary Tree Inorder Traversal
 # id: problem94
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-19
 # difficulty: Medium
 # categories: Hash Table, Stack, Tree
 # link: <https://leetcode.com/problems/binary-tree-inorder-traversal/description/>
@@ -79,5 +79,36 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+inorder_traversal(::Nothing) = Int[]
+function inorder_traversal(root::TreeNode)::Vector{Int}
+    res, stack = Int[], []
+    while !isempty(stack) || !isnothing(root)
+        while !isnothing(root)
+            push!(stack, root)
+            root = root.left
+        end
+        root = pop!(stack)
+        push!(res, root.val) ## inorder search
+        root = root.right
+    end
+    return res
+end
+
+##### code template for inorder traversal and preorder traversal #####
+## traversal(::Nothing) = Int[]
+## function traversal(root::TreeNode)::Vector{Int}
+##     res, stack = Int[], []
+##     while !isempty(stack) || !isnothing(root)
+##         while !isnothing(root)
+##             push!(stack, root)
+##             ## preorder traversal: put codes here
+##             root = root.left
+##         end
+##         root = pop!(stack) 
+##         ## inorder traversal: put codes here
+##         root = root.right
+##     end
+##     res
+## end
+
 ## @lc code=end

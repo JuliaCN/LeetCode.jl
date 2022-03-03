@@ -1,7 +1,7 @@
 # ---
 # title: 1601. Maximum Number of Achievable Transfer Requests
 # id: problem1601
-# author: Indigo
+# author: zhwang
 # date: 2022-02-28
 # difficulty: Hard
 # categories: Dynamic Programming
@@ -82,19 +82,16 @@
 ## @lc code=start
 using LeetCode
 
-function maximum_requests(n, requests::Vector{Vector{Int}})
-    m = length(requests)
-    res = 0
-    net_trans = fill(0, n)
-    for i in 0:((1 << m) - 1)
-        for j in 0:(m - 1)
-            (i & (1 << j)) == 0 && continue
-            net_trans[requests[j + 1][1] + 1] += 1
-            net_trans[requests[j + 1][2] + 1] -= 1
-        end
-        all(iszero, net_trans) && (res = max(res, count_ones(i)))
-        fill!(net_trans, 0)
+using DataStructures
+function maximum_requests(::Int, requests::Vector{Vector{Int}})::Int
+    function is_valid_request(req)
+        return counter(requests[i][1] for i in req) == counter(requests[i][2] for i in req)
     end
-    return res
+    ans, m = 0, length(requests)
+    for k in 1:(1 << m)
+        req = filter(i -> isodd(k >> (i - 1)), 1:m)
+        ans = length(req) > ans && is_valid_request(req) ? length(req) : ans
+    end
+    return ans
 end
 ## @lc code=end
