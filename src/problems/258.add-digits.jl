@@ -1,8 +1,8 @@
 # ---
 # title: 258. Add Digits
 # id: problem258
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-03
 # difficulty: Easy
 # categories: Math
 # link: <https://leetcode.com/problems/add-digits/description/>
@@ -29,5 +29,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function add_digits(num::Int)::Int
+    num <= 9 && return num
+    return iszero(num % 9) ? 9 : num % 9
+end
 ## @lc code=end
