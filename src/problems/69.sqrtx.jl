@@ -42,5 +42,5 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+my_sqrt = isqrt
 ## @lc code=end
