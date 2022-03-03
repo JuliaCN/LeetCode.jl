@@ -3,4 +3,5 @@
     @test check_inclusion("ab", "eidbaooo") == true
     @test check_inclusion("ab", "eidboaoo") == false
     @test check_inclusion("hello", "ooolleoooleh") == false
+    @test check_inclusion("adc", "dcda") == true
 end
