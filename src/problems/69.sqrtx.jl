@@ -1,8 +1,8 @@
 # ---
 # title: 69. Sqrt(x)
 # id: problem69
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-03-03
 # difficulty: Easy
 # categories: Math, Binary Search
 # link: <https://leetcode.com/problems/sqrtx/description/>
@@ -42,5 +42,5 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+my_sqrt = isqrt
 ## @lc code=end

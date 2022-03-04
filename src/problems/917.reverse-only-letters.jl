@@ -1,8 +1,8 @@
 # ---
 # title: 917. Reverse Only Letters
 # id: problem917
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-03-03
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/reverse-only-letters/description/>
@@ -50,5 +50,10 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function reverse_only_letters(s::String)
+    chars = codeunits(s)[:]
+    letters = @view(chars[isletter.(Char.(chars))])
+    reverse!(letters)
+    return String(chars)
+end
 ## @lc code=end

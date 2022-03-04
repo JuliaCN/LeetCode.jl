@@ -1,8 +1,8 @@
 # ---
 # title: 496. Next Greater Element I
 # id: problem496
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-03-03
 # difficulty: Easy
 # categories: Stack
 # link: <https://leetcode.com/problems/next-greater-element-i/description/>
@@ -49,5 +49,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function next_greater_element(num1::Vector{Int}, num2::Vector{Int})
+    stk = Int[]
+    res = fill(-1, length(num2))
+    inv_idx = Dict{Int,Int}()
+    for i in length(num2):-1:1
+        inv_idx[num2[i]] = i
+        while !isempty(stk) && stk[end] <= num2[i]
+            pop!(stk)
+        end
+        res[i] = isempty(stk) ? -1 : stk[end]
+        push!(stk, num2[i])
+    end
+    [res[inv_idx[item]] for item in num1]
+end
 ## @lc code=end
