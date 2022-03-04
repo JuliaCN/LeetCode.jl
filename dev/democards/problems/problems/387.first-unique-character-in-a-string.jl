@@ -9,7 +9,7 @@ function first_unique_char(s::String)::Int
     for (i, st) in enumerate(s)
         table[st] && return i
     end
-    return -1
+    -1
 end
 
 # @lc code=end

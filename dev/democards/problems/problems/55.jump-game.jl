@@ -8,7 +8,7 @@ function can_jump(nums::Vector{Int})::Bool
         rightmost = max(rightmost, i + num)
         rightmost >= n && return true
     end
-    return false
+    false
 end
 
 # @lc code=end

@@ -1,31 +1,18 @@
 # @lc code=start
 using LeetCode
+using DataStructures
 
 # Double Pointers
 function check_inclusion(s1::String, s2::String)::Bool
-    empty!(d::Dict{Char,Int}) =
-        for i in 'a':'z'
-            d[i] = 0
-        end
-    count1, count2 = Dict{Char,Int}(), Dict{Char,Int}(i => 0 for i in 'a':'z')
-    start, left = true, 1
-    for i in s1
-        count1[i] = haskey(count1, i) ? count1[i] + 1 : 1
-    end
-    for (i, c) in enumerate(s2)
-        if !haskey(count1, c)
-            start = true
-            empty!(count2)
-        elseif count2[c] >= count1[c]
-            for j in left:i
-                s2[j] == c && (left = j + 1; break)
-                count2[s2[j]] -= 1
-            end
-        else
-            start && (start = false; left = i)
-            count2[c] += 1
-            all(count1[key] == count2[key] for key in keys(count1)) && return true
-        end
+    equal2c1(c::Accumulator) = all(c[i] == c1[i] for i in keys(c1))
+    c1, n1, n2 = counter(s1), length(s1), length(s2)
+    n2 < n1 && return false
+    c2 = counter(s2[1:n1])
+    equal2c1(c2) && return true
+    for (i, j) in zip(1:(n2 - n1), (n1 + 1):n2)
+        c2[s2[i]] -= 1
+        c2[s2[j]] += 1
+        equal2c1(c2) && return true
     end
     return false
 end
