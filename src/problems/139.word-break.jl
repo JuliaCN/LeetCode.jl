@@ -1,8 +1,8 @@
 # ---
 # title: 139. Word Break
 # id: problem139
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-02-18
 # difficulty: Medium
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/word-break/description/>
@@ -49,5 +49,21 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+## BFS
+function word_break(s::String, word_dict::Vector{String})::Bool
+    n, word_dict = length(s), sort!(word_dict; by=x -> length(x))
+    valids, valid_pos = fill(false, n), [0]
+    while !isempty(valid_pos)
+        pos = popfirst!(valid_pos)
+        for word in word_dict
+            (new_pos = pos + length(word)) > n && break
+            new_pos == n && s[(pos + 1):new_pos] == word && return true
+            if !valids[new_pos] && s[(pos + 1):new_pos] == word
+                valids[new_pos] = true
+                push!(valid_pos, new_pos)
+            end
+        end
+    end
+    return false
+end
 ## @lc code=end
