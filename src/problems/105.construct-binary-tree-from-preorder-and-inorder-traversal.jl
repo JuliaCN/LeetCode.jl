@@ -1,8 +1,8 @@
 # ---
 # title: 105. Construct Binary Tree from Preorder and Inorder Traversal
 # id: problem105
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-02
 # difficulty: Medium
 # categories: Array, Tree, Depth-first Search
 # link: <https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/>
@@ -35,5 +35,17 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+## using @view macro
+function build_tree_105(preorder::AbstractArray, inorder::AbstractArray)::TreeNode
+    root = TreeNode(first(preorder))
+    pos = findfirst(==(root.val), inorder)
+    pos != 1 &&
+        (root.left = build_tree_105(@view(preorder[2:pos]), @view(inorder[1:(pos - 1)])))
+    pos != length(preorder) && (
+        root.right = build_tree_105(
+            @view(preorder[(pos + 1):end]), @view(inorder[(pos + 1):end])
+        )
+    )
+    return root
+end
 ## @lc code=end
