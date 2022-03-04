@@ -61,6 +61,6 @@ function next_greater_element(num1::Vector{Int}, num2::Vector{Int})
         res[i] = isempty(stk) ? -1 : stk[end]
         push!(stk, num2[i])
     end
-    [res[inv_idx[item]] for item in num1]
+    return [res[inv_idx[item]] for item in num1]
 end
 ## @lc code=end

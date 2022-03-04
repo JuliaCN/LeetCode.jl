@@ -1,8 +1,8 @@
 # ---
 # title: 1103. Distribute Candies to People
 # id: problem1103
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-03-03
 # difficulty: Easy
 # categories: Math
 # link: <https://leetcode.com/problems/distribute-candies-to-people/description/>
@@ -66,5 +66,15 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function distribute_candies(candies::Int, npeople::Int)
+    res = fill(0, npeople)
+    cur = 1
+    while candies != 0
+        tmp = min(cur, candies)
+        res[mod1(cur, npeople)] += tmp
+        candies -= tmp
+        cur += 1
+    end
+    return res
+end
 ## @lc code=end
