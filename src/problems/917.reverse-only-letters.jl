@@ -1,8 +1,8 @@
 # ---
 # title: 917. Reverse Only Letters
 # id: problem917
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-03-03
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/reverse-only-letters/description/>

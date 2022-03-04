@@ -1,8 +1,8 @@
 # ---
 # title: 48. Rotate Image
 # id: problem48
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-03-03
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/rotate-image/description/>

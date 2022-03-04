@@ -1,8 +1,8 @@
 # ---
 # title: 496. Next Greater Element I
 # id: problem496
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-03-03
 # difficulty: Easy
 # categories: Stack
 # link: <https://leetcode.com/problems/next-greater-element-i/description/>
