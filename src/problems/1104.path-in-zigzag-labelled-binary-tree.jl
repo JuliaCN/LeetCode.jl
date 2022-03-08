@@ -1,8 +1,8 @@
 # ---
 # title: 1104. Path In Zigzag Labelled Binary Tree
 # id: problem1104
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-03-08
 # difficulty: Medium
 # categories: Math, Tree
 # link: <https://leetcode.com/problems/path-in-zigzag-labelled-binary-tree/description/>
@@ -61,6 +61,6 @@ function path_in_zig_zag_tree(n::Int)
         iseven(layer) && (n = (b >> 1) - n)
     end
     reverse!(res)
-    res
+    return res
 end
 ## @lc code=end

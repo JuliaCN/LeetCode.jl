@@ -1,8 +1,8 @@
 # ---
 # title: 1106. Parsing A Boolean Expression
 # id: problem1106
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-03-08
 # difficulty: Hard
 # categories: String
 # link: <https://leetcode.com/problems/parsing-a-boolean-expression/description/>
@@ -66,5 +66,32 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function parse_bool_expr(expr::String)
+    operations = Char[]
+    operands = Char[]
+    for ch in expr
+        if ch == '!' || ch == '&' || ch == '|'
+            push!(operations, ch)
+        elseif ch == ')'
+            cur_oprs = Char[]
+            while operands[end] != '('
+                push!(cur_oprs, pop!(operands))
+            end
+            pop!(operands)
+            op = pop!(operations)
+            rs = true
+            if op == '|'
+                rs = any(==('t'), cur_oprs)
+            elseif op == '&'
+                rs = all(==('t'), cur_oprs)
+            else
+                rs = cur_oprs[1] != 't'
+            end
+            push!(operands, rs ? 't' : 'f')
+        elseif ch != ','
+            push!(operands, ch)
+        end
+    end
+    return operands[1] == 't' ? true : false
+end
 ## @lc code=end
