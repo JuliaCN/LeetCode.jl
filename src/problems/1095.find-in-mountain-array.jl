@@ -68,7 +68,7 @@ struct MountainArray
 end
 
 Base.length(ma::MountainArray) = length(ma.vec)
-Base.getindex(ma::MountainArray, i) = ma.vec[i]  
+Base.getindex(ma::MountainArray, i) = ma.vec[i]
 
 function find_in_mountain_array(ma::MountainArray, target::Int)
     len = length(ma)
@@ -77,9 +77,9 @@ function find_in_mountain_array(ma::MountainArray, target::Int)
         mid = (i + j) >> 1
         ma[mid] > ma[mid + 1] ? (j = mid) : (i = mid + 1)
     end
-    idx1 = searchsortedfirst(1:i, i; by = i -> ma[i] >= target)
+    idx1 = searchsortedfirst(1:i, i; by=i -> ma[i] >= target)
     ma[idx1] == target && return idx1
-    idx2 = searchsortedfirst(i+1:len, i; by = i -> ma[i] <= target) + i
+    idx2 = searchsortedfirst((i + 1):len, i; by=i -> ma[i] <= target) + i
     ma[idx2] == target && return idx2
     return -1
 end
