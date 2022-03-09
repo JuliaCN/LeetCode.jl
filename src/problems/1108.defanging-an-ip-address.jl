@@ -1,8 +1,8 @@
 # ---
 # title: 1108. Defanging an IP Address
 # id: problem1108
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-03-08
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/defanging-an-ip-address/description/>
@@ -42,5 +42,5 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+defanging_ip_address(ip_address::String) = replace(ip_address, "." => "[.]")
 ## @lc code=end
