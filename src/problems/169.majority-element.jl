@@ -1,8 +1,8 @@
 # ---
 # title: 169. Majority Element
 # id: problem169
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-10
 # difficulty: Easy
 # categories: Array, Divide and Conquer, Bit Manipulation
 # link: <https://leetcode.com/problems/majority-element/description/>
@@ -34,5 +34,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function majority_element(nums::Vector{Int})::Int
+    res = vote = 0
+    for num in nums
+        if vote == 0
+            vote += 1
+            res = num
+        else
+            vote += (res == num) ? 1 : -1
+        end
+    end
+    return res
+end
 ## @lc code=end

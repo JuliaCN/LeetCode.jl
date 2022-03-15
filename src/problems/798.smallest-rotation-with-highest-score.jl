@@ -1,8 +1,8 @@
 # ---
 # title: 798. Smallest Rotation with Highest Score
 # id: problem798
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-10
 # difficulty: Hard
 # categories: 
 # link: <https://leetcode.com/problems/smallest-rotation-with-highest-score/description/>
@@ -58,5 +58,20 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function best_rotation(nums::Vector{Int})::Int
+    n = length(nums)
+    diffs = fill(0, n)
+    for (i, num) in enumerate(nums)
+        diffs[mod(i - num - 1, n) + 1] -= 1
+        diffs[i] += 1
+    end
+    ans = maxscore = score = 0
+    for (i, num) in enumerate(@view(diffs[1:(end - 1)]))
+        score += num
+        if score > maxscore
+            maxscore, ans = score, i
+        end
+    end
+    return ans
+end
 ## @lc code=end
