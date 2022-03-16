@@ -1,8 +1,8 @@
 # ---
 # title: 507. Perfect Number
 # id: problem507
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-10
 # difficulty: Easy
 # categories: Math
 # link: <https://leetcode.com/problems/perfect-number/description/>
@@ -71,5 +71,6 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+perfect_number(num::Int) = num in [6, 28, 496, 8128, 33550336]
+
 ## @lc code=end

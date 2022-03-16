@@ -1,8 +1,8 @@
 # ---
 # title: 946. Validate Stack Sequences
 # id: problem946
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-11
 # difficulty: Medium
 # categories: Stack
 # link: <https://leetcode.com/problems/validate-stack-sequences/description/>
@@ -47,6 +47,19 @@
 # 
 ## @lc code=start
 using LeetCode
+function validate_stack_sequences(pushed::Vector{Int}, popped::Vector{Int})
+    return validate_stack_sequences!(copy(pushed), popped)
+end
+function validate_stack_sequences!(pushed::Vector{Int}, popped::Vector{Int})::Bool
+    stack = Int[]
+    for num in popped
+        while isempty(stack) || last(stack) != num
+            isempty(pushed) && return false
+            push!(stack, popfirst!(pushed))
+        end
+        pop!(stack)
+    end
+    return true
+end
 
-## add your code here:
 ## @lc code=end

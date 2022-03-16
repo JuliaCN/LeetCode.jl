@@ -1,8 +1,8 @@
 # ---
 # title: 14. Longest Common Prefix
 # id: problem14
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-15
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/longest-common-prefix/description/>
@@ -45,5 +45,10 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function longest_common_prefix(strs::Vector{String})::String
+    s1, s2 = minimum(strs), maximum(strs)
+    pos = findfirst(i -> s1[i] != s2[i], 1:length(s1))
+    return isnothing(pos) ? "" : s1[1:(pos - 1)]
+end
+
 ## @lc code=end
