@@ -58,8 +58,10 @@ function del_nodes1110(node::TreeNode{Int}, to_delete::Vector{Int})
         for child in (:left, :right)
             isnothing(getproperty(root, child)) && continue
             if getproperty(root, child).val ∈ to_deletes
-                !isnothing(getproperty(root, child).left) && push!(queue, (getproperty(root, child).left, true))
-                !isnothing(getproperty(root, child).right) && push!(queue, (getproperty(root, child).right, true))
+                !isnothing(getproperty(root, child).left) &&
+                    push!(queue, (getproperty(root, child).left, true))
+                !isnothing(getproperty(root, child).right) &&
+                    push!(queue, (getproperty(root, child).right, true))
                 setproperty!(root, child, nothing)
             else
                 push!(queue, (getproperty(root, child), false))
@@ -67,6 +69,6 @@ function del_nodes1110(node::TreeNode{Int}, to_delete::Vector{Int})
         end
         flg && push!(res, root)
     end
-    res
+    return res
 end
 ## @lc code=end

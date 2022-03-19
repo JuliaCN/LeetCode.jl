@@ -1,8 +1,8 @@
 # ---
 # title: 1018. Binary Prefix Divisible By 5
 # id: problem1018
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-03-19
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/binary-prefix-divisible-by-5/description/>
@@ -61,5 +61,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function prefixes_div_by5(nums::Vector{Int})
+    len = length(nums)
+    res = fill(false, len)    
+    cur = 0
+    for i in 1:len
+        cur = cur * 2 + nums[i]
+        cur % 5 == 0 && (res[i] = true)
+    end
+    res
+end
 ## @lc code=end
