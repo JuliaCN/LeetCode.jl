@@ -1,8 +1,8 @@
 # ---
 # title: 1021. Remove Outermost Parentheses
 # id: problem1021
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-03-19
 # difficulty: Easy
 # categories: Stack
 # link: <https://leetcode.com/problems/remove-outermost-parentheses/description/>
@@ -73,5 +73,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function remove_outer_parentheses(s::String)
+    res = ""    
+    cnt = 0
+    for ch in s
+        flg = cnt < 0
+        cnt += ch == '(' ? -1 : 1
+        (flg && cnt < 0) && (res *= ch)
+    end
+    return res
+end
 ## @lc code=end
