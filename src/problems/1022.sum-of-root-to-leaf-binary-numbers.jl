@@ -1,8 +1,8 @@
 # ---
 # title: 1022. Sum of Root To Leaf Binary Numbers
 # id: problem1022
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-03-19
 # difficulty: Easy
 # categories: Tree
 # link: <https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/description/>
@@ -69,5 +69,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+_sum_root_to_leaf(::Nothing) = (0, 0)
+function _sum_root_to_leaf(root::TreeNode{Int})
+    lft, rgt = _sum_root_to_leaf(root.left), _sum_root_to_leaf(root.right)
+    tms = max(1, lft[2] + rgt[2])
+    return (lft[1] + rgt[1]) + tms * root.val, tms * 2
+end
+
+sum_root_to_leaf(root::TreeNode{Int}) = _sum_root_to_leaf(root)[1]
 ## @lc code=end
