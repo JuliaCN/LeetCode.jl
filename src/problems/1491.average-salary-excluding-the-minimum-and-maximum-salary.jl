@@ -1,8 +1,8 @@
 # ---
 # title: 1491. Average Salary Excluding the Minimum and Maximum Salary
 # id: problem1491
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-18
 # difficulty: Easy
 # categories: Array, Sort
 # link: <https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/description/>
@@ -66,5 +66,7 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function average_salary_excluding_mami(salary::Vector{Int})
+    return (sum(salary) - minimum(salary) - maximum(salary)) / (length(salary) - 2)
+end
 ## @lc code=end

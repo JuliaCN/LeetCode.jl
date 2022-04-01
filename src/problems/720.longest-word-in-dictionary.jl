@@ -1,8 +1,8 @@
 # ---
 # title: 720. Longest Word in Dictionary
 # id: problem720
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-17
 # difficulty: Easy
 # categories: Hash Table, Trie
 # link: <https://leetcode.com/problems/longest-word-in-dictionary/description/>
@@ -48,5 +48,24 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+## use Trie
+longest_common_word(words::Vector{String}) = longest_common_word!(words)
+function longest_common_word!(words::Vector{String})::String
+    root, res = Dict{Char,Dict}(), ""
+    for word in sort!(words; by=length)
+        node, n = root, length(word)
+        for (i, c) in enumerate(word)
+            if haskey(node, c)
+                node = node[c]
+            elseif i == n
+                node[c] = Dict{Char,Dict}() ## add new child
+                res = word
+            else
+                break
+            end
+        end
+    end
+    return res
+end
+
 ## @lc code=end
