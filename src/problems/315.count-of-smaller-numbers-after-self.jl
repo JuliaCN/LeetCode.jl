@@ -74,18 +74,7 @@ function count_smaller_method1(arr::Vector{Int})::Vector{Int}
 end
 
 ## method 2: using binary search
-function search_left_border(left::Int, right::Int, key::Function)
-    ## similar to findfirst(key, left:right) but using bs method
-    while left <= right
-        mid = left + (right - left) >> 1
-        if key(mid) ## lies in the right part
-            right = mid - 1
-        else
-            left = mid + 1
-        end
-    end
-    return left
-end
+## require function "search_left_border" from solution 33
 function count_smaller_method2(arr::Vector{Int})::Vector{Int}
     queue, res = Int[], Array{Int}(undef, length(reverse!(arr)))
     for (i, num) in enumerate(arr)
