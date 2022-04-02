@@ -27,7 +27,7 @@ function deserialize(data::String)::Union{TreeNode,Nothing}
     root, n = TreeNode(parse(Int, vals[1])), length(vals)
     queue, m = [root], 2
     while m <= n
-        for _ in 1:length(queue) # new nodes
+        for _ in 1:length(queue) ## new nodes
             node = popfirst!(queue)
             if vals[m] != "null"
                 node.left = TreeNode(parse(Int, vals[m]))
