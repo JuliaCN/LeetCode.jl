@@ -1,8 +1,8 @@
 # ---
 # title: 202. Happy Number
 # id: problem202
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-22
 # difficulty: Easy
 # categories: Hash Table, Math
 # link: <https://leetcode.com/problems/happy-number/description/>
@@ -34,6 +34,11 @@
 # 
 ## @lc code=start
 using LeetCode
-
-## add your code here:
+function ishappy(n::Int)::Bool
+    while n != 1
+        n == 4 && return false ## all loops must contain 4
+        n = sum(digits(n) .^ 2)
+    end
+    return true
+end
 ## @lc code=end

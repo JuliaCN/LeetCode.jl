@@ -1,8 +1,8 @@
 # ---
 # title: 162. Find Peak Element
 # id: problem162
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-25
 # difficulty: Medium
 # categories: Array, Binary Search
 # link: <https://leetcode.com/problems/find-peak-element/description/>
@@ -50,5 +50,6 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+find_peak_element(nums::Vector{Int}) = argmax(nums) - 1
+
 ## @lc code=end

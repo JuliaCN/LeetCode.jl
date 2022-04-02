@@ -1,8 +1,8 @@
 # ---
 # title: 27. Remove Element
 # id: problem27
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-16
 # difficulty: Easy
 # categories: Array, Two Pointers
 # link: <https://leetcode.com/problems/remove-element/description/>
@@ -73,5 +73,5 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+remove_element!(nums::Vector{Int}, val::Int) = length(filter!(!=(val), nums))
 ## @lc code=end

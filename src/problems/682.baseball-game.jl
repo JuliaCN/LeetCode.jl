@@ -1,8 +1,8 @@
 # ---
 # title: 682. Baseball Game
 # id: problem682
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-26
 # difficulty: Easy
 # categories: Stack
 # link: <https://leetcode.com/problems/baseball-game/description/>
@@ -80,5 +80,20 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function calculate_points(ops::Vector{String})::Int
+    scores = Int[]
+    for op in ops
+        if op == "+"
+            push!(scores, last(scores) + scores[end - 1])
+        elseif op == "D"
+            push!(scores, last(scores) * 2)
+        elseif op == "C"
+            pop!(scores)
+        else
+            push!(scores, parse(Int, op))
+        end
+    end
+    return sum(scores)
+end
+
 ## @lc code=end

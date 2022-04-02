@@ -1,8 +1,8 @@
 # ---
 # title: 1281. Subtract the Product and Sum of Digits of an Integer
 # id: problem1281
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-19
 # difficulty: Easy
 # categories: Math
 # link: <https://leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/description/>
@@ -47,5 +47,5 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+subtract_prod_sum(n::Int) = prod(digits(n)) - sum(digits(n))
 ## @lc code=end

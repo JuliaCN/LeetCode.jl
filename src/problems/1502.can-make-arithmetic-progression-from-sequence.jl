@@ -1,8 +1,8 @@
 # ---
 # title: 1502. Can Make Arithmetic Progression From Sequence
 # id: problem1502
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-22
 # difficulty: Easy
 # categories: Array, Sort
 # link: <https://leetcode.com/problems/can-make-arithmetic-progression-from-sequence/description/>
@@ -47,5 +47,6 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+can_make_arith(arr::Vector{Int})::Bool = length(unique!(diff(sort(arr)))) == 1
+
 ## @lc code=end

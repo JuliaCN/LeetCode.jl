@@ -1,8 +1,8 @@
 # ---
 # title: 693. Binary Number with Alternating Bits
 # id: problem693
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-03-28
 # difficulty: Easy
 # categories: Bit Manipulation
 # link: <https://leetcode.com/problems/binary-number-with-alternating-bits/description/>
@@ -65,5 +65,9 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function has_alternating_bits(n::Int)::Bool
+    a = (n >> 1) ⊻ n
+    return a & (a + 1) == 0
+end
+
 ## @lc code=end
