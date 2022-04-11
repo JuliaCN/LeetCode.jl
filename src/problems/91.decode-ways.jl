@@ -1,7 +1,7 @@
 # ---
 # title: 91. Decode Ways
 # id: problem91
-# author: Indig
+# author: Indigo
 # date: 2021-06-02
 # difficulty: Medium
 # categories: String, Dynamic Programming

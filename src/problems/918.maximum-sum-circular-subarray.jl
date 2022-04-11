@@ -1,7 +1,7 @@
 # ---
 # title: 918. Maximum Sum Circular Subarray
 # id: problem918
-# author: Indig
+# author: Indigo
 # date: 2021-07-12
 # difficulty: Medium
 # categories: Array

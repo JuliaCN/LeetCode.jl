@@ -1,7 +1,7 @@
 # ---
 # title: 1008. Construct Binary Search Tree from Preorder Traversal
 # id: problem1008
-# author: Idnigo
+# author: Indigo
 # date: 2021-01-30
 # difficulty: Medium
 # categories: Tree
