@@ -1,8 +1,8 @@
 # ---
 # title: 1025. Divisor Game
 # id: problem1025
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-04-14
 # difficulty: Easy
 # categories: Math, Dynamic Programming
 # link: <https://leetcode.com/problems/divisor-game/description/>
@@ -52,5 +52,5 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+divisor_game(n::Int) = iseven(n)
 ## @lc code=end
