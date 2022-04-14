@@ -1,8 +1,8 @@
 # ---
 # title: 1026. Maximum Difference Between Node and Ancestor
 # id: problem1026
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-04-14
 # difficulty: Medium
 # categories: Tree, Depth-first Search
 # link: <https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/description/>
@@ -54,5 +54,25 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_ancestor_diff(root::TreeNode{Int})
+    res = 0
+    function min_max_descendant(root::TreeNode{Int})
+        minres, maxres = root.val, root.val
+        if !isnothing(root.left)
+            minl, maxl = min_max_descendant(root.left)
+            res = max(res, abs(root.val - minl), abs(root.val - maxl))
+            minres = min(minres, minl)
+            maxres = max(maxres, maxl)
+        end
+        if !isnothing(root.right)
+            minr, maxr = min_max_descendant(root.right)
+            res = max(res, abs(root.val - minr), abs(root.val - maxr))
+            minres = min(minres, minr)
+            maxres = max(maxres, maxr)
+        end
+        return minres, maxres
+    end
+    min_max_descendant(root)
+    return res
+end
 ## @lc code=end
