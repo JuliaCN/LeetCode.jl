@@ -1,7 +1,7 @@
 # ---
 # title: 91. Decode Ways
 # id: problem91
-# author: Indig
+# author: Indigo
 # date: 2021-06-02
 # difficulty: Medium
 # categories: String, Dynamic Programming
@@ -79,8 +79,9 @@ function num_decodings(s)
     dp[1] = 1
     for i in 1:len
         s[i] != '0' && (dp[i + 1] += dp[i])
-        (i > 1 && s[i - 1] != '0' && parse(Int, s[i-1:i]) <= 26) && (dp[i + 1] += dp[i - 1])
+        (i > 1 && s[i - 1] != '0' && parse(Int, s[(i - 1):i]) <= 26) &&
+            (dp[i + 1] += dp[i - 1])
     end
-    dp[end]
+    return dp[end]
 end
 ## @lc code=end

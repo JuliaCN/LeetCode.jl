@@ -1,7 +1,7 @@
 # ---
 # title: 1008. Construct Binary Search Tree from Preorder Traversal
 # id: problem1008
-# author: Idnigo
+# author: Indigo
 # date: 2021-01-30
 # difficulty: Medium
 # categories: Tree
@@ -53,7 +53,7 @@ function bst_from_preorder(preorder::AbstractVector{Int})
     end
     i -= 1
     root.left = bst_from_preorder(@view preorder[2:i])
-    root.right = bst_from_preorder(@view preorder[i+1:end])
-    root
+    root.right = bst_from_preorder(@view preorder[(i + 1):end])
+    return root
 end
 ## @lc code=end

@@ -1,8 +1,8 @@
 # ---
 # title: 1019. Next Greater Node In Linked List
 # id: problem1019
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-03-19
 # difficulty: Medium
 # categories: Linked List, Stack
 # link: <https://leetcode.com/problems/next-greater-node-in-linked-list/description/>
@@ -61,5 +61,18 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function next_larger_nodes(head::ListNode{Int})
+    head = reverse_list(head)
+    stk = Int[]
+    res = Int[]
+    while !isnothing(head)
+        while !isempty(stk) && stk[end] <= val(head)
+            pop!(stk)
+        end
+        pushfirst!(res, isempty(stk) ? 0 : stk[end])
+        push!(stk, val(head))
+        head = next(head)
+    end
+    return res
+end
 ## @lc code=end

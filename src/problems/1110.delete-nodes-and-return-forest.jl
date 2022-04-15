@@ -1,8 +1,8 @@
 # ---
 # title: 1110. Delete Nodes And Return Forest
 # id: problem1110
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-03-19
 # difficulty: Medium
 # categories: Tree, Depth-first Search
 # link: <https://leetcode.com/problems/delete-nodes-and-return-forest/description/>
@@ -43,5 +43,32 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function del_nodes1110(node::TreeNode{Int}, to_delete::Vector{Int})
+    to_deletes = Set(to_delete)
+    res = TreeNode{Int}[]
+    queue = [(node, true)]
+
+    while !isempty(queue)
+        root, flg = popfirst!(queue)
+        if root.val ∈ to_deletes
+            !isnothing(root.left) && push!(queue, (root.left))
+            !isnothing(root.right) && push!(queue, (root.right))
+            continue
+        end
+        for child in (:left, :right)
+            isnothing(getproperty(root, child)) && continue
+            if getproperty(root, child).val ∈ to_deletes
+                !isnothing(getproperty(root, child).left) &&
+                    push!(queue, (getproperty(root, child).left, true))
+                !isnothing(getproperty(root, child).right) &&
+                    push!(queue, (getproperty(root, child).right, true))
+                setproperty!(root, child, nothing)
+            else
+                push!(queue, (getproperty(root, child), false))
+            end
+        end
+        flg && push!(res, root)
+    end
+    return res
+end
 ## @lc code=end
