@@ -60,12 +60,11 @@ function max_ancestor_diff(root::TreeNode{Int})
         minres, maxres = root.val, root.val
         for child in (:left, :right)
             cd_node = getproperty(root, child)
-            if !isnothing(cd_node)
-                minl, maxl = min_max_descendant(cd_node)
-                res = max(res, abs(root.val - minl), abs(root.val - maxl))
-                minres = min(minres, minl)
-                maxres = max(maxres, maxl)
-            end
+            !isnothing(cd_node) && continue
+            minl, maxl = min_max_descendant(cd_node)
+            res = max(res, abs(root.val - minl), abs(root.val - maxl))
+            minres = min(minres, minl)
+            maxres = max(maxres, maxl)
         end
         return minres, maxres
     end

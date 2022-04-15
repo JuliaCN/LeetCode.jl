@@ -51,8 +51,8 @@ function del_nodes1110(node::TreeNode{Int}, to_delete::Vector{Int})
     while !isempty(queue)
         root, flg = popfirst!(queue)
         if root.val ∈ to_deletes
-            !isnothing(root.left) && push!(queue, (root.left))
-            !isnothing(root.right) && push!(queue, (root.right))
+            !isnothing(root.left) && push!(queue, (root.left, true))
+            !isnothing(root.right) && push!(queue, (root.right, true))
             continue
         end
         for child in (:left, :right)
