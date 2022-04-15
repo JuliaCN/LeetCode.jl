@@ -1,7 +1,8 @@
 # @lc code=start
 using LeetCode
 
-function reverse_list(head::Union{ListNode,Nothing})::Union{ListNode,Nothing}
+reverse_list(head::Nothing) = head
+function reverse_list(head::ListNode)::ListNode
     new_head = pre_node = nothing
     while !isnothing(head)
         new_head = ListNode(head.val)
