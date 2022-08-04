@@ -1,8 +1,8 @@
 # ---
 # title: 75. Sort Colors
 # id: problem75
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-08-04
 # difficulty: Medium
 # categories: Array, Two Pointers, Sort
 # link: <https://leetcode.com/problems/sort-colors/description/>
@@ -68,5 +68,20 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function sort_colors!(nums::Vector{Int})
+    left = 1
+    for i in eachindex(nums)
+        if nums[i] == 0
+            nums[i], nums[left] = nums[left], nums[i]
+            left += 1
+        end
+    end
+    for i in (left + 1):length(nums)
+        if nums[i] == 1
+            nums[i], nums[left] = nums[left], nums[i]
+            left += 1
+        end
+    end
+end
+
 ## @lc code=end
