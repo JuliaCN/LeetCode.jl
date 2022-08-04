@@ -1,8 +1,8 @@
 # ---
 # title: 486. Predict the Winner
 # id: problem486
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-05-29
 # difficulty: Medium
 # categories: Dynamic Programming, Minimax
 # link: <https://leetcode.com/problems/predict-the-winner/description/>
@@ -53,6 +53,28 @@
 # 
 ## @lc code=start
 using LeetCode
+function is_ipv4(text::String)
+    data = split(text, '.')
+    length(data) != 4 && return false
+    any(length(x) > 1 && first(x) == '0' for x in data) && return false
+    try
+        all(0 <= parse(Int, x) <= 255 for x in data)
+    catch
+        false
+    end
+end
 
-## add your code here:
+function is_ipv6(text::String)
+    data = split(text, ':')
+    length(data) != 8 && return false
+    any(length(x) > 4 for x in data) && return false
+    return all(all.(isxdigit, data))
+end
+
+function valid_ip_address(query_ip::String)::String
+    is_ipv4(query_ip) && return "IPv4"
+    is_ipv6(query_ip) && return "IPv6"
+    return "Neither"
+end
+
 ## @lc code=end

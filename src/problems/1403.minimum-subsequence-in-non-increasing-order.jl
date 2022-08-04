@@ -1,8 +1,8 @@
 # ---
 # title: 1403. Minimum Subsequence in Non-Increasing Order
 # id: problem1403
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-08-04
 # difficulty: Easy
 # categories: Greedy, Sort
 # link: <https://leetcode.com/problems/minimum-subsequence-in-non-increasing-order/description/>
@@ -59,6 +59,15 @@
 # 
 ## @lc code=start
 using LeetCode
+function min_subsequence(nums::Vector{Int})
+    sort!(nums; rev=true)
+    half = sum(nums) >> 1
+    res, total = Int[], 0
+    for num in nums
+        total += num
+        push!(res, num)
+        total > half && return res
+    end
+end
 
-## add your code here:
 ## @lc code=end
