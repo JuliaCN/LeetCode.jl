@@ -1,8 +1,8 @@
 # ---
 # title: 929. Unique Email Addresses
 # id: problem929
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-06-04
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/unique-email-addresses/description/>
@@ -58,5 +58,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function actual_email(email)
+    name, domain = split(email, '@')
+    name = first(split(replace(name, "."=>""), "+"))
+    return name * "@" * domain
+end
+
+num_unique_emails(emails::Vector{String}) = length(unique(actual_email(email) for email in emails))
+
 ## @lc code=end
