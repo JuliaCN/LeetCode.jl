@@ -33,18 +33,18 @@ filename in readdir("presolution") && throw("Local solution to $(ind) already ex
 author = match(r"author: (.*)", read(".config", String))
 if isnothing(author)
     print("This is your first time to run the script, input author name here:")
+    author = strip(readline())
     open(".config", "w") do io
-        author = strip(readline())
         write(io, "author: $author" )
     end
 else
-    author = author.captures[1]
+    author = strip(author.captures[1])
 end
 date = strip(read(`date "+%Y-%m-%d"`, String))
 
 ## author/date
 text = read(unsolved_problems_dir * filename, String) ## original text
-if isempty("author") ## no author
+if isempty(author) ## no author
     text = replace(text, r"# author: .+\n" => "")
 else
     text = replace(text, r"(?<=# author: )(.+)" => author)
@@ -68,7 +68,7 @@ end
 
 println("Template succesfully generated
 ##############################
-output directory: presolution
+output directory: presolution/
 filename: $(filename)
 author: $(isempty(author) ? "None" : author)
 date: $date
