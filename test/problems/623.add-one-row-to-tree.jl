@@ -9,4 +9,8 @@
         add_one_row!(root, val, depth) ==
         TreeNode{Int}([4, 2, nothing, 1, 1, 3, nothing, nothing, 1])
     end
+    @test begin
+        root, val, depth = TreeNode{Int}([4, 2, 6, 3, 1, 5]), 1, 1
+        add_one_row!(root, val, depth) == TreeNode{Int}([1, 4, nothing, 2, 6, 3, 1, 5])
+    end
 end

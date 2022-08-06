@@ -93,8 +93,8 @@ function add_one_row!(root::TreeNode, val::Int, depth::Int)
         queue = [root]
         for _ in 1:(depth - 2), _ in eachindex(queue)
             node = popfirst!(queue)
-            isnothing(node.left) || (push!(queue, node.left))
-            isnothing(node.right) || (push!(queue, node.right))
+            isnothing(node.left) || push!(queue, node.left)
+            isnothing(node.right) || push!(queue, node.right)
         end
         for node in queue
             left, right = node.left, node.right
