@@ -1,8 +1,8 @@
 # ---
 # title: 1374. Generate a String With Characters That Have Odd Counts
 # id: problem1374
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-08-04
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/generate-a-string-with-characters-that-have-odd-counts/description/>
@@ -52,6 +52,6 @@
 # 
 ## @lc code=start
 using LeetCode
+generate_the_string(n::Int) = isodd(n) ? 'a'^n : 'a' * 'b'^(n - 1)
 
-## add your code here:
 ## @lc code=end

@@ -1,8 +1,8 @@
 # ---
 # title: 623. Add One Row to Tree
 # id: problem623
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-08-05
 # difficulty: Medium
 # categories: Tree
 # link: <https://leetcode.com/problems/add-one-row-to-tree/description/>
@@ -84,5 +84,27 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function add_one_row!(root::TreeNode, val::Int, depth::Int)
+    if depth == 1
+        node = TreeNode(val)
+        node.left = root
+        node
+    else
+        queue = [root]
+        for _ in 1:(depth - 2), _ in eachindex(queue)
+            node = popfirst!(queue)
+            isnothing(node.left) || push!(queue, node.left)
+            isnothing(node.right) || push!(queue, node.right)
+        end
+        for node in queue
+            left, right = node.left, node.right
+            node.left = TreeNode(val)
+            node.left.left = left
+            node.right = TreeNode(val)
+            node.right.right = right
+        end
+        root
+    end
+end
+
 ## @lc code=end
