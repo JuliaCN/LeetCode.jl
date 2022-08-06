@@ -79,7 +79,7 @@ end
 sum_root_to_leaf(root::TreeNode{Int}) = _sum_root_to_leaf(root)[1]
 
 ## BFS Algorithm
-sum_root_to_leaf_bfs(::Nothing) = 0
+## sum_root_to_leaf_bfs(::Nothing) = 0 # unnecessary
 function sum_root_to_leaf_bfs(root::TreeNode)
     queue, res = [(root.val, root)], 0
     while !isempty(queue)
@@ -88,9 +88,9 @@ function sum_root_to_leaf_bfs(root::TreeNode)
             if isnothing(node.left) && isnothing(node.right)
                 res += val
             else
-                val <<= 1
-                !isnothing(node.left) && push!(queue, (val + node.left.val, node.left))
-                !isnothing(node.right) && push!(queue, (val + node.right.val, node.right))
+                !isnothing(node.left) && push!(queue, (val << 1 + node.left.val, node.left))
+                !isnothing(node.right) &&
+                    push!(queue, (val << 1 + node.right.val, node.right))
             end
         end
     end

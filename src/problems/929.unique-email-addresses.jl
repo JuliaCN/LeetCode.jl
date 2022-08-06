@@ -60,10 +60,11 @@ using LeetCode
 
 function actual_email(email)
     name, domain = split(email, '@')
-    name = first(split(replace(name, "."=>""), "+"))
+    name = first(split(replace(name, "." => ""), "+"))
     return name * "@" * domain
 end
 
-num_unique_emails(emails::Vector{String}) = length(unique(actual_email(email) for email in emails))
-
+function num_unique_emails(emails::Vector{String})
+    return length(unique(actual_email(email) for email in emails))
+end
 ## @lc code=end

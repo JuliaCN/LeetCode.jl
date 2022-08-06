@@ -60,7 +60,7 @@ function is_ipv4(text::String)
     try
         all(0 <= parse(Int, x) <= 255 for x in data)
     catch
-        false
+        return false
     end
 end
 
