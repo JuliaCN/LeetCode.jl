@@ -1,8 +1,8 @@
 # ---
 # title: 605. Can Place Flowers
 # id: problem605
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-08-09
 # difficulty: Easy
 # categories: Array, Greedy
 # link: <https://leetcode.com/problems/can-place-flowers/description/>
@@ -48,5 +48,12 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function min_startvalue(nums::Vector{Int})
+    total = mintotal = 0
+    for num in nums
+        total += num
+        mintotal > total && (mintotal = total)
+    end
+    1 - min(0, mintotal)
+end
 ## @lc code=end

@@ -1,8 +1,8 @@
 # ---
 # title: 636. Exclusive Time of Functions
 # id: problem636
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-08-07
 # difficulty: Medium
 # categories: Stack
 # link: <https://leetcode.com/problems/exclusive-time-of-functions/description/>
@@ -114,5 +114,20 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function exclusive_time(n::Int, logs::Vector{T}) where T <: AbstractString
+    logs = [(parse(Int, id) + 1, state, parse(Int, time)) for (id, state, time) in split.(logs, ':')]
+    task, _, pretime = popfirst!(logs)
+    times, tasks = zeros(Int, n), [task]
+    for (id, state, curtime) in logs
+        interval, pretime = curtime - pretime, curtime
+        isempty(tasks) || (times[last(tasks)] += interval)
+        if state == "start" ## new task started
+            push!(tasks, id)
+        else ## task ended
+            times[pop!(tasks)] += 1 ## add end time
+            pretime += 1
+        end
+    end
+    return times
+end
 ## @lc code=end
