@@ -52,8 +52,8 @@ function min_startvalue(nums::Vector{Int})
     total = mintotal = 0
     for num in nums
         total += num
-        mintotal > total && (mintotal = total)
+        mintotal = min(mintotal, total)
     end
-    1 - min(0, mintotal)
+    return 1 - min(0, mintotal)
 end
 ## @lc code=end

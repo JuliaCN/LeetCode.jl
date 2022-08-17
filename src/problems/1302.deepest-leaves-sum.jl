@@ -1,8 +1,8 @@
 # ---
 # title: 1302. Deepest Leaves Sum
 # id: problem1302
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-08-17
 # difficulty: Medium
 # categories: Tree, Depth-first Search
 # link: <https://leetcode.com/problems/deepest-leaves-sum/description/>
@@ -34,5 +34,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function deepest_leaves_sum(root::TreeNode)
+    nodes = [root]
+    while true
+        val = 0
+        for _ in eachindex(nodes)
+            node = popfirst!(nodes)
+            val += node.val
+            isnothing(node.left) || push!(nodes, node.left)
+            isnothing(node.right) || push!(nodes, node.right)
+        end
+        isempty(nodes) && return val
+    end
+    return 0
+end
+
 ## @lc code=end
