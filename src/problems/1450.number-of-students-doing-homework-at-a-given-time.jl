@@ -1,8 +1,8 @@
 # ---
 # title: 1450. Number of Students Doing Homework at a Given Time
 # id: problem1450
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-08-19
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/number-of-students-doing-homework-at-a-given-time/description/>
@@ -79,5 +79,6 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+busystudent(starttime::AbstractVector, endtime::AbstractVector, query::Int) = count(s ≤ query ≤ e for (s, e) in zip(starttime, endtime))
+
 ## @lc code=end
