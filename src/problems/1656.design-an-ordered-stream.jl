@@ -1,8 +1,8 @@
 # ---
 # title: 1656. Design an Ordered Stream
 # id: problem1656
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-08-17
 # difficulty: Easy
 # categories: Array, Design
 # link: <https://leetcode.com/problems/design-an-ordered-stream/description/>
@@ -65,5 +65,27 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+mutable struct OrderStream
+    data::AbstractVector{T} where {T<:AbstractString}
+    n::Int
+    ptr::Int
+    ## initialize
+    OrderStream(n::Int) = new(fill("", n), n, 1)
+end
+
+function insertdata!(stream::OrderStream, idkey::Int, val::String)
+    stream.data[idkey] = val
+    res = String[]
+    isempty(stream.data[stream.ptr]) && return res
+    for i in (stream.ptr):(stream.n)
+        if isempty(stream.data[i])
+            stream.ptr = i
+            return res
+        else
+            push!(res, stream.data[i])
+        end
+    end
+    return res
+end
+
 ## @lc code=end

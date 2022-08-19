@@ -1,8 +1,8 @@
 # ---
 # title: 1422. Maximum Score After Splitting a String
 # id: problem1422
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-08-17
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/maximum-score-after-splitting-a-string/description/>
@@ -61,5 +61,19 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_score(s::AbstractString)
+    numofones = 0
+    maxscore = score = (first(s) == '0') + (last(s) == '1')
+    for i in s[2:(end - 1)]
+        if i == '1'
+            numofones += 1
+            score -= 1
+        else
+            score += 1
+        end
+        maxscore = max(maxscore, score)
+    end
+    return maxscore + numofones
+end
+
 ## @lc code=end

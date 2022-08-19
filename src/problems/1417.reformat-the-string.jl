@@ -1,8 +1,8 @@
 # ---
 # title: 1417. Reformat The String
 # id: problem1417
-# author: Tian Jun
-# date: 2020-10-31
+# author: zhwang
+# date: 2022-08-12
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/reformat-the-string/description/>
@@ -75,5 +75,25 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+## double pointer
+function reformatstr(s::AbstractString)
+    n = length(s) + 1
+    res = Vector{Char}(undef, n)
+    odd, even = 1, 2
+    for c in s
+        if isdigit(c)
+            odd > n && return ""
+            res[odd] = c
+            odd += 2
+        else
+            even > n && return ""
+            res[even] = c
+            even += 2
+        end
+    end
+    abs(even - 1 - odd) > 2 && return ""
+    max(odd, even) < n + 2 && return join(@view(res[1:(end - 1)]))
+    return last(res) * join(@view(res[1:(end - 2)]))
+end
+
 ## @lc code=end
