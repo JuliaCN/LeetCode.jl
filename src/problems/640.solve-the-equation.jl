@@ -75,7 +75,7 @@ function solve_equation(equation::AbstractString)
     function removesub(expr)
         exprs = split(expr, '-')
         pos = removex(first(exprs))
-        return sum(-removex.(@view(exprs[2:end])); init=pos)
+        return length(exprs) == 1 ? pos : pos - sum(removex.(@view(exprs[2:end])))
     end
 
     removeplus(expr) = sum(removesub.(split(expr, '+')))

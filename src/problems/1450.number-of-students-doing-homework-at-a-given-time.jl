@@ -79,6 +79,8 @@
 ## @lc code=start
 using LeetCode
 
-busystudent(starttime::AbstractVector, endtime::AbstractVector, query::Int) = count(s ≤ query ≤ e for (s, e) in zip(starttime, endtime))
+function busystudent(starttime::AbstractVector, endtime::AbstractVector, query::Int)
+    return count(s ≤ query ≤ e for (s, e) in zip(starttime, endtime))
+end
 
 ## @lc code=end
