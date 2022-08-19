@@ -34,7 +34,7 @@
 ## @lc code=start
 using LeetCode
 
-function deepest_leaves_sum(root::TreeNode)
+function deepest_leaves_sum(root::TreeNode)::Int
     nodes = [root]
     while true
         val = 0
@@ -46,7 +46,6 @@ function deepest_leaves_sum(root::TreeNode)
         end
         isempty(nodes) && return val
     end
-    return 0
 end
 
 ## @lc code=end
