@@ -87,7 +87,7 @@ function max_win_sum!(res::Vector{Int}, nums::Vector{Int}, l::Int)
     for i in (length(nums) - l):-1:1
         res[i] = max(res[i], res[i + 1])
     end
-    res
+    return res
 end
 
 function max_sum_two_no_overlap(nums::Vector{Int}, first_len::Int, second_len::Int)
@@ -98,9 +98,10 @@ function max_sum_two_no_overlap(nums::Vector{Int}, first_len::Int, second_len::I
 
     fmax_win = max_win_sum(nums, first_len)
     smax_win = max_win_sum(nums, second_len)
-    max(maximum(flen_sums[i] + smax_win[i + first_len] for i in 1:(n - tlen + 1)),
-        maximum(slen_sums[i] + fmax_win[i + second_len] for i in 1:(n - tlen + 1)))
+    return max(
+        maximum(flen_sums[i] + smax_win[i + first_len] for i in 1:(n - tlen + 1)),
+        maximum(slen_sums[i] + fmax_win[i + second_len] for i in 1:(n - tlen + 1)),
+    )
 end
-
 
 ## @lc code=end

@@ -1,8 +1,8 @@
 # ---
 # title: 1037. Valid Boomerang
 # id: problem1037
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-08-31
 # difficulty: Easy
 # categories: Math
 # link: <https://leetcode.com/problems/valid-boomerang/description/>
@@ -46,5 +46,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function is_boomerang(points::Vector{Vector{Int}})
+    p1, p2, p3 = points
+    return (p1[1] - p2[1]) * (p1[2] - p3[2]) != (p1[1] - p3[1]) * (p1[2] - p2[2])
+end
 ## @lc code=end
