@@ -1,8 +1,8 @@
 # ---
 # title: 1031. Maximum Sum of Two Non-Overlapping Subarrays
 # id: problem1031
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-08-31
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/maximum-sum-of-two-non-overlapping-subarrays/description/>
