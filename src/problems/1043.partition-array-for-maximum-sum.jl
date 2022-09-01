@@ -53,7 +53,7 @@
 # 
 ## @lc code=start
 using LeetCode
-using OffsetArrays
+
 function max_sum_after_partitioning(arr::Vector{Int}, k::Int)
     n = length(arr)
     dp = OffsetArray(zeros(Int, n + 1), -1)
