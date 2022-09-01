@@ -69,7 +69,7 @@
 using LeetCode
 
 function garden_no_adj(n::Int, path::Vector{Vector{Int}})
-    G = Dict{Int, Set{Int}}()
+    G = Dict{Int,Set{Int}}()
     for (u, v) in path
         push!(get!(G, u, Set{Int}()), v)
         push!(get!(G, v, Set{Int}()), u)

@@ -1,8 +1,8 @@
 # ---
 # title: 1043. Partition Array for Maximum Sum
 # id: problem1043
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-09-01
 # difficulty: Medium
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/partition-array-for-maximum-sum/description/>
@@ -53,6 +53,19 @@
 # 
 ## @lc code=start
 using LeetCode
+using OffsetArrays
+function max_sum_after_partitioning(arr::Vector{Int}, k::Int)
+    n = length(arr)
+    dp = OffsetArray(zeros(Int, n + 1), -1)
+    for i in 1:n
+        maxn = arr[i]
+        dp[i] = maxn + dp[i - 1]
+        for j in (i - 1):-1:max(1, i - k + 1)
+            maxn = max(maxn, arr[j])
+            dp[i] = max(dp[i], (i - j + 1) * maxn + dp[j - 1])
+        end
+    end
+    return dp[n]
+end
 
-## add your code here:
 ## @lc code=end
