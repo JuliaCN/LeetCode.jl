@@ -67,19 +67,16 @@
 using LeetCode
 
 function is_robot_bounded(instructions::String)::Bool
-    x, y = 0, 0
-    dirs = ((0, 1), (1, 0), (0, -1), (-1, 0))
+    pos = CartesianIndex(0, 0)
+    dirs = CartesianIndex.([(0, 1), (1, 0), (0, -1), (-1, 0)])
     st = 1
     for ch in instructions
         if ch == 'G'
-            x += dirs[st][1]
-            y += dirs[st][2]
-        elseif ch == 'L'
-            st = mod1(st + 1, 4)
+            pos += dirs[st]
         else
-            st = mod1(st - 1, 4)
+            st = mod1(st + (ch == 'R' ? 1 : -1), 4)
         end
     end
-    return (x, y) == (0, 0) || st != 1
+    return pos.I == (0, 0) || st != 1
 end
 ## @lc code=end

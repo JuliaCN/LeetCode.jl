@@ -1,8 +1,8 @@
 # ---
 # title: 1033. Moving Stones Until Consecutive
 # id: problem1033
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-08-31
 # difficulty: Easy
 # categories: Brainteaser
 # link: <https://leetcode.com/problems/moving-stones-until-consecutive/description/>
@@ -71,5 +71,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function num_moves_stones(a::Int, b::Int, c::Int)
+    a, b, c = sort([a, b, c])
+    return (min(1, b - a - 1) + min(1, c - b - 1), c - a - 2)
+end
 ## @lc code=end

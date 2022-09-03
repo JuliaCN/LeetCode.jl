@@ -23,5 +23,5 @@
     @test bst_to_gst(TreeNode{Int}([0, nothing, 1])) == TreeNode{Int}([1, nothing, 1])
     @test bst_to_gst(TreeNode{Int}([1, 0, 2])) == TreeNode{Int}([3, 3, 2])
     @test bst_to_gst(TreeNode{Int}([3, 2, 4, 1])) == TreeNode{Int}([7, 9, 4, 10])
-    @test bst_to_gst(nothing) == nothing
+    @test bst_to_gst(nothing) === nothing
 end
