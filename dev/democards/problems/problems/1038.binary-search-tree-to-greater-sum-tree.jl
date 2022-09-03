@@ -11,7 +11,7 @@ function bst_to_gst(root::TreeNode{Int})::TreeNode{Int}
         node.val = s
         return rev_first_ord(node.left)
     end
-    !isnothing(root) && rev_first_ord(root)
+    rev_first_ord(root)
     return root
 end
 # @lc code=end
