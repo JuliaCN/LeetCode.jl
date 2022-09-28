@@ -1,8 +1,8 @@
 # ---
 # title: 1122. Relative Sort Array
 # id: problem1122
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-09-28
 # difficulty: Easy
 # categories: Array, Sort
 # link: <https://leetcode.com/problems/relative-sort-array/description/>
@@ -39,5 +39,24 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function relative_sort_array(arr1::Vector{Int}, arr2::Vector{Int})
+    res = Vector{Int}(undef, length(arr1))
+    idx = length(res)
+    dc = Dict{Int,Int}((k => 0) for k in arr2)
+    for i in arr1
+        if haskey(dc, i)
+            dc[i] += 1
+        else
+            res[idx] = i
+            idx -= 1
+        end
+    end
+    sort!(@view(res[(idx + 1):end]))
+    idx = 1
+    for item in arr2
+        res[idx:(idx + dc[item] - 1)] .= item
+        idx += dc[item]
+    end
+    return res
+end
 ## @lc code=end
