@@ -1,8 +1,8 @@
 # ---
 # title: 1078. Occurrences After Bigram
 # id: problem1078
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-09-29
 # difficulty: Easy
 # categories: Hash Table
 # link: <https://leetcode.com/problems/occurrences-after-bigram/description/>
@@ -46,5 +46,14 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function occurrences_after_bigram(text::String, first::String, second::String)
+    words = split(text)
+    ans = String[]
+    for i in 1:length(words)-2
+        if words[i] == first && words[i+1] == second
+            push!(ans, words[i+2])
+        end
+    end
+    return ans
+end
 ## @lc code=end
