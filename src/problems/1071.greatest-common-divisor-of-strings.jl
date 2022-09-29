@@ -1,8 +1,8 @@
 # ---
 # title: 1071. Greatest Common Divisor of Strings
 # id: problem1071
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-09-29
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/greatest-common-divisor-of-strings/description/>
@@ -61,5 +61,7 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function gcd_of_strings(str1::String, str2::String)
+    return str1 * str2 == str2 * str1 ? str1[1:gcd(length(str1), length(str2))] : ""    
+end
 ## @lc code=end
