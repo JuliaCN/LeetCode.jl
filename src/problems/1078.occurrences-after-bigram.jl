@@ -48,12 +48,12 @@ using LeetCode
 
 function occurrences_after_bigram(text::String, first::String, second::String)
     words = split(text)
-    ans = String[]
+    res = String[]
     for i in 1:length(words)-2
         if words[i] == first && words[i+1] == second
-            push!(ans, words[i+2])
+            push!(res, words[i+2])
         end
     end
-    return ans
+    return res
 end
 ## @lc code=end
