@@ -1,8 +1,8 @@
 # ---
 # title: 1054. Distant Barcodes
 # id: problem1054
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-10-06
 # difficulty: Medium
 # categories: Heap, Sort
 # link: <https://leetcode.com/problems/distant-barcodes/description/>
@@ -44,5 +44,20 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function rearrange_barcodes(barcodes::Vector{Int})
+    len = length(barcodes)
+    res = zeros(Int, len)
+    cnt = counter(barcodes)
+    hp = heapify!([(v, k) for (k, v) in cnt])
+    idx = 1
+    while !isempty(hp)
+        v, k = pop!(hp)
+        for _ in 1:v
+            res[idx] = k
+            idx += 2
+            idx > len && (idx = 2)
+        end
+    end
+    res
+end
 ## @lc code=end

@@ -1,8 +1,8 @@
 # ---
 # title: 1081. Smallest Subsequence of Distinct Characters
 # id: problem1081
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-10-06
 # difficulty: Medium
 # categories: String, Stack, Greedy
 # link: <https://leetcode.com/problems/smallest-subsequence-of-distinct-characters/description/>
