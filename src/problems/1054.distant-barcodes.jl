@@ -51,7 +51,7 @@ function rearrange_barcodes(barcodes::Vector{Int})
     hp = heapify!([(v, k) for (k, v) in cnt])
     idx = 1
     while !isempty(hp)
-        v, k = pop!(hp)
+        v, k = heappop!(hp)
         for _ in 1:v
             res[idx] = k
             idx += 2

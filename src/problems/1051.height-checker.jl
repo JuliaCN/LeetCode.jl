@@ -1,8 +1,8 @@
 # ---
 # title: 1051. Height Checker
 # id: problem1051
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-10-08
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/height-checker/description/>
@@ -62,5 +62,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function height_checker(heights::Vector{Int})
+    sorted = sort(heights)
+    count(i -> heights[i] != sorted[i], 1:length(heights)) 
+end
 ## @lc code=end
