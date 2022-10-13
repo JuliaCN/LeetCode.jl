@@ -1,8 +1,8 @@
 # ---
 # title: 769. Max Chunks To Make Sorted
 # id: problem769
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-10-13
 # difficulty: Medium
 # categories: Array
 # link: <https://leetcode.com/problems/max-chunks-to-make-sorted/description/>
@@ -49,5 +49,7 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function max_chunks_to_sorted(arr::Vector{Int})
+    return count(i == num + 1 for (i, num) in enumerate(accumulate(max, arr)))
+end
 ## @lc code=end
