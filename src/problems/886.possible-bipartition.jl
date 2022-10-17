@@ -1,8 +1,8 @@
 # ---
 # title: 886. Possible Bipartition
 # id: problem886
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-10-16
 # difficulty: Medium
 # categories: Depth-first Search, Graph
 # link: <https://leetcode.com/problems/possible-bipartition/description/>
