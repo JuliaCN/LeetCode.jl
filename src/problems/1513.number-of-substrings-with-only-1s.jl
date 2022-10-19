@@ -1,8 +1,8 @@
 # ---
 # title: 1513. Number of Substrings With Only 1s
 # id: problem1513
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-10-19
 # difficulty: Medium
 # categories: Math, String
 # link: <https://leetcode.com/problems/number-of-substrings-with-only-1s/description/>
@@ -65,5 +65,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function num_sub(s::String)
+    ss = split(s, '0')
+    sum(binomial(length(subs) + 1, 2) for subs in ss)    
+end
 ## @lc code=end
