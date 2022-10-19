@@ -1,8 +1,8 @@
 # ---
 # title: 905. Sort Array By Parity
 # id: problem905
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-10-19
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/sort-array-by-parity/description/>
@@ -36,5 +36,16 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function sort_array_by_parity!(arr::Vector{Int})
+    i, j = 1, length(arr)
+    while i < j
+        if iseven(arr[i])
+            i += 1
+        else
+            arr[i], arr[j] = arr[j], arr[i]
+            j -= 1
+        end
+    end
+    return arr
+end
 ## @lc code=end
