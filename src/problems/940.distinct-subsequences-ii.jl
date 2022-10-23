@@ -1,8 +1,8 @@
 # ---
 # title: 940. Distinct Subsequences II
 # id: problem940
-# author: Tian Jun
-# date: 2020-10-31
+# author: Indigo
+# date: 2022-10-14
 # difficulty: Hard
 # categories: Dynamic Programming
 # link: <https://leetcode.com/problems/distinct-subsequences-ii/description/>
@@ -60,5 +60,11 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function distinct_subseq2(s::String)
+    arr = zeros(Int, 26)
+    for c in codeunits(s)
+        arr[c - UInt8('a' - 1)] = (sum(arr) + 1) % 1_000_000_007
+    end
+    return sum(arr) % 1_000_000_007
+end
 ## @lc code=end
