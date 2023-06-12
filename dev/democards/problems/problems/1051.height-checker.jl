@@ -3,7 +3,7 @@ using LeetCode
 
 function height_checker(heights::Vector{Int})
     sorted = sort(heights)
-    count(i -> heights[i] != sorted[i], 1:length(heights))
+    return count(i -> heights[i] != sorted[i], 1:length(heights))
 end
 # @lc code=end
 
