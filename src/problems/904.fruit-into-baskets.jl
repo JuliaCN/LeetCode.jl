@@ -97,6 +97,6 @@ function total_fruit(fruits::Vector{Int})
         end
         res = max(res, i - j + 1)
     end
-    res
+    return res
 end
 ## @lc code=end

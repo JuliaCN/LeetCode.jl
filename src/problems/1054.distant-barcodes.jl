@@ -58,6 +58,6 @@ function rearrange_barcodes(barcodes::Vector{Int})
             idx > len && (idx = 2)
         end
     end
-    res
+    return res
 end
 ## @lc code=end
