@@ -1,8 +1,8 @@
 # ---
 # title: 1023. Camelcase Matching
 # id: problem1023
-# author: Tian Jun
-# date: 2020-10-31
+# author: Pixia1234
+# date: 2024-06-29
 # difficulty: Medium
 # categories: String, Trie
 # link: <https://leetcode.com/problems/camelcase-matching/description/>
@@ -64,5 +64,21 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function matches(query, pattern)
+    i, j = 1, 1
+    while i <= length(query) && j <= length(pattern)
+        if query[i] == pattern[j]
+            j += 1
+        elseif isuppercase(query[i])
+            return false
+        end
+        i += 1
+    end
+    return j > length(pattern) && all(!isuppercase, query[i:end])
+end
+
+function camelMatch(queries, pattern)
+    return [matches(query, pattern) for query in queries]
+end
+
 ## @lc code=end
