@@ -57,35 +57,28 @@
 ## @lc code=start
 using LeetCode
 
-function dfs(
-    candidates::Vector{Int},
+function combinationSum(candidates::AbstractVector{Int}, target::Int)
+    res = Vector{Vector{Int}}()
+    return combinationSum!(sort(candidates), target, Int[], res)
+end
+
+function combinationSum!(
+    candidates::AbstractVector{Int},
     target::Int,
-    path::Vector{Int},
-    start::Int,
+    path::AbstractVector{Int},
     res::Vector{Vector{Int}},
 )
-    if target == 0
-        push!(res, copy(path))
-        return nothing
-    end
-    for i in start:length(candidates)
-        if i > start && candidates[i] == candidates[i - 1]
-            continue
-        end
-        if target - candidates[i] < 0
-            break
-        end
-        push!(path, candidates[i])
-        dfs(candidates, target - candidates[i], path, i + 1, res)
-        pop!(path)
-    end
-end ## We use dfs here and for sure there exists more ways to solve the problem.
+    # if the target is 0, we find a solution
+    target == 0 && return push!(res, copy(path))
+    length(candidates) == 0 || target < first(candidates) && return res
 
-function combinationSum(candidates::Vector{Int}, target::Int)
-    res = Vector{Vector{Int}}()
-    sort!(candidates)
-    path = Int[]
-    dfs(candidates, target, path, 1, res)
+    # use @view to avoid copying the array
+    for (i, candidate) in enumerate(candidates)
+        i > 1 && candidate == candidates[i - 1] && continue
+        candidate > target && break
+        subcandidates = @view(candidates[1:length(candidate) .!= i]) # skip the current candidate
+        combinationSum!(subcandidates, target - candidate, push!(path, candidate), res)
+    end
     return res
 end
 
