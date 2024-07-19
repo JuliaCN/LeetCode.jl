@@ -1,8 +1,8 @@
 # ---
 # title: 40. Combination Sum II
 # id: problem40
-# author: Tian Jun
-# date: 2020-10-31
+# author: Pixia1234
+# date: 2024-07-18
 # difficulty: Medium
 # categories: Array, Backtracking
 # link: <https://leetcode.com/problems/combination-sum-ii/description/>
@@ -57,5 +57,36 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function dfs(
+    candidates::Vector{Int},
+    target::Int,
+    path::Vector{Int},
+    start::Int,
+    res::Vector{Vector{Int}},
+)
+    if target == 0
+        push!(res, copy(path))
+        return nothing
+    end
+    for i in start:length(candidates)
+        if i > start && candidates[i] == candidates[i - 1]
+            continue
+        end
+        if target - candidates[i] < 0
+            break
+        end
+        push!(path, candidates[i])
+        dfs(candidates, target - candidates[i], path, i + 1, res)
+        pop!(path)
+    end
+end ## We use dfs here and for sure there exists more ways to solve the problem.
+
+function combinationSum(candidates::Vector{Int}, target::Int)
+    res = Vector{Vector{Int}}()
+    sort!(candidates)
+    path = Int[]
+    dfs(candidates, target, path, 1, res)
+    return res
+end
+
 ## @lc code=end

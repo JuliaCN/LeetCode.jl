@@ -1,8 +1,8 @@
 # ---
 # title: 46. Permutations
 # id: problem46
-# author: Tian Jun
-# date: 2020-10-31
+# author: Pixia1234
+# date: 2024-07-19
 # difficulty: Medium
 # categories: Backtracking
 # link: <https://leetcode.com/problems/permutations/description/>
@@ -50,5 +50,30 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function permutation(nums::Vector{Int})::Vector{Vector{Int}}
+    res = Vector{Vector{Int}}()
+    n = length(nums)
+    sizehint!(res, factorial(n))
+    function dfs(nums::Vector{Int}, path::Vector{Int}, used::Vector{Bool})
+        if length(path) == n
+            push!(res, copy(path))
+            return nothing
+        end
+        for i in 1:n
+            if !used[i]
+                if i > 1 && nums[i] == nums[i - 1] && !used[i - 1]
+                    continue
+                end
+                used[i] = true
+                push!(path, nums[i])
+                dfs(nums, path, used)
+                pop!(path)
+                used[i] = false
+            end
+        end
+    end
+    sort!(nums)
+    dfs(nums, Int[], fill(false, n))
+    return res
+end
 ## @lc code=end

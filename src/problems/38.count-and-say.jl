@@ -1,8 +1,8 @@
 # ---
 # title: 38. Count and Say
 # id: problem38
-# author: Tian Jun
-# date: 2020-10-31
+# author: Pixia1234
+# date: 2024-07-17
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/count-and-say/description/>
@@ -62,5 +62,23 @@
 ## @lc code=start
 using LeetCode
 
+function countandsay(n::Int)
+    if n == 1
+        return "1"
+    end
+    s = countandsay(n - 1)
+    i = 1
+    j = 1
+    res = ""
+    while j <= length(s)
+        if s[j] != s[i]
+            res *= string(j - i) * string(s[i])
+            i = j
+        end
+        j += 1
+    end
+    res *= string(j - i) * string(s[i])
+    return res
+end
 ## add your code here:
 ## @lc code=end

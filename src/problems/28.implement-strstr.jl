@@ -1,8 +1,8 @@
 # ---
 # title: 28. Implement strStr()
 # id: problem28
-# author: Tian Jun
-# date: 2020-10-31
+# author: Pixia1234
+# date: 2024-07-13
 # difficulty: Easy
 # categories: Two Pointers, String
 # link: <https://leetcode.com/problems/implement-strstr/description/>
@@ -61,5 +61,16 @@
 ## @lc code=start
 using LeetCode
 
+function strStr(haystack::String, needle::String)
+    if needle == ""
+        return 0
+    end
+    for i in 1:(length(haystack) - length(needle) + 1)
+        if haystack[i:(i + length(needle) - 1)] == needle
+            return i - 1 # Notice that Julia is 1-indexed, and here we need 0-indexed so minus 1
+        end
+    end
+    return -1
+end
 ## add your code here:
 ## @lc code=end

@@ -1,8 +1,8 @@
 # ---
 # title: 29. Divide Two Integers
 # id: problem29
-# author: Tian Jun
-# date: 2020-10-31
+# author: Pixia1234
+# date: 2024-07-17
 # difficulty: Medium
 # categories: Math, Binary Search
 # link: <https://leetcode.com/problems/divide-two-integers/description/>
@@ -69,5 +69,19 @@
 ## @lc code=start
 using LeetCode
 
+function divide(dividend::Int, divisor::Int)::Int
+    sign = (dividend < 0) ⊻ (divisor < 0)
+    dividend, divisor = abs(dividend), abs(divisor)
+    result = 0
+    while dividend >= divisor
+        shift = 0
+        while dividend >= (divisor << shift)
+            shift += 1
+        end
+        dividend -= divisor << (shift - 1)
+        result += 1 << (shift - 1)
+    end
+    return sign ? -result : result
+end
 ## add your code here:
 ## @lc code=end
