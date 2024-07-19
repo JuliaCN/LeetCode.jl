@@ -63,22 +63,25 @@
 using LeetCode
 
 function countandsay(n::Int)
-    if n == 1
-        return "1"
-    end
-    s = countandsay(n - 1)
-    i = 1
-    j = 1
-    res = ""
-    while j <= length(s)
-        if s[j] != s[i]
-            res *= string(j - i) * string(s[i])
-            i = j
+    # Base case
+    n == 1 && return "1"
+    # Get the previous term
+    previous_term = countandsay(n - 1)
+    # Generate the current term by "saying" the previous term
+    current_term = ""
+    count = 0
+    current_char = previous_term[1]
+    
+    for char in previous_term
+        if char == current_char
+            count += 1
+        else
+            current_term *= string(count) * current_char
+            current_char = char
+            count = 1
         end
-        j += 1
     end
-    res *= string(j - i) * string(s[i])
-    return res
+    # Append the last group
+    current_term * string(count) * current_char
 end
-## add your code here:
 ## @lc code=end
