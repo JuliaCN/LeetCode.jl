@@ -1,8 +1,8 @@
 # ---
 # title: 38. Count and Say
 # id: problem38
-# author: Tian Jun
-# date: 2020-10-31
+# author: Pixia1234
+# date: 2024-07-17
 # difficulty: Easy
 # categories: String
 # link: <https://leetcode.com/problems/count-and-say/description/>
@@ -62,5 +62,26 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function countandsay(n::Int)
+    # Base case
+    n == 1 && return "1"
+    # Get the previous term
+    previous_term = countandsay(n - 1)
+    # Generate the current term by "saying" the previous term
+    current_term = ""
+    count = 0
+    current_char = previous_term[1]
+    
+    for char in previous_term
+        if char == current_char
+            count += 1
+        else
+            current_term *= string(count) * current_char
+            current_char = char
+            count = 1
+        end
+    end
+    # Append the last group
+    current_term * string(count) * current_char
+end
 ## @lc code=end
