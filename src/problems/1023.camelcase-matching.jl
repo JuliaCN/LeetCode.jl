@@ -74,11 +74,9 @@ function matches(query, pattern)
         end
         i += 1
     end
-    return j > length(pattern) && all(!isuppercase, query[i:end])
+    return j > length(pattern) && all(islowercase, @view(query[i:end]))
 end
 
-function camelMatch(queries, pattern)
-    return [matches(query, pattern) for query in queries]
-end
+camelMatch(queries, pattern) = matches.(queries, Ref(pattern))
 
 ## @lc code=end
