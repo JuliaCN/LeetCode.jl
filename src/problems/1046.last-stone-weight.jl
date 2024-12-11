@@ -44,7 +44,7 @@
 # 
 # 
 ## @lc code=start
-# using LeetCode
+using LeetCode
 
 using DataStructures
 
