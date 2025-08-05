@@ -1,8 +1,8 @@
 # ---
 # title: 1672. Richest Customer Wealth
 # id: problem1672
-# author: Tian Jun
-# date: 2020-10-31
+# author: Ibrahim Al-Aqua
+# date: 2025-08-05
 # difficulty: Easy
 # categories: Array
 # link: <https://leetcode.com/problems/richest-customer-wealth/description/>
@@ -65,5 +65,8 @@
 ## @lc code=start
 using LeetCode
 
-## add your code here:
+function maximumWealth(accounts::Array{<:Integer,2})::Int
+    return maximum(sum(accounts; dims=2))
+end
+
 ## @lc code=end
